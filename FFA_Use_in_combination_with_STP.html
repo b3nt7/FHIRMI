@@ -31,8 +31,8 @@
      ─────────────────────
      · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
          data-snomed="…"> — semantic tagging for FHIR / ontology consumers
-     · mi-hidden-section: display:none — content for automated readers only
-     · ucb-collapse: native <details>/<summary> pattern for collapsible sections
+     · hidden-section: display:none — content for automated readers only
+     · collapse: native <details>/<summary> pattern for collapsible sections
      · Anchor targets for TOC: either <section id="…"> or <a id="…"> inside
          <summary> so the target is always visible (even when collapsed)
      · Tables use role="table" to reinforce semantics and border-collapse:separate
@@ -170,19 +170,19 @@
        &nbsp; inside button labels prevents the browser from breaking
        "Detailed response" or "European SmPC" onto two lines. -->
   <div class="container">
-    <nav id="toc" class="mi-navbox" aria-label="Page sections">
+    <nav id="toc" class="navbox" aria-label="Page sections">
       <!-- "Contents" is a visible label, not a heading — rendered as <span>
            to avoid polluting the heading outline read by screen readers -->
-      <span class="mi-navbox__title">Contents</span>
+      <span class="navbox__title">Contents</span>
       <!-- #toc-list: JS scroll-spy adds/removes .is-active on these <a> elements
            as the user scrolls, highlighting the current section button -->
-      <ul id="toc-list" class="mi-navbox__list">
-        <li><a class="mi-btn" href="#summary">Summary</a></li>
-        <li><a class="mi-btn" href="#detailed-response">Detailed&nbsp;response</a></li>
-        <li><a class="mi-btn" href="#eu-smpc">European&nbsp;SmPC</a></li>
-        <li><a class="mi-btn" href="#published-data">Published&nbsp;data</a></li>
-        <li><a class="mi-btn" href="#disclaimers">Disclaimers</a></li>
-        <li><a class="mi-btn" href="#references">References</a></li>
+      <ul id="toc-list" class="navbox__list">
+        <li><a class="btn" href="#summary">Summary</a></li>
+        <li><a class="btn" href="#detailed-response">Detailed&nbsp;response</a></li>
+        <li><a class="btn" href="#eu-smpc">European&nbsp;SmPC</a></li>
+        <li><a class="btn" href="#published-data">Published&nbsp;data</a></li>
+        <li><a class="btn" href="#disclaimers">Disclaimers</a></li>
+        <li><a class="btn" href="#references">References</a></li>
       </ul>
     </nav>
   </div>
@@ -234,13 +234,13 @@
 
     <!-- ══════════════════════════════════════════════════════════════
          HIDDEN SECTION: AEO KEY FACTS
-         Class mi-hidden-section applies display:none — this block is
+         Class hidden-section applies display:none — this block is
          invisible in the browser but readable by automated extractors
-         (AEO = Answer Engine Optimisation).  The <span mi-hidden-meta>
+         (AEO = Answer Engine Optimisation).  The <span hidden-meta>
          carries a data-label attribute that tagging pipelines use to
          identify the block type without parsing the prose. -->
-    <section id="aeo-summary" class="mi-hidden-section">
-      <span class="mi-hidden-meta" data-label="AEO"></span>
+    <section id="aeo-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO"></span>
       <p>Key Facts — Fenfluramine + Stiripentol (Clinical and SmPC‑Based)</p>
       <p>Fenfluramine (FFA, Fintepla) used in combination with stiripentol (STP) is indicated for Dravet syndrome.
         When co‑administered, recommended dosing is 0.1 mg/kg twice daily initially and 0.2 mg/kg twice daily from Day
@@ -256,8 +256,8 @@
          Structured question-and-answer pairs for AEO pipelines.
          Mirrors the FAQPage JSON-LD in prose form for extractors that
          consume visible HTML rather than structured data scripts. -->
-    <section id="aeo-qa" class="mi-hidden-section">
-      <span class="mi-hidden-meta" data-label="AEO-QA"></span>
+    <section id="aeo-qa" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO-QA"></span>
       <p>AEO Key Questions &amp; Answers</p>
       <p>What is the recommended fenfluramine dose when combined with stiripentol?</p>
       <p>0.1 mg/kg twice daily at initiation and 0.2 mg/kg twice daily at Day 7, with a maximum of 17 mg/day.</p>
@@ -289,12 +289,12 @@
       <h1 class="h1">Summary</h1>
 
       <!-- ── Summary: EU SmPC ─────────────────────────────────────────
-           ucb-collapse uses the native <details>/<summary> pattern.
+           collapse uses the native <details>/<summary> pattern.
            CSS replaces the default browser triangle with a chevron that
            rotates on open and shifts to warm red on hover.
            <a id="ref1-first"> is an internal bookmark — not currently
            linked from the TOC but available for deep-linking. -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">Relevant Information From the European Summary of Product Characteristics (EU SmPC)</h2><a
@@ -320,7 +320,7 @@
            item carries an <a id="refN-first"> anchor for potential
            deep-links and ends with a "Click here for details" link
            pointing to the corresponding detailed-response anchor. -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">Published Data</h2>
@@ -420,7 +420,7 @@
               </p>
             </li>
           </ul>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -442,7 +442,7 @@
            id="EuSmpcDetail" on the <h2> is the jump target for "Click here
            for details" links in the Summary section.
            <a id="eu-smpc"> is the TOC scroll target (#eu-smpc button). -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2" id="EuSmpcDetail">Relevant Information From the EU SmPC</h2><a id="eu-smpc"></a>
@@ -463,9 +463,9 @@
           </p>
           <!-- TABLE 1: Dosage recommendations (Day 0, Day 7, Day 14) with
                the shared maximum-dose cell spanning three rows via rowspan.
-               .veeva-email wrapper applies the table styling.
+               .tbl wrapper applies the table styling.
                role="table" makes semantics explicit for assistive technology. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <!-- Title row: full-width cell containing the table caption as <h6> -->
               <tr>
@@ -599,7 +599,7 @@
           <p>EU SmPC includes information from clinical studies on <span data-type="drug" data-mesh="D005247"
               data-emtree="fenfluramine" data-snomed="372729009">FFA</span>
             with STP; details published and summarized herein.<sup><a href="#ref-1">1</a></sup></p>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
       <!-- ── Detailed: Published Data ─────────────────────────────────
@@ -609,7 +609,7 @@
              · OLE Study        (Scheffer 2025, id="OLEStudyDetail")
              · Real-World       (Guerrini 2022 + Gjerulfsen 2024, id="RWEStudyDetail")
            <a id="published-data"> is the TOC scroll target (#published-data). -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2>Published Data</h2><a id="published-data"></a>
@@ -658,7 +658,7 @@
           <!-- TABLE 2: Concomitant ASM overview by treatment arm (4 columns).
                Two interim-row groups: number of concomitant ASMs, and
                individual ASMs present in ≥ 10% of patients. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="4">
@@ -760,7 +760,7 @@
           <!-- TABLE 3: Primary and key secondary efficacy endpoints (Study 2).
                Three interim-row groups: primary MCSF endpoint, ≥50% responder
                rate, and longest convulsive seizure-free interval. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="3">
@@ -850,7 +850,7 @@
           </p>
           <!-- TABLE 4: Noncardiovascular TEAEs ≥ 10% in either arm (Study 2).
                No interim rows — single flat list of adverse events. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="3">
@@ -955,7 +955,7 @@
           <!-- TABLE 5: Concomitant ASMs at baseline across the 3 pooled studies (6 columns).
                Two-row header: top row spans 4 FFA-dose columns, second row
                names each dose arm.  Placebo column spans both header rows via rowspan. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="6">
@@ -1094,7 +1094,7 @@
                Same two-row header structure as Table 5.  Rows cover summary
                TEAE categories followed by individual AEs ≥ 10% in any group. -->
           <!-- TABLE 6 -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="6">
@@ -1294,7 +1294,7 @@
           <!-- TABLE 7: OLE efficacy outcomes — FFA with vs. without STP (mITT).
                Interim-row groups: MCSF change, responder rates (50/75/90/100%),
                seizure-free days, and CGI-I clinician/caregiver ratings. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="4">
@@ -1417,7 +1417,7 @@
           </p>
           <!-- TABLE 8: OLE safety — TEAEs ≥ 10% stratified by STP use
                (safety population: with STP n=91 / without STP n=268). -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="3">
@@ -1525,7 +1525,7 @@
                Four columns: Study Description | Concomitant ASMs | FFA Dose | Outcomes.
                Each study is introduced by an interim row with the citation. -->
           <!-- TABLE 9 -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="4">
@@ -1658,7 +1658,7 @@
               </tbody>
             </table>
           </div>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -1668,7 +1668,7 @@
          UCB medical information responses. &#9660; (▼) at the start of
          the first paragraph is the EMA additional-monitoring symbol. -->
     <section id="disclaimers">
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">Disclaimers</h2>
@@ -1692,7 +1692,7 @@
             recommendation by UCB. UCB accepts no responsibility or liability for the content or services of other
             websites.
             UCB encourages you to review the policies and terms of all websites you may choose to visit.</p>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -1705,7 +1705,7 @@
          (<a href="#ref-N">).  External URLs carry target="_blank" and
          rel="noopener noreferrer" to prevent tab-napping. -->
     <section id="references">
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">References</h2>
@@ -1760,7 +1760,7 @@
                 rel="noopener noreferrer">https://doi.org/10.1002/epi4.13029</a>
             </li>
           </ol>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -1774,11 +1774,13 @@
               through the border line rather than overlay it.
            3. Actions row — anonymous checkbox (left) + Send button (right).
          The section uses the teal (#6bcaba) palette defined in CSS section 15.
-         #feedback_message: role="status" + aria-live="polite" announces the
+         #feedback-message: role="status" + aria-live="polite" announces the
          post-submission success/error message to screen readers without
          interrupting the user; CSS hides it with :empty when empty. -->
-    <section id="feedback">
-      <details class="ucb-collapse">
+    <section id="feedback"
+             data-document-number="MED-EU-FFA-2500009"
+             data-case-response-number="CASE-US-2026-000849-RESPONSE-001">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <!-- h3 (not h2) — feedback sits outside the main clinical
@@ -1802,7 +1804,7 @@
                visually while the legend text remains in the accessibility tree. -->
           <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
             <legend id="stars_label">Rating</legend>
-            <div class="stars_list">
+            <div class="stars-list">
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="1"
                 aria-label="1 star">★</button>
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="2"
@@ -1819,16 +1821,16 @@
           <!-- Inline validation: shown by JS when Send is clicked without a rating selected.
                role="alert" announces the message immediately to screen readers.
                aria-hidden="true" suppresses it when empty/hidden. -->
-          <p id="stars_error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before sending.</p>
+          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before sending.</p>
 
           <!-- ── Comment textarea ───────────────────────────────────────
-               .comment_field is the positioning context for the floating
+               .comment-field is the positioning context for the floating
                label.  The label uses position:absolute and a background
                colour that matches the teal card, so it appears to sit
                on the textarea border rather than on top of it.
                The <label for="comment"> paired with the textarea id
                ensures proper focus association for assistive technology. -->
-          <div class="comment_field">
+          <div class="comment-field">
             <label for="comment">Comment (optional)</label>
             <textarea id="comment" name="comment" placeholder="Your comment …" rows="4"></textarea>
           </div>
@@ -1849,18 +1851,18 @@
 
           <!-- ── Actions row ────────────────────────────────────────────
                Flex row: anonymous checkbox (left) + action button (right).
-               A single button (#submit_feedback) serves all three states:
+               A single button (#submit-feedback) serves all three states:
                · fresh     → label "Send"               · submitted  → label "Update my response"
                · editing   → label "RE-SEND"
                JS changes the label and click behaviour; the button stays
                in the same position with the same primary-blue style throughout. -->
-          <div class="feedback_actions">
-            <div class="anon_option">
+          <div class="feedback-actions">
+            <div class="anon-option">
               <input type="checkbox" id="anonymous" name="anonymous">
               <label for="anonymous">Send anonymously</label>
             </div>
 
-            <button type="button" id="submit_feedback" class="mi-btn mi-btn--primary">Send</button>
+            <button type="button" id="submit-feedback" class="btn btn--primary">Send</button>
           </div>
 
           <!-- Status message injected by JS after submission.
@@ -1868,7 +1870,7 @@
                text, preventing a phantom gap in the flex layout.
                aria-live="polite" announces the message to screen readers
                after the user submits without requiring focus shift. -->
-          <div id="feedback_message" role="status" aria-live="polite"></div>
+          <div id="feedback-message" role="status" aria-live="polite"></div>
         </div>
       </details>
     </section>
@@ -1876,12 +1878,12 @@
          HIDDEN SECTION: LLM / GEO MACHINE SUMMARY
          A single concise paragraph optimised for ingestion by large
          language model crawlers (Generative Engine Optimisation).
-         display:none via mi-hidden-section — invisible to human readers
+         display:none via hidden-section — invisible to human readers
          but readable by automated extractors that index HTML source.
          Summarises PK rationale, efficacy evidence, safety profile, and
          directs the model back to the EU SmPC as the authoritative source. -->
-    <section id="llm-summary" class="mi-hidden-section">
-      <span class="mi-hidden-meta" data-label="LLM-SUMMARY"></span>
+    <section id="llm-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
       <p>GEO Machine Summary</p>
       <p>Fenfluramine (FFA) combined with stiripentol (STP) requires reduced weight‑based dosing due to
         pharmacokinetic
@@ -1924,7 +1926,7 @@
            on the five <button role="radio"> star elements
          · Feedback submission: collects rating, comment, and anonymous
            flag, posts to the configured endpoint, and injects the
-           response text into #feedback_message -->
+           response text into #feedback-message -->
   <script src="assets/js/main.js"></script>
 </body>
 

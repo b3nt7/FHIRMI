@@ -1,7 +1,7 @@
 /* assets/js/main.js
-   - Floating TOC + scroll‑spy (.is-active on .mi-btn in #toc)
+   - Floating TOC + scroll‑spy (.is-active on .btn in #toc)
    - Open-only behavior for collapsibles:
-       * On load: open first TWO <details.ucb-collapse>
+       * On load: open first TWO <details.collapse>
        * On navigation (TOC/content): open ancestor <details>, or first child <details> if none
    - Back to Top:
        * Converts legacy "back to contents" links to a Back‑to‑Top action
@@ -43,26 +43,26 @@
   // ------------------------------------------------------------
   // 2) Open-first-two collapsibles on load (open-only)
   // ------------------------------------------------------------
-  const detailsAll = document.querySelectorAll('main details.ucb-collapse');
+  const detailsAll = document.querySelectorAll('main details.collapse');
   if (detailsAll.length > 0) detailsAll[0].setAttribute('open', '');
   if (detailsAll.length > 1) detailsAll[1].setAttribute('open', '');
 
   // ------------------------------------------------------------
   // 3) Helper: Open-only for a given target id
-  //    A) If target is INSIDE <details.ucb-collapse>, open that ancestor
-  //    B) Else if target CONTAINS a <details.ucb-collapse>, open its first child
+  //    A) If target is INSIDE <details.collapse>, open that ancestor
+  //    B) Else if target CONTAINS a <details.collapse>, open its first child
   // ------------------------------------------------------------
   function ensureSectionOpenById(id) {
     if (!id) return;
     const el = document.getElementById(id);
     if (!el) return;
 
-    const parentDetails = el.closest('details.ucb-collapse');
+    const parentDetails = el.closest('details.collapse');
     if (parentDetails) {
       parentDetails.setAttribute('open', '');
       return;
     }
-    const childDetails = el.querySelector('details.ucb-collapse');
+    const childDetails = el.querySelector('details.collapse');
     if (childDetails) {
       childDetails.setAttribute('open', '');
     }
@@ -72,7 +72,7 @@
   // 4) Scroll‑spy: highlight active TOC pill
   // ------------------------------------------------------------
   const toc = document.getElementById('toc');
-  const links = toc ? toc.querySelectorAll('.mi-btn[href^="#"]') : [];
+  const links = toc ? toc.querySelectorAll('.btn[href^="#"]') : [];
   const targets = links.length
     ? Array.from(links)
         .map(a => document.getElementById(a.getAttribute('href').slice(1)))
@@ -82,8 +82,13 @@
   function setActiveById(id) {
     if (!toc || !links.length || !id) return;
     links.forEach(l => l.classList.remove('is-active'));
-    const active = toc.querySelector(`.mi-btn[href="#${CSS.escape(id)}"]`);
-    if (active) active.classList.add('is-active');
+    const active = toc.querySelector(`.btn[href="#${CSS.escape(id)}"]`);
+    if (active) {
+      active.classList.add('is-active');
+      // Scroll the active button into view within the horizontally-scrollable
+      // navbox list. block:'nearest' prevents the page from scrolling vertically.
+      active.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+    }
   }
 
   // ------------------------------------------------------------
@@ -91,7 +96,7 @@
   // ------------------------------------------------------------
   if (toc) {
     toc.addEventListener('click', (e) => {
-      const a = e.target.closest('.mi-btn[href^="#"]');
+      const a = e.target.closest('.btn[href^="#"]');
       if (!a) return;
       const id = a.getAttribute('href').slice(1);
       setActiveById(id);
@@ -104,11 +109,11 @@
   // 6) Back‑to‑Top behavior
   //    - Convert legacy "back to contents" links into Back‑to‑Top
   //    - We map:
-  //        a.mi-btn.back-to-toc  OR  a[href="#toc"]  →  navigate to #top
+  //        a.btn.back-to-toc  OR  a[href="#toc"]  →  navigate to #top
   //    - We still do NOT preventDefault, so history is preserved.
   // ------------------------------------------------------------
   document.addEventListener('click', (e) => {
-    const backToContents = e.target.closest('a.mi-btn.back-to-toc, a[href="#toc"], a[aria-label="back to contents"], a[aria-label="Back to contents"]');
+    const backToContents = e.target.closest('a.btn.back-to-toc, a[href="#toc"], a[aria-label="back to contents"], a[aria-label="Back to contents"]');
     if (!backToContents) return;
 
     // If href is already "#top", nothing to do; otherwise, re-point to #top so hash history is clean
@@ -210,7 +215,7 @@
   // ------------------------------------------------------------
   const starBtns   = document.querySelectorAll('.stars .star');
   const starsPill  = document.querySelector('.stars');
-  const starsError = document.getElementById('stars_error');
+  const starsError = document.getElementById('stars-error');
 
   function clearStarError() {
     if (starsPill)  starsPill.classList.remove('has-error');
@@ -241,7 +246,7 @@
   // ------------------------------------------------------------
   // 12) Feedback submission — session-token state management
   //
-  //     A single button (#submit_feedback) serves all three states:
+  //     A single button (#submit-feedback) serves all three states:
   //       fresh     — label "Send";               click → submit
   //       submitted — label "Update my response"; click → open editing
   //       editing   — label "RE-SEND";            click → submit (upsert)
@@ -253,10 +258,12 @@
   //     Stored object      : { token, rating, comment, anonymous }
   //     Token is session-only and not linked to any user identity.
   // ------------------------------------------------------------
-  const actionBtn       = document.getElementById('submit_feedback');
-  const feedbackMsg     = document.getElementById('feedback_message');
+  const actionBtn       = document.getElementById('submit-feedback');
+  const feedbackMsg     = document.getElementById('feedback-message');
   const collapseContent = document.querySelector('#feedback .collapse-content');
   const STORAGE_KEY     = 'ucb_feedback';
+  const docNumber       = document.getElementById('feedback')?.dataset.documentNumber     ?? '';
+  const caseNumber      = document.getElementById('feedback')?.dataset.caseResponseNumber ?? '';
 
   function generateToken() {
     return (typeof crypto !== 'undefined' && crypto.randomUUID)
@@ -292,13 +299,16 @@
     }
 
     // Build data — reuse existing token (upsert) or mint a new one
-    const prev  = sessionStorage.getItem(STORAGE_KEY);
-    const token = prev ? JSON.parse(prev).token : generateToken();
-    const data  = {
+    const prev      = sessionStorage.getItem(STORAGE_KEY);
+    const token     = prev ? JSON.parse(prev).token : generateToken();
+    const anonymous = document.getElementById('anonymous')?.checked ?? false;
+    const data      = {
       token,
-      rating:    Array.from(starBtns).filter(s => s.getAttribute('aria-checked') === 'true').length,
-      comment:   document.getElementById('comment')?.value.trim()  ?? '',
-      anonymous: document.getElementById('anonymous')?.checked     ?? false,
+      rating:                Array.from(starBtns).filter(s => s.getAttribute('aria-checked') === 'true').length,
+      comment:               document.getElementById('comment')?.value.trim() ?? '',
+      anonymous,
+      'document-number':     docNumber,
+      ...(!anonymous ? { 'case-response-number': caseNumber } : {}),
     };
 
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -358,5 +368,16 @@
       }
     });
   }
+
+  // ------------------------------------------------------------
+  // 13) Print preparation
+  //     beforeprint: open every details.collapse so the UA shows
+  //     all content on paper (CSS also forces display, belt-and-braces).
+  //     No afterprint handler — leaves sections open post-print,
+  //     which is the simpler, safer default.
+  // ------------------------------------------------------------
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details.collapse').forEach(d => d.setAttribute('open', ''));
+  });
 
 })();

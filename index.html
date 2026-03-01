@@ -31,8 +31,8 @@
      ─────────────────────
      · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
          data-snomed="…"> — semantic tagging for FHIR / ontology consumers
-     · mi-hidden-section: display:none — content for automated readers only
-     · ucb-collapse: native <details>/<summary> pattern for collapsible sections
+     · hidden-section: display:none — content for automated readers only
+     · collapse: native <details>/<summary> pattern for collapsible sections
      · Anchor targets for TOC: either <section id="…"> or <a id="…"> inside
          <summary> so the target is always visible (even when collapsed)
      · Tables use role="table" to reinforce semantics and border-collapse:separate
@@ -119,6 +119,10 @@ html {
   /* Keeps anchor-jump targets visible below the fixed TOC bar.
      5 rem ≈ navbox height (≈3.8 rem) + comfortable breathing room. */
   scroll-padding-top: 5rem;
+  /* Prevent iOS Safari from auto-inflating font sizes on narrow viewports,
+     which would make <p> appear disproportionately larger than headings/tables. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Only enable smooth scrolling when the user is actively navigating
@@ -179,9 +183,9 @@ body {
   --container-max:  61.25rem;  /* ≈ 980 px — matches Veeva email width */
 
   /* ── Pill control geometry ── */
-  --mi-pill-h:              2rem;    /* Standard pill height                     */
-  --mi-pill-pad-x:          0.9rem;  /* Standard horizontal padding              */
-  --mi-pill-pad-x-compact:  0.7rem;  /* Compact variant (back-to-top pill)       */
+  --pill-h:              2rem;    /* Standard pill height                     */
+  --pill-pad-x:          0.9rem;  /* Standard horizontal padding              */
+  --pill-pad-x-compact:  0.7rem;  /* Compact variant (back-to-top pill)       */
 }
 
 
@@ -244,7 +248,7 @@ sub { bottom: -0.4em; }
 /* Global link style — brand blue, underlined; hover shifts to warm red */
 a       { color: var(--brand); text-decoration: underline; }
 a:hover { color: #a84544;      text-decoration: underline; }
-/* Note: .mi-btn overrides text-decoration: none for button-style links */
+/* Note: .btn overrides text-decoration: none for button-style links */
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -371,11 +375,11 @@ a:hover { color: #a84544;      text-decoration: underline; }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   6. NAVIGATION BOX  (.mi-navbox)
+   6. NAVIGATION BOX  (.navbox)
    Generic pill-shaped container used for in-page TOC bars.
    The floating TOC (#toc) extends this in section 8.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.mi-navbox {
+.navbox {
   border: 0.0625rem solid var(--border);
   border-radius: 100vmax; /* always a perfect pill regardless of height */
   background: #E6E8F3;
@@ -389,7 +393,7 @@ a:hover { color: #a84544;      text-decoration: underline; }
 }
 
 /* "Contents" label — never wraps; provides fixed left anchor for the list */
-.mi-navbox__title {
+.navbox__title {
   margin: 0 var(--space-05) 0 0;
   font-size: 0.9rem;
   font-weight: 700;
@@ -398,7 +402,7 @@ a:hover { color: #a84544;      text-decoration: underline; }
 }
 
 /* Button list — wraps by default for static navboxes (overridden in #toc) */
-.mi-navbox__list {
+.navbox__list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-05);
@@ -411,20 +415,20 @@ a:hover { color: #a84544;      text-decoration: underline; }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   7. PILL BUTTONS  (.mi-btn)
+   7. PILL BUTTONS  (.btn)
    Base pill used for navigation, actions, and back-to-top links.
    Variants (--primary, --outline, --ghost) and states (is-active)
    are layered on top with !important to guarantee override regardless
    of DOM context.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.mi-btn,
-button.mi-btn {
+.btn,
+button.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  min-height: var(--mi-pill-h);
-  padding-inline: var(--mi-pill-pad-x);
+  min-height: var(--pill-h);
+  padding-inline: var(--pill-pad-x);
   padding-block: 0;
   border-radius: 100vmax;
   border: 0.0625rem solid #808AC4;  /* mid-blue chip outline */
@@ -449,35 +453,35 @@ button.mi-btn {
 
 /* Primary — solid brand fill; transparent border so pill edge is smooth
    (a matching-colour border would show a seam at the rounded end-caps). */
-.mi-btn--primary {
+.btn--primary {
   color: #fff !important;
   background: var(--brand) !important;
   border-color: transparent !important;
   box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45) !important; /* symmetric glow, no top-edge artefact */
 }
-.mi-btn--primary:hover { filter: brightness(1.08); }
+.btn--primary:hover { filter: brightness(1.08); }
 
 /* Outline — white fill, brand border; subtle hover tint */
-.mi-btn--outline {
+.btn--outline {
   background: #fff !important;
   color: var(--brand) !important;
   border: 0.0625rem solid var(--brand) !important;
   box-shadow: none;
 }
-.mi-btn--outline:hover { background: rgba(0, 20, 137, 0.06) !important; }
+.btn--outline:hover { background: rgba(0, 20, 137, 0.06) !important; }
 
 /* Ghost — fully transparent, semi-opaque brand border */
-.mi-btn--ghost {
+.btn--ghost {
   background: transparent !important;
   color: var(--brand) !important;
   border: 0.0625rem solid color-mix(in srgb, var(--brand) 45%, transparent) !important;
   box-shadow: none;
 }
-.mi-btn--ghost:hover { background: color-mix(in srgb, var(--brand) 10%, transparent); }
+.btn--ghost:hover { background: color-mix(in srgb, var(--brand) 10%, transparent); }
 
 /* Active state — applied by the scroll-spy script to highlight the
    current section. Slight upward nudge gives a "pressed in" feel. */
-.mi-btn.is-active {
+.btn.is-active {
   background: var(--brand) !important;
   color: #fff !important;
   border-color: var(--brand) !important;
@@ -490,25 +494,25 @@ button.mi-btn {
 /* Back-to-top — compact primary pill placed at section ends.
    Slightly shorter than the standard pill height.
    border-color: transparent avoids the end-cap seam (same as --primary). */
-a.mi-btn.back-to-toc {
-  min-height: calc(var(--mi-pill-h) - 0.25rem);
-  padding-inline: var(--mi-pill-pad-x-compact);
+a.btn.back-to-toc {
+  min-height: calc(var(--pill-h) - 0.25rem);
+  padding-inline: var(--pill-pad-x-compact);
   background: var(--brand) !important;
   color: #fff !important;
   border-color: transparent !important;
   box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45);
 }
-a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
+a.btn.back-to-toc:hover { filter: brightness(1.08); }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    8. FLOATING TOC  (#toc)
    Fixed pill bar centred at the top of the viewport.
-   Overrides the generic .mi-navbox with Apple-style glass:
+   Overrides the generic .navbox with Apple-style glass:
    near-transparent blue tint + backdrop blur so page content is
    visible but softened behind the bar.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#toc.mi-navbox {
+#toc.navbox {
   position: fixed;
   inset-block-start: 1rem;   /* 1 rem gap from viewport top */
   inset-inline-start: 50%;
@@ -519,7 +523,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   width: min(100% - 1rem, var(--container-max));
   margin-inline: auto;
 
-  /* Override generic .mi-navbox padding/radius */
+  /* Override generic .navbox padding/radius */
   border-radius: 100vmax !important;
   padding: 0.4rem var(--space-1) !important;
 
@@ -536,7 +540,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 
 /* Button list inside the floating TOC: single row, horizontally scrollable.
    flex: 1 + min-width: 0 constrains the list to remaining width after title. */
-#toc .mi-navbox__list {
+#toc .navbox__list {
   display: flex;
   flex-wrap: nowrap;      /* single row — no line breaks */
   flex: 1;                /* fill available width after the title label */
@@ -548,14 +552,14 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   scrollbar-width: none;  /* Firefox: hide scrollbar visually */
 }
 /* Chrome / Safari: hide scrollbar (scroll still works via touch / trackpad) */
-#toc .mi-navbox__list::-webkit-scrollbar { display: none; }
+#toc .navbox__list::-webkit-scrollbar { display: none; }
 
 /* Slightly smaller label in the compact glass bar */
-#toc .mi-navbox__title { font-size: 0.8rem; }
+#toc .navbox__title { font-size: 0.8rem; }
 
 /* Unselected TOC pills: glassy #CCD0E7 chip, white-ish border, subtle bevel.
    Opacity 0.32 lets the navbox glass tint show through the button body. */
-#toc .mi-btn {
+#toc .btn {
   white-space: nowrap;      /* prevent button text from wrapping */
   min-width: max-content;   /* pill never narrower than its label */
   flex-shrink: 0;           /* pills do not compress when list is tight */
@@ -572,7 +576,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
    · Symmetric glow (y-offset = 0) so top and bottom edges look identical.
    · transform: none cancels the base is-active translateY lift, which
      would cause a top-edge artefact against the glass background. */
-#toc .mi-btn.is-active {
+#toc .btn.is-active {
   border-color: transparent !important;
   box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45) !important;
   transform: none !important;
@@ -580,20 +584,20 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 
 /* Hover on unselected TOC pills: text shifts to warm red (#a84544),
    matching the global link hover colour for visual consistency. */
-#toc .mi-btn:not(.is-active):hover { color: #a84544; }
+#toc .btn:not(.is-active):hover { color: #a84544; }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   9. COLLAPSIBLE SECTIONS  (.ucb-collapse)
+   9. COLLAPSIBLE SECTIONS  (.collapse)
    Built on the native <details> / <summary> elements.
    The default browser triangle marker is replaced with a CSS-drawn
    chevron (two-border square rotated 45°) that rotates on open.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* Remove the built-in disclosure triangle in WebKit browsers */
-.ucb-collapse summary::-webkit-details-marker { display: none; }
+.collapse summary::-webkit-details-marker { display: none; }
 
-.ucb-collapse summary {
+.collapse summary {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -604,7 +608,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 /* CSS chevron: a square with two visible borders, rotated to point right.
    border-right + border-bottom = a down-right corner = chevron › shape.
    Rotated -45° points it rightward (collapsed state). */
-.ucb-collapse summary::before {
+.collapse summary::before {
   content: "";
   display: inline-block;
   flex-shrink: 0;
@@ -618,20 +622,20 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* When the <details> is open, rotate the chevron to point downward */
-.ucb-collapse[open] summary::before { transform: rotate(45deg); }
+.collapse[open] summary::before { transform: rotate(45deg); }
 
 /* Hover: chevron shifts to warm red — matches link hover colour */
-.ucb-collapse summary:hover::before { border-color: #a84544; }
+.collapse summary:hover::before { border-color: #a84544; }
 
 /* Indent expanded content to align under the heading text (past chevron) */
-.ucb-collapse .collapse-content {
+.collapse .collapse-content {
   padding-top: var(--space-05);
   padding-left: 1.125rem;
 }
 
 /* Focus ring only for keyboard navigation (:focus-visible), not mouse clicks,
    so clicking to expand does not leave a visible selection frame. */
-.ucb-collapse summary:focus-visible {
+.collapse summary:focus-visible {
   outline: 0.0625rem dotted var(--accent);
   outline-offset: 0.125rem;
 }
@@ -644,20 +648,20 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* Inline metadata spans (e.g. data-label="AEO") — invisible to users */
-.mi-hidden-meta { display: none !important; }
+.hidden-meta { display: none !important; }
 
 /* Entire sections hidden from view (e.g. LLM summary, AEO blocks) */
-.mi-hidden-section,
-.mi-hidden-section * { display: none !important; }
+.hidden-section,
+.hidden-section * { display: none !important; }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   11. TABLES  (.veeva-email)
+   11. TABLES  (.tbl)
    Data tables styled for the Veeva email / HTML output format.
    border-collapse: separate with border-spacing: 0 is required so
    border-radius clips correctly on the outer table frame.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.veeva-email table {
+.tbl table {
   width: 100%;
   border-collapse: separate;   /* required for border-radius on table */
   border-spacing: 0;
@@ -669,8 +673,8 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Default cell style — all cells share this baseline */
-.veeva-email th,
-.veeva-email td {
+.tbl th,
+.tbl td {
   border-bottom: 0.0625rem solid var(--border);
   padding: var(--space-05);
   vertical-align: top;
@@ -679,24 +683,24 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Last data row has no bottom border (table border provides the edge) */
-.veeva-email tr:last-child td { border-bottom: 0; }
+.tbl tr:last-child td { border-bottom: 0; }
 
 /* Header row tiers: .hdr defaults to level-3 (lightest); .hdr-1 / .hdr-2
    allow darker shading on top-level columns without extra markup. */
-.veeva-email .hdr th    { font-size: 0.95rem; font-weight: 700; background: var(--tbl-h3); }
-.veeva-email .hdr-1 th  { background: var(--tbl-h1); }  /* darkest  */
-.veeva-email .hdr-2 th  { background: var(--tbl-h2); }
-.veeva-email .hdr-3 th  { background: var(--tbl-h3); }  /* lightest */
+.tbl .hdr th    { font-size: 0.95rem; font-weight: 700; background: var(--tbl-h3); }
+.tbl .hdr-1 th  { background: var(--tbl-h1); }  /* darkest  */
+.tbl .hdr-2 th  { background: var(--tbl-h2); }
+.tbl .hdr-3 th  { background: var(--tbl-h3); }  /* lightest */
 
 /* Interim rows span full width, styled as a subgroup label */
-.veeva-email .interim-row td[colspan] {
+.tbl .interim-row td[colspan] {
   background: var(--tbl-interim);
   font-size: 0.95rem;
   font-weight: 700;
 }
 
 /* Table footer: abbreviation key / footnote row */
-.veeva-email .tbl-footer td[colspan] {
+.tbl .tbl-footer td[colspan] {
   background: var(--tbl-foot);
   font-size: 0.85rem;
   font-weight: 400;
@@ -842,7 +846,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Row of five star buttons inside the pill */
-.stars .stars_list {
+.stars .stars-list {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -929,7 +933,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 
 /* ── Comment field ── */
 /* Wrapper is a positioning context for the floating label */
-.comment_field {
+.comment-field {
   position: relative;
   width: 100%;
   margin-top: 1.5rem;  /* keeps the floating label from overlapping the rating pill */
@@ -938,7 +942,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Floating label: sits on the top border of the textarea.
    Background matches the feedback card so the label appears to cut
    through the border rather than sitting on top of it. */
-.comment_field label {
+.comment-field label {
   position: absolute;
   inset-block-start: -0.4rem;   /* vertically centred on the top border */
   inset-inline-start: 1.7rem;   /* indented to align with textarea text */
@@ -953,7 +957,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Textarea: teal-tinted fill and border to match the card palette */
-.comment_field textarea {
+.comment-field textarea {
   width: 100%;
   min-height: 6em;
   padding: 0.8em;
@@ -965,8 +969,8 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Focus / filled state: thicker teal border + soft glow ring */
-.comment_field textarea:focus,
-.comment_field textarea:not(:placeholder-shown) {
+.comment-field textarea:focus,
+.comment-field textarea:not(:placeholder-shown) {
   border-color: color-mix(in srgb, #6bcaba 80%, transparent);
   border-width: 0.125rem;
   outline: none;
@@ -978,7 +982,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Fully custom checkbox: appearance: none removes the native control;
    ::after pseudo-element renders the white tick when checked.
    Border and background now match the comment textarea and rating pill. */
-.anon_option input[type="checkbox"] {
+.anon-option input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   width: 1.2rem;
@@ -994,7 +998,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Keyboard-focus highlight — same teal glow as comment textarea and rating pill */
-.anon_option input[type="checkbox"]:focus-visible {
+.anon-option input[type="checkbox"]:focus-visible {
   border-color: color-mix(in srgb, #6bcaba 80%, transparent);
   border-width: 0.125rem;
   outline: none;
@@ -1002,13 +1006,13 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Checked state: solid brand fill (high-contrast against white tick) */
-.anon_option input[type="checkbox"]:checked {
+.anon-option input[type="checkbox"]:checked {
   background: var(--brand);
   border-color: var(--brand);
 }
 
 /* White checkmark built from two border sides, centred via translate */
-.anon_option input[type="checkbox"]:checked::after {
+.anon-option input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
   inset-block-start: 50%;
@@ -1042,7 +1046,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   border-radius: var(--radius);                         /* matches all other section boxes */
   padding: var(--space-075) var(--space-075) var(--space-05); /* extra top clears floating label */
   color: #000;
-  margin-block: 1.5rem;  /* equal space above and below, mirroring .comment_field margin-top */
+  margin-block: 1.5rem;  /* equal space above and below, mirroring .comment-field margin-top */
 }
 
 /* "DATA PROTECTION NOTICE" — floats on the top border of the notice box,
@@ -1076,7 +1080,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 .feedback-notice__list li::marker { color: var(--brand); }
 
 /* Actions row: anonymous checkbox left, Send button right */
-.feedback_actions {
+.feedback-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1084,7 +1088,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Checkbox + label inline pair */
-.feedback_actions .anon_option {
+.feedback-actions .anon-option {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1092,8 +1096,8 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Send button positioning within the flex layout.
-   Visual styling comes from .mi-btn + .mi-btn--primary classes on the element. */
-#submit_feedback {
+   Visual styling comes from .btn + .btn--primary classes on the element. */
+#submit-feedback {
   align-self: center;
   margin: 0;
 }
@@ -1101,32 +1105,32 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Status message shown after submission (success / error).
    Collapsed when empty so it contributes no layout space
    and the Send row sits correctly against the card bottom. */
-#feedback_message {
+#feedback-message {
   font-size: 0.9em;
   text-align: center;
 }
-#feedback_message:empty { display: none; }
+#feedback-message:empty { display: none; }
 
 /* ── Submitted state (.feedback-submitted on .collapse-content) ──
    Applied by JS when a valid session token exists.
    Stars remain gold (rating preserved) but non-interactive.
    Anonymous checkbox stays visible and frozen (shows what was submitted).
-   The action button (#submit_feedback) stays visible — JS has changed its
+   The action button (#submit-feedback) stays visible — JS has changed its
    label to "Update my response"; no button hiding or showing needed.
    Disabled textarea/checkbox: normalised greying across browsers. */
 .feedback-submitted .stars               { pointer-events: none; opacity: 0.8; }
 .feedback-submitted .stars-error         { display: none !important; }
 
 /* Anonymous checkbox row: visible but frozen so the user can see their submission */
-.feedback-submitted .anon_option         { pointer-events: none; }
-.feedback-submitted .anon_option label   { opacity: 0.65; cursor: default; }
+.feedback-submitted .anon-option         { pointer-events: none; }
+.feedback-submitted .anon-option label   { opacity: 0.65; cursor: default; }
 
 /* Normalise disabled-state greying for custom-styled controls */
-.comment_field textarea:disabled {
+.comment-field textarea:disabled {
   opacity: 0.65;
   cursor: default;
 }
-.anon_option input[type="checkbox"]:disabled {
+.anon-option input[type="checkbox"]:disabled {
   opacity: 0.5;
   cursor: default;
 }
@@ -1135,7 +1139,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    16. BACK-TO-TOP WRAPPER
    Right-aligns the back-to-top pill at the bottom of each section.
-   The pill itself is styled by a.mi-btn.back-to-toc (section 7).
+   The pill itself is styled by a.btn.back-to-toc (section 7).
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .back-to-toc-wrapper {
   text-align: right;
@@ -1181,14 +1185,14 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 
   p, ul, ol { font-size: 0.95rem; }
 
-  .veeva-email th,
-  .veeva-email td { font-size: 0.9rem; }
+  .tbl th,
+  .tbl td { font-size: 0.9rem; }
 
   /* Reduce container side padding on small screens */
   .container { padding-inline: var(--space-075); }
 
   /* Tighten navbox padding on small screens */
-  .mi-navbox { margin: var(--space-1) 0; padding: var(--space-075); }
+  .navbox { margin: var(--space-1) 0; padding: var(--space-075); }
 }
 
 @media (max-width: 22.5rem) {
@@ -1206,13 +1210,144 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
    motion in their OS accessibility settings (prefers-reduced-motion).
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (prefers-reduced-motion: reduce) {
-  .mi-btn,
-  button.mi-btn,
-  a.mi-btn,
-  #submit_feedback,
+  .btn,
+  button.btn,
+  a.btn,
+  #submit-feedback,
   .stars .star {
     transition: none;
   }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   20. PRINT
+   Rules applied only when the document is sent to a printer or saved
+   as PDF.  Goals:
+     · No floating navbox or back-to-top chrome
+     · All collapsible sections fully expanded (JS also sets [open])
+     · Section card borders / backgrounds removed — clean white sheet
+     · Feedback form hidden (interactive, irrelevant on paper)
+     · Consistent @page margins with generated header and footer text
+     · Table header colours preserved (print-color-adjust: exact)
+     · Headings kept with their following content (break-after: avoid)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Page geometry and running header / footer ── */
+@page {
+  size: A4 portrait;
+  /* Wide side margins leave room for binding; top/bottom for header+footer */
+  margin: 2.5cm 2cm 2.5cm 2cm;
+
+  /* Header: document title left, reference code right */
+  @top-left {
+    content: "Fenfluramine — Use in combination with stiripentol";
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #000;
+  }
+  @top-right {
+    content: "MED-EU-FFA-2500009";
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #000;
+  }
+
+  /* Footer: copyright left, page counter right */
+  @bottom-left {
+    content: "\00A9 UCB Pharma SA, 2026. All rights reserved.";
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #000;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #000;
+  }
+}
+
+@media print {
+
+  /* ── Reset scroll-related overrides ── */
+  html { scroll-padding-top: 0; }
+  html, body { height: auto; }
+
+  /* ── Base font for print ── */
+  body { font-size: 10pt; line-height: 1.4; }
+
+  /* ── Container: full width, no side padding ── */
+  .container { max-width: 100%; padding-inline: 0; }
+
+  /* ── Preserve table header background colours ── */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Hide non-print elements ── */
+  #toc,
+  .back-to-toc-wrapper,
+  .hidden-section,
+  #feedback { display: none !important; }
+
+  /* ── Strip section card box styling ── */
+  #aeo-summary,
+  #aeo-qa,
+  #summary,
+  #detailed-response,
+  #disclaimers,
+  #references,
+  #llm-summary {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    background: none !important;
+    box-shadow: none;
+    margin: 0 0 1.5em;
+  }
+
+  /* ── Restore heading top-margin removed by the card's first-child rule ── */
+  #aeo-summary       > h1:first-child,
+  #aeo-qa            > h1:first-child,
+  #summary           > h1:first-child,
+  #detailed-response > h1:first-child,
+  #disclaimers       > h1:first-child,
+  #references        > h1:first-child,
+  #llm-summary       > h1:first-child {
+    margin-top: 0.5em;
+  }
+
+  /* ── Expand all collapsible <details> sections ──
+     CSS alone forces content visible; JS (beforeprint) also sets [open]
+     so the chevron rotates and native UA state is consistent.          */
+  details.collapse,
+  details.collapse > * { display: block !important; }
+
+  /* Hide the toggle chevron and summary hover/focus chrome */
+  details.collapse > summary::before,
+  details.collapse > summary::-webkit-details-marker {
+    display: none !important;
+  }
+  details.collapse > summary {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* ── Page-break control ── */
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  .tbl { break-inside: avoid; }
+
+  /* ── Site header: keep logo row, remove background chrome ── */
+  .site-header {
+    background: none;
+    border-bottom: 0.5pt solid #000;
+    padding-block: 0.5em;
+  }
+
+  /* ── Site footer: keep copyright text ── */
+  .site-footer { border-top: 0.5pt solid #000; margin-top: 1em; }
 }
 
 </style>
@@ -1296,19 +1431,19 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
        &nbsp; inside button labels prevents the browser from breaking
        "Detailed response" or "European SmPC" onto two lines. -->
   <div class="container">
-    <nav id="toc" class="mi-navbox" aria-label="Page sections">
+    <nav id="toc" class="navbox" aria-label="Page sections">
       <!-- "Contents" is a visible label, not a heading — rendered as <span>
            to avoid polluting the heading outline read by screen readers -->
-      <span class="mi-navbox__title">Contents</span>
+      <span class="navbox__title">Contents</span>
       <!-- #toc-list: JS scroll-spy adds/removes .is-active on these <a> elements
            as the user scrolls, highlighting the current section button -->
-      <ul id="toc-list" class="mi-navbox__list">
-        <li><a class="mi-btn" href="#summary">Summary</a></li>
-        <li><a class="mi-btn" href="#detailed-response">Detailed&nbsp;response</a></li>
-        <li><a class="mi-btn" href="#eu-smpc">European&nbsp;SmPC</a></li>
-        <li><a class="mi-btn" href="#published-data">Published&nbsp;data</a></li>
-        <li><a class="mi-btn" href="#disclaimers">Disclaimers</a></li>
-        <li><a class="mi-btn" href="#references">References</a></li>
+      <ul id="toc-list" class="navbox__list">
+        <li><a class="btn" href="#summary">Summary</a></li>
+        <li><a class="btn" href="#detailed-response">Detailed&nbsp;response</a></li>
+        <li><a class="btn" href="#eu-smpc">European&nbsp;SmPC</a></li>
+        <li><a class="btn" href="#published-data">Published&nbsp;data</a></li>
+        <li><a class="btn" href="#disclaimers">Disclaimers</a></li>
+        <li><a class="btn" href="#references">References</a></li>
       </ul>
     </nav>
   </div>
@@ -1360,13 +1495,13 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 
     <!-- ══════════════════════════════════════════════════════════════
          HIDDEN SECTION: AEO KEY FACTS
-         Class mi-hidden-section applies display:none — this block is
+         Class hidden-section applies display:none — this block is
          invisible in the browser but readable by automated extractors
-         (AEO = Answer Engine Optimisation).  The <span mi-hidden-meta>
+         (AEO = Answer Engine Optimisation).  The <span hidden-meta>
          carries a data-label attribute that tagging pipelines use to
          identify the block type without parsing the prose. -->
-    <section id="aeo-summary" class="mi-hidden-section">
-      <span class="mi-hidden-meta" data-label="AEO"></span>
+    <section id="aeo-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO"></span>
       <p>Key Facts — Fenfluramine + Stiripentol (Clinical and SmPC‑Based)</p>
       <p>Fenfluramine (FFA, Fintepla) used in combination with stiripentol (STP) is indicated for Dravet syndrome.
         When co‑administered, recommended dosing is 0.1 mg/kg twice daily initially and 0.2 mg/kg twice daily from Day
@@ -1382,8 +1517,8 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
          Structured question-and-answer pairs for AEO pipelines.
          Mirrors the FAQPage JSON-LD in prose form for extractors that
          consume visible HTML rather than structured data scripts. -->
-    <section id="aeo-qa" class="mi-hidden-section">
-      <span class="mi-hidden-meta" data-label="AEO-QA"></span>
+    <section id="aeo-qa" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO-QA"></span>
       <p>AEO Key Questions &amp; Answers</p>
       <p>What is the recommended fenfluramine dose when combined with stiripentol?</p>
       <p>0.1 mg/kg twice daily at initiation and 0.2 mg/kg twice daily at Day 7, with a maximum of 17 mg/day.</p>
@@ -1415,12 +1550,12 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
       <h1 class="h1">Summary</h1>
 
       <!-- ── Summary: EU SmPC ─────────────────────────────────────────
-           ucb-collapse uses the native <details>/<summary> pattern.
+           collapse uses the native <details>/<summary> pattern.
            CSS replaces the default browser triangle with a chevron that
            rotates on open and shifts to warm red on hover.
            <a id="ref1-first"> is an internal bookmark — not currently
            linked from the TOC but available for deep-linking. -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">Relevant Information From the European Summary of Product Characteristics (EU SmPC)</h2><a
@@ -1446,7 +1581,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
            item carries an <a id="refN-first"> anchor for potential
            deep-links and ends with a "Click here for details" link
            pointing to the corresponding detailed-response anchor. -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">Published Data</h2>
@@ -1546,7 +1681,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
               </p>
             </li>
           </ul>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -1568,7 +1703,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
            id="EuSmpcDetail" on the <h2> is the jump target for "Click here
            for details" links in the Summary section.
            <a id="eu-smpc"> is the TOC scroll target (#eu-smpc button). -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2" id="EuSmpcDetail">Relevant Information From the EU SmPC</h2><a id="eu-smpc"></a>
@@ -1589,9 +1724,9 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           </p>
           <!-- TABLE 1: Dosage recommendations (Day 0, Day 7, Day 14) with
                the shared maximum-dose cell spanning three rows via rowspan.
-               .veeva-email wrapper applies the table styling.
+               .tbl wrapper applies the table styling.
                role="table" makes semantics explicit for assistive technology. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <!-- Title row: full-width cell containing the table caption as <h6> -->
               <tr>
@@ -1725,7 +1860,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           <p>EU SmPC includes information from clinical studies on <span data-type="drug" data-mesh="D005247"
               data-emtree="fenfluramine" data-snomed="372729009">FFA</span>
             with STP; details published and summarized herein.<sup><a href="#ref-1">1</a></sup></p>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
       <!-- ── Detailed: Published Data ─────────────────────────────────
@@ -1735,7 +1870,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
              · OLE Study        (Scheffer 2025, id="OLEStudyDetail")
              · Real-World       (Guerrini 2022 + Gjerulfsen 2024, id="RWEStudyDetail")
            <a id="published-data"> is the TOC scroll target (#published-data). -->
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2>Published Data</h2><a id="published-data"></a>
@@ -1784,7 +1919,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           <!-- TABLE 2: Concomitant ASM overview by treatment arm (4 columns).
                Two interim-row groups: number of concomitant ASMs, and
                individual ASMs present in ≥ 10% of patients. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="4">
@@ -1886,7 +2021,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           <!-- TABLE 3: Primary and key secondary efficacy endpoints (Study 2).
                Three interim-row groups: primary MCSF endpoint, ≥50% responder
                rate, and longest convulsive seizure-free interval. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="3">
@@ -1976,7 +2111,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           </p>
           <!-- TABLE 4: Noncardiovascular TEAEs ≥ 10% in either arm (Study 2).
                No interim rows — single flat list of adverse events. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="3">
@@ -2081,7 +2216,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           <!-- TABLE 5: Concomitant ASMs at baseline across the 3 pooled studies (6 columns).
                Two-row header: top row spans 4 FFA-dose columns, second row
                names each dose arm.  Placebo column spans both header rows via rowspan. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="6">
@@ -2220,7 +2355,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
                Same two-row header structure as Table 5.  Rows cover summary
                TEAE categories followed by individual AEs ≥ 10% in any group. -->
           <!-- TABLE 6 -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="6">
@@ -2420,7 +2555,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           <!-- TABLE 7: OLE efficacy outcomes — FFA with vs. without STP (mITT).
                Interim-row groups: MCSF change, responder rates (50/75/90/100%),
                seizure-free days, and CGI-I clinician/caregiver ratings. -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="4">
@@ -2543,7 +2678,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           </p>
           <!-- TABLE 8: OLE safety — TEAEs ≥ 10% stratified by STP use
                (safety population: with STP n=91 / without STP n=268). -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="3">
@@ -2651,7 +2786,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
                Four columns: Study Description | Concomitant ASMs | FFA Dose | Outcomes.
                Each study is introduced by an interim row with the citation. -->
           <!-- TABLE 9 -->
-          <div class="veeva-email">
+          <div class="tbl">
             <table role="table">
               <tr>
                 <td colspan="4">
@@ -2784,7 +2919,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
               </tbody>
             </table>
           </div>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -2794,7 +2929,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
          UCB medical information responses. &#9660; (▼) at the start of
          the first paragraph is the EMA additional-monitoring symbol. -->
     <section id="disclaimers">
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">Disclaimers</h2>
@@ -2818,7 +2953,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
             recommendation by UCB. UCB accepts no responsibility or liability for the content or services of other
             websites.
             UCB encourages you to review the policies and terms of all websites you may choose to visit.</p>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -2831,7 +2966,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
          (<a href="#ref-N">).  External URLs carry target="_blank" and
          rel="noopener noreferrer" to prevent tab-napping. -->
     <section id="references">
-      <details class="ucb-collapse">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <h2 class="h2">References</h2>
@@ -2886,7 +3021,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
                 rel="noopener noreferrer">https://doi.org/10.1002/epi4.13029</a>
             </li>
           </ol>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="mi-btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
       </details>
     </section>
@@ -2900,11 +3035,13 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
               through the border line rather than overlay it.
            3. Actions row — anonymous checkbox (left) + Send button (right).
          The section uses the teal (#6bcaba) palette defined in CSS section 15.
-         #feedback_message: role="status" + aria-live="polite" announces the
+         #feedback-message: role="status" + aria-live="polite" announces the
          post-submission success/error message to screen readers without
          interrupting the user; CSS hides it with :empty when empty. -->
-    <section id="feedback">
-      <details class="ucb-collapse">
+    <section id="feedback"
+             data-document-number="MED-EU-FFA-2500009"
+             data-case-response-number="CASE-US-2026-000849-RESPONSE-001">
+      <details class="collapse">
         <summary>
           <span class="collapse-heading">
             <!-- h3 (not h2) — feedback sits outside the main clinical
@@ -2928,7 +3065,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
                visually while the legend text remains in the accessibility tree. -->
           <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
             <legend id="stars_label">Rating</legend>
-            <div class="stars_list">
+            <div class="stars-list">
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="1"
                 aria-label="1 star">★</button>
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="2"
@@ -2945,16 +3082,16 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
           <!-- Inline validation: shown by JS when Send is clicked without a rating selected.
                role="alert" announces the message immediately to screen readers.
                aria-hidden="true" suppresses it when empty/hidden. -->
-          <p id="stars_error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before sending.</p>
+          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before sending.</p>
 
           <!-- ── Comment textarea ───────────────────────────────────────
-               .comment_field is the positioning context for the floating
+               .comment-field is the positioning context for the floating
                label.  The label uses position:absolute and a background
                colour that matches the teal card, so it appears to sit
                on the textarea border rather than on top of it.
                The <label for="comment"> paired with the textarea id
                ensures proper focus association for assistive technology. -->
-          <div class="comment_field">
+          <div class="comment-field">
             <label for="comment">Comment (optional)</label>
             <textarea id="comment" name="comment" placeholder="Your comment …" rows="4"></textarea>
           </div>
@@ -2975,18 +3112,18 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
 
           <!-- ── Actions row ────────────────────────────────────────────
                Flex row: anonymous checkbox (left) + action button (right).
-               A single button (#submit_feedback) serves all three states:
+               A single button (#submit-feedback) serves all three states:
                · fresh     → label "Send"               · submitted  → label "Update my response"
                · editing   → label "RE-SEND"
                JS changes the label and click behaviour; the button stays
                in the same position with the same primary-blue style throughout. -->
-          <div class="feedback_actions">
-            <div class="anon_option">
+          <div class="feedback-actions">
+            <div class="anon-option">
               <input type="checkbox" id="anonymous" name="anonymous">
               <label for="anonymous">Send anonymously</label>
             </div>
 
-            <button type="button" id="submit_feedback" class="mi-btn mi-btn--primary">Send</button>
+            <button type="button" id="submit-feedback" class="btn btn--primary">Send</button>
           </div>
 
           <!-- Status message injected by JS after submission.
@@ -2994,7 +3131,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
                text, preventing a phantom gap in the flex layout.
                aria-live="polite" announces the message to screen readers
                after the user submits without requiring focus shift. -->
-          <div id="feedback_message" role="status" aria-live="polite"></div>
+          <div id="feedback-message" role="status" aria-live="polite"></div>
         </div>
       </details>
     </section>
@@ -3002,12 +3139,12 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
          HIDDEN SECTION: LLM / GEO MACHINE SUMMARY
          A single concise paragraph optimised for ingestion by large
          language model crawlers (Generative Engine Optimisation).
-         display:none via mi-hidden-section — invisible to human readers
+         display:none via hidden-section — invisible to human readers
          but readable by automated extractors that index HTML source.
          Summarises PK rationale, efficacy evidence, safety profile, and
          directs the model back to the EU SmPC as the authoritative source. -->
-    <section id="llm-summary" class="mi-hidden-section">
-      <span class="mi-hidden-meta" data-label="LLM-SUMMARY"></span>
+    <section id="llm-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
       <p>GEO Machine Summary</p>
       <p>Fenfluramine (FFA) combined with stiripentol (STP) requires reduced weight‑based dosing due to
         pharmacokinetic
@@ -3050,12 +3187,12 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
            on the five <button role="radio"> star elements
          · Feedback submission: collects rating, comment, and anonymous
            flag, posts to the configured endpoint, and injects the
-           response text into #feedback_message -->
+           response text into #feedback-message -->
   <script>
 /* assets/js/main.js
-   - Floating TOC + scroll‑spy (.is-active on .mi-btn in #toc)
+   - Floating TOC + scroll‑spy (.is-active on .btn in #toc)
    - Open-only behavior for collapsibles:
-       * On load: open first TWO <details.ucb-collapse>
+       * On load: open first TWO <details.collapse>
        * On navigation (TOC/content): open ancestor <details>, or first child <details> if none
    - Back to Top:
        * Converts legacy "back to contents" links to a Back‑to‑Top action
@@ -3097,26 +3234,26 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   // ------------------------------------------------------------
   // 2) Open-first-two collapsibles on load (open-only)
   // ------------------------------------------------------------
-  const detailsAll = document.querySelectorAll('main details.ucb-collapse');
+  const detailsAll = document.querySelectorAll('main details.collapse');
   if (detailsAll.length > 0) detailsAll[0].setAttribute('open', '');
   if (detailsAll.length > 1) detailsAll[1].setAttribute('open', '');
 
   // ------------------------------------------------------------
   // 3) Helper: Open-only for a given target id
-  //    A) If target is INSIDE <details.ucb-collapse>, open that ancestor
-  //    B) Else if target CONTAINS a <details.ucb-collapse>, open its first child
+  //    A) If target is INSIDE <details.collapse>, open that ancestor
+  //    B) Else if target CONTAINS a <details.collapse>, open its first child
   // ------------------------------------------------------------
   function ensureSectionOpenById(id) {
     if (!id) return;
     const el = document.getElementById(id);
     if (!el) return;
 
-    const parentDetails = el.closest('details.ucb-collapse');
+    const parentDetails = el.closest('details.collapse');
     if (parentDetails) {
       parentDetails.setAttribute('open', '');
       return;
     }
-    const childDetails = el.querySelector('details.ucb-collapse');
+    const childDetails = el.querySelector('details.collapse');
     if (childDetails) {
       childDetails.setAttribute('open', '');
     }
@@ -3126,7 +3263,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   // 4) Scroll‑spy: highlight active TOC pill
   // ------------------------------------------------------------
   const toc = document.getElementById('toc');
-  const links = toc ? toc.querySelectorAll('.mi-btn[href^="#"]') : [];
+  const links = toc ? toc.querySelectorAll('.btn[href^="#"]') : [];
   const targets = links.length
     ? Array.from(links)
         .map(a => document.getElementById(a.getAttribute('href').slice(1)))
@@ -3136,8 +3273,13 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   function setActiveById(id) {
     if (!toc || !links.length || !id) return;
     links.forEach(l => l.classList.remove('is-active'));
-    const active = toc.querySelector(`.mi-btn[href="#${CSS.escape(id)}"]`);
-    if (active) active.classList.add('is-active');
+    const active = toc.querySelector(`.btn[href="#${CSS.escape(id)}"]`);
+    if (active) {
+      active.classList.add('is-active');
+      // Scroll the active button into view within the horizontally-scrollable
+      // navbox list. block:'nearest' prevents the page from scrolling vertically.
+      active.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+    }
   }
 
   // ------------------------------------------------------------
@@ -3145,7 +3287,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   // ------------------------------------------------------------
   if (toc) {
     toc.addEventListener('click', (e) => {
-      const a = e.target.closest('.mi-btn[href^="#"]');
+      const a = e.target.closest('.btn[href^="#"]');
       if (!a) return;
       const id = a.getAttribute('href').slice(1);
       setActiveById(id);
@@ -3158,11 +3300,11 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   // 6) Back‑to‑Top behavior
   //    - Convert legacy "back to contents" links into Back‑to‑Top
   //    - We map:
-  //        a.mi-btn.back-to-toc  OR  a[href="#toc"]  →  navigate to #top
+  //        a.btn.back-to-toc  OR  a[href="#toc"]  →  navigate to #top
   //    - We still do NOT preventDefault, so history is preserved.
   // ------------------------------------------------------------
   document.addEventListener('click', (e) => {
-    const backToContents = e.target.closest('a.mi-btn.back-to-toc, a[href="#toc"], a[aria-label="back to contents"], a[aria-label="Back to contents"]');
+    const backToContents = e.target.closest('a.btn.back-to-toc, a[href="#toc"], a[aria-label="back to contents"], a[aria-label="Back to contents"]');
     if (!backToContents) return;
 
     // If href is already "#top", nothing to do; otherwise, re-point to #top so hash history is clean
@@ -3264,7 +3406,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   // ------------------------------------------------------------
   const starBtns   = document.querySelectorAll('.stars .star');
   const starsPill  = document.querySelector('.stars');
-  const starsError = document.getElementById('stars_error');
+  const starsError = document.getElementById('stars-error');
 
   function clearStarError() {
     if (starsPill)  starsPill.classList.remove('has-error');
@@ -3295,7 +3437,7 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   // ------------------------------------------------------------
   // 12) Feedback submission — session-token state management
   //
-  //     A single button (#submit_feedback) serves all three states:
+  //     A single button (#submit-feedback) serves all three states:
   //       fresh     — label "Send";               click → submit
   //       submitted — label "Update my response"; click → open editing
   //       editing   — label "RE-SEND";            click → submit (upsert)
@@ -3307,10 +3449,12 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
   //     Stored object      : { token, rating, comment, anonymous }
   //     Token is session-only and not linked to any user identity.
   // ------------------------------------------------------------
-  const actionBtn       = document.getElementById('submit_feedback');
-  const feedbackMsg     = document.getElementById('feedback_message');
+  const actionBtn       = document.getElementById('submit-feedback');
+  const feedbackMsg     = document.getElementById('feedback-message');
   const collapseContent = document.querySelector('#feedback .collapse-content');
   const STORAGE_KEY     = 'ucb_feedback';
+  const docNumber       = document.getElementById('feedback')?.dataset.documentNumber     ?? '';
+  const caseNumber      = document.getElementById('feedback')?.dataset.caseResponseNumber ?? '';
 
   function generateToken() {
     return (typeof crypto !== 'undefined' && crypto.randomUUID)
@@ -3346,13 +3490,16 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
     }
 
     // Build data — reuse existing token (upsert) or mint a new one
-    const prev  = sessionStorage.getItem(STORAGE_KEY);
-    const token = prev ? JSON.parse(prev).token : generateToken();
-    const data  = {
+    const prev      = sessionStorage.getItem(STORAGE_KEY);
+    const token     = prev ? JSON.parse(prev).token : generateToken();
+    const anonymous = document.getElementById('anonymous')?.checked ?? false;
+    const data      = {
       token,
-      rating:    Array.from(starBtns).filter(s => s.getAttribute('aria-checked') === 'true').length,
-      comment:   document.getElementById('comment')?.value.trim()  ?? '',
-      anonymous: document.getElementById('anonymous')?.checked     ?? false,
+      rating:                Array.from(starBtns).filter(s => s.getAttribute('aria-checked') === 'true').length,
+      comment:               document.getElementById('comment')?.value.trim() ?? '',
+      anonymous,
+      'document-number':     docNumber,
+      ...(!anonymous ? { 'case-response-number': caseNumber } : {}),
     };
 
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -3412,6 +3559,17 @@ a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
       }
     });
   }
+
+  // ------------------------------------------------------------
+  // 13) Print preparation
+  //     beforeprint: open every details.collapse so the UA shows
+  //     all content on paper (CSS also forces display, belt-and-braces).
+  //     No afterprint handler — leaves sections open post-print,
+  //     which is the simpler, safer default.
+  // ------------------------------------------------------------
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details.collapse').forEach(d => d.setAttribute('open', ''));
+  });
 
 })();
 </script>
