@@ -1,0 +1,304 @@
+/* ============================================================
+   UCB Medical Information Page — Modern, Responsive, rem‑based CSS
+   ============================================================ */
+
+/* ------------------------
+   Base & Resets
+   ------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html:focus-within { scroll-behavior: smooth; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #000;
+  background: #fff;
+}
+
+:root {
+  /* Brand tokens */
+  --brand: #001489;
+  --accent: #784e90;
+  --border: #d1d5db;
+  --tbl-h1: #808AC4;
+  --tbl-h2: #99A1D0;
+  --tbl-h3: #B3B9DC;
+  --tbl-interim: #CCD0E7;
+  --tbl-foot: #E6E8F3;
+
+  /* Spacing tokens (rem scale) */
+  --space-0:   0;
+  --space-025: 0.25rem;  /* ≈ 3–4pt */
+  --space-05:  0.5rem;   /* ≈ 6–8pt */
+  --space-075: 0.75rem;  /* ≈ 9–12pt */
+  --space-1:   1rem;     /* ≈ 12–16pt */
+  --space-125: 1.25rem;  /* ≈ 15–20pt */
+  --space-15:  1.5rem;   /* ≈ 18–24pt */
+  --space-2:   2rem;     /* ≈ 24–32pt */
+}
+
+/* ------------------------
+   Responsive Typography (rem-based)
+   ------------------------ */
+html { font-size: 100%; }
+body { font-size: 1rem; line-height: 1.45; }
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.25; font-weight: 700; color: var(--brand); }
+h1 { font-size: 1.45rem; }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.15rem; }
+h5 { font-size: 1.05rem; }
+h6 { font-size: 1.00rem; }
+
+p, ul, ol { font-size: 1rem; line-height: 1.45; margin: var(--space-05) 0; }
+
+/* Sup/Sub */
+sup, sub { font-size: 66%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.6em; }
+sub { bottom: -0.4em; }
+
+/* Links */
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+/* Hover → change link color to #A84544 */
+a:hover { color: #a84544; }
+
+/* Lists */
+ul { padding-left: 1.125rem; }
+ul li { color: #000; }
+ul li::marker { color: var(--brand); }
+ul ul, ol ol { margin: var(--space-025) 0; padding-left: 1.125rem; }
+
+/* ------------------------
+   Layout & Containers
+   ------------------------ */
+.container { max-width: 980px; margin-inline: auto; padding: 0 var(--space-1); }
+
+/* Canonical site header */
+.site-header { padding: var(--space-1) 0; border-bottom: 1px solid var(--border); background: #fff; }
+.header-flex { display: flex; justify-content: space-between; align-items: center; gap: var(--space-1); width: 100%; }
+.header-logo { display: flex; align-items: center; overflow: hidden; height: 5rem; }
+.header-logo img { height: 100%; width: auto; object-fit: cover; }
+.header-meta-block { text-align: right; font-size: 1rem; line-height: 1.25; color: #000; }
+.header-meta-block p { margin: 0; }
+
+.page-title { padding: 0 0 var(--space-1); }
+.page-title h1,
+.page-title .drug,
+.page-title .monitor-flag,
+.page-title .subtitle { font-size: 1.3rem; line-height: 1.25; font-weight: 800; color: #000; }
+.page-title h1 { margin: var(--space-05) 0 0 0; display: flex; flex-wrap: wrap; gap: var(--space-05); align-items: baseline; }
+
+/* Section boxes */
+#aeo-summary, #aeo-qa, #summary, #detailed-response, #disclaimers, #references, #llm-summary {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: var(--space-1);
+  background: #fff;
+  margin: var(--space-125) 0;
+}
+#aeo-summary>h1:first-child, #aeo-qa>h1:first-child, #summary>h1:first-child, #detailed-response>h1:first-child,
+#disclaimers>h1:first-child, #references>h1:first-child, #llm-summary>h1:first-child { margin-top: 0; }
+
+/* In‑page anchor offset for sticky headers */
+[id] { scroll-margin-top: 96px; }
+
+/* ------------------------
+   Navigation (TOC) — canonical single block
+   ------------------------ */
+.mi-navbox {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #E6E8F3;
+  padding: var(--space-1);
+  width: 100%;
+  box-sizing: border-box;
+  margin: var(--space-15) 0;
+}
+.mi-navbox__title { margin: 0 0 var(--space-05) 0; font-size: 1.3rem; font-weight: 800; color: var(--brand); }
+.mi-navbox__list { display: flex; flex-wrap: wrap; gap: var(--space-05); list-style: none; padding: 0; margin: 0; }
+
+/* Buttons / chips */
+.mi-btn {
+  display: inline-block;
+  padding: var(--space-05) var(--space-1);
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.2;
+  background: #CCD0E7;
+  color: #784E90;                /* normal */
+  border: 1px solid #808AC4;
+  transition: color .15s ease-in-out;
+}
+.mi-btn:hover { color: #A84544; }
+
+/* Back-to-TOC */
+.back-to-toc-wrapper { text-align: right; margin-top: var(--space-025); }
+.back-to-toc { padding: var(--space-025) var(--space-025); border-radius: 0.375rem; }
+
+/* ------------------------
+   Collapsible Sections (with fallback marker)
+   ------------------------ */
+/* Hide native marker (supported browsers) */
+.ucb-collapse summary::-webkit-details-marker { display: none; }
+
+/* Clickable summary row */
+.ucb-collapse summary { cursor: pointer; display: flex; align-items: center; list-style: none; padding: var(--space-05) 0; }
+
+/* Safer BMP marker (fallback) */
+.ucb-collapse summary::before {
+  content: "▶";                 /* cross‑platform reveal triangle */
+  color: var(--brand);
+  margin-right: var(--space-05);
+  transition: transform .2s ease-in-out;
+}
+.ucb-collapse[open] summary::before { transform: rotate(90deg); }
+
+/* Content spacing */
+.ucb-collapse .collapse-content { padding-top: var(--space-05); padding-left: 1.125rem; }
+
+/* Optional focus indicator */
+.ucb-collapse summary:focus { outline: 1px dotted var(--accent); outline-offset: 2px; }
+
+/* Hidden metadata/sections */
+.mi-hidden-meta { display: none !important; }
+.mi-hidden-section, .mi-hidden-section * { display: none !important; }
+
+/* ------------------------
+   Veeva Email Table (Outlook-safe) — rem sizing
+   ------------------------ */
+.veeva-email table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: var(--space-05) 0;
+  background: #fff;
+}
+.veeva-email th, .veeva-email td {
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-05);
+  vertical-align: top;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+.veeva-email tr:last-child td { border-bottom: 0; }
+.veeva-email .hdr th { font-size: 0.95rem; font-weight: 700; background: var(--tbl-h3); }
+.veeva-email .hdr-1 th { background: var(--tbl-h1); }
+.veeva-email .hdr-2 th { background: var(--tbl-h2); }
+.veeva-email .hdr-3 th { background: var(--tbl-h3); }
+.veeva-email .interim-row td[colspan] { background: var(--tbl-interim); font-size: 0.95rem; font-weight: 700; }
+.veeva-email .tbl-footer td[colspan] { background: var(--tbl-foot); font-size: 0.85rem; font-weight: 400; line-height: 1.25; }
+
+/* Alignment helpers */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.align-top { vertical-align: top; }
+.align-middle { vertical-align: middle; }
+.align-bottom { vertical-align: bottom; }
+
+/* Mini footnote block */
+.mini-foot { font-size: 0.85rem; text-align: left; line-height: 1.25; color: #000; margin: var(--space-05) 0 var(--space-025); position: relative; }
+.mini-foot::before { content: ""; display: block; width: 33%; height: 1px; background: var(--border); margin: 0 0 var(--space-025) 0; }
+
+/* ------------------------
+   References (numbering + spacing)
+   ------------------------ */
+#references, #references p, #references li, #references ol, #references ul { font-size: 1rem; line-height: 1.45; color: #000; }
+#references { margin: var(--space-125) 0; }
+#references ol { padding-left: 1.125rem; counter-reset: refnum; }
+#references ol > li { list-style: none; position: relative; margin: var(--space-025) 0; }
+#references ol > li::before {
+  counter-increment: refnum;
+  content: counter(refnum) ".";
+  position: absolute;
+  left: -1.125rem;           /* aligns with indent */
+  color: #001489;            /* UCB Reflex Blue */
+  font-weight: 700;
+}
+
+/* ------------------------
+   Mobile fine‑tuning
+   ------------------------ */
+@media (max-width: 480px) {
+  h1 { font-size: 1.30rem; }
+  h2 { font-size: 1.20rem; }
+  h3 { font-size: 1.15rem; }
+  h4 { font-size: 1.10rem; }
+  h5 { font-size: 1.00rem; }
+  h6 { font-size: 0.95rem; }
+  p, ul, ol { font-size: 0.95rem; }
+  .mi-btn { font-size: 0.95rem; }
+  .veeva-email th, .veeva-email td { font-size: 0.9rem; }
+  .container { padding: 0 var(--space-075); }
+  .mi-navbox { margin: var(--space-1) 0; padding: var(--space-075); }
+}
+
+@media (max-width: 360px) {
+  h1 { font-size: 1.2rem; }
+  h2 { font-size: 1.15rem; }
+  h3 { font-size: 1.10rem; }
+  p, ul, ol { font-size: 0.9rem; }
+}
+
+
+
+/* =================
+   COMPACT SPACING 
+   ================= */
+
+/* Compact heading spacing */
+h1 { margin: var(--space-075) 0 var(--space-025); }
+h2 { margin: var(--space-05)  0 var(--space-025); }
+h3 { margin: var(--space-05)  0 var(--space-025); }
+h4 { margin: var(--space-025) 0 var(--space-025); }
+h5 { margin: var(--space-025) 0 var(--space-025); }
+h6 { margin: var(--space-025) 0 var(--space-025); }
+
+/* Compact paragraph spacing */
+p { margin: var(--space-025) 0; }
+
+/* Compact list spacing */
+ul, ol {
+  margin: var(--space-025) 0;
+  padding-left: 1.125rem;
+}
+
+/* Section boxes — reduce padding + block spacing */
+#aeo-summary,
+ae0-qa,
+#summary,
+#detailed-response,
+#disclaimers,
+#references,
+#llm-summary {
+  padding: var(--space-05);
+  margin: var(--space-075) 0;
+}
+
+/* TOC / Nav spacing refinement */
+.mi-navbox {
+  padding: var(--space-075);
+  margin: var(--space-1) 0;
+}
+.mi-navbox__title { margin-bottom: var(--space-05); }
+.mi-navbox__list { gap: var(--space-05); }
+
+/* Buttons (slightly tighter) */
+.mi-btn {
+  padding: var(--space-05) var(--space-075);
+}
+
+/* Collapsible content indentation */
+.ucb-collapse .collapse-content {
+  padding-top: var(--space-025);
+  padding-left: 1rem;
+}
+
+/* Reference list spacing */
+#references { margin: var(--space-1) 0; }
+#references li { margin: var(--space-025) 0; }

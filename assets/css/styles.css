@@ -1,0 +1,1124 @@
+/* =================================================================
+   UCB Medical Information — styles.css
+
+   Conventions
+   ───────────
+   · Relative units only (rem / em / % / vh / vw / vmax) — no px
+   · All colours via CSS custom properties defined in :root
+   · Pill-shaped controls: all-caps text, border-radius: 100vmax
+   · Floating TOC: fixed glass bar aligned to the content container
+   · Sections 1–19 follow document order; media queries at the end
+   ================================================================= */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   1. RESET & BASE
+   Minimal reset: border-box sizing everywhere, full-height html/body,
+   and font smoothing for crisp rendering on macOS / iOS.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body { height: 100%; }
+
+html {
+  /* Keeps anchor-jump targets visible below the fixed TOC bar.
+     5 rem ≈ navbox height (≈3.8 rem) + comfortable breathing room. */
+  scroll-padding-top: 5rem;
+}
+
+/* Only enable smooth scrolling when the user is actively navigating
+   via focus/keyboard, avoiding the jarring auto-scroll on page load. */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;        /* base = 16 px in most browsers */
+  line-height: 1.45;
+  color: #000;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;  /* macOS / iOS: thinner strokes */
+  -moz-osx-font-smoothing: grayscale;   /* Firefox on macOS */
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   2. DESIGN TOKENS
+   Single source of truth for every colour, size, and spacing value
+   used throughout the stylesheet. Edit here to retheme the document.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  /* ── Brand colours ── */
+  --brand:          #001489;   /* UCB Reflex Blue — primary action colour */
+  --accent:         #784e90;   /* Purple — used for focus rings           */
+
+  /* ── Neutral / border ── */
+  --border:         #d1d5db;   /* Light grey — default box borders        */
+
+  /* ── Table header palette (lightest → darkest) ── */
+  --tbl-h1:         #808AC4;   /* Level-1 header row background  */
+  --tbl-h2:         #99A1D0;   /* Level-2 header row background  */
+  --tbl-h3:         #B3B9DC;   /* Level-3 header row background  */
+  --tbl-interim:    #CCD0E7;   /* Interim / sub-group row        */
+  --tbl-foot:       #E6E8F3;   /* Table footer row               */
+
+  /* ── Miscellaneous ── */
+  --text-muted:     #d1d5db;   /* Muted / secondary text         */
+  --radius:         1.25rem;   /* Corner radius for box-shaped elements (not pills) */
+  --shadow:         0 0.5rem rgba(0, 0, 0, 0.05); /* Subtle elevation shadow */
+
+  /* ── Spacing scale ──
+     Named by their rem value so usage is self-documenting at call site. */
+  --space-0:        0;
+  --space-025:      0.25rem;
+  --space-05:       0.5rem;
+  --space-075:      0.75rem;
+  --space-1:        1rem;
+  --space-125:      1.25rem;
+  --space-15:       1.5rem;
+  --space-2:        2rem;
+
+  /* ── Container ── */
+  --container-max:  61.25rem;  /* ≈ 980 px — matches Veeva email width */
+
+  /* ── Pill control geometry ── */
+  --mi-pill-h:              2rem;    /* Standard pill height                     */
+  --mi-pill-pad-x:          0.9rem;  /* Standard horizontal padding              */
+  --mi-pill-pad-x-compact:  0.7rem;  /* Compact variant (back-to-top pill)       */
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   3. TYPOGRAPHY
+   Heading sizes step down by 0.1 rem per level.
+   Margins are tight to keep medical content dense but readable.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Shared heading traits */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+/* Individual heading sizes and vertical rhythm */
+h1 { font-size: 1.45rem; margin: var(--space-075) 0 var(--space-025); }
+h2 { font-size: 1.35rem; margin: var(--space-05)  0 var(--space-025); }
+h3 { font-size: 1.25rem; margin: var(--space-05)  0 var(--space-025); }
+h4 { font-size: 1.15rem; margin: var(--space-025) 0 var(--space-025); }
+h5 { font-size: 1.05rem; margin: var(--space-025) 0 var(--space-025); }
+h6 { font-size: 1.00rem; margin: var(--space-025) 0 var(--space-025); }
+
+/* Body text — compact vertical margin keeps sections tight */
+p,
+ul,
+ol {
+  font-size: 1rem;
+  line-height: 1.45;
+  margin: var(--space-025) 0;
+}
+
+/* Indent lists consistently */
+ul,
+ol { padding-left: 1.125rem; }
+
+/* List item text stays black; marker (bullet) picks up brand blue */
+ul li          { color: #000; }
+ul li::marker  { color: var(--brand); }
+
+/* Nested lists: same indent, small top/bottom gap */
+ul ul,
+ol ol {
+  margin: var(--space-025) 0;
+  padding-left: 1.125rem;
+}
+
+/* Superscripts / subscripts — sized and positioned relative to surrounding text */
+sup,
+sub {
+  font-size: 66%;
+  line-height: 0;           /* avoids increasing line height of parent */
+  position: relative;
+  vertical-align: baseline;
+}
+sup { top: -0.6em; }
+sub { bottom: -0.4em; }
+
+/* Global link style — brand blue, underlined; hover shifts to warm red */
+a       { color: var(--brand); text-decoration: underline; }
+a:hover { color: #a84544;      text-decoration: underline; }
+/* Note: .mi-btn overrides text-decoration: none for button-style links */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   4. LAYOUT
+   Page shell: centred container, site header, logo row, page title.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Centred content column used by both header and main content */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-1);
+}
+
+/* Header: top padding is enlarged so the logo clears the fixed TOC bar */
+.site-header {
+  padding: calc(var(--space-1) + 4rem) 0 var(--space-1);
+  background: #fff;
+}
+
+/* Logo left, doc-code/date block right */
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+/* Logo container — fixed height, overflow hidden for clean crop */
+.header-logo {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 5rem;
+}
+
+.header-logo img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+/* Right-hand meta block: doc code + preparation date */
+.header-meta-block {
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #000;
+}
+
+.header-meta-block p { margin: 0; }
+
+/* Page title band below the logo row */
+.page-title { padding: 0 0 var(--space-1); }
+
+/* The h1 and its child spans share the same oversized style.
+   Spans allow fine-grained control (drug name, monitoring flag, subtitle). */
+.page-title h1,
+.page-title .drug,
+.page-title .monitor-flag,
+.page-title .subtitle {
+  font-size: 1.9rem;  /* larger than section h1s to establish clear hierarchy */
+  line-height: 1.3;
+  font-weight: 800;
+  color: #000;        /* black, not brand blue, for the document title */
+}
+
+/* Flex row so drug name, flag, and subtitle wrap gracefully on narrow screens */
+.page-title h1 {
+  margin-left: var(--space-1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-05);
+  align-items: baseline;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   5. SECTION BOXES
+   Every major content section is a styled card.
+   The feedback section overrides colour to use the teal palette.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Ensure every anchor target (any element with an id) lands below the
+   fixed navbox. 6 rem gives a small gap above the section heading. */
+[id] { scroll-margin-top: 6rem; }
+
+/* Shared card style for all main sections */
+#aeo-summary,
+#aeo-qa,
+#summary,
+#detailed-response,
+#disclaimers,
+#references,
+#llm-summary,
+#feedback {
+  border: 0.0625rem solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-05);
+  background: #fff;
+  margin: var(--space-075) 0;
+}
+
+/* Remove default top margin from the first h1 inside a section box
+   so it sits flush with the card's top padding. */
+#aeo-summary       > h1:first-child,
+#aeo-qa            > h1:first-child,
+#summary           > h1:first-child,
+#detailed-response > h1:first-child,
+#disclaimers       > h1:first-child,
+#references        > h1:first-child,
+#llm-summary       > h1:first-child {
+  margin-top: 0;
+}
+
+/* Feedback box: teal-tinted background and matching border.
+   Extra bottom padding balances the Send / anonymous row visually. */
+#feedback {
+  background:        color-mix(in srgb, #6bcaba 25%, white);
+  border-color:      color-mix(in srgb, #6bcaba 45%, transparent);
+  padding-block-end: var(--space-1); /* matches bottom gap in other section boxes */
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   6. NAVIGATION BOX  (.mi-navbox)
+   Generic pill-shaped container used for in-page TOC bars.
+   The floating TOC (#toc) extends this in section 8.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.mi-navbox {
+  border: 0.0625rem solid var(--border);
+  border-radius: 100vmax; /* always a perfect pill regardless of height */
+  background: #E6E8F3;
+  padding: var(--space-075);
+  width: 100%;
+  box-sizing: border-box;
+  margin: var(--space-1) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* "Contents" label — never wraps; provides fixed left anchor for the list */
+.mi-navbox__title {
+  margin: 0 var(--space-05) 0 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--brand);
+  white-space: nowrap;
+}
+
+/* Button list — wraps by default for static navboxes (overridden in #toc) */
+.mi-navbox__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-05);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   7. PILL BUTTONS  (.mi-btn)
+   Base pill used for navigation, actions, and back-to-top links.
+   Variants (--primary, --outline, --ghost) and states (is-active)
+   are layered on top with !important to guarantee override regardless
+   of DOM context.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.mi-btn,
+button.mi-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: var(--mi-pill-h);
+  padding-inline: var(--mi-pill-pad-x);
+  padding-block: 0;
+  border-radius: 100vmax;
+  border: 0.0625rem solid #808AC4;  /* mid-blue chip outline */
+  box-sizing: border-box;
+  cursor: pointer;
+  text-decoration: none;            /* overrides global link underline */
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  background: #CCD0E7;              /* light brand-blue chip fill */
+  color: var(--brand);
+  transition:
+    background-color .22s ease,
+    color            .22s ease,
+    border-color     .22s ease,
+    box-shadow       .22s ease,
+    filter           .22s ease,     /* needed for brightness() hover on primary pills */
+    transform        .12s ease;
+}
+
+/* Primary — solid brand fill; transparent border so pill edge is smooth
+   (a matching-colour border would show a seam at the rounded end-caps). */
+.mi-btn--primary {
+  color: #fff !important;
+  background: var(--brand) !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45) !important; /* symmetric glow, no top-edge artefact */
+}
+.mi-btn--primary:hover { filter: brightness(1.08); }
+
+/* Outline — white fill, brand border; subtle hover tint */
+.mi-btn--outline {
+  background: #fff !important;
+  color: var(--brand) !important;
+  border: 0.0625rem solid var(--brand) !important;
+  box-shadow: none;
+}
+.mi-btn--outline:hover { background: rgba(0, 20, 137, 0.06) !important; }
+
+/* Ghost — fully transparent, semi-opaque brand border */
+.mi-btn--ghost {
+  background: transparent !important;
+  color: var(--brand) !important;
+  border: 0.0625rem solid color-mix(in srgb, var(--brand) 45%, transparent) !important;
+  box-shadow: none;
+}
+.mi-btn--ghost:hover { background: color-mix(in srgb, var(--brand) 10%, transparent); }
+
+/* Active state — applied by the scroll-spy script to highlight the
+   current section. Slight upward nudge gives a "pressed in" feel. */
+.mi-btn.is-active {
+  background: var(--brand) !important;
+  color: #fff !important;
+  border-color: var(--brand) !important;
+  box-shadow:
+    0 0.0625rem 0 rgba(255, 255, 255, 0.28) inset,  /* top-edge highlight bevel */
+    0 0.375rem 1.125rem rgba(0, 20, 137, 0.22);      /* soft blue drop-shadow    */
+  transform: translateY(-0.0625rem);
+}
+
+/* Back-to-top — compact primary pill placed at section ends.
+   Slightly shorter than the standard pill height.
+   border-color: transparent avoids the end-cap seam (same as --primary). */
+a.mi-btn.back-to-toc {
+  min-height: calc(var(--mi-pill-h) - 0.25rem);
+  padding-inline: var(--mi-pill-pad-x-compact);
+  background: var(--brand) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45);
+}
+a.mi-btn.back-to-toc:hover { filter: brightness(1.08); }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   8. FLOATING TOC  (#toc)
+   Fixed pill bar centred at the top of the viewport.
+   Overrides the generic .mi-navbox with Apple-style glass:
+   near-transparent blue tint + backdrop blur so page content is
+   visible but softened behind the bar.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#toc.mi-navbox {
+  position: fixed;
+  inset-block-start: 1rem;   /* 1 rem gap from viewport top */
+  inset-inline-start: 50%;
+  transform: translateX(-50%); /* horizontal centering via translate */
+  z-index: 9999;               /* above all page content */
+
+  /* Width clamps to the content container width with a small side margin */
+  width: min(100% - 1rem, var(--container-max));
+  margin-inline: auto;
+
+  /* Override generic .mi-navbox padding/radius */
+  border-radius: 100vmax !important;
+  padding: 0.4rem var(--space-1) !important;
+
+  /* Glass effect: near-invisible blue tint; backdrop-filter does the frosting */
+  backdrop-filter: saturate(180%) blur(1.25rem);
+  -webkit-backdrop-filter: saturate(180%) blur(1.25rem);
+  background: rgba(0, 20, 137, 0.04);         /* 4% brand blue — barely tinted */
+  border: 0.0625rem solid rgba(255, 255, 255, 0.28); /* soft white rim */
+  box-shadow:
+    0 0 0 0.0625rem rgba(255, 255, 255, 0.22) inset, /* inner highlight (glass bevel) */
+    0 0.5rem 2rem rgba(0, 20, 137, 0.18),             /* blue ambient glow below bar  */
+    0 0.125rem 0.375rem rgba(0, 0, 0, 0.06);          /* crisp close shadow           */
+}
+
+/* Button list inside the floating TOC: single row, horizontally scrollable.
+   flex: 1 + min-width: 0 constrains the list to remaining width after title. */
+#toc .mi-navbox__list {
+  display: flex;
+  flex-wrap: nowrap;      /* single row — no line breaks */
+  flex: 1;                /* fill available width after the title label */
+  min-width: 0;           /* allow flex child to shrink below its intrinsic size */
+  gap: 0.2rem;
+  overflow-x: auto;       /* scroll horizontally when buttons exceed bar width */
+  overflow-y: hidden;
+  justify-content: flex-start; /* left-aligned so scroll makes sense */
+  scrollbar-width: none;  /* Firefox: hide scrollbar visually */
+}
+/* Chrome / Safari: hide scrollbar (scroll still works via touch / trackpad) */
+#toc .mi-navbox__list::-webkit-scrollbar { display: none; }
+
+/* Slightly smaller label in the compact glass bar */
+#toc .mi-navbox__title { font-size: 0.8rem; }
+
+/* Unselected TOC pills: glassy #CCD0E7 chip, white-ish border, subtle bevel.
+   Opacity 0.32 lets the navbox glass tint show through the button body. */
+#toc .mi-btn {
+  white-space: nowrap;      /* prevent button text from wrapping */
+  min-width: max-content;   /* pill never narrower than its label */
+  flex-shrink: 0;           /* pills do not compress when list is tight */
+  background: rgba(204, 208, 231, 0.32);      /* #CCD0E7 at 32% — glassy fill */
+  border-color: rgba(255, 255, 255, 0.35);    /* soft white border             */
+  box-shadow:
+    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset, /* top-edge glass bevel  */
+    0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);    /* subtle depth shadow   */
+}
+
+/* Active TOC pill overrides:
+   · Transparent border — solid brand fill defines the pill shape cleanly;
+     a coloured border creates a visible seam at the rounded end-caps.
+   · Symmetric glow (y-offset = 0) so top and bottom edges look identical.
+   · transform: none cancels the base is-active translateY lift, which
+     would cause a top-edge artefact against the glass background. */
+#toc .mi-btn.is-active {
+  border-color: transparent !important;
+  box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45) !important;
+  transform: none !important;
+}
+
+/* Hover on unselected TOC pills: text shifts to warm red (#a84544),
+   matching the global link hover colour for visual consistency. */
+#toc .mi-btn:not(.is-active):hover { color: #a84544; }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   9. COLLAPSIBLE SECTIONS  (.ucb-collapse)
+   Built on the native <details> / <summary> elements.
+   The default browser triangle marker is replaced with a CSS-drawn
+   chevron (two-border square rotated 45°) that rotates on open.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Remove the built-in disclosure triangle in WebKit browsers */
+.ucb-collapse summary::-webkit-details-marker { display: none; }
+
+.ucb-collapse summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  list-style: none;  /* remove Firefox's built-in disclosure marker */
+  padding: var(--space-05) 0;
+}
+
+/* CSS chevron: a square with two visible borders, rotated to point right.
+   border-right + border-bottom = a down-right corner = chevron › shape.
+   Rotated -45° points it rightward (collapsed state). */
+.ucb-collapse summary::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.65em;
+  height: 0.65em;
+  border-right:  0.18em solid var(--brand);
+  border-bottom: 0.18em solid var(--brand);
+  transform: rotate(-45deg);        /* → pointing right (collapsed) */
+  margin-right: var(--space-05);
+  transition: transform .2s ease-in-out, border-color .2s ease;
+}
+
+/* When the <details> is open, rotate the chevron to point downward */
+.ucb-collapse[open] summary::before { transform: rotate(45deg); }
+
+/* Hover: chevron shifts to warm red — matches link hover colour */
+.ucb-collapse summary:hover::before { border-color: #a84544; }
+
+/* Indent expanded content to align under the heading text (past chevron) */
+.ucb-collapse .collapse-content {
+  padding-top: var(--space-05);
+  padding-left: 1.125rem;
+}
+
+/* Focus ring only for keyboard navigation (:focus-visible), not mouse clicks,
+   so clicking to expand does not leave a visible selection frame. */
+.ucb-collapse summary:focus-visible {
+  outline: 0.0625rem dotted var(--accent);
+  outline-offset: 0.125rem;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   10. HIDDEN HELPERS
+   Elements used for machine-readable metadata or LLM context that
+   must never be visible in the rendered document.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Inline metadata spans (e.g. data-label="AEO") — invisible to users */
+.mi-hidden-meta { display: none !important; }
+
+/* Entire sections hidden from view (e.g. LLM summary, AEO blocks) */
+.mi-hidden-section,
+.mi-hidden-section * { display: none !important; }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   11. TABLES  (.veeva-email)
+   Data tables styled for the Veeva email / HTML output format.
+   border-collapse: separate with border-spacing: 0 is required so
+   border-radius clips correctly on the outer table frame.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.veeva-email table {
+  width: 100%;
+  border-collapse: separate;   /* required for border-radius on table */
+  border-spacing: 0;
+  border: 0.0625rem solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;            /* clips row backgrounds to rounded corners */
+  margin: var(--space-05) 0;
+  background: #fff;
+}
+
+/* Default cell style — all cells share this baseline */
+.veeva-email th,
+.veeva-email td {
+  border-bottom: 0.0625rem solid var(--border);
+  padding: var(--space-05);
+  vertical-align: top;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* Last data row has no bottom border (table border provides the edge) */
+.veeva-email tr:last-child td { border-bottom: 0; }
+
+/* Header row tiers: .hdr defaults to level-3 (lightest); .hdr-1 / .hdr-2
+   allow darker shading on top-level columns without extra markup. */
+.veeva-email .hdr th    { font-size: 0.95rem; font-weight: 700; background: var(--tbl-h3); }
+.veeva-email .hdr-1 th  { background: var(--tbl-h1); }  /* darkest  */
+.veeva-email .hdr-2 th  { background: var(--tbl-h2); }
+.veeva-email .hdr-3 th  { background: var(--tbl-h3); }  /* lightest */
+
+/* Interim rows span full width, styled as a subgroup label */
+.veeva-email .interim-row td[colspan] {
+  background: var(--tbl-interim);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Table footer: abbreviation key / footnote row */
+.veeva-email .tbl-footer td[colspan] {
+  background: var(--tbl-foot);
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   12. UTILITIES
+   Single-purpose helper classes for text and cell alignment.
+   Applied directly in HTML to avoid inline styles.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.align-top    { vertical-align: top; }
+.align-middle { vertical-align: middle; }
+.align-bottom { vertical-align: bottom; }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   13. FOOTNOTES  (.mini-foot)
+   Compact footnote block with a short horizontal rule above it,
+   used below tables or figures to hold abbreviation keys.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.mini-foot {
+  font-size: 0.85rem;
+  text-align: left;
+  line-height: 1.25;
+  color: #000;
+  margin: var(--space-05) 0 var(--space-025);
+  position: relative;
+}
+
+/* Short rule above the footnote text — 33% width echoes academic style */
+.mini-foot::before {
+  content: "";
+  display: block;
+  width: 33%;
+  height: 0.0625rem;
+  background: var(--border);
+  margin: 0 0 var(--space-025) 0;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   14. REFERENCES  (#references)
+   Custom numbered list using CSS counters so numbers can be styled
+   in brand blue without affecting the list item text colour.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Force black text throughout the references section */
+#references,
+#references p,
+#references li,
+#references ol,
+#references ul {
+  font-size: 1rem;
+  line-height: 1.45;
+  color: #000;
+}
+
+/* Reset the CSS counter on the ordered list */
+#references ol {
+  padding-left: 1.125rem;
+  counter-reset: refnum;
+}
+
+/* Remove native list numbering; ::before pseudo-element provides custom one */
+#references ol > li {
+  list-style: none;
+  position: relative;
+  margin: var(--space-025) 0;
+}
+
+/* Brand-blue numbered counter placed in the gutter to the left of the item */
+#references ol > li::before {
+  counter-increment: refnum;
+  content: counter(refnum) ".";
+  position: absolute;
+  left: -1.125rem;
+  color: var(--brand);
+  font-weight: 700;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   15. FEEDBACK  (#feedback)
+   Star-rating widget, floating-label comment textarea, anonymous
+   checkbox, and Send button. All elements use a teal (#6bcaba)
+   palette that ties them visually to the feedback card background.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Rating pill bar ── */
+/* Pill-shaped fieldset housing the "Rating" label and five star buttons.
+   Background and border now match the comment textarea and notice box
+   so all three interactive areas share a single visual language. */
+.stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.35rem 1.25rem;
+  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent);
+  border-radius: 100vmax;
+  background: color-mix(in srgb, #6bcaba 15%, white); /* matches comment + notice */
+  margin-bottom: var(--space-05);
+  transition: border-color .2s ease, border-width .2s ease, box-shadow .2s ease;
+}
+
+/* Highlight the rating pill when any star button is keyboard-focused
+   or when a star has been selected — same teal glow as the comment textarea */
+.stars:focus-within,
+.stars:has(.star[aria-checked="true"]) {
+  border-color: color-mix(in srgb, #6bcaba 80%, transparent);
+  border-width: 0.125rem;
+  box-shadow: 0 0 0 0.15rem color-mix(in srgb, #6bcaba 30%, transparent);
+}
+
+/* The <legend> text is invisible (font-size: 0) to avoid double-rendering
+   in the pill; a ::before pseudo-element renders "Rating" visually instead,
+   while the original legend text remains accessible to screen readers. */
+.stars legend {
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.stars legend::before {
+  content: "Rating";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-inline: 0.6rem;
+  padding-block: 0.25rem;
+  color: var(--brand);
+  background: transparent;
+}
+
+/* Row of five star buttons inside the pill */
+.stars .stars_list {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Individual star button — pill-shaped, transparent until selected */
+.stars .star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.6rem;
+  padding-block: 0.25rem;
+  min-height: 1.6rem;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 100vmax;
+  border: 0.0625rem solid color-mix(in srgb, var(--brand) 45%, transparent);
+  background: transparent;
+  color: var(--brand);
+  transition:
+    background-color .2s ease,
+    color            .2s ease,
+    border-color     .2s ease,
+    box-shadow       .2s ease,
+    text-shadow      .2s ease,
+    transform        .15s ease;
+}
+
+/* Hover: light brand-blue fill */
+.stars .star:hover  { background: color-mix(in srgb, var(--brand) 12%, transparent); }
+/* Active: subtle scale-down press feedback */
+.stars .star:active { transform: scale(0.98); }
+
+/* Selected stars: gold gradient with a soft 3-D depth effect.
+   · Gradient (light → mid → deep gold) gives a convex lit-from-above feel.
+   · Dark-amber text colour contrasts the bright fill for the ★ glyph.
+   · text-shadow: bright highlight on top edge + warm shadow below = embossed look.
+   · box-shadow: inner top bevel (glass highlight) + warm outer glow + crisp drop. */
+.stars .star[aria-checked="true"],
+.stars .star.selected {
+  background: linear-gradient(160deg, #ffe57a 0%, #f5c218 55%, #e6a817 100%);
+  color: #7a4d00;                 /* dark amber — readable on gold */
+  border-color: #d4920a;
+  transform: scale(1.2);          /* slightly larger than unselected peers */
+  text-shadow:
+    0  1px 0   rgba(255, 255, 255, 0.60),  /* bright highlight on top of star glyph */
+    0  2px 3px rgba(80,  40,  0,   0.25);  /* warm depth shadow below */
+  box-shadow:
+    0 1px 0   rgba(255, 255, 255, 0.45) inset, /* inner top-edge bevel */
+    0 3px 8px rgba(195, 130,  0,  0.50),        /* warm golden glow */
+    0 1px 2px rgba(0,   0,    0,  0.15);        /* crisp close shadow */
+}
+
+/* Short horizontal shake for the rating pill on a failed submit attempt.
+   Applied via JS as an animation on .stars.has-error. */
+@keyframes rating-shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-0.3rem); }
+  40%      { transform: translateX( 0.3rem); }
+  60%      { transform: translateX(-0.2rem); }
+  80%      { transform: translateX( 0.2rem); }
+}
+
+/* Error state on the rating pill — red border + glow + shake */
+.stars.has-error {
+  border-color: #c0392b;
+  border-width: 0.125rem;
+  box-shadow: 0 0 0 0.15rem rgba(192, 57, 43, 0.20);
+  animation: rating-shake 0.35s ease;
+}
+
+/* Inline error message — hidden by default; JS adds .is-visible to show it.
+   Negative margin-top closes most of the 1rem flex gap so it reads as
+   attached to the rating pill rather than floating mid-column. */
+.stars-error {
+  display: none;
+  margin-top: -0.6rem;
+  font-size: 0.8rem;
+  color: #c0392b;
+  font-weight: 600;
+}
+.stars-error.is-visible { display: block; }
+
+/* ── Comment field ── */
+/* Wrapper is a positioning context for the floating label */
+.comment_field {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;  /* keeps the floating label from overlapping the rating pill */
+}
+
+/* Floating label: sits on the top border of the textarea.
+   Background matches the feedback card so the label appears to cut
+   through the border rather than sitting on top of it. */
+.comment_field label {
+  position: absolute;
+  inset-block-start: -0.4rem;   /* vertically centred on the top border */
+  inset-inline-start: 1.7rem;   /* indented to align with textarea text */
+  padding-inline: 0.3rem;
+  background: color-mix(in srgb, #6bcaba 25%, white); /* matches #feedback background */
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 2;           /* above the textarea border */
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+/* Textarea: teal-tinted fill and border to match the card palette */
+.comment_field textarea {
+  width: 100%;
+  min-height: 6em;
+  padding: 0.8em;
+  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent);
+  border-radius: var(--radius);
+  font-size: 1em;
+  resize: vertical;   /* user can drag taller, but not wider */
+  background: color-mix(in srgb, #6bcaba 15%, white); /* 15% — lighter than the card */
+}
+
+/* Focus / filled state: thicker teal border + soft glow ring */
+.comment_field textarea:focus,
+.comment_field textarea:not(:placeholder-shown) {
+  border-color: color-mix(in srgb, #6bcaba 80%, transparent);
+  border-width: 0.125rem;
+  outline: none;
+  box-shadow: 0 0 0 0.15rem color-mix(in srgb, #6bcaba 30%, transparent);
+  background: color-mix(in srgb, #6bcaba 15%, white);
+}
+
+/* ── Send anonymously checkbox ── */
+/* Fully custom checkbox: appearance: none removes the native control;
+   ::after pseudo-element renders the white tick when checked.
+   Border and background now match the comment textarea and rating pill. */
+.anon_option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0;
+  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent); /* harmonised */
+  border-radius: 0.4rem;           /* softly rounded corners */
+  background: color-mix(in srgb, #6bcaba 15%, white);                   /* harmonised */
+  cursor: pointer;
+  position: relative;              /* positioning context for the ::after tick */
+  vertical-align: middle;
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+/* Keyboard-focus highlight — same teal glow as comment textarea and rating pill */
+.anon_option input[type="checkbox"]:focus-visible {
+  border-color: color-mix(in srgb, #6bcaba 80%, transparent);
+  border-width: 0.125rem;
+  outline: none;
+  box-shadow: 0 0 0 0.15rem color-mix(in srgb, #6bcaba 30%, transparent);
+}
+
+/* Checked state: solid brand fill (high-contrast against white tick) */
+.anon_option input[type="checkbox"]:checked {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+/* White checkmark built from two border sides, centred via translate */
+.anon_option input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%) rotate(45deg); /* rotate forms the ✓ shape */
+  width: 0.4rem;
+  height: 0.8rem;
+  border-right:  0.15rem solid #fff;
+  border-bottom: 0.15rem solid #fff;
+}
+
+/* ── Feedback layout ── */
+/* Stack stars → comment → actions vertically with uniform gaps */
+.feedback .collapse-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Data protection notice ──
+   Sits between the comment field and the actions row so users read
+   it immediately before submitting. Slightly lighter teal background
+   than the card to create a subtle inset / secondary feel.
+   role="note" on the element marks it as supplementary information. */
+.feedback-notice {
+  position: relative;                                   /* context for floating title */
+  font-size: 0.85rem;                                   /* matches table footer text */
+  line-height: 1.45;
+  background: color-mix(in srgb, #6bcaba 15%, white);  /* matches comment + rating */
+  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent); /* harmonised */
+  border-radius: var(--radius);                         /* matches all other section boxes */
+  padding: var(--space-075) var(--space-075) var(--space-05); /* extra top clears floating label */
+  color: #000;
+  margin-block: 1.5rem;  /* equal space above and below, mirroring .comment_field margin-top */
+}
+
+/* "DATA PROTECTION NOTICE" — floats on the top border of the notice box,
+   identical treatment to the "COMMENT (OPTIONAL)" label on the textarea.
+   Background matches the card (25%) so it erases the border line beneath it,
+   just as the comment label does above the textarea. */
+.feedback-notice__title {
+  position: absolute;
+  inset-block-start: -0.4rem;    /* vertically centred on the top border */
+  inset-inline-start: 1.7rem;   /* aligned with the comment label */
+  padding-inline: 0.3rem;
+  background: color-mix(in srgb, #6bcaba 25%, white); /* matches #feedback card */
+  font-size: 0.85rem;            /* matches "Rating" and "COMMENT (OPTIONAL)" floating labels */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--brand);
+  line-height: 1;
+  z-index: 2;                    /* above the border line */
+  margin: 0;
+}
+
+/* Bullet list of the four notice statements */
+.feedback-notice__list {
+  margin: 0;
+  padding-left: 1rem;
+}
+.feedback-notice__list li {
+  margin: var(--space-025) 0;
+}
+.feedback-notice__list li::marker { color: var(--brand); }
+
+/* Actions row: anonymous checkbox left, Send button right */
+.feedback_actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Checkbox + label inline pair */
+.feedback_actions .anon_option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+/* Send button positioning within the flex layout.
+   Visual styling comes from .mi-btn + .mi-btn--primary classes on the element. */
+#submit_feedback {
+  align-self: center;
+  margin: 0;
+}
+
+/* Status message shown after submission (success / error).
+   Collapsed when empty so it contributes no layout space
+   and the Send row sits correctly against the card bottom. */
+#feedback_message {
+  font-size: 0.9em;
+  text-align: center;
+}
+#feedback_message:empty { display: none; }
+
+/* ── Submitted state (.feedback-submitted on .collapse-content) ──
+   Applied by JS when a valid session token exists.
+   Stars remain gold (rating preserved) but non-interactive.
+   Anonymous checkbox stays visible and frozen (shows what was submitted).
+   The action button (#submit_feedback) stays visible — JS has changed its
+   label to "Update my response"; no button hiding or showing needed.
+   Disabled textarea/checkbox: normalised greying across browsers. */
+.feedback-submitted .stars               { pointer-events: none; opacity: 0.8; }
+.feedback-submitted .stars-error         { display: none !important; }
+
+/* Anonymous checkbox row: visible but frozen so the user can see their submission */
+.feedback-submitted .anon_option         { pointer-events: none; }
+.feedback-submitted .anon_option label   { opacity: 0.65; cursor: default; }
+
+/* Normalise disabled-state greying for custom-styled controls */
+.comment_field textarea:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.anon_option input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   16. BACK-TO-TOP WRAPPER
+   Right-aligns the back-to-top pill at the bottom of each section.
+   The pill itself is styled by a.mi-btn.back-to-toc (section 7).
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.back-to-toc-wrapper {
+  text-align: right;
+  width: 100%;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   17. FOOTER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.site-footer {
+  text-align: center;
+  padding: var(--space-1) 0;
+}
+
+/* Optional centred meta block within the footer */
+.site-footer .meta-center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.site-footer p {
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #000;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   18. RESPONSIVE
+   Two narrow-viewport breakpoints reduce type sizes proportionally.
+   ≤ 30 rem ≈ 480 px — typical small phone
+   ≤ 22.5 rem ≈ 360 px — very small / older devices
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 30rem) {
+  h1 { font-size: 1.30rem; }
+  h2 { font-size: 1.20rem; }
+  h3 { font-size: 1.15rem; }
+  h4 { font-size: 1.10rem; }
+  h5 { font-size: 1.00rem; }
+  h6 { font-size: 0.95rem; }
+
+  p, ul, ol { font-size: 0.95rem; }
+
+  .veeva-email th,
+  .veeva-email td { font-size: 0.9rem; }
+
+  /* Reduce container side padding on small screens */
+  .container { padding-inline: var(--space-075); }
+
+  /* Tighten navbox padding on small screens */
+  .mi-navbox { margin: var(--space-1) 0; padding: var(--space-075); }
+}
+
+@media (max-width: 22.5rem) {
+  h1 { font-size: 1.2rem; }
+  h2 { font-size: 1.15rem; }
+  h3 { font-size: 1.10rem; }
+
+  p, ul, ol { font-size: 0.9rem; }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   19. REDUCED MOTION
+   Disables all transitions for users who have requested reduced
+   motion in their OS accessibility settings (prefers-reduced-motion).
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (prefers-reduced-motion: reduce) {
+  .mi-btn,
+  button.mi-btn,
+  a.mi-btn,
+  #submit_feedback,
+  .stars .star {
+    transition: none;
+  }
+}
