@@ -1144,35 +1144,60 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 /* ── Page geometry and running header / footer ── */
 @page {
   size: A4 portrait;
-  /* Wide side margins leave room for binding; top/bottom for header+footer */
-  margin: 2.5cm 2cm 2.5cm 2cm;
+  /* Top margin: 0.3 cm gap + 0.6 cm logo + 0.6 cm breathing room = 1.5 cm.
+     The @top-left margin box spans from the paper top/left edges, so padding
+     inside it positions the logo exactly from the physical paper border.    */
+  margin: 1.5cm 2cm 2.5cm 2cm;
 
-  /* Header: document title left, reference code right */
+  /* Logo: on EVERY page — 0.3 cm from top paper edge, 0.3 cm from left edge.
+     The SVG carries explicit width="1.85cm" height="0.6cm" so the browser
+     renders it at the correct size regardless of the box height.            */
   @top-left {
-    content: "Fenfluramine — Use in combination with stiripentol";
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 7.5pt;
-    color: #000;
-  }
-  @top-right {
-    content: "MED-EU-FFA-2500009";
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 7.5pt;
-    color: #000;
+    content: url("../img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg");
+    padding: 0.3cm 0 0 0.3cm;
+    vertical-align: top;
   }
 
-  /* Footer: copyright left, page counter right */
+  /* Footer: two-line block left-bound, page counter right-bound.
+     Line 1 — drug name + monitoring symbol
+     Line 2 — document code + copyright
+     \25BC = ▼  \00A9 = ©  \A = line-feed (needs white-space:pre-line)
+     CSS consumes one whitespace after a hex escape, so two spaces are
+     written after \25BC and \00A9 so that one space survives into content.
+     padding-top positions via explicit maths rather than vertical-align
+     (which is inconsistent in @page boxes across browser versions):
+       margin-bottom=2.5cm  one-line≈0.32cm  padding-bottom=0.5cm
+       left:  2.5 − (2×0.32) − 0.5 = 1.36 cm  → two-line block near bottom
+       right: 2.5 −    0.32  − 0.5 = 1.68 cm  → single line on line-2 level  */
   @bottom-left {
-    content: "\00A9 UCB Pharma SA, 2026. All rights reserved.";
+    content: "Fenfluramine \25BC  Use in combination with stiripentol\AMED-EU-FFA-2500009, \00A9  UCB Pharma SA, 2026. All rights reserved.";
     font-family: Helvetica, Arial, sans-serif;
     font-size: 7.5pt;
     color: #000;
+    white-space: pre-line;
+    padding: 1.36cm 0 0.5cm 0.3cm;
   }
   @bottom-right {
-    content: "Page " counter(page) " of " counter(pages);
+    content: counter(page) " of " counter(pages);
     font-family: Helvetica, Arial, sans-serif;
     font-size: 7.5pt;
     color: #000;
+    padding: 1.68cm 0.5cm 0.5cm 0;
+  }
+}
+
+/* Title: on FIRST PAGE ONLY — 0.5 cm from top paper edge, 0.5 cm from right edge.
+   @page :first overrides only the @top-right margin box; all other @page
+   properties (margins, logo, footer) are inherited unchanged.               */
+@page :first {
+  @top-right {
+    content: "Fenfluramine \2014 Use in combination with stiripentol";
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    color: #000;
+    padding: 0.5cm 0.5cm 0 0;
+    vertical-align: top;
+    text-align: right;
   }
 }
 
@@ -1247,13 +1272,9 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   h1, h2, h3, h4, h5, h6 { break-after: avoid; }
   .tbl { break-inside: avoid; }
 
-  /* ── Site header: keep logo row, remove background chrome ── */
-  .site-header {
-    background: none;
-    border-bottom: 0.5pt solid #000;
-    padding-block: 0.5em;
-  }
+  /* ── Site header: hidden in print (logo + title live in @page margin boxes) ── */
+  .site-header { display: none; }
 
-  /* ── Site footer: keep copyright text ── */
-  .site-footer { border-top: 0.5pt solid #000; margin-top: 1em; }
+  /* ── Site footer: hidden in print (copyright + page number in @page footer) ── */
+  .site-footer { display: none; }
 }
