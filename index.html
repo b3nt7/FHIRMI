@@ -1236,13 +1236,13 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 /* ── Page geometry and running header / footer ── */
 @page {
   size: A4 portrait;
-  /* Top margin: 0.3 cm gap + 0.6 cm logo + 0.6 cm breathing room = 1.5 cm.
+  /* Top margin: 0.3 cm gap + 1.5 cm logo + 0.4 cm breathing room = 2.2 cm.
      The @top-left margin box spans from the paper top/left edges, so padding
      inside it positions the logo exactly from the physical paper border.    */
-  margin: 1.5cm 2cm 2.5cm 2cm;
+  margin: 2.2cm 2cm 2.5cm 2cm;
 
   /* Logo: on EVERY page — 0.3 cm from top paper edge, 0.3 cm from left edge.
-     The SVG carries explicit width="1.85cm" height="0.6cm" so the browser
+     The SVG carries explicit width="4.6cm" height="1.5cm" so the browser
      renders it at the correct size regardless of the box height.            */
   @top-left {
     content: url("assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg");
@@ -1278,25 +1278,10 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   }
 }
 
-/* Title: on FIRST PAGE ONLY — 0.5 cm from top paper edge, 0.5 cm from right edge.
-   @page :first overrides only the @top-right margin box; all other @page
-   properties (margins, logo, footer) are inherited unchanged.               */
-@page :first {
-  @top-right {
-    content: "Fenfluramine \2014 Use in combination with stiripentol";
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 9pt;
-    color: #000;
-    padding: 0.5cm 0.5cm 0 0;
-    vertical-align: top;
-    text-align: right;
-  }
-}
-
 @media print {
 
-  /* ── Reset scroll-related overrides ── */
-  html { scroll-padding-top: 0; }
+  /* ── Reset scroll-related overrides; set 10pt root so rem units scale correctly ── */
+  html { scroll-padding-top: 0; font-size: 10pt; }
   html, body { height: auto; }
 
   /* ── Base font for print ── */
@@ -1364,8 +1349,11 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   h1, h2, h3, h4, h5, h6 { break-after: avoid; }
   .tbl { break-inside: avoid; }
 
-  /* ── Site header: hidden in print (logo + title live in @page margin boxes) ── */
-  .site-header { display: none; }
+  /* ── Site header: logo lives in @page @top-left (every page).
+     .header-flex (logo img + doc-code row) is hidden; .page-title is kept
+     in normal document flow so it appears left-bound before #summary.      */
+  .site-header { display: block; background: none; padding: 0; margin: 0 0 1em; }
+  .site-header .header-flex { display: none; }
 
   /* ── Site footer: hidden in print (copyright + page number in @page footer) ── */
   .site-footer { display: none; }
