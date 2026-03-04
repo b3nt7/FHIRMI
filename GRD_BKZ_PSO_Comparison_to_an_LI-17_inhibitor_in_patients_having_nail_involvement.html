@@ -1,0 +1,958 @@
+<!-- =================================================================
+     UCB Medical Information — GRD_BKZ_PSO_Comparison_to_an_LI-17_inhibitor_in_patients_having_nail_involvement.html
+
+     Document  : Bimekizumab — Comparison to an IL-17 inhibitor in patients
+                 with plaque psoriasis having nail involvement
+     Reference : MED-GL-BKZ-2300603
+     Prepared  : Feb 2026   |   © UCB SA 2026
+
+     Structure overview
+     ──────────────────
+     <head>
+       · Standard meta tags + social (OG / Twitter)
+       · Single stylesheet: assets/css/styles.css
+       · Two JSON-LD blocks: MedicalWebPage + FAQPage (for SEO / GEO)
+
+     <body>
+       · Floating TOC nav  — fixed glass bar linking to all sections
+       · <header>          — UCB logo, doc-code, preparation date, page title
+       · <main>
+           #aeo-summary    — HIDDEN: machine-readable AEO key facts
+           #aeo-qa         — HIDDEN: machine-readable AEO Q&A pairs
+           #summary        — Visible: collapsible CCDS + Published Data summaries
+           #published-data — Visible: full BE RADIANT study write-up
+           #appendix       — Visible: baseline demographics table + study design figure
+           #disclaimers    — Visible: regulatory / copyright disclaimers
+           #references     — Visible: numbered citation list
+           #feedback       — Visible: star rating + comment + send widget
+           #llm-summary    — HIDDEN: machine-readable GEO paragraph for LLMs
+       · <footer>          — doc-code, copyright
+       · <script>          — assets/js/main.js (scroll-spy, star rating, feedback)
+
+     Key HTML conventions
+     ─────────────────────
+     · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
+         data-snomed="…"> — semantic tagging for FHIR / ontology consumers
+         (BKZ MeSH / SNOMED identifiers to be verified and added)
+     · hidden-section: display:none — content for automated readers only
+     · collapse: native <details>/<summary> pattern for collapsible sections
+     · Anchor targets for TOC: either <section id="…"> or <a id="…"> inside
+         <summary> so the target is always visible (even when collapsed)
+     · Tables use role="table" to reinforce semantics and border-collapse:separate
+         so border-radius works; header rows carry scope="col" where present
+     ================================================================= -->
+<!doctype html>
+<html lang="en">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HEAD
+     All invisible metadata: character encoding, viewport, crawl hints,
+     social sharing cards, stylesheet, and structured-data JSON-LD blocks.
+     ═══════════════════════════════════════════════════════════════════ -->
+<head>
+  <meta charset="utf-8" />
+  <!-- UTF-8 declared first so the browser reads all subsequent bytes correctly -->
+
+  <!-- Browser tab / bookmark title -->
+  <title>Bimekizumab — Comparison to an IL-17 inhibitor in patients with nail involvement</title>
+
+  <!-- Responsive scaling: device-width prevents iOS auto-zoom; initial-scale=1
+       ensures a 1:1 pixel ratio on load so the fixed TOC appears at the right size -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Allow search-engine indexing and link following -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical URL — update to real production URL before go-live -->
+  <link rel="canonical" href="https://www.example.com/bkz-il17-nails/" />
+
+  <!-- Short description shown in search-engine result snippets -->
+  <meta name="description"
+    content="Medical information response on bimekizumab (BKZ) versus secukinumab (SEC) for nail psoriasis: BE RADIANT ad hoc analysis of mNAPSI outcomes and safety in patients with moderate to severe nail involvement." />
+
+  <!-- ── Open Graph (og:) — controls the preview card when shared on
+       LinkedIn, Facebook, Teams, Slack, etc. ── -->
+  <meta property="og:title" content="Bimekizumab — Comparison to an IL-17 Inhibitor in Patients With Nail Involvement" />
+  <meta property="og:description" content="UCB medical information: BKZ vs secukinumab for nail psoriasis — BE RADIANT ad hoc analysis." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.example.com/bkz-il17-nails/" />
+  <meta property="og:image" content="https://www.example.com/bkz-il17-nails/og-image.jpg" />
+
+  <!-- ── Twitter / X card — controls the preview card when shared on Twitter/X ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bimekizumab — Comparison to an IL-17 Inhibitor in Patients With Nail Involvement" />
+  <meta name="twitter:description" content="Medical information on BKZ vs secukinumab for nail psoriasis." />
+  <meta name="twitter:image" content="https://www.example.com/bkz-il17-nails/og-image.jpg" />
+
+  <!-- ── Favicon ── -->
+  <link rel="icon" type="image/png" href="assets/img/ucb-logo.png">
+
+  <!-- ── Stylesheet ── -->
+  <!-- Single CSS file; all design tokens, component styles, and responsive
+       rules are contained in styles.css -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- ── Structured data: MedicalWebPage (JSON-LD) ──
+       Tells search engines and AI crawlers (GEO) that this is a medical page
+       about bimekizumab for psoriasis nail involvement. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Bimekizumab Comparison to an IL-17 Inhibitor in Patients With Nail Involvement",
+    "url": "https://www.example.com/bkz-il17-nails/",
+    "about": [
+      {"@type":"Drug","name":"Bimekizumab"},
+      {"@type":"Drug","name":"Secukinumab"},
+      {"@type":"MedicalCondition","name":"Plaque Psoriasis"},
+      {"@type":"MedicalCondition","name":"Nail Psoriasis"}
+    ],
+    "medicalSpecialty": "Dermatology",
+    "lastReviewed": "2026-02-01",
+    "publisher": {"@type": "Organization", "name": "UCB SA"},
+    "hasPart": [
+      {"@type":"WebPageElement","name":"Summary","url":"#summary"},
+      {"@type":"WebPageElement","name":"Published Data","url":"#published-data"},
+      {"@type":"WebPageElement","name":"Appendix","url":"#appendix"}
+    ]
+  }
+  </script>
+
+  <!-- ── Structured data: FAQPage (JSON-LD) ──
+       Enables rich FAQ snippets in Google Search results and feeds
+       question-answer pairs directly to AI answer engines (GEO). -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Does the bimekizumab Company Core Data Sheet contain information on nail psoriasis compared to IL-17 inhibitors?","acceptedAnswer":{"@type":"Answer","text":"The CCDS for bimekizumab (BKZ; Bimzelx) contains no information regarding the comparison of BKZ to an interleukin (IL)-17 inhibitor with regards to psoriasis involving the nails in patients with plaque psoriasis."}},
+      {"@type":"Question","name":"What was the BE RADIANT nail psoriasis analysis?","acceptedAnswer":{"@type":"Answer","text":"In BE RADIANT, an ad hoc analysis compared the efficacy of bimekizumab (BKZ) and secukinumab (SEC) for nail psoriasis in patients with moderate to severe nail involvement (mNAPSI score > 10) at baseline (BKZ, n = 116; SEC, n = 99)."}},
+      {"@type":"Question","name":"What proportion of patients achieved complete nail clearance at Week 48?","acceptedAnswer":{"@type":"Answer","text":"Complete clearance of nail psoriasis (mNAPSI score = 0) at Week 48 was achieved by 70.7% of patients in the BKZ group and 53.5% of patients in the SEC group (nonresponder imputation, NRI)."}},
+      {"@type":"Question","name":"How did bimekizumab compare to secukinumab for individual nail manifestations?","acceptedAnswer":{"@type":"Answer","text":"Higher proportions of patients in the BKZ group than in the SEC group achieved complete clearance for all nail manifestations (mNAPSI subscore = 0) except for red spots on the lunula, where rates were similar between groups."}},
+      {"@type":"Question","name":"What were the safety findings in BE RADIANT for the overall population?","acceptedAnswer":{"@type":"Answer","text":"Over 48 weeks in the overall population (BKZ, n = 373; SEC, n = 370), 86.1% of BKZ patients and 81.4% of SEC patients reported any TEAE. Rates of serious TEAEs were similar (BKZ 5.9%; SEC 5.7%)."}},
+      {"@type":"Question","name":"What were the most common adverse events with bimekizumab in BE RADIANT?","acceptedAnswer":{"@type":"Answer","text":"The most common TEAEs in the BKZ versus SEC groups were upper respiratory tract infections (38.9% vs 41.6%), oral candidiasis (19.3% vs 3%), and urinary tract infections (6.7% vs 5.9%)."}}
+    ]
+  }
+  </script>
+</head>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     BODY
+     ═══════════════════════════════════════════════════════════════════ -->
+<body>
+
+  <!-- ─── FLOATING TOC ─────────────────────────────────────────────────
+       The nav is wrapped in .container so its width aligns with the page
+       content column. CSS makes it position:fixed with a glass backdrop.
+       Each button links to a section id. -->
+  <div class="container">
+    <nav id="toc" class="navbox" aria-label="Page sections">
+      <span class="navbox__title">Contents</span>
+      <!-- #toc-list: JS scroll-spy adds/removes .is-active on these <a> elements -->
+      <ul id="toc-list" class="navbox__list">
+        <li><a class="btn" href="#summary">Summary</a></li>
+        <li><a class="btn" href="#detailed-response">Detailed&nbsp;response</a></li>
+        <li><a class="btn" href="#PublishedDataDetail">Published&nbsp;data</a></li>
+        <li><a class="btn" href="#appendix">Appendix</a></li>
+        <li><a class="btn" href="#disclaimers">Disclaimers</a></li>
+        <li><a class="btn" href="#references">References</a></li>
+        <li><a class="btn" href="#feedback">Feedback</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ─── SITE HEADER ──────────────────────────────────────────────────
+       Static banner: UCB logo left, doc reference + date right,
+       document title below. role="banner" is the ARIA landmark. -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <!-- Flex row: logo left, doc-meta right -->
+      <div class="header-flex">
+        <div class="header-logo">
+          <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
+            alt="UCB logo with tagline inspired by patients, driven by science.">
+        </div>
+        <div class="header-meta-block">
+          <p class="doc-code">MED‑GL‑BKZ‑2300603</p>
+          <p class="doc-date">Preparation date:&nbsp;<time datetime="2026-02">Feb 2026</time></p>
+        </div>
+      </div><!-- /header-flex -->
+
+      <!-- Page title row — drug name + monitor flag + subtitle -->
+      <div class="page-title">
+        <h1 class="h1">
+          <span class="drug">Bimekizumab</span>
+          &mdash;
+          <span class="subtitle">Comparison to an IL-17 inhibitor in patients with plaque psoriasis having nail involvement</span>
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── MAIN CONTENT ──────────────────────────────────────────────── -->
+  <main id="main" class="container" role="main">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO KEY FACTS
+         Invisible to browser; readable by automated AEO extractors. -->
+    <section id="aeo-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO"></span>
+      <p>Key Facts — Bimekizumab vs Secukinumab: Nail Psoriasis in BE RADIANT (Ad Hoc Analysis)</p>
+      <p>Bimekizumab (BKZ; Bimzelx) is approved for moderate to severe plaque psoriasis. The Company Core Data Sheet
+        (CCDS) contains no information comparing BKZ to an IL-17 inhibitor for nail psoriasis. In an ad hoc analysis of
+        BE RADIANT, patients with moderate to severe nail involvement (mNAPSI &gt; 10) at baseline were evaluated.
+        Complete clearance of nail psoriasis (mNAPSI score = 0) at Week 48 was achieved by 70.7% of BKZ patients versus
+        53.5% of secukinumab (SEC) patients (NRI). BKZ showed higher proportions of complete clearance across most
+        individual nail manifestation types. Overall TEAE rates were similar between groups (BKZ 86.1%; SEC 81.4%).
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO Q&A PAIRS
+         Structured question-and-answer pairs for AEO pipelines. -->
+    <section id="aeo-qa" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO-QA"></span>
+      <p>AEO Key Questions &amp; Answers</p>
+      <p>Does the BKZ CCDS address nail psoriasis compared to IL-17 inhibitors?</p>
+      <p>No. The CCDS for bimekizumab contains no information on the comparison of BKZ to an IL-17 inhibitor for nail
+        psoriasis.</p>
+      <p>What was the mNAPSI = 0 rate at Week 48 with BKZ vs secukinumab?</p>
+      <p>70.7% for BKZ and 53.5% for secukinumab (NRI) among patients with baseline mNAPSI &gt; 10.</p>
+      <p>How did BKZ compare to secukinumab for individual nail manifestations?</p>
+      <p>BKZ achieved higher complete clearance rates for all nail manifestation types except red spots on the lunula,
+        where rates were similar.</p>
+      <p>What were the safety findings in BE RADIANT?</p>
+      <p>86.1% of BKZ patients and 81.4% of SEC patients reported any TEAE in the overall population. Serious TEAE
+        rates were similar (BKZ 5.9%; SEC 5.7%). Most common BKZ TEAEs: upper respiratory tract infections, oral
+        candidiasis, urinary tract infections.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: SUMMARY
+         Top-level visible section. Contains brief summaries of the
+         CCDS and published data evidence, each inside a collapsible
+         <details> block. -->
+    <section id="summary">
+      <h1 class="h1">Summary</h1>
+
+      <!-- ── Summary: CCDS ─────────────────────────────────────────── -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Relevant Information From the Company Core Data Sheet (CCDS)</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p>The CCDS for
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">bimekizumab</span>
+            (<span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>; Bimzelx) contains
+            no information regarding the comparison of BKZ to an interleukin (IL)-17 inhibitor with regards to psoriasis
+            (PSO) involving the nails in patients with plaque PSO.
+          </p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+
+      <!-- ── Summary: Published Data ─────────────────────────────────
+           Bullets summarising the BE RADIANT ad hoc nail analysis.
+           Sub-bullets (BulletList2) are nested under the main bullet. -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Published Data</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <ul>
+            <li>
+              <a id="ref1-first"></a>
+              <p>In BE RADIANT, an ad hoc analysis was conducted to compare the efficacy of
+                <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                and secukinumab (<span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>)
+                for the treatment of nail PSO. This analysis comprised patients who had moderate to severe nail
+                involvement (modified Nail Psoriasis Severity Index [mNAPSI] score &gt; 10) at baseline (BKZ,
+                n&nbsp;=&nbsp;116; SEC, n&nbsp;=&nbsp;99) [Click <a href="#be-radiant">here</a> for details].
+              </p>
+              <ul>
+                <li>
+                  <a id="ref2-first"></a>
+                  <p>Complete clearance of nail PSO (mNAPSI score = 0) at Week 48 was achieved by 70.7% of patients in
+                    the
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                    group and 53.5% of patients in the
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>
+                    group (nonresponder imputation [NRI]) [Click <a href="#efficacy-results">here</a> for
+                    details].<sup><a href="#ref-2">2</a></sup>
+                  </p>
+                </li>
+                <li>
+                  <p>Each nail was individually evaluated for nail manifestations. Higher proportions of patients in the
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                    group than in the
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>
+                    group achieved complete clearance for all nail manifestations (mNAPSI subscore = 0) except for red
+                    spots on the lunula [Click <a href="#nail-manifestations-table">here</a> for
+                    details].<sup><a href="#ref-2">2</a></sup>
+                  </p>
+                </li>
+                <li>
+                  <p>Over 48 weeks, in the overall population (<span data-type="drug" data-emtree="bimekizumab"
+                      data-mesh="" data-snomed="">BKZ</span>,<sup>a</sup> n&nbsp;=&nbsp;373;
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;370), the rate of occurrence of any treatment-emergent adverse event (TEAE) was 86.1%
+                    for the
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                    group and 81.4% for the
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>
+                    group, and the rate of occurrence of serious TEAEs was similar for the
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                    (5.9%) and
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>
+                    (5.7%) groups [Click <a href="#safety-data">here</a> for
+                    details].<sup><a href="#ref-3">3</a></sup>
+                  </p>
+                </li>
+              </ul>
+              <div class="mini-foot"><sup>a</sup> Patients received
+                <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.<br>
+                BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index; NRI&nbsp;= nonresponder
+                imputation; PSO&nbsp;= psoriasis; QXW&nbsp;= every X weeks;
+                SEC&nbsp;= secukinumab.</div>
+            </li>
+          </ul>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DETAILED RESPONSE
+         Card-box wrapper containing the full BE RADIANT nail analysis:
+         overview, efficacy results (Figure 1, Table 1), and safety.
+         h1 "Detailed Response" is always visible; the Published Data
+         <details> collapses the body content below it. -->
+    <section id="detailed-response">
+      <h1 class="h1">Detailed Response</h1>
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Published Data</h2><a id="PublishedDataDetail"></a>
+          </span>
+        </summary>
+        <div class="collapse-content">
+
+          <!-- ── BE RADIANT: Overview ──────────────────────────────── -->
+          <h2 id="be-radiant">BE RADIANT</h2>
+          <h4>Overview</h4>
+          <p>BE RADIANT was a Phase 3b, 48-week, randomized, double-blind,
+            <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>-controlled,
+            parallel-group study conducted in 743 adult patients to evaluate the efficacy and safety of
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+            in patients with moderate to severe plaque PSO; the primary endpoint was complete skin clearance at Week
+            16.<sup><a href="#ref-3">3</a></sup>
+            The study design is included in the Appendix.
+          </p>
+          <p>In BE RADIANT, an ad hoc analysis was conducted in patients who had moderate to severe nail involvement at
+            baseline to evaluate the use of
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+            for the treatment of nail PSO. The proportion of patients who achieved complete clearance of nail PSO
+            (mNAPSI score = 0) was assessed at Weeks 16 and 48. The mNAPSI score for each individual fingernail ranges
+            from 0 to 13 (0 to 130 for all 10 fingernails), with higher scores indicating more severe nail disease. Each
+            nail was scored from 0 to 3 according to whether it presented onycholysis/oil drop dyschromia, crumbling of
+            the nail plate, and/or pitting. In addition, each of the following manifestation types was scored as 1
+            (present) or 0 (not present): leukonychia, hyperkeratosis of the nail bed, splinter hemorrhages, and red
+            spots on the lunula. The proportions of patients who achieved complete clearance (mNAPSI subscore = 0) of
+            each of these manifestations were compared between the 2 treatment groups at Weeks 16 and
+            48.<sup><a href="#ref-2">2</a></sup>
+          </p>
+
+          <!-- ── BE RADIANT: Baseline Demographics ─────────────────── -->
+          <h4>Baseline Demographics</h4>
+          <p>Baseline demographics and characteristics of patients with an mNAPSI score of &gt;&nbsp;10 at baseline
+            (<span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+            n&nbsp;=&nbsp;116;
+            <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+            n&nbsp;=&nbsp;99) are summarized in the <a href="#appendix">Appendix</a>.<sup><a href="#ref-2">2</a></sup>
+          </p>
+
+          <!-- ── BE RADIANT: Efficacy Results ───────────────────────── -->
+          <h4 id="efficacy-results">Efficacy Results for Nail PSO</h4>
+          <p>The proportion of patients with an mNAPSI score of &gt;&nbsp;10 at baseline who achieved complete
+            clearance of nail PSO (mNAPSI score = 0) over 48 weeks is shown in <strong>Figure 1</strong>, and the
+            proportion of patients who achieved complete clearance of each type of nail manifestation (mNAPSI subscore
+            = 0) at Weeks 16 and 48 is shown in <strong>Table 1</strong>.<sup><a href="#ref-2">2</a></sup>
+          </p>
+
+          <!-- FIGURE 1: mNAPSI = 0 bar chart -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="1">
+                  <h6>Figure 1 — Proportion of Patients With Baseline mNAPSI &gt; 10 Who Achieved
+                    mNAPSI&nbsp;=&nbsp;0 (Adapted).<sup>a,<a href="#ref-2">2</a></sup>
+                  </h6>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="assets/img/grd-bkz/image1.svg"
+                    alt="Bar chart showing the proportion of patients with baseline mNAPSI greater than 10 who achieved mNAPSI equal to 0 at weeks 4, 8, 12, 16, 20, 24, 32, 40, and 48, comparing BKZ and SEC treatment groups under NRI, mNRI, and OC analyses."
+                    style="max-width:100%;height:auto;display:block;">
+                </td>
+              </tr>
+              <tr class="tblfig-footer">
+                <td colspan="1">
+                  <sup>a</sup> Only patients with an mNAPSI score &gt; 10 at baseline were included in this
+                  analysis.<br>
+                  <sup>b</sup> Patients received
+                  <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                  320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.<br>
+                  <sup>c</sup> For mNRI, patients who discontinued the study were considered nonresponders at
+                  subsequent timepoints; multiple imputation was used for all other missing data.<br>
+                  BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
+                  mNRI&nbsp;= modified nonresponder imputation; NRI&nbsp;= nonresponder imputation;
+                  OC&nbsp;= observed case; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- TABLE 1: Nail clearance by manifestation type -->
+          <div class="tblfig" id="nail-manifestations-table">
+            <table role="table">
+              <tr>
+                <td colspan="4">
+                  <h6>Table 1 — Proportion of Patients Who Achieved Complete Nail Clearance by Type of Nail
+                    Manifestation (NRI) (Adapted).<sup>a,b,<a href="#ref-2">2</a></sup>
+                  </h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-1">
+                <th scope="col" rowspan="2">Nail Manifestation</th>
+                <th scope="col" rowspan="2">Patients With an mNAPSI Subscore &gt;&nbsp;0</th>
+                <th scope="col" colspan="2">Patients Who Achieved an mNAPSI Subscore of 0, %</th>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col">Week 16</th>
+                <th scope="col">Week 48</th>
+              </tr>
+              <tbody>
+                <!-- Onycholysis / oil drop dyschromia -->
+                <tr class="interim-row">
+                  <td colspan="4">Onycholysis/oil drop dyschromia</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+                    n&nbsp;=&nbsp;103</td>
+                  <td class="text-center">63.1</td>
+                  <td class="text-center">83.5</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;84</td>
+                  <td class="text-center">64.3</td>
+                  <td class="text-center">66.7</td>
+                </tr>
+                <!-- Nail plate crumbling -->
+                <tr class="interim-row">
+                  <td colspan="4">Nail plate crumbling</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+                    n&nbsp;=&nbsp;69</td>
+                  <td class="text-center">65.2</td>
+                  <td class="text-center">85.5</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;56</td>
+                  <td class="text-center">69.6</td>
+                  <td class="text-center">75.0</td>
+                </tr>
+                <!-- Pitting -->
+                <tr class="interim-row">
+                  <td colspan="4">Pitting</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+                    n&nbsp;=&nbsp;101</td>
+                  <td class="text-center">36.6</td>
+                  <td class="text-center">78.2</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;86</td>
+                  <td class="text-center">41.9</td>
+                  <td class="text-center">59.3</td>
+                </tr>
+                <!-- Leukonychia -->
+                <tr class="interim-row">
+                  <td colspan="4">Leukonychia</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+                    n&nbsp;=&nbsp;59</td>
+                  <td class="text-center">69.5</td>
+                  <td class="text-center">79.7</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;58</td>
+                  <td class="text-center">70.7</td>
+                  <td class="text-center">69.0</td>
+                </tr>
+                <!-- Nail bed hyperkeratosis -->
+                <tr class="interim-row">
+                  <td colspan="4">Nail bed hyperkeratosis</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+                    n&nbsp;=&nbsp;61</td>
+                  <td class="text-center">68.9</td>
+                  <td class="text-center">83.6</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;51</td>
+                  <td class="text-center">80.4</td>
+                  <td class="text-center">80.4</td>
+                </tr>
+                <!-- Splinter hemorrhages -->
+                <tr class="interim-row">
+                  <td colspan="4">Splinter hemorrhages</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+                    n&nbsp;=&nbsp;47</td>
+                  <td class="text-center">61.7</td>
+                  <td class="text-center">68.1</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;44</td>
+                  <td class="text-center">47.7</td>
+                  <td class="text-center">63.6</td>
+                </tr>
+                <!-- Red spots in lunula -->
+                <tr class="interim-row">
+                  <td colspan="4">Red spots in lunula</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>,
+                    n&nbsp;=&nbsp;21</td>
+                  <td class="text-center">81.0</td>
+                  <td class="text-center">81.0</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>,
+                    n&nbsp;=&nbsp;22</td>
+                  <td class="text-center">90.9</td>
+                  <td class="text-center">81.8</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="4">
+                    <sup>a</sup> Only patients with an mNAPSI score &gt;&nbsp;10 and subscore &gt;&nbsp;0 at baseline
+                    were included in this analysis.<br>
+                    <sup>b</sup> Patients received
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                    320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.<br>
+                    BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
+                    NRI&nbsp;= nonresponder imputation; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ── BE RADIANT: Safety Data ─────────────────────────────── -->
+          <h4 id="safety-data">Safety Data</h4>
+          <p>Safety data were not reported separately for patients who had nail involvement at baseline. Treatment was
+            well tolerated; 86.1% of patients in the
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+            group reported a TEAE vs. 81.4% of patients in the
+            <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>
+            group. The most common TEAEs in the
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+            vs.
+            <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>
+            groups were upper respiratory tract infections (38.9% vs. 41.6%), oral candidiasis (19.3% vs. 3%), and
+            urinary tract infections (6.7% vs. 5.9%),
+            respectively.<sup><a href="#ref-3">3</a></sup>
+          </p>
+
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: APPENDIX
+         Baseline demographics table (Table 2) and BE RADIANT study
+         design figure (Figure 2), as referenced from the published
+         data section. -->
+    <section id="appendix">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h1 class="h1">Appendix</h1><a id="AppendixDetail"></a>
+          </span>
+        </summary>
+        <div class="collapse-content">
+
+          <!-- TABLE 2: Baseline Demographics -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="3">
+                  <h6>Table 2 — Baseline Demographics of Patients With a Baseline mNAPSI Score &gt;&nbsp;10 in the
+                    BE&nbsp;RADIANT Study (Adapted).<sup><a href="#ref-2">2</a></sup>
+                  </h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-1">
+                <th scope="col">Characteristic</th>
+                <th scope="col" class="text-center">
+                  <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span><sup>a</sup>
+                  (n&nbsp;=&nbsp;116)
+                </th>
+                <th scope="col" class="text-center">
+                  <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">SEC</span>
+                  (n&nbsp;=&nbsp;99)
+                </th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>Age (years), mean &plusmn; SD</td>
+                  <td class="text-center">45.7 &plusmn; 14.0</td>
+                  <td class="text-center">43.9 &plusmn; 12.8</td>
+                </tr>
+                <tr>
+                  <td>Male, n (%)</td>
+                  <td class="text-center">94 (81.0)</td>
+                  <td class="text-center">81 (81.8)</td>
+                </tr>
+                <tr>
+                  <td>White, n (%)</td>
+                  <td class="text-center">109 (94.0)</td>
+                  <td class="text-center">97 (98.0)</td>
+                </tr>
+                <tr>
+                  <td>Weight (kg), mean &plusmn; SD</td>
+                  <td class="text-center">93.0 &plusmn; 21.0</td>
+                  <td class="text-center">90.5 &plusmn; 17.9</td>
+                </tr>
+                <tr>
+                  <td>Duration of psoriasis (years), mean &plusmn; SD</td>
+                  <td class="text-center">20.1 &plusmn; 14.3</td>
+                  <td class="text-center">17.3 &plusmn; 10.6</td>
+                </tr>
+                <tr>
+                  <td>PASI, mean &plusmn; SD</td>
+                  <td class="text-center">21.8 &plusmn; 8.9</td>
+                  <td class="text-center">20.4 &plusmn; 6.3</td>
+                </tr>
+                <tr>
+                  <td>BSA (%), mean &plusmn; SD</td>
+                  <td class="text-center">27.4 &plusmn; 18.3</td>
+                  <td class="text-center">23.4 &plusmn; 12.7</td>
+                </tr>
+                <tr class="interim-row">
+                  <td colspan="3">IGA, n (%)</td>
+                </tr>
+                <tr>
+                  <td>3: Moderate</td>
+                  <td class="text-center">60 (51.7)</td>
+                  <td class="text-center">71 (71.7)</td>
+                </tr>
+                <tr>
+                  <td>4: Severe</td>
+                  <td class="text-center">55 (47.4)</td>
+                  <td class="text-center">28 (28.3)</td>
+                </tr>
+                <tr>
+                  <td>DLQI, mean &plusmn; SD</td>
+                  <td class="text-center">10.6 &plusmn; 6.7</td>
+                  <td class="text-center">12.3 &plusmn; 7.5</td>
+                </tr>
+                <tr class="interim-row">
+                  <td colspan="3">mNAPSI, mean &plusmn; SD</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Overall score</td>
+                  <td class="text-center">28.5 &plusmn; 17.9</td>
+                  <td class="text-center">29.6 &plusmn; 20.6</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Onycholysis/oil drop dyschromia</td>
+                  <td class="text-center">9.0 &plusmn; 7.5</td>
+                  <td class="text-center">9.1 &plusmn; 7.3</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Nail plate crumbling</td>
+                  <td class="text-center">4.4 &plusmn; 6.4</td>
+                  <td class="text-center">4.1 &plusmn; 6.0</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Pitting</td>
+                  <td class="text-center">8.4 &plusmn; 7.0</td>
+                  <td class="text-center">8.4 &plusmn; 7.3</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Leukonychia</td>
+                  <td class="text-center">2.0 &plusmn; 2.9</td>
+                  <td class="text-center">2.9 &plusmn; 3.6</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Nail bed hyperkeratosis</td>
+                  <td class="text-center">2.4 &plusmn; 3.2</td>
+                  <td class="text-center">2.8 &plusmn; 3.8</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Splinter hemorrhages</td>
+                  <td class="text-center">1.6 &plusmn; 2.5</td>
+                  <td class="text-center">1.5 &plusmn; 2.5</td>
+                </tr>
+                <tr>
+                  <td style="padding-inline-start:1.5rem">Red spots in lunula</td>
+                  <td class="text-center">0.6 &plusmn; 1.7</td>
+                  <td class="text-center">0.7 &plusmn; 2.2</td>
+                </tr>
+                <tr>
+                  <td>Any prior systemic therapy, n (%)</td>
+                  <td class="text-center">87 (75.0)</td>
+                  <td class="text-center">79 (79.8)</td>
+                </tr>
+                <tr>
+                  <td>Any prior biologic therapy, n (%)</td>
+                  <td class="text-center">45 (38.8)</td>
+                  <td class="text-center">42 (42.4)</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="3">
+                    <sup>a</sup> Patients received
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+                    320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.<br>
+                    BKZ&nbsp;= bimekizumab; BSA&nbsp;= body surface area;
+                    DLQI&nbsp;= Dermatology Life Quality Index;
+                    IGA&nbsp;= Investigator&rsquo;s Global Assessment;
+                    mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
+                    PASI&nbsp;= Psoriasis Area Severity Index;
+                    SD&nbsp;= standard deviation; SEC&nbsp;= secukinumab.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- FIGURE 2: BE RADIANT Study Design -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="1">
+                  <h6>Figure 2 — BE RADIANT Study Design
+                    (Adapted).<sup><a href="#ref-2">2</a>,<a href="#ref-3">3</a></sup>
+                  </h6>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="assets/img/grd-bkz/image2.svg"
+                    alt="Schematic of the BE RADIANT study design showing randomisation of patients to bimekizumab 320 mg or secukinumab 300 mg over 48 weeks."
+                    style="max-width:100%;height:auto;display:block;">
+                </td>
+              </tr>
+              <tr class="tblfig-footer">
+                <td colspan="1">
+                  <sup>a</sup>
+                  <span data-type="drug" data-emtree="secukinumab" data-mesh="" data-snomed="">Secukinumab</span>
+                  was administered at a dose of 300&nbsp;mg weekly to Week 4, followed by Q4W dosing through
+                  Week 48.<br>
+                  QXW&nbsp;= every X weeks.
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DISCLAIMERS
+         Standard regulatory and copyright statements. &#9660; (▼) is
+         the EMA additional-monitoring symbol. -->
+    <section id="disclaimers">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Disclaimers</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p>Please note that the information contained in this response is for your personal use only and due to
+            copyright may not be forwarded or published.</p>
+          <p>Medical literature databases are selective in their sources, and the information obtained from the search
+            may not represent the totality of the literature or available data on this topic.</p>
+          <p>Information provided in this document is not intended to draw any conclusions regarding the efficacy and
+            safety of
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="" data-snomed="">BKZ</span>
+            for any indication or dosage.
+          </p>
+          <p>Links to all third-party websites are provided as a convenience and do not imply an endorsement or
+            recommendation by UCB. UCB accepts no responsibility or liability for the content or services of other
+            websites. UCB encourages you to review the policies and terms of all websites you may choose to visit.</p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: REFERENCES
+         Numbered citation list. Each <li id="ref-N"> is the scroll
+         target for in-text superscript citation links (<a href="#ref-N">).
+         External URLs carry target="_blank" and rel="noopener noreferrer". -->
+    <section id="references">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">References</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <ol>
+            <li id="ref-1">Bimekizumab (Bimzelx) Company Core Data Sheet. UCB Pharma SA.</li>
+            <li id="ref-2">Eyerich K, Gottlieb AB, Piaserico S, Beissert S, Gooderham M, Kirby B, et al.
+              Bimekizumab versus secukinumab for the treatment of nail psoriasis in patients with moderate to severe
+              plaque psoriasis: results from the BE RADIANT phase 3b trial. [Poster] Presented at: American Academy
+              of Dermatology (AAD) Annual Meeting, 17&ndash;21 May 2023; New Orleans, LA, USA; 43878.</li>
+            <li id="ref-3">Reich K, Warren RB, Lebwohl M, Gooderham M, Strober B, Langley RG, et al. Bimekizumab
+              versus secukinumab in plaque psoriasis. <em>N Engl J Med.</em> 2021;385:142&ndash;52.
+              <br>Available from: <a href="https://doi.org/10.1056/NEJMoa2102383" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1056/NEJMoa2102383</a></li>
+          </ol>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: FEEDBACK
+         Optional HCP feedback widget: star rating, comment textarea,
+         data-protection notice, and Send button. -->
+    <section id="feedback"
+             data-document-number="MED-GL-BKZ-2300603"
+             data-case-response-number="">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h3>Help us improve this content</h3>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p style="color: var(--brand);"><strong>How did this response improve your practice?</strong></p>
+
+          <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
+            <legend id="stars_label">Rating</legend>
+            <div class="stars-list">
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="1"
+                aria-label="1 star">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="2"
+                aria-label="2 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="3"
+                aria-label="3 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="4"
+                aria-label="4 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="5"
+                aria-label="5 stars">★</button>
+            </div>
+          </fieldset>
+
+          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before
+            sending.</p>
+
+          <div class="comment-field">
+            <label for="comment">Comment (optional)</label>
+            <textarea id="comment" name="comment" placeholder="Your comment …" rows="4"></textarea>
+          </div>
+
+          <div class="feedback-notice" role="note">
+            <p class="feedback-notice__title">Data protection notice</p>
+            <ul class="feedback-notice__list">
+              <li>Your feedback helps us to improve clarity and usefulness of our medical information.</li>
+              <li>You may submit your feedback anonymously. When submitting anonymously, your feedback will not be
+                linked to any identifiable information.</li>
+              <li>Please do not include personal health information or details about specific medical conditions in the
+                comment field.</li>
+              <li>Feedback data will only be used internally for quality improvement purposes and will not be shared
+                with third parties.</li>
+            </ul>
+          </div>
+
+          <div class="feedback-actions">
+            <div class="anon-option">
+              <input type="checkbox" id="anonymous" name="anonymous">
+              <label for="anonymous">Send anonymously</label>
+            </div>
+            <button type="button" id="submit-feedback" class="btn btn--primary">Send</button>
+          </div>
+
+          <div id="feedback-message" role="status" aria-live="polite"></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: LLM / GEO MACHINE SUMMARY
+         A concise paragraph for large language model crawlers.
+         display:none — invisible to human readers. -->
+    <section id="llm-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
+      <p>GEO Machine Summary</p>
+      <p>Bimekizumab (BKZ; Bimzelx) was compared to secukinumab (SEC) for nail psoriasis in an ad hoc analysis of the
+        BE RADIANT Phase 3b study in patients with moderate to severe plaque psoriasis who had an mNAPSI score &gt; 10
+        at baseline. At Week 48, 70.7% of BKZ-treated patients versus 53.5% of SEC-treated patients achieved complete
+        nail clearance (mNAPSI = 0; NRI). Higher proportions of BKZ-treated patients achieved complete clearance for
+        most individual nail manifestation types. Safety profiles in the overall population were broadly comparable, with
+        TEAE rates of 86.1% (BKZ) versus 81.4% (SEC); oral candidiasis was more frequent with BKZ. The Company Core
+        Data Sheet for bimekizumab contains no information on comparison to an IL-17 inhibitor for nail psoriasis. Refer
+        to the authorised product information for dosing, populations, and monitoring.</p>
+    </section>
+  </main>
+
+  <!-- ─── SITE FOOTER ──────────────────────────────────────────────────
+       Centred footer repeating the document title, reference code,
+       and copyright notice. role="contentinfo" is the ARIA landmark. -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="meta-center"><span class="drug">Bimekizumab</span>
+        &mdash;
+        <span class="subtitle">Comparison to an IL-17 inhibitor in patients with plaque psoriasis having nail
+          involvement</span><br>
+        MED‑GL‑BKZ‑2300603, &copy; UCB SA, 2026. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────────────────
+       main.js handles TOC scroll-spy, star rating, and feedback submission. -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

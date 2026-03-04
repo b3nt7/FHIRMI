@@ -30,7 +30,6 @@ html {
   /* Prevent iOS Safari from auto-inflating font sizes on narrow viewports,
      which would make <p> appear disproportionately larger than headings/tables. */
   -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
 }
 
 /* Only enable smooth scrolling when the user is actively navigating
@@ -250,6 +249,7 @@ a:hover { color: #a84544;      text-decoration: underline; }
 #aeo-qa,
 #summary,
 #detailed-response,
+#appendix,
 #disclaimers,
 #references,
 #llm-summary,
@@ -270,6 +270,12 @@ a:hover { color: #a84544;      text-decoration: underline; }
 #disclaimers       > h1:first-child,
 #references        > h1:first-child,
 #llm-summary       > h1:first-child {
+  margin-top: 0;
+}
+
+/* #appendix opens with a <details> not an <h1>,
+   so remove the details' top margin instead to keep flush card padding. */
+#appendix          > details:first-child {
   margin-top: 0;
 }
 
@@ -436,8 +442,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   padding: 0.4rem var(--space-1) !important;
 
   /* Glass effect: near-invisible blue tint; backdrop-filter does the frosting */
-  backdrop-filter: saturate(180%) blur(1.25rem);
   -webkit-backdrop-filter: saturate(180%) blur(1.25rem);
+  backdrop-filter: saturate(180%) blur(1.25rem);
   background: rgba(0, 20, 137, 0.04);         /* 4% brand blue — barely tinted */
   border: 0.0625rem solid rgba(255, 255, 255, 0.28); /* soft white rim */
   box-shadow:
@@ -457,9 +463,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   overflow-x: auto;       /* scroll horizontally when buttons exceed bar width */
   overflow-y: hidden;
   justify-content: flex-start; /* left-aligned so scroll makes sense */
-  scrollbar-width: none;  /* Firefox: hide scrollbar visually */
 }
-/* Chrome / Safari: hide scrollbar (scroll still works via touch / trackpad) */
+/* Hide scrollbar visually (scroll still works via touch / trackpad) */
 #toc .navbox__list::-webkit-scrollbar { display: none; }
 
 /* Slightly smaller label in the compact glass bar */
@@ -564,12 +569,12 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   11. TABLES  (.tbl)
-   Data tables styled for the Veeva email / HTML output format.
-   border-collapse: separate with border-spacing: 0 is required so
-   border-radius clips correctly on the outer table frame.
+   11. TABLES & FIGURES  (.tblfigfig)
+   Shared wrapper for data tables and figures, styled for the Veeva
+   email / HTML output format. border-collapse: separate with
+   border-spacing: 0 is required so border-radius clips correctly.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.tbl table {
+.tblfig table {
   width: 100%;
   border-collapse: separate;   /* required for border-radius on table */
   border-spacing: 0;
@@ -581,8 +586,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Default cell style — all cells share this baseline */
-.tbl th,
-.tbl td {
+.tblfig th,
+.tblfig td {
   border-bottom: 0.0625rem solid var(--border);
   padding: var(--space-05);
   vertical-align: top;
@@ -591,24 +596,24 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Last data row has no bottom border (table border provides the edge) */
-.tbl tr:last-child td { border-bottom: 0; }
+.tblfig tr:last-child td { border-bottom: 0; }
 
 /* Header row tiers: .hdr defaults to level-3 (lightest); .hdr-1 / .hdr-2
    allow darker shading on top-level columns without extra markup. */
-.tbl .hdr th    { font-size: 0.95rem; font-weight: 700; background: var(--tbl-h3); }
-.tbl .hdr-1 th  { background: var(--tbl-h1); }  /* darkest  */
-.tbl .hdr-2 th  { background: var(--tbl-h2); }
-.tbl .hdr-3 th  { background: var(--tbl-h3); }  /* lightest */
+.tblfig .hdr th    { font-size: 0.95rem; font-weight: 700; background: var(--tbl-h3); }
+.tblfig .hdr-1 th  { background: var(--tbl-h1); }  /* darkest  */
+.tblfig .hdr-2 th  { background: var(--tbl-h2); }
+.tblfig .hdr-3 th  { background: var(--tbl-h3); }  /* lightest */
 
 /* Interim rows span full width, styled as a subgroup label */
-.tbl .interim-row td[colspan] {
+.tblfig .interim-row td[colspan] {
   background: var(--tbl-interim);
   font-size: 0.95rem;
   font-weight: 700;
 }
 
 /* Table footer: abbreviation key / footnote row */
-.tbl .tbl-footer td[colspan] {
+.tblfig .tblfig-footer td[colspan] {
   background: var(--tbl-foot);
   font-size: 0.85rem;
   font-weight: 400;
@@ -891,8 +896,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    ::after pseudo-element renders the white tick when checked.
    Border and background now match the comment textarea and rating pill. */
 .anon-option input[type="checkbox"] {
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   width: 1.2rem;
   height: 1.2rem;
   margin: 0;
@@ -1093,8 +1098,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 
   p, ul, ol { font-size: 0.95rem; }
 
-  .tbl th,
-  .tbl td { font-size: 0.9rem; }
+  .tblfig th,
+  .tblfig td { font-size: 0.9rem; }
 
   /* Reduce container side padding on small screens */
   .container { padding-inline: var(--space-075); }
@@ -1215,6 +1220,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   #aeo-qa,
   #summary,
   #detailed-response,
+  #appendix,
   #disclaimers,
   #references,
   #llm-summary {
@@ -1237,6 +1243,10 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
     margin-top: 0.5em;
   }
 
+  #appendix          > details:first-child {
+    margin-top: 0.5em;
+  }
+
   /* ── Expand all collapsible <details> sections ──
      CSS alone forces content visible; JS (beforeprint) also sets [open]
      so the chevron rotates and native UA state is consistent.          */
@@ -1255,7 +1265,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 
   /* ── Page-break control ── */
   h1, h2, h3, h4, h5, h6 { break-after: avoid; }
-  .tbl { break-inside: avoid; }
+  .tblfig { break-inside: avoid; }
 
   /* ── Site header: show only the page-title in print.
      The logo lives in the @page @top-left margin box (every page).
