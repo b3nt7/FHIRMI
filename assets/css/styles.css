@@ -250,6 +250,7 @@ a:hover { color: #a84544;      text-decoration: underline; }
 #summary,
 #detailed-response,
 #appendix,
+#off-label,
 #disclaimers,
 #references,
 #llm-summary,
@@ -267,6 +268,7 @@ a:hover { color: #a84544;      text-decoration: underline; }
 #aeo-qa            > h1:first-child,
 #summary           > h1:first-child,
 #detailed-response > h1:first-child,
+#off-label         > h1:first-child,
 #disclaimers       > h1:first-child,
 #references        > h1:first-child,
 #llm-summary       > h1:first-child {
