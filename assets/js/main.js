@@ -262,8 +262,12 @@
   const feedbackMsg     = document.getElementById('feedback-message');
   const collapseContent = document.querySelector('#feedback .collapse-content');
   const STORAGE_KEY     = 'ucb_feedback';
-  const docNumber       = document.getElementById('feedback')?.dataset.documentNumber     ?? '';
-  const caseNumber      = document.getElementById('feedback')?.dataset.caseResponseNumber ?? '';
+  const feedbackSection = document.getElementById('feedback');
+  const docNumber       = feedbackSection?.dataset.documentNumber     ?? '';
+  const caseNumber      = feedbackSection?.dataset.caseResponseNumber ?? '';
+  const labelUpdate     = feedbackSection?.dataset.labelUpdate ?? 'Update my response';
+  const labelResend     = feedbackSection?.dataset.labelResend ?? 'RE-SEND';
+  const msgThanks       = feedbackSection?.dataset.msgThanks   ?? 'Thank you for your feedback!';
 
   function generateToken() {
     return (typeof crypto !== 'undefined' && crypto.randomUUID)
@@ -323,9 +327,9 @@
     if (textarea)  { textarea.value  = data.comment;   textarea.disabled  = true; }
     if (anonCheck) { anonCheck.checked = data.anonymous; anonCheck.disabled = true; }
 
-    if (actionBtn) actionBtn.textContent = 'Update my response';
+    if (actionBtn) actionBtn.textContent = labelUpdate;
     collapseContent?.classList.add('feedback-submitted');
-    if (feedbackMsg) feedbackMsg.textContent = 'Thank you for your feedback!';
+    if (feedbackMsg) feedbackMsg.textContent = msgThanks;
     clearStarError();
   }
 
@@ -337,7 +341,7 @@
     if (textarea)  { textarea.value  = data.comment;   textarea.disabled  = false; }
     if (anonCheck) { anonCheck.checked = data.anonymous; anonCheck.disabled = false; }
 
-    if (actionBtn) actionBtn.textContent = 'RE-SEND';
+    if (actionBtn) actionBtn.textContent = labelResend;
     collapseContent?.classList.remove('feedback-submitted');
     if (feedbackMsg) feedbackMsg.textContent = '';
     clearStarError();
