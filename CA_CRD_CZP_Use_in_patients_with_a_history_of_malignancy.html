@@ -1,0 +1,740 @@
+<!-- =================================================================
+     UCB Medical Information — CA_CRD_CZP_Use_in_patients_with_a_history_of_malignancy.html
+
+     Document  : Certolizumab pegol — Use in patients with a history of malignancy
+     Reference : MED-CA-CZP-2400016
+     Prepared  : Mar 2026   |   © UCB Canada Inc., 2026
+
+     Structure overview
+     ──────────────────
+     <head>
+       · Standard meta tags + social (OG / Twitter)
+       · Single stylesheet: assets/css/styles.css
+       · Two JSON-LD blocks: MedicalWebPage + FAQPage (for SEO / GEO)
+
+     <body>
+       · Floating TOC nav  — fixed glass bar linking to all sections
+       · <header>          — UCB logo, doc-code, preparation date, page title
+       · <main>
+           #aeo-summary    — HIDDEN: machine-readable AEO key facts
+           #aeo-qa         — HIDDEN: machine-readable AEO Q&A pairs
+           #summary        — Visible: collapsible PM + Published Data summaries
+           #detailed-response — Visible: PM info + 4 retrospective studies
+           #disclaimers    — Visible: regulatory / copyright disclaimers
+           #references     — Visible: numbered citation list
+           #feedback       — Visible: star rating + comment + send widget
+           #llm-summary    — HIDDEN: machine-readable GEO paragraph for LLMs
+       · <footer>          — doc-code, copyright
+       · <script>          — assets/js/main.js (scroll-spy, star rating, feedback)
+
+     Key HTML conventions
+     ─────────────────────
+     · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
+         data-snomed="…"> — semantic tagging for FHIR / ontology consumers
+     · hidden-section: display:none — content for automated readers only
+     · collapse: native <details>/<summary> pattern for collapsible sections
+     · Tables use role="table" with header rows carrying scope="col"
+     ================================================================= -->
+<!doctype html>
+<html lang="en">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HEAD
+     ═══════════════════════════════════════════════════════════════════ -->
+<head>
+  <meta charset="utf-8" />
+  <title>Certolizumab pegol — Use in patients with a history of malignancy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.example.com/czp-history-malignancy/" />
+  <meta name="description"
+    content="Medical information response on certolizumab pegol (CZP; Cimzia) in patients with a history of malignancy: Product Monograph safety information and retrospective cohort studies on cancer recurrence with TNF blocker use." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Certolizumab Pegol — Use in Patients With a History of Malignancy" />
+  <meta property="og:description" content="UCB medical information: CZP safety in patients with prior malignancy — Product Monograph and retrospective cohort data." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.example.com/czp-history-malignancy/" />
+  <meta property="og:image" content="https://www.example.com/czp-history-malignancy/og-image.jpg" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Certolizumab Pegol — Use in Patients With a History of Malignancy" />
+  <meta name="twitter:description" content="UCB medical information: CZP safety in patients with prior malignancy." />
+  <meta name="twitter:image" content="https://www.example.com/czp-history-malignancy/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/ucb-logo.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Structured data: MedicalWebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Certolizumab Pegol — Use in Patients With a History of Malignancy",
+    "url": "https://www.example.com/czp-history-malignancy/",
+    "about": [
+      {"@type":"Drug","name":"Certolizumab pegol"},
+      {"@type":"MedicalCondition","name":"Rheumatoid Arthritis"},
+      {"@type":"MedicalCondition","name":"Malignancy"},
+      {"@type":"MedicalCondition","name":"Cancer Recurrence"}
+    ],
+    "medicalSpecialty": "Rheumatology",
+    "lastReviewed": "2026-03-01",
+    "publisher": {"@type": "Organization", "name": "UCB Canada Inc."},
+    "hasPart": [
+      {"@type":"WebPageElement","name":"Summary","url":"#summary"},
+      {"@type":"WebPageElement","name":"Detailed Response","url":"#detailed-response"}
+    ]
+  }
+  </script>
+
+  <!-- Structured data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Does the certolizumab pegol Product Monograph address use in patients with a history of malignancy?","acceptedAnswer":{"@type":"Answer","text":"In clinical studies with CZP and other TNF-antagonists, more cases of malignancies have been observed among patients receiving active drug than in placebo patients. UCB recommends the use of CZP as in the approved label, and any treatment decision would be at the sole discretion of the healthcare professional together with the patient."}},
+      {"@type":"Question","name":"Is there an association between TNF blocker use and cancer recurrence?","acceptedAnswer":{"@type":"Answer","text":"Three retrospective cohort studies found no statistically significant association between TNF blocker use (including CZP) and cancer recurrence in patients with RA or IBD who had a history of cancer."}},
+      {"@type":"Question","name":"What did Raaschou et al. (2018) find about cancer recurrence with TNF blockers?","acceptedAnswer":{"@type":"Answer","text":"Raaschou et al. (2018) reported an adjusted hazard ratio of 1.06 (0.73–1.54) for recurrent or new cancers in 476 biologic-treated patients compared with 2164 biologic-naïve patients with RA and a history of malignancy."}},
+      {"@type":"Question","name":"What were the key safety findings on malignancies in CZP clinical trials?","acceptedAnswer":{"@type":"Answer","text":"In CZP controlled and open-label RA studies, malignancies other than lymphomas and non-melanoma skin cancers occurred at a rate of 0.61/100 patient-years among 2367 CZP-treated patients versus 0.41/100 patient-years among 647 placebo-treated patients."}}
+    ]
+  }
+  </script>
+
+  <!-- Print footer override -->
+  <style>
+    @page {
+      @bottom-left {
+        content: "Certolizumab pegol \2014  Use in patients with a history of malignancy\AMED-CA-CZP-2400016, \00A9  UCB Canada Inc., 2026. All rights reserved.";
+      }
+    }
+  </style>
+</head>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     BODY
+     ═══════════════════════════════════════════════════════════════════ -->
+<body>
+
+  <!-- ─── FLOATING TOC ───────────────────────────────────────────── -->
+  <div class="container">
+    <nav id="toc" class="navbox" aria-label="Page sections">
+      <span class="navbox__title">Contents</span>
+      <ul id="toc-list" class="navbox__list">
+        <li><a class="btn" href="#summary">Summary</a></li>
+        <li><a class="btn" href="#detailed-response">Detailed&nbsp;response</a></li>
+        <li><a class="btn" href="#PublishedDataDetail">Published&nbsp;data</a></li>
+        <li><a class="btn" href="#disclaimers">Disclaimers</a></li>
+        <li><a class="btn" href="#references">References</a></li>
+        <li><a class="btn" href="#feedback">Feedback</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ─── SITE HEADER ────────────────────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-flex">
+        <div class="header-logo">
+          <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
+            alt="UCB logo with tagline inspired by patients, driven by science.">
+        </div>
+        <div class="header-meta-block">
+          <p class="doc-code">MED&#8209;CA&#8209;CZP&#8209;2400016</p>
+          <p class="doc-date">Preparation date:&nbsp;<time datetime="2026-03">Mar 2026</time></p>
+        </div>
+      </div>
+
+      <div class="page-title">
+        <h1 class="h1">
+          <span class="drug">Certolizumab pegol</span>
+          &mdash;
+          <span class="subtitle">Use in patients with a history of malignancy</span>
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── MAIN CONTENT ────────────────────────────────────────────── -->
+  <main id="main" class="container" role="main">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO KEY FACTS -->
+    <section id="aeo-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO"></span>
+      <p>Key Facts — Certolizumab Pegol: Use in Patients With a History of Malignancy</p>
+      <p>The Product Monograph (PM) for certolizumab pegol (CZP; Cimzia) states that in clinical studies with CZP and
+        other TNF-antagonists, more cases of malignancies were observed among patients receiving active drug than in
+        placebo patients. Three retrospective cohort studies found no statistically significant association between TNF
+        blocker use (including CZP) and cancer recurrence in patients with rheumatoid arthritis (RA) or inflammatory
+        bowel disease (IBD) and a prior history of malignancy. Adjusted hazard ratios for cancer recurrence ranged from
+        1.06 to 1.24 across different patient groups (Raaschou et al., 2018). UCB recommends the use of CZP as in the
+        approved label; treatment decisions remain at the discretion of the healthcare professional and patient.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO Q&A PAIRS -->
+    <section id="aeo-qa" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO-QA"></span>
+      <p>AEO Key Questions &amp; Answers</p>
+      <p>What does the CZP Product Monograph state about malignancies?</p>
+      <p>More cases of malignancies were observed with CZP and other TNF-antagonists than with placebo. The possible
+        risk for lymphomas or other malignancies cannot be excluded. UCB recommends use as per the approved label.</p>
+      <p>Is TNF blocker use associated with increased cancer recurrence?</p>
+      <p>Three retrospective cohort studies found no statistically significant association between TNF blocker use and
+        cancer recurrence in patients with RA or IBD who had a prior history of cancer.</p>
+      <p>What was the cancer recurrence hazard ratio with TNF blockers in Raaschou et al. (2018)?</p>
+      <p>The adjusted HR was 1.06 (CI 0.73–1.54) in the main matched group of 476 biologic-treated versus 2164
+        biologic-naïve patients with RA and prior malignancy.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: SUMMARY -->
+    <section id="summary">
+      <h1 class="h1">Summary</h1>
+
+      <!-- Summary: Product Monograph -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Relevant Information From the Company Product Monograph</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p>In clinical studies with
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">certolizumab pegol</span>
+            (<span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>;
+            Cimzia) and other tumor necrosis factor (TNF)-antagonists, more cases of malignancies have been observed
+            among patients receiving active drug than in placebo patients
+            [Click <a href="#pm-malignancies">here</a> for details].<sup><a href="#ref-1">1</a></sup>
+          </p>
+          <p>UCB recommends the use of
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            as in the approved label, and any treatment decision would be at the sole discretion of the healthcare
+            professional together with the patient.
+          </p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+
+      <!-- Summary: Published Data -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Published Data</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <ul>
+            <li>
+              <p>Three retrospective cohort studies that assessed the incidence of cancer recurrence in patients with
+                rheumatoid arthritis (RA) or inflammatory bowel disease (IBD) who had a history of cancer and received
+                TNF blockers found no statistically significant association between TNF blocker use and cancer
+                recurrence.<sup><a href="#ref-2">2</a>,<a href="#ref-3">3</a>,<a href="#ref-4">4</a></sup>
+              </p>
+            </li>
+            <li>
+              <p>Raaschou et&nbsp;al. (2018)<sup><a href="#ref-2">2</a></sup> reported that the adjusted hazard ratio (HR)
+                of the incidence of recurrent cancers or new primary cancers was 1.06 in 476 patients who received
+                TNF blockers compared with 2164 patients who were biologic&#8209;naïve
+                [Click <a href="#raaschou-2018">here</a> for details].
+              </p>
+            </li>
+            <li>
+              <p>Mamtani et&nbsp;al. (2016)<sup><a href="#ref-3">3</a></sup> reported that the crude incidence rate (IR)
+                of cancer recurrence was 22.3/1000 patient&#8209;years (PY) in 291 patients who received TNF blockers
+                [Click <a href="#mamtani-2016">here</a> for details].
+              </p>
+            </li>
+            <li>
+              <p>Raaschou et&nbsp;al. (2015)<sup><a href="#ref-4">4</a></sup> reported that the crude IR of cancer
+                recurrence was 15 per 1000 PY in 120 patients who received TNF blockers
+                [Click <a href="#raaschou-2015">here</a> for details].
+              </p>
+            </li>
+            <li>
+              <p>Strangfeld et&nbsp;al. (2013)<sup><a href="#ref-5">5</a></sup> conducted a retrospective evaluation of
+                the risk of cancer recurrence or onset of new tumors in 10,168 patients with RA (36,595 PY) who
+                received biologic therapy, including TNF blockers. Among 130 patients with a history of cancer who
+                received TNF blockers, including
+                <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>,
+                the recurrence rate per 100 PY was 4.5 in patients with lymphoma and 5.7 in patients with solid organ
+                malignancies; the recurrence rate was not reported in patients with skin cancer
+                [Click <a href="#strangfeld-2013">here</a> for details].
+              </p>
+            </li>
+          </ul>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DETAILED RESPONSE -->
+    <section id="detailed-response">
+      <h1 class="h1">Detailed Response</h1>
+
+      <!-- Product Monograph collapsible -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Relevant Information From the Product Monograph</h2><a id="pm-malignancies"></a>
+          </span>
+        </summary>
+        <div class="collapse-content">
+
+          <h3>Warnings and Precautions</h3>
+          <h4>Malignancies</h4>
+          <p>In clinical studies with
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            and other TNF blocking agents, more cases of malignancies have been observed among patients receiving
+            active drug than in placebo patients.<sup><a href="#ref-1">1</a></sup>
+          </p>
+          <p>In rheumatoid arthritis placebo-controlled and open-label studies combined, most observed malignancies
+            included lung, breast and ovarian cancers, basal cell carcinoma, and
+            lymphoma.<sup><a href="#ref-1">1</a></sup>
+          </p>
+          <p>Three cases of lymphoma were reported in patients treated with
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            (1 case in the placebo-controlled studies and 2 in the open-label studies), corresponding to a rate of
+            0.09 (0.02&ndash;0.27)/100 patient-years among 2367 patients. This is approximately 2-fold higher than
+            expected in the general population. Patients with RA, particularly those with highly active disease, are
+            at a higher risk for the development of lymphoma. Malignancies other than lymphomas and non-melanoma skin
+            cancers were observed at a rate (95% confidence interval) of 0.61 (0.37&ndash;0.94)/100 patient-years
+            among 2367
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>-treated
+            patients and 0.41 (0.01&ndash;2.27)/100 patient-years among 647 placebo-treated patients. In controlled
+            and open-label portions of psoriasis phase III clinical studies, malignancies (excluding non-melanoma
+            skin cancer) were observed at an incidence rate (95% confidence interval) of 0.5 (0.2&ndash;1.0)/100
+            patient-years among 995
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            treated-patients.<sup><a href="#ref-1">1</a></sup>
+          </p>
+          <p>The size of the control groups and limited duration of the controlled portions of the studies preclude
+            the ability to draw firm conclusions but the possible risk for the development of lymphomas or other
+            malignancies in patients treated with a TNF-antagonist cannot be excluded. The potential role of TNF
+            blocking therapy in the development of malignancies is not
+            known.<sup><a href="#ref-1">1</a></sup>
+          </p>
+          <p>Rates in clinical trials for
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            cannot be compared to rates for other TNF-antagonists and may not predict the rates observed in a broader
+            patient population. Patients with rheumatoid arthritis, particularly those with highly active disease,
+            are at a higher risk for development of
+            lymphoma.<sup><a href="#ref-1">1</a></sup>
+          </p>
+          <p>Malignancies, some fatal, have been reported among children, adolescents, and young adults who received
+            treatment with TNF blocking agents (initiation of therapy &le;&nbsp;18 years of age), of which
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            is a member. Approximately half the cases were lymphomas, including Hodgkin&rsquo;s and
+            non-Hodgkin&rsquo;s lymphomas. The other cases represented a variety of different malignancies and
+            included rare malignancies usually associated with immunosuppression and malignancies that are not
+            usually observed in children and adolescents. The malignancies occurred after a median of 30 months of
+            therapy (range 1 to 84 months). Most of the patients were receiving concomitant immunosuppressants.
+            These cases were reported post-marketing and are derived from a variety of sources including registries
+            and spontaneous post-marketing
+            reports.<sup><a href="#ref-1">1</a></sup>
+          </p>
+
+          <h5>Hepatosplenic T-cell Lymphoma</h5>
+          <p>Postmarketing cases of hepatosplenic T-cell lymphoma, a rare type of T-cell lymphoma that has a very
+            aggressive disease course and is usually fatal, have been reported in patients treated with TNF-blockers.
+            The majority of reported TNF-blocker cases occurred in adolescent and young adult males with Crohn&rsquo;s
+            disease or ulcerative colitis. Almost all of these patients had received treatment with the
+            immunosuppressants azathioprine and/or 6-mercaptopurine concomitantly with a TNF-blocker at or prior to
+            diagnosis.<sup><a href="#ref-1">1</a></sup>
+          </p>
+
+          <h5>Leukemia</h5>
+          <p>Cases of acute and chronic leukemia have been reported in association with post-marketing TNF-antagonist
+            use in RA and other indications. Even in the absence of TNF-antagonist therapy, patients with RA may be
+            at higher risk (approximately 2-fold) than the general population for the development of
+            leukemia.<sup><a href="#ref-1">1</a></sup>
+          </p>
+
+          <h5>Skin Cancers</h5>
+          <p>Melanoma and Merkel cell carcinoma have been reported in patients treated with TNF&#8209;antagonists,
+            including
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>.
+            Periodic skin examination is recommended, particularly for patients with risk factors for skin
+            cancer.<sup><a href="#ref-1">1</a></sup>
+          </p>
+
+          <h4>Immunosuppression</h4>
+          <p>Since TNF mediates inflammation and modulates cellular immune responses, the possibility exists for TNF
+            blocking agents, including
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>,
+            to affect host defenses against infections and malignancies. The impact of treatment with
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            on the development and course of malignancies, as well as active and/or chronic infections, is not fully
+            understood. The use of
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            in patients with severe immunosuppression has not been formally
+            evaluated.<sup><a href="#ref-1">1</a></sup>
+          </p>
+
+          <h3>Clinical Trial Adverse Drug Reactions</h3>
+          <h4>Less Common Clinical Trial Adverse Drug Reactions (&lt;&nbsp;1%)</h4>
+          <p>Neoplasms benign, malignant and unspecified (including cysts and polyps): solid organ tumor, benign
+            tumor and cysts (includes skin papilloma), non-melanoma skin cancers, blood and lymphatic system
+            malignancies (includes lymphoma and leukemia), gastrointestinal tumor, melanoma, precancerous lesions
+            (includes oral leukoplakia, melanocytic nevus), merkel cell
+            carcinoma<sup><a href="#ref-6">a</a></sup>.<sup><a href="#ref-1">1</a></sup>
+          </p>
+
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+
+      <!-- Published Data collapsible -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Published Data</h2><a id="PublishedDataDetail"></a>
+          </span>
+        </summary>
+        <div class="collapse-content">
+
+          <h3>Retrospective Studies</h3>
+
+          <!-- ── Raaschou 2018 ───────────────────────────────────── -->
+          <h4 id="raaschou-2018">Raaschou et&nbsp;al. (2018)</h4>
+          <p>Raaschou et&nbsp;al. (2018)<sup><a href="#ref-2">2</a></sup> conducted a population&#8209;based cohort
+            study to assess the incidence of cancer recurrence in patients with RA and a history of malignancy who
+            did or did not receive TNF blockers.
+          </p>
+          <p>Patients with in situ or invasive colon, anorectal, lung, breast, uterine, ovarian, prostate, renal,
+            urinary tract, or central nervous system cancers who received or did not receive TNF blockers (including
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            [number of patients was not reported]) after their index cancer diagnosis were included in the study.
+            Patients were assigned to 1 of 4 groups depending on the year they were diagnosed with cancer and the
+            year they started treatment with TNF blockers. The HR of the incidence of recurrent cancers or new
+            primary cancers was assessed in 3 groups in which biologic&#8209;treated patients were matched to
+            biologic&#8209;naïve patients at a ratio of 1:5 and in 1 group in which biologic&#8209;treated patients
+            were not matched to biologic&#8209;naïve patients (<strong>Table&nbsp;1</strong>).<sup><a href="#ref-2">2</a></sup>
+          </p>
+
+          <!-- TABLE 1 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="4">
+                  <h6>Table 1 &mdash; Incidence of Recurrent or New Cancers in Biologic&#8209;treated and
+                    Biologic&#8209;naïve Patients (Adapted).<sup><a href="#ref-2">2</a></sup>
+                  </h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-1">
+                <th scope="col" rowspan="2">Group</th>
+                <th scope="col" colspan="2">Patients With Recurrent or New Cancer Diagnosis, n/n&nbsp;(%)</th>
+                <th scope="col" rowspan="2">Adjusted HR (CI)</th>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col">Biologic&#8209;treated Patients</th>
+                <th scope="col">Biologic&#8209;naïve Patients</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>A (n&nbsp;=&nbsp;2631)<sup><a href="#tbl1-fn-a">a</a>,<a href="#tbl1-fn-b">b</a></sup></td>
+                  <td>42/467 (9)</td>
+                  <td>155/2164 (7.2)</td>
+                  <td>1.06 (0.73&ndash;1.54)</td>
+                </tr>
+                <tr>
+                  <td>B (n&nbsp;=&nbsp;1293)<sup><a href="#tbl1-fn-b">b</a>,<a href="#tbl1-fn-c">c</a></sup></td>
+                  <td>23/223 (10.3)</td>
+                  <td>78/1070 (7.3)</td>
+                  <td>1.08 (0.65&ndash;1.8)</td>
+                </tr>
+                <tr>
+                  <td>C (n&nbsp;=&nbsp;787)<sup><a href="#tbl1-fn-d">d</a>,<a href="#tbl1-fn-e">e</a></sup></td>
+                  <td>16/138 (11.6)</td>
+                  <td>37/649 (5.7)</td>
+                  <td>1.15 (0.53&ndash;2.47)</td>
+                </tr>
+                <tr>
+                  <td>D (n&nbsp;=&nbsp;3826)<sup><a href="#tbl1-fn-f">f</a></sup></td>
+                  <td>16/178 (9)</td>
+                  <td>NR</td>
+                  <td>1.24 (0.74&ndash;2.07)</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="4">
+                    <sup id="tbl1-fn-a">a</sup> Patients with RA and a cancer diagnosis from 1960 or later who
+                    received (n&nbsp;=&nbsp;467) or did not receive (n&nbsp;=&nbsp;2164) treatment with TNF blockers
+                    between 2001 and 2015.<br>
+                    <sup id="tbl1-fn-b">b</sup> Biologic&#8209;treated and biologic&#8209;naïve patients in the
+                    same group had similar demographics, including similar gender, age at cancer diagnosis, and type
+                    of cancer (invasive or in situ).<br>
+                    <sup id="tbl1-fn-c">c</sup> Patients with RA and a cancer diagnosis from 2001 or later who
+                    received (n&nbsp;=&nbsp;223) or did not receive (n&nbsp;=&nbsp;1070) treatment with TNF blockers
+                    between 2001 and 2015.<br>
+                    <sup id="tbl1-fn-d">d</sup> Patients with RA and a cancer diagnosis (excluding metastatic cancer
+                    at diagnosis) from 2003 or later who received (n&nbsp;=&nbsp;138) or did not receive
+                    (n&nbsp;=&nbsp;649) treatment with TNF blockers from 2006 or later.<br>
+                    <sup id="tbl1-fn-e">e</sup> Biologic&#8209;treated and biologic&#8209;naïve patients in this
+                    group had similar cancer characteristics, including type of tumor, node, and metastatic stage.<br>
+                    <sup id="tbl1-fn-f">f</sup> Included patients (n&nbsp;=&nbsp;3826) with RA and a cancer
+                    diagnosis between 2001 and 2015 who did not receive treatment with TNF blockers; 178 patients
+                    started treatment with TNF blockers during follow&#8209;up.<br>
+                    CI&nbsp;= confidence interval; HR&nbsp;= hazard ratio; NR&nbsp;= not reported;
+                    RA&nbsp;= rheumatoid arthritis; TNF&nbsp;= tumor necrosis factor.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ── Mamtani 2016 ────────────────────────────────────── -->
+          <h4 id="mamtani-2016">Mamtani et&nbsp;al. (2016)</h4>
+          <p>Mamtani et&nbsp;al. (2016)<sup><a href="#ref-3">3</a></sup> conducted a cohort study based on data
+            obtained from Medicare (years, 2000&ndash;2012) to evaluate the effect of immunosuppressive therapy on
+            breast cancer recurrence in women with RA or IBD who had primary breast cancer and were surgically
+            treated.
+          </p>
+          <p>Among patients with RA or IBD, patients who received TNF blockers (n&nbsp;=&nbsp;291; including
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            [number of patients was not reported]) were matched to biologic&#8209;naive patients
+            (n&nbsp;=&nbsp;1164) based on the risk factors of breast cancer recurrence, including the type of
+            surgery they underwent and the adjuvant chemotherapy they received. Follow&#8209;up was conducted after
+            more than 764 PY in patients who received TNF blockers and after over 2466 PY in patients who were
+            biologic&#8209;naive. The primary outcome was the recurrence of breast cancer &gt;&nbsp;1 year after the
+            primary breast cancer surgery.<sup><a href="#ref-3">3</a></sup>
+          </p>
+          <p>At follow&#8209;up, 17 patients (crude IR, 22.3/1000 PY) who received TNF blockers and 48 patients
+            (crude IR, 19.5/1000 PY) who were biologic&#8209;naïve had breast cancer recurrence. The adjusted HR
+            (CI) of patients who received TNF blockers to patients who were biologic&#8209;naïve was
+            1.13 (0.65&ndash;1.97).<sup><a href="#ref-3">3</a></sup>
+          </p>
+
+          <!-- ── Raaschou 2015 ───────────────────────────────────── -->
+          <h4 id="raaschou-2015">Raaschou et&nbsp;al. (2015)</h4>
+          <p>Raaschou et&nbsp;al. (2015)<sup><a href="#ref-4">4</a></sup> conducted a population&#8209;based cohort
+            study using data from the Swedish biologics register (ARTIS) to evaluate the risk of breast cancer
+            recurrence in female patients with RA who received TNF blockers, compared with that of females with RA
+            who were biologic&#8209;naïve.
+          </p>
+          <p>A total of 120 female patients (median age, 66 years) with RA were identified who were diagnosed with
+            breast cancer between 1999 and 2010, before they started TNF blockers (including
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            [number of patients was not reported]). Each patient was matched to a biologic&#8209;naïve patient based
+            on gender, age at cancer diagnosis (&plusmn;&nbsp;3 years), year of cancer diagnosis (&plusmn;&nbsp;5
+            years), type of cancer (invasive or in situ), and country of residence. Patients started TNF blockers
+            9.4 years (median) after they were diagnosed with breast cancer. Follow&#8209;up was after a mean
+            &plusmn; standard deviation of 4.9 &plusmn; 2.8 years (592 PY) in patients who received TNF blockers
+            and 4.6 &plusmn; 2.7 years (550 PY) in biologic&#8209;naïve
+            patients.<sup><a href="#ref-4">4</a></sup>
+          </p>
+          <p>At the time of follow&#8209;up, 9 patients (crude IR, 15/1000 PY) who received TNF blockers had
+            breast cancer recurrence compared with 9 patients (crude IR, 16/1000 PY) who were biologic&#8209;naïve.
+            The adjusted HR (CI) of patients who received TNF blockers to biologic&#8209;naïve patients was
+            1.1 (0.4&ndash;2.8).<sup><a href="#ref-4">4</a></sup>
+          </p>
+
+          <!-- ── Strangfeld 2013 ─────────────────────────────────── -->
+          <h4 id="strangfeld-2013">Strangfeld et&nbsp;al. (2013)</h4>
+          <p>Strangfeld et&nbsp;al. (2013)<sup><a href="#ref-5">5</a></sup> assessed data from the German register
+            RABBIT to evaluate the risk of cancer recurrence or new tumor incidence in patients with RA who received
+            biologic therapy, including TNF blockers.
+          </p>
+          <p>At the time of data cutoff (October 2012), the registry included a total of 10,168 patients with RA
+            (36,595 PY of observation), including 5231 patients who received TNF blockers (20,446 PY).
+            Three hundred sixty&#8209;seven patients had a history of cancer; 130 patients with malignancies,
+            including solid organ malignancies (n&nbsp;=&nbsp;109), skin cancer (n&nbsp;=&nbsp;15), or lymphoma
+            (n&nbsp;=&nbsp;6), received TNF blockers (including
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            [number of patients was not reported]). Patients started TNF blockers 1.3 years (median) after their
+            cancer diagnosis among those with a history of lymphoma and 6.8 years (median) among those with a
+            history of solid organ malignancies. The time between cancer diagnosis and initiation of TNF blockers
+            for patients with skin cancer was not reported. The mean observation time was 3 years in patients with
+            a history of lymphoma and 2.6 years in patients with a history of solid organ
+            malignancies.<sup><a href="#ref-5">5</a></sup>
+          </p>
+          <p>One patient (recurrence rate/100 PY, 4.5; CI, 0.1&ndash;25.3), 21 patients (recurrence rate/100 PY,
+            5.7; CI, 3.5&ndash;8.8), and 3 patients (recurrence rate was not reported) with lymphoma, solid organ
+            malignancies, and skin cancer, respectively, had cancer recurrence or new incidence with TNF&#8209;blocker
+            therapy.<sup><a href="#ref-5">5</a></sup>
+          </p>
+
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DISCLAIMERS -->
+    <section id="disclaimers">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Disclaimers</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p>Please note that the information contained in this response is for your personal use only and due to
+            copyright may not be forwarded or published.</p>
+          <p>Medical literature databases are selective in their sources, and the information obtained from the
+            search may not represent the totality of the literature or available data on this topic.</p>
+          <p>Information provided in this document is not intended to draw any conclusions regarding the efficacy
+            and safety of
+            <span data-type="drug" data-emtree="certolizumab pegol" data-mesh="D000068790" data-snomed="444752007">CZP</span>
+            for any indication or dosage.
+          </p>
+          <p>Links to all third-party websites are provided as a convenience and do not imply an endorsement or
+            recommendation by UCB. UCB accepts no responsibility or liability for the content or services of other
+            websites. UCB encourages you to review the policies and terms of all websites you may choose to visit.
+          </p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: REFERENCES -->
+    <section id="references">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">References</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <ol>
+            <li id="ref-1">UCB Data on file. Certolizumab pegol Product Monograph.</li>
+            <li id="ref-2">Raaschou P, Söderling J, Turesson C, Askling J; for the ARTIS Study Group. Tumor
+              necrosis factor inhibitors and cancer recurrence in Swedish patients with rheumatoid arthritis: a
+              nationwide population&#8209;based cohort study. <em>Ann Intern Med.</em>
+              2018;169(5):291&ndash;9.<br>
+              Available from: <a href="https://doi.org/10.7326/M17-2812" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.7326/M17-2812</a>
+            </li>
+            <li id="ref-3">Mamtani R, Clark AS, Scott FI, Brensinger CM, Boursi B, Chen L, et al. Association
+              between breast cancer recurrence and immunosuppression in rheumatoid arthritis and inflammatory bowel
+              disease: a cohort study. <em>Arthritis Rheumatol.</em> 2016;68(10):2403&ndash;11.<br>
+              Available from: <a href="https://doi.org/10.1002/art.39738" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1002/art.39738</a>
+            </li>
+            <li id="ref-4">Raaschou P, Frisell T, Askling J; for the ARTIS Study Group. TNF inhibitor therapy
+              and risk of breast cancer recurrence in patients with rheumatoid arthritis: a nationwide cohort study.
+              <em>Ann Rheum Dis.</em> 2015;74(12):2137&ndash;43.<br>
+              Available from: <a href="https://doi.org/10.1136/annrheumdis-2014-205745" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1136/annrheumdis-2014-205745</a>
+            </li>
+            <li id="ref-5">Strangfeld A, Pattloch D, Herzer P, Edelmann E, Zinke S, Aringer M, et al. Risk of
+              cancer recurrence or new tumors in RA patients with prior malignancies treated with various biologic
+              agents. 2013;65(Suppl&nbsp;10):S342. Abstract 806.<br>
+              Available from: <a href="https://doi.org/10.1002/art.38216" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1002/art.38216</a>
+            </li>
+            <li id="ref-6"><sup>a</sup> These events have been related to the class of TNF-blockers, but
+              incidence with CIMZIA is not known.
+            </li>
+          </ol>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: FEEDBACK -->
+    <section id="feedback"
+             data-document-number="MED-CA-CZP-2400016"
+             data-case-response-number="">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h3>Help us improve this content</h3>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p style="color: var(--brand);"><strong>How did this response improve your practice?</strong></p>
+
+          <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
+            <legend id="stars_label">Rating</legend>
+            <div class="stars-list">
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="1"
+                aria-label="1 star">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="2"
+                aria-label="2 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="3"
+                aria-label="3 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="4"
+                aria-label="4 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="5"
+                aria-label="5 stars">★</button>
+            </div>
+          </fieldset>
+
+          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before
+            sending.</p>
+
+          <div class="comment-field">
+            <label for="comment">Comment (optional)</label>
+            <textarea id="comment" name="comment" placeholder="Your comment …" rows="4"></textarea>
+          </div>
+
+          <div class="feedback-notice" role="note">
+            <p class="feedback-notice__title">Data protection notice</p>
+            <ul class="feedback-notice__list">
+              <li>Your feedback helps us to improve clarity and usefulness of our medical information.</li>
+              <li>You may submit your feedback anonymously. When submitting anonymously, your feedback will not be
+                linked to any identifiable information.</li>
+              <li>Please do not include personal health information or details about specific medical conditions in
+                the comment field.</li>
+              <li>Feedback data will only be used internally for quality improvement purposes and will not be shared
+                with third parties.</li>
+            </ul>
+          </div>
+
+          <div class="feedback-actions">
+            <div class="anon-option">
+              <input type="checkbox" id="anonymous" name="anonymous">
+              <label for="anonymous">Send anonymously</label>
+            </div>
+            <button type="button" id="submit-feedback" class="btn btn--primary">Send</button>
+          </div>
+
+          <div id="feedback-message" role="status" aria-live="polite"></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: LLM / GEO MACHINE SUMMARY -->
+    <section id="llm-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
+      <p>GEO Machine Summary</p>
+      <p>The Product Monograph for certolizumab pegol (CZP; Cimzia) states that in clinical studies with CZP and
+        other TNF-antagonists, more cases of malignancies were observed in patients receiving active drug versus
+        placebo. The risk of lymphomas or other malignancies cannot be excluded. Three retrospective cohort studies
+        (Raaschou 2018, Mamtani 2016, Raaschou 2015) in patients with rheumatoid arthritis (RA) or inflammatory
+        bowel disease (IBD) who had a prior history of malignancy found no statistically significant association
+        between TNF blocker use (including CZP) and cancer recurrence. Adjusted hazard ratios for cancer recurrence
+        ranged from 1.06 (0.73–1.54) to 1.24 (0.74–2.07). UCB recommends use of CZP as in the approved label;
+        treatment decisions are at the discretion of the healthcare professional and patient. Refer to the authorised
+        product information for full safety information, dosing, and contraindications.</p>
+    </section>
+  </main>
+
+  <!-- ─── SITE FOOTER ────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="meta-center">
+        <span class="drug">Certolizumab pegol</span>
+        &mdash;
+        <span class="subtitle">Use in patients with a history of malignancy</span><br>
+        MED&#8209;CA&#8209;CZP&#8209;2400016, &copy; UCB Canada Inc., 2026. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
