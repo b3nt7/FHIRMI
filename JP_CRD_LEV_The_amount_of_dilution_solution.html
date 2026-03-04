@@ -1,49 +1,36 @@
 <!-- =================================================================
-     UCB Medical Information — JP_CRD_LEV_The_amount_of_dilution_solution.html
+     UCB メディカルインフォメーション — JP_CRD_LEV_The_amount_of_dilution_solution.html
 
-     Document  : Levetiracetam (イーケプラ点滴静注) — 希釈液量について
-                 (The amount of dilution solution for levetiracetam injection)
-     Reference : JP-CRD-LEV-[XXXX]
-     Prepared  : Mar 2026   |   © UCB Japan G.K. 2026
+     文書名   : レベチラセタム（イーケプラ点滴静注）— 希釈液量について
+     参照番号 : JP-CRD-LEV
+     作成日   : 2026年3月   |   © UCB Japan G.K. 2026
 
-     Structure overview
+     構成概要
      ──────────────────
      <head>
-       · Standard meta tags + social (OG / Twitter)
-       · Single stylesheet: assets/css/styles.css
-       · Two JSON-LD blocks: MedicalWebPage + FAQPage (for SEO / GEO)
+       · 標準メタタグ + ソーシャル（OG / Twitter）
+       · スタイルシート: assets/css/styles.css
+       · JSON-LD: MedicalWebPage + FAQPage（SEO / GEO用）
 
      <body>
-       · Floating TOC nav  — fixed glass bar linking to all sections
-       · <header>          — UCB logo, doc-code, preparation date, page title
+       · フローティング目次ナビ — 各セクションへのリンク
+       · <header>          — UCBロゴ、文書コード、作成日、タイトル
        · <main>
-           #aeo-summary    — HIDDEN: machine-readable AEO key facts
-           #aeo-qa         — HIDDEN: machine-readable AEO Q&A pairs
-           #summary        — Visible: collapsible answer summaries
-           #detailed-response — Visible: full detailed response write-up
-           #off-label      — Visible: off-label/unapproved information (with disclaimer)
-           #disclaimers    — Visible: regulatory / copyright disclaimers
-           #references     — Visible: numbered citation list
-           #feedback       — Visible: star rating + comment + send widget
-           #llm-summary    — HIDDEN: machine-readable GEO paragraph for LLMs
-       · <footer>          — doc-code, copyright
-       · <script>          — assets/js/main.js (scroll-spy, star rating, feedback)
-
-     Key HTML conventions
-     ─────────────────────
-     · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
-         data-snomed="…"> — semantic tagging for FHIR / ontology consumers
-     · hidden-section: display:none — content for automated readers only
-     · collapse: native <details>/<summary> pattern for collapsible sections
-     · Anchor targets for TOC: either <section id="…"> or <a id="…"> inside
-         <summary> so the target is always visible (even when collapsed)
+           #aeo-summary    — 非表示: 機械可読AEOキーファクト
+           #aeo-qa         — 非表示: 機械可読AEO Q&Aペア
+           #summary        — 表示: 回答サマリー（折りたたみ）
+           #detailed-response — 表示: 詳細回答
+           #off-label      — 表示: 承認外情報（免責付き）
+           #disclaimers    — 表示: 免責事項
+           #references     — 表示: 参考文献リスト
+           #feedback       — 表示: 評価・コメント・送信ウィジェット
+           #llm-summary    — 非表示: LLM向け機械可読サマリー
+       · <footer>          — 文書コード、著作権
+       · <script>          — assets/js/main.js
      ================================================================= -->
 <!doctype html>
 <html lang="ja">
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     HEAD
-     ═══════════════════════════════════════════════════════════════════ -->
 <head>
   <meta charset="utf-8" />
   <title>レベチラセタム（イーケプラ点滴静注）— 希釈液量について</title>
@@ -69,15 +56,15 @@
   <!-- ── Favicon ── -->
   <link rel="icon" type="image/png" href="assets/img/ucb-logo.png">
 
-  <!-- ── Stylesheet ── -->
+  <!-- ── スタイルシート ── -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <!-- ── Structured data: MedicalWebPage (JSON-LD) ── -->
+  <!-- ── 構造化データ: MedicalWebPage (JSON-LD) ── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "name": "Levetiracetam (Keppra IV) — Amount of Dilution Solution",
+    "name": "レベチラセタム（イーケプラ点滴静注）— 希釈液量について",
     "url": "https://www.example.com/lev-dilution-volume-jp/",
     "about": [
       {"@type":"Drug","name":"Levetiracetam","alternateName":"レベチラセタム"},
@@ -87,15 +74,15 @@
     "lastReviewed": "2026-03-01",
     "publisher": {"@type": "Organization", "name": "UCB Japan G.K."},
     "hasPart": [
-      {"@type":"WebPageElement","name":"Summary","url":"#summary"},
-      {"@type":"WebPageElement","name":"Detailed Response","url":"#detailed-response"},
-      {"@type":"WebPageElement","name":"Off-label Information","url":"#off-label"}
+      {"@type":"WebPageElement","name":"サマリー","url":"#summary"},
+      {"@type":"WebPageElement","name":"詳細回答","url":"#detailed-response"},
+      {"@type":"WebPageElement","name":"承認外情報","url":"#off-label"}
     ],
     "inLanguage": "ja"
   }
   </script>
 
-  <!-- ── Structured data: FAQPage (JSON-LD) ── -->
+  <!-- ── 構造化データ: FAQPage (JSON-LD) ── -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -108,7 +95,7 @@
   }
   </script>
 
-  <!-- ── Print footer override ── -->
+  <!-- ── 印刷フッター ── -->
   <style>
     @page {
       @bottom-left {
@@ -118,37 +105,34 @@
   </style>
 </head>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     BODY
-     ═══════════════════════════════════════════════════════════════════ -->
 <body>
 
-  <!-- ─── FLOATING TOC ───────────────────────────────────────────── -->
+  <!-- ─── フローティング目次 ─────────────────────────────────────── -->
   <div class="container">
-    <nav id="toc" class="navbox" aria-label="Page sections">
-      <span class="navbox__title">Contents</span>
+    <nav id="toc" class="navbox" aria-label="ページセクション">
+      <span class="navbox__title">目次</span>
       <ul id="toc-list" class="navbox__list">
-        <li><a class="btn" href="#summary">Summary</a></li>
-        <li><a class="btn" href="#detailed-response">Detailed&nbsp;response</a></li>
-        <li><a class="btn" href="#off-label">Off-label&nbsp;info</a></li>
-        <li><a class="btn" href="#disclaimers">Disclaimers</a></li>
-        <li><a class="btn" href="#references">References</a></li>
-        <li><a class="btn" href="#feedback">Feedback</a></li>
+        <li><a class="btn" href="#summary">サマリー</a></li>
+        <li><a class="btn" href="#detailed-response">詳細回答</a></li>
+        <li><a class="btn" href="#off-label">承認外情報</a></li>
+        <li><a class="btn" href="#disclaimers">免責事項</a></li>
+        <li><a class="btn" href="#references">参考文献</a></li>
+        <li><a class="btn" href="#feedback">フィードバック</a></li>
       </ul>
     </nav>
   </div>
 
-  <!-- ─── SITE HEADER ────────────────────────────────────────────── -->
+  <!-- ─── サイトヘッダー ────────────────────────────────────────── -->
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-flex">
         <div class="header-logo">
           <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
-            alt="UCB logo with tagline inspired by patients, driven by science.">
+            alt="UCBロゴ（患者から生まれ、科学で動く）">
         </div>
         <div class="header-meta-block">
           <p class="doc-code">JP-CRD-LEV</p>
-          <p class="doc-date">Preparation date:&nbsp;<time datetime="2026-03">Mar 2026</time></p>
+          <p class="doc-date">作成日：&nbsp;<time datetime="2026-03">2026年3月</time></p>
         </div>
       </div><!-- /header-flex -->
 
@@ -156,53 +140,50 @@
         <h1 class="h1">
           <span class="drug">レベチラセタム（イーケプラ点滴静注）</span>
           &mdash;
-          <span class="subtitle">希釈液量について / The amount of dilution solution</span>
+          <span class="subtitle">希釈液量について</span>
         </h1>
       </div>
     </div>
   </header>
 
-  <!-- ─── MAIN CONTENT ───────────────────────────────────────────── -->
+  <!-- ─── メインコンテンツ ──────────────────────────────────────── -->
   <main id="main" class="container" role="main">
 
     <!-- ══════════════════════════════════════════════════════════════
-         HIDDEN SECTION: AEO KEY FACTS -->
+         非表示セクション: AEOキーファクト -->
     <section id="aeo-summary" class="hidden-section">
       <span class="hidden-meta" data-label="AEO"></span>
-      <p>Key Facts — Levetiracetam (Keppra IV / イーケプラ点滴静注): Dilution Volume</p>
-      <p>The 100 mL dilution volume for levetiracetam injection (イーケプラ点滴静注) was established based on studies
-        demonstrating pharmacokinetic equivalence to oral administration (N01077 and N01377 trials). The approved
-        package insert requires dilution of each dose (500–1500 mg) in 100 mL of normal saline, lactated Ringer's
-        solution, or 5% glucose injection. Dilution in volumes other than 100 mL is off-label use. No data are
-        available for dilution in 50 mL. Off-label data from the N069 trial (undiluted, 2-minute infusion) showed
-        higher Cmax and injection-site burning in all subjects. The N01165 trial evaluated doses up to 4000 mg
-        (unapproved dose) diluted in 100 mL with no safety issues observed.
+      <p>キーファクト — レベチラセタム（イーケプラ点滴静注）: 希釈液量</p>
+      <p>イーケプラ点滴静注の希釈液量100mLは、N01077試験（外国人健康成人）およびN01377試験（日本人健康成人）において
+        経口投与と同等の薬物動態が確認されたことにより設定された。承認された添付文書では、1回投与量（500〜1500mg）を
+        生理食塩液・乳酸リンゲル液・5%ブドウ糖注射液のいずれか100mLで希釈することが規定されており、
+        100mL以外での希釈は承認外となる。50mLでの希釈データは存在しない。
+        承認外情報として、N069試験（原液・2分間投与）ではCmax上昇と全例での注射部位灼熱感が認められた。
+        N01165試験では最高4000mg（承認外用量）を100mLで希釈した高用量投与で安全性上の問題は認められなかった。
       </p>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         HIDDEN SECTION: AEO Q&A PAIRS -->
+         非表示セクション: AEO Q&Aペア -->
     <section id="aeo-qa" class="hidden-section">
       <span class="hidden-meta" data-label="AEO-QA"></span>
-      <p>AEO Key Questions &amp; Answers</p>
-      <p>Why was the 100 mL dilution volume selected for levetiracetam injection?</p>
-      <p>The N01077 trial showed that 1500 mg levetiracetam diluted in 100 mL normal saline and infused over
-        15 minutes produced pharmacokinetic parameters nearly equivalent to oral administration in non-Japanese
-        healthy adults. The N01377 trial confirmed this finding in Japanese healthy adults.</p>
-      <p>What is the approved dilution volume for levetiracetam injection in Japan?</p>
-      <p>The approved package insert specifies dilution of each dose (500–1500 mg) in 100 mL of normal saline,
-        lactated Ringer's solution, or 5% glucose injection. Dilution in volumes other than 100 mL is off-label.</p>
-      <p>Is there any data on diluting levetiracetam in 50 mL?</p>
-      <p>No data are available on dilution in volumes less than 100 mL. Use of 50 mL is off-label and not
-        recommended.</p>
+      <p>AEOキー質問と回答</p>
+      <p>イーケプラ点滴静注の希釈液量が100mLに設定された理由は？</p>
+      <p>N01077試験において、レベチラセタム1500mgを生理食塩液100mLに希釈し15分間で投与したところ、
+        外国人健康成人で経口投与とほぼ同等の薬物動態が示された。N01377試験で日本人健康成人においても同様に確認された。</p>
+      <p>日本における承認された希釈液量は？</p>
+      <p>電子化された添付文書に基づき、1回投与量（500〜1500mg）を生理食塩液・乳酸リンゲル液・5%ブドウ糖注射液の
+        いずれか100mLで希釈すること。100mL以外での希釈は承認外となる。</p>
+      <p>50mLでの希釈に関するデータはあるか？</p>
+      <p>100mLより少ない液量での希釈投与に関するデータは存在しない。50mLでの使用は承認外であり推奨されない。</p>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         SECTION: SUMMARY -->
+         セクション: サマリー -->
     <section id="summary">
-      <h1 class="h1">Summary</h1>
+      <h1 class="h1">サマリー</h1>
 
-      <!-- ── Summary: Answer 1 ── -->
+      <!-- ── サマリー: 回答1 ── -->
       <details class="collapse">
         <summary>
           <span class="collapse-heading">
@@ -217,11 +198,11 @@
             薬物動態パラメータが示されました。この結果に基づいて設定した希釈液量で、日本人健康成人においても経口製剤と薬物動態に
             違いがないことが確認されています（N01377試験<sup><a href="#ref-2">2</a></sup>）。
           </p>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">ページトップへ</a></div>
         </div>
       </details>
 
-      <!-- ── Summary: Answer 2 ── -->
+      <!-- ── サマリー: 回答2 ── -->
       <details class="collapse">
         <summary>
           <span class="collapse-heading">
@@ -233,17 +214,17 @@
           <p>電子化された添付文書に記載のとおり、本剤の1回投与量（500〜1500 mg）を100 mLの生理食塩液、乳酸リンゲル液
             または5%ブドウ糖注射液で希釈してください。100 mL以外で希釈することは承認外の用法です（折り返し架電時）。
           </p>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">ページトップへ</a></div>
         </div>
       </details>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         SECTION: DETAILED RESPONSE -->
+         セクション: 詳細回答 -->
     <section id="detailed-response">
-      <h1 class="h1">Detailed Response / 詳細回答</h1>
+      <h1 class="h1">詳細回答</h1>
 
-      <!-- ── Detail 1: N01077 Trial ── -->
+      <!-- ── 詳細1: N01077試験 ── -->
       <details class="collapse">
         <summary>
           <span class="collapse-heading">
@@ -273,11 +254,11 @@
             経口製剤と薬物動態に違いがないことが確認されました。
           </p>
 
-          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">ページトップへ</a></div>
         </div>
       </details>
 
-      <!-- ── Detail 2: 50 mL dilution ── -->
+      <!-- ── 詳細2: 50 mL希釈 ── -->
       <details class="collapse">
         <summary>
           <span class="collapse-heading">
@@ -288,7 +269,7 @@
 
           <p>100 mLより少ない液量（50 mL等）で希釈して投与した情報は、手元の情報では確認することができませんでした（入電時）。</p>
 
-          <p>電子化された添付文書（添付文書）に記載のとおり、
+          <p>電子化された添付文書に記載のとおり、
             <span data-type="drug" data-emtree="levetiracetam" data-mesh="D000077320" data-snomed="387000">イーケプラ点滴静注</span>
             の1回投与量（500〜1500 mg）は100 mLの下記いずれかの溶液で希釈してください。
           </p>
@@ -299,17 +280,15 @@
           </ul>
           <p>100 mL以外の液量で希釈することは承認外の用法です（折り返し架電時）。</p>
 
-          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">ページトップへ</a></div>
         </div>
       </details>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         SECTION: OFF-LABEL INFORMATION
-         Contains off-label / unapproved information with mandatory
-         disclaimer. Displayed with visual warning styling. -->
+         セクション: 承認外情報 -->
     <section id="off-label">
-      <h1 class="h1">Off-label Information / 承認外情報</h1>
+      <h1 class="h1">承認外情報</h1>
 
       <details class="collapse">
         <summary>
@@ -319,7 +298,7 @@
         </summary>
         <div class="collapse-content">
 
-          <!-- Mandatory off-label disclaimer -->
+          <!-- 承認外情報 免責 -->
           <div role="note" aria-label="承認外情報に関する注意事項"
             style="border:2px solid var(--brand);border-radius:var(--radius);padding:1rem 1.25rem;margin-block:1rem;background:color-mix(in srgb,var(--brand) 8%,white);">
             <p><strong>以下の回答内に承認外情報を含みます。</strong>
@@ -333,7 +312,7 @@
             行っていただくようお願いいたします。
           </p>
 
-          <!-- ── Sub-section: Undiluted administration ── -->
+          <!-- ── 原液投与 ── -->
           <h2 id="n069">原液のまま投与した報告</h2>
           <h4>N069試験（探索的臨床試験）<sup><a href="#ref-3">3</a></sup></h4>
           <p>開発初期に実施した探索的な臨床試験（N069試験）において、外国人健康成人に
@@ -345,7 +324,7 @@
             <sup id="fn-undiluted">※</sup> 原液のままの投与は承認外です。
           </div>
 
-          <!-- ── Sub-section: Higher concentration ── -->
+          <!-- ── 高濃度投与 ── -->
           <h2 id="n01165">設定された希釈濃度よりも濃い濃度で投与した報告</h2>
           <h4>N01165試験<sup><a href="#ref-4">4</a></sup> — 高用量・短時間投与の安全性・忍容性検討</h4>
           <p>外国人健康成人を対象に、高用量（最高4000 mg<sup><a href="#fn-highdose">†</a></sup>）を生理食塩液100 mLで希釈し、
@@ -359,47 +338,44 @@
             ②健康成人における単回点滴静脈内投与時の血中濃度（外国人データ）
           </div>
 
-          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">ページトップへ</a></div>
         </div>
       </details>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         SECTION: DISCLAIMERS -->
+         セクション: 免責事項 -->
     <section id="disclaimers">
       <details class="collapse">
         <summary>
           <span class="collapse-heading">
-            <h2 class="h2">Disclaimers</h2>
+            <h2 class="h2">免責事項</h2>
           </span>
         </summary>
         <div class="collapse-content">
-          <p>Please note that the information contained in this response is for your personal use only and due to
-            copyright may not be forwarded or published.</p>
-          <p>Medical literature databases are selective in their sources, and the information obtained from the search
-            may not represent the totality of the literature or available data on this topic.</p>
-          <p>Information provided in this document is not intended to draw any conclusions regarding the efficacy and
-            safety of
-            <span data-type="drug" data-emtree="levetiracetam" data-mesh="D000077320" data-snomed="387000">levetiracetam</span>
-            for any indication or dosage.
+          <p>本回答に含まれる情報はお客様個人の使用に限るものであり、著作権の観点から第三者への転送・公開はお控えください。</p>
+          <p>医学文献データベースは収録源が限定されており、本検索結果が当該テーマに関するすべての文献または
+            入手可能なデータを網羅しているとは限りません。</p>
+          <p>本文書に記載された情報は、いかなる適応症または用量における
+            <span data-type="drug" data-emtree="levetiracetam" data-mesh="D000077320" data-snomed="387000">レベチラセタム</span>
+            の有効性および安全性に関する結論を導くことを意図するものではありません。
           </p>
           <p>本回答に含まれる承認外情報は、ご質問に回答するための参考情報として提供するものであり、承認外使用を推奨するものでは
             ありません。製品のご使用にあたっては、最新の電子化された添付文書をご確認ください。</p>
-          <p>Links to all third-party websites are provided as a convenience and do not imply an endorsement or
-            recommendation by UCB. UCB accepts no responsibility or liability for the content or services of other
-            websites.</p>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+          <p>第三者ウェブサイトへのリンクは利便性のために提供するものであり、UCBによる推奨を意味するものではありません。
+            UCBは他のウェブサイトのコンテンツおよびサービスについて責任を負いません。</p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">ページトップへ</a></div>
         </div>
       </details>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         SECTION: REFERENCES -->
+         セクション: 参考文献 -->
     <section id="references">
       <details class="collapse">
         <summary>
           <span class="collapse-heading">
-            <h2 class="h2">References / 参考文献</h2>
+            <h2 class="h2">参考文献</h2>
           </span>
         </summary>
         <div class="collapse-content">
@@ -413,68 +389,64 @@
             <li id="ref-4">Ramael S, et al. Levetiracetam intravenous infusion: a randomized, placebo-controlled
               safety and pharmacokinetic study. <em>Epilepsia.</em> 2006;Jul;47(7):1128–1135.</li>
           </ol>
-          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">ページトップへ</a></div>
         </div>
       </details>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         SECTION: FEEDBACK -->
+         セクション: フィードバック -->
     <section id="feedback"
              data-document-number="JP-CRD-LEV"
              data-case-response-number="">
       <details class="collapse">
         <summary>
           <span class="collapse-heading">
-            <h3>Help us improve this content</h3>
+            <h3>このコンテンツの改善にご協力ください</h3>
           </span>
         </summary>
         <div class="collapse-content">
-          <p style="color: var(--brand);"><strong>How did this response improve your practice?</strong></p>
+          <p style="color: var(--brand);"><strong>この回答はあなたの診療にどのように役立ちましたか？</strong></p>
 
           <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
-            <legend id="stars_label">Rating</legend>
+            <legend id="stars_label">評価</legend>
             <div class="stars-list">
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="1"
-                aria-label="1 star">★</button>
+                aria-label="星1つ">★</button>
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="2"
-                aria-label="2 stars">★</button>
+                aria-label="星2つ">★</button>
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="3"
-                aria-label="3 stars">★</button>
+                aria-label="星3つ">★</button>
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="4"
-                aria-label="4 stars">★</button>
+                aria-label="星4つ">★</button>
               <button type="button" role="radio" aria-checked="false" class="star" data-rating="5"
-                aria-label="5 stars">★</button>
+                aria-label="星5つ">★</button>
             </div>
           </fieldset>
 
-          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before
-            sending.</p>
+          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">送信前に評価を選択してください。</p>
 
           <div class="comment-field">
-            <label for="comment">Comment (optional)</label>
-            <textarea id="comment" name="comment" placeholder="Your comment …" rows="4"></textarea>
+            <label for="comment">コメント（任意）</label>
+            <textarea id="comment" name="comment" placeholder="コメントをご入力ください…" rows="4"></textarea>
           </div>
 
           <div class="feedback-notice" role="note">
-            <p class="feedback-notice__title">Data protection notice</p>
+            <p class="feedback-notice__title">個人情報保護に関するご案内</p>
             <ul class="feedback-notice__list">
-              <li>Your feedback helps us to improve clarity and usefulness of our medical information.</li>
-              <li>You may submit your feedback anonymously. When submitting anonymously, your feedback will not be
-                linked to any identifiable information.</li>
-              <li>Please do not include personal health information or details about specific medical conditions in the
-                comment field.</li>
-              <li>Feedback data will only be used internally for quality improvement purposes and will not be shared
-                with third parties.</li>
+              <li>いただいたフィードバックは、メディカルインフォメーションの内容の明確さと有用性の向上に活用いたします。</li>
+              <li>匿名でフィードバックを送信することができます。匿名送信の場合、フィードバックは個人を特定できる情報と紐付けられません。</li>
+              <li>コメント欄には個人の健康情報や特定の疾患に関する詳細を入力しないでください。</li>
+              <li>フィードバックデータは品質改善のためにのみ内部で使用され、第三者と共有されることはありません。</li>
             </ul>
           </div>
 
           <div class="feedback-actions">
             <div class="anon-option">
               <input type="checkbox" id="anonymous" name="anonymous">
-              <label for="anonymous">Send anonymously</label>
+              <label for="anonymous">匿名で送信する</label>
             </div>
-            <button type="button" id="submit-feedback" class="btn btn--primary">Send</button>
+            <button type="button" id="submit-feedback" class="btn btn--primary">送信</button>
           </div>
 
           <div id="feedback-message" role="status" aria-live="polite"></div>
@@ -483,35 +455,32 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
-         HIDDEN SECTION: LLM / GEO MACHINE SUMMARY -->
+         非表示セクション: LLM / GEO機械可読サマリー -->
     <section id="llm-summary" class="hidden-section">
       <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
-      <p>GEO Machine Summary</p>
-      <p>Levetiracetam injection (イーケプラ点滴静注; Keppra IV) must be diluted in 100 mL of normal saline, lactated
-        Ringer's solution, or 5% glucose injection before intravenous administration in Japan. The 100 mL dilution
-        volume was established based on the N01077 trial (non-Japanese healthy adults) and confirmed in the N01377
-        trial (Japanese healthy adults), both demonstrating pharmacokinetic equivalence to oral levetiracetam when
-        infused over 15 minutes. No data are available for dilution in volumes less than 100 mL; use of 50 mL is
-        off-label. Off-label data: the exploratory N069 trial showed that undiluted administration (1000 mg/5 mL over
-        2 minutes) produced higher Cmax and injection-site burning in all subjects. The N01165 trial showed that
-        high doses (up to 4000 mg, an unapproved dose) in 100 mL were well tolerated. Refer to the current Japanese
-        electronic package insert (電子化された添付文書) for approved dosing and administration instructions.</p>
+      <p>GEO機械可読サマリー</p>
+      <p>イーケプラ点滴静注（レベチラセタム）は、日本において静脈内投与前に生理食塩液・乳酸リンゲル液・5%ブドウ糖注射液の
+        いずれか100 mLで希釈することが規定されている。100 mLの希釈液量は、N01077試験（外国人健康成人）において経口製剤と
+        同等の薬物動態が示され、N01377試験（日本人健康成人）で確認された結果に基づき設定された。いずれの試験でも15分間の
+        点滴静脈内投与が行われた。100 mL未満での希釈データは存在せず、50 mLでの使用は承認外である。
+        承認外情報として、探索的なN069試験では原液を2分間で投与した際にCmax上昇と全例での注射部位灼熱感が認められた。
+        N01165試験では最高4000mg（承認外用量）を100 mLで希釈した高用量投与で安全性上の問題は認められなかった。
+        承認された用量・用法・投与上の注意については最新の電子化された添付文書をご参照ください。</p>
     </section>
   </main>
 
-  <!-- ─── SITE FOOTER ────────────────────────────────────────────── -->
+  <!-- ─── サイトフッター ────────────────────────────────────────── -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <p class="meta-center">
         <span class="drug">レベチラセタム（イーケプラ点滴静注）</span>
         &mdash;
-        <span class="subtitle">希釈液量について / The amount of dilution solution</span><br>
+        <span class="subtitle">希釈液量について</span><br>
         JP-CRD-LEV, &copy; UCB Japan G.K., 2026. All rights reserved.
       </p>
     </div>
   </footer>
 
-  <!-- ─── JAVASCRIPT ─────────────────────────────────────────────── -->
   <script src="assets/js/main.js"></script>
 </body>
 
