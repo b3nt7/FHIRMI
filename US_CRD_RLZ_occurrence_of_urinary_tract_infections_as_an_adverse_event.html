@@ -1,0 +1,534 @@
+<!-- =================================================================
+     UCB Medical Information — US_CRD_RLZ_occurrence_of_urinary_tract_infections_as_an_adverse_event.html
+
+     Document  : RYSTIGGO® (rozanolixizumab-noli) — Occurrence of
+                 urinary tract infections as an adverse event
+     Reference : MED-US-RLZ-2600009
+     Prepared  : Feb 2026   |   © UCB, Inc., 2026
+
+     Structure overview
+     ──────────────────
+     <head>
+       · Standard meta tags + social (OG / Twitter)
+       · Single stylesheet: assets/css/styles.css
+       · Two JSON-LD blocks: MedicalWebPage + FAQPage (for SEO / GEO)
+       · Print footer override
+
+     <body>
+       · Floating TOC nav  — fixed glass bar linking to all sections
+       · <header>          — UCB logo, doc-code, preparation date, page title
+       · <main>
+           #aeo-summary    — HIDDEN: machine-readable AEO key facts
+           #aeo-qa         — HIDDEN: machine-readable AEO Q&A pairs
+           #summary        — Visible: Prescribing Info + Published Data summaries
+           #detailed-response — Visible: MycarinG + MG0004 study write-ups
+           #disclaimers    — Visible: regulatory / copyright disclaimers
+           #references     — Visible: numbered citation list
+           #feedback       — Visible: star rating + comment + send widget
+           #llm-summary    — HIDDEN: machine-readable GEO paragraph for LLMs
+       · <footer>          — doc-code, copyright
+       · <script>          — assets/js/main.js (scroll-spy, star rating, feedback)
+
+     Key HTML conventions
+     ─────────────────────
+     · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
+         data-snomed="…"> — semantic tagging for FHIR / ontology consumers
+     · hidden-section: display:none — content for automated readers only
+     · collapse: native <details>/<summary> pattern for collapsible sections
+     · Anchor targets for TOC: either <section id="…"> or <a id="…"> inside
+         <summary> so the target is always visible (even when collapsed)
+     ================================================================= -->
+<!doctype html>
+<html lang="en">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HEAD
+     ═══════════════════════════════════════════════════════════════════ -->
+<head>
+  <meta charset="utf-8" />
+
+  <title>RYSTIGGO (rozanolixizumab-noli) — Occurrence of urinary tract infections as an adverse event</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.example.com/rlz-uti/" />
+
+  <meta name="description"
+    content="Medical information response on RYSTIGGO (rozanolixizumab-noli; RLZ) and urinary tract infections as an adverse event in generalized myasthenia gravis: Prescribing Information, MycarinG Phase 3, and MG0004 OLE data." />
+
+  <meta property="og:title" content="RYSTIGGO (rozanolixizumab-noli) — Occurrence of Urinary Tract Infections as an Adverse Event" />
+  <meta property="og:description" content="UCB medical information: RYSTIGGO and UTI adverse events in generalized myasthenia gravis — Prescribing Information and clinical study data." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.example.com/rlz-uti/" />
+  <meta property="og:image" content="https://www.example.com/rlz-uti/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RYSTIGGO (rozanolixizumab-noli) — Occurrence of Urinary Tract Infections as an Adverse Event" />
+  <meta name="twitter:description" content="Medical information on RYSTIGGO and UTI adverse events in generalized myasthenia gravis." />
+  <meta name="twitter:image" content="https://www.example.com/rlz-uti/og-image.jpg" />
+
+  <link rel="icon" type="image/png" href="assets/img/ucb-logo.png">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- ── Structured data: MedicalWebPage (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "RYSTIGGO (rozanolixizumab-noli) — Occurrence of Urinary Tract Infections as an Adverse Event",
+    "url": "https://www.example.com/rlz-uti/",
+    "about": [
+      {"@type":"Drug","name":"Rozanolixizumab-noli","alternateName":"RYSTIGGO"},
+      {"@type":"MedicalCondition","name":"Generalized Myasthenia Gravis"},
+      {"@type":"MedicalCondition","name":"Urinary Tract Infection"}
+    ],
+    "medicalSpecialty": "Neurology",
+    "lastReviewed": "2026-02-01",
+    "publisher": {"@type": "Organization", "name": "UCB, Inc."},
+    "hasPart": [
+      {"@type":"WebPageElement","name":"Summary","url":"#summary"},
+      {"@type":"WebPageElement","name":"Detailed Response","url":"#detailed-response"},
+      {"@type":"WebPageElement","name":"MycarinG Study","url":"#MycarinGDetail"},
+      {"@type":"WebPageElement","name":"MG0004","url":"#MG0004Detail"}
+    ]
+  }
+  </script>
+
+  <!-- ── Structured data: FAQPage (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"What does the RYSTIGGO Prescribing Information state about urinary tract infections?","acceptedAnswer":{"@type":"Answer","text":"In Study 1 and the extension studies, out of 196 patients treated with RYSTIGGO, common infections (at least 5% frequency) included urinary tract infections (UTIs; 9%)."}},
+      {"@type":"Question","name":"What were the UTI rates in the MycarinG Phase 3 study with rozanolixizumab?","acceptedAnswer":{"@type":"Answer","text":"UTIs as TEAEs were experienced by 3% of patients (2/69) in the RLZ 10 mg/kg group, 3% of patients (2/64) in the RLZ 7 mg/kg group, and 6% of patients (4/67) in the placebo group. No discontinuations or deaths occurred because of UTIs."}},
+      {"@type":"Question","name":"What were the UTI rates in the MG0004 open-label extension study?","acceptedAnswer":{"@type":"Answer","text":"UTI was one of the most frequently reported TEAEs in MG0004 and occurred in 10.0% (7/70) of all patients, with an incidence of 4.8% (2/42) in the RLZ 10 mg/kg group and 10.0% (5/50) in the RLZ 7 mg/kg group. No serious or severe infections or discontinuations due to UTIs were reported."}}
+    ]
+  }
+  </script>
+
+  <!-- ── Print footer override ──────────────────────────────────────────
+       styles.css defines a generic @page @bottom-left; this block
+       replaces it with content specific to this document.              -->
+  <style>
+    @page {
+      @bottom-left {
+        content: "Rozanolixizumab-noli \2014  Occurrence of urinary tract infections as an adverse event\AMED-US-RLZ-2600009, \00A9  UCB, Inc., 2026. All rights reserved.";
+      }
+    }
+  </style>
+</head>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     BODY
+     ═══════════════════════════════════════════════════════════════════ -->
+<body>
+
+  <!-- ─── FLOATING TOC ───────────────────────────────────────────────── -->
+  <div class="container">
+    <nav id="toc" class="navbox" aria-label="Page sections">
+      <span class="navbox__title">Contents</span>
+      <ul id="toc-list" class="navbox__list">
+        <li><a class="btn" href="#summary">Summary</a></li>
+        <li><a class="btn" href="#detailed-response">Detailed&nbsp;response</a></li>
+        <li><a class="btn" href="#MycarinGDetail">MycarinG</a></li>
+        <li><a class="btn" href="#MG0004Detail">MG0004</a></li>
+        <li><a class="btn" href="#disclaimers">Disclaimers</a></li>
+        <li><a class="btn" href="#references">References</a></li>
+        <li><a class="btn" href="#feedback">Feedback</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ─── SITE HEADER ──────────────────────────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-flex">
+        <div class="header-logo">
+          <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
+            alt="UCB logo with tagline inspired by patients, driven by science.">
+        </div>
+        <div class="header-meta-block">
+          <p class="doc-code">MED‑US‑RLZ‑2600009</p>
+          <p class="doc-date">Preparation date:&nbsp;<time datetime="2026-02">Feb 2026</time></p>
+        </div>
+      </div>
+
+      <div class="page-title">
+        <h1 class="h1">
+          <span class="drug">RYSTIGGO<sup>®</sup> (rozanolixizumab-noli)</span>
+          &mdash;
+          <span class="subtitle">Occurrence of urinary tract infections as an adverse event</span>
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── MAIN CONTENT ──────────────────────────────────────────────── -->
+  <main id="main" class="container" role="main">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO KEY FACTS
+         Invisible to browser; readable by automated AEO extractors. -->
+    <section id="aeo-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO"></span>
+      <p>Key Facts — RYSTIGGO (rozanolixizumab-noli): Occurrence of Urinary Tract Infections as an Adverse Event</p>
+      <p>RYSTIGGO (rozanolixizumab-noli; RLZ) is indicated for generalized myasthenia gravis (gMG) in adults who are
+        anti-acetylcholine receptor (AChR) or anti-muscle-specific tyrosine kinase (MuSK) antibody positive (Ab+). In
+        Study 1 and extension studies, UTIs were reported as a common infection (≥5% frequency) in 9% of 196
+        RYSTIGGO-treated patients. In the MycarinG Phase 3 study (Bril et al. 2023), UTI TEAEs occurred in 3% (RLZ
+        10 mg/kg), 3% (RLZ 7 mg/kg), and 6% (placebo); no UTIs led to discontinuation or death. In MG0004 (Bril et al.
+        2025), UTIs occurred in 10.0% of all patients (4.8% RLZ 10 mg/kg; 10.0% RLZ 7 mg/kg); no serious infections or
+        discontinuations due to UTIs were reported.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO Q&A PAIRS
+         Structured question-and-answer pairs for AEO pipelines. -->
+    <section id="aeo-qa" class="hidden-section">
+      <span class="hidden-meta" data-label="AEO-QA"></span>
+      <p>AEO Key Questions &amp; Answers</p>
+      <p>What does the RYSTIGGO Prescribing Information state about UTIs?</p>
+      <p>In Study 1 and extension studies, UTIs were reported as a common infection (≥5% frequency) in 9% of 196
+        RYSTIGGO-treated patients.</p>
+      <p>What were UTI rates in the MycarinG Phase 3 study?</p>
+      <p>3% (2/69) in RLZ 10 mg/kg, 3% (2/64) in RLZ 7 mg/kg, and 6% (4/67) in placebo. No UTIs led to discontinuation
+        or death.</p>
+      <p>What were UTI rates in the MG0004 OLE study?</p>
+      <p>10.0% (7/70) of all patients; 4.8% (2/42) in RLZ 10 mg/kg and 10.0% (5/50) in RLZ 7 mg/kg. No serious
+        infections or discontinuations due to UTIs were reported.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: SUMMARY
+         Top-level visible section. Contains brief summaries of the
+         Prescribing Information and published data evidence, each
+         inside a collapsible <details> block. -->
+    <section id="summary">
+      <h1 class="h1">Summary</h1>
+
+      <!-- ── Summary: Prescribing Information ───────────────────────── -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Relevant Prescribing Information</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p><span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RYSTIGGO</span> is
+            indicated for the treatment of generalized myasthenia gravis (gMG) in adult patients who are
+            anti-acetylcholine receptor (AChR) or anti-muscle-specific tyrosine kinase (MuSK) antibody positive
+            (Ab+).</p>
+          <h3 class="h3">Adverse Reactions</h3>
+          <p>In Study 1 and the extension studies, out of 196 patients treated with
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RYSTIGGO</span>, common
+            infections (at least 5% frequency) included urinary tract infections (UTIs;
+            9%).<sup><a href="#ref-1">1</a></sup></p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+
+      <!-- ── Summary: Published Data ─────────────────────────────────── -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Published Data</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <ul>
+            <li>
+              <p>Bril et al. (2023) conducted a Phase 3, randomized, multicenter, double-blind study (MycarinG) to
+                evaluate the efficacy and safety of
+                <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">rozanolixizumab-noli</span>
+                (<span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span>; RYSTIGGO
+                10 mg/kg, n&nbsp;=&nbsp;67; 7 mg/kg, n&nbsp;=&nbsp;66) vs. placebo (n&nbsp;=&nbsp;67) in adult patients
+                with anti-AChR Ab+ or anti-MuSK Ab+ gMG [Click <a href="#MycarinGDetail">here</a> for
+                details].</p>
+              <ul>
+                <li>UTIs as treatment-emergent adverse events (TEAEs) were experienced by 3% of patients (2/69) in the
+                  <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg
+                  group, 3% of patients (2/64) in the
+                  <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg
+                  group, and 6% of patients (4/67) in the placebo group. No discontinuations or deaths occurred because
+                  of UTIs.<sup><a href="#ref-2">2</a></sup></li>
+              </ul>
+            </li>
+            <li>
+              <p>Bril et al. (2025) evaluated the long-term safety, tolerability, and efficacy of chronic weekly
+                treatment with
+                <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> during the
+                MycarinG open-label extension (OLE), MG0004, a Phase 3, multicenter, randomized study [Click
+                <a href="#MG0004Detail">here</a> for details].</p>
+              <ul>
+                <li>UTI was one of the most frequently reported TEAEs and occurred in 10.0% (7/70) of all patients,
+                  with an incidence of 4.8% (2/42) in the
+                  <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg
+                  group and 10.0% (5/50) in the
+                  <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg
+                  group.<sup><a href="#ref-3">3</a></sup></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DETAILED RESPONSE
+         Full study write-ups for MycarinG and MG0004, each in its
+         own collapsible <details> block. The h1 "Detailed Response"
+         is always visible; each study collapses independently.       -->
+    <section id="detailed-response">
+      <h1 class="h1">Detailed Response</h1>
+
+      <!-- ── Detailed: MycarinG ──────────────────────────────────────── -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2"><a id="MycarinGDetail"></a>MycarinG Study</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p>Bril et al. (2023)<sup><a href="#ref-2">2</a></sup> conducted a pivotal Phase 3, randomized, multicenter,
+            double-blind study (MG0003; NCT03971422) to evaluate the safety and efficacy of
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> vs. placebo in
+            200 adult patients with anti-AChR Ab+ or anti-MuSK Ab+ gMG.</p>
+          <p>Patients were randomly assigned to receive once weekly subcutaneous infusions of
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg
+            (n&nbsp;=&nbsp;67; mean [SD] age, 51.9 [16.5] years),
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg
+            (n&nbsp;=&nbsp;66; mean [SD] age, 53.2 [14.7] years), or placebo (n&nbsp;=&nbsp;67; mean [SD] age, 50.4
+            [17.7] years) for 6 weeks, followed by an observation period of 8 weeks. Safety outcomes included TEAEs and
+            TEAEs leading to discontinuation; the safety set included all patients who were randomly assigned to receive
+            at least 1 dose of study medication according to treatment actually
+            received.<sup><a href="#ref-2">2</a></sup></p>
+          <p>Overall, TEAEs were reported in 83% of patients (57/69) in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg
+            group,<sup><a href="#fn-a-mycarinG">a</a></sup> 81% of patients (52/64) in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg group,
+            and 67% of patients (45/67) in the placebo group. UTIs as TEAEs were experienced by 3% of patients (2/69)
+            in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg group,
+            3% of patients (2/64) in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg group,
+            and 6% of patients (4/67) in the placebo group. No serious or severe infections occurred in
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> treatment
+            groups. No UTIs led to treatment discontinuation in any of the treatment groups. No deaths were reported
+            during the study.<sup><a href="#ref-2">2</a></sup></p>
+          <div class="mini-foot">
+            <sup id="fn-a-mycarinG">a</sup> In the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg group,
+            2 patients received
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg and
+            were evaluated in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg group
+            for the safety analysis.<sup><a href="#ref-2">2</a></sup>
+          </div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+
+      <!-- ── Detailed: MG0004 ───────────────────────────────────────── -->
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2"><a id="MG0004Detail"></a>MG0004</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p>MG0004 (NCT04124965) was a Phase 3 multicenter, randomized, OLE study conducted to evaluate the long-term
+            safety, tolerability, and efficacy of chronic weekly treatment with
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> for up to 52
+            infusions in adult patients with gMG.<sup><a href="#ref-3">3</a></sup></p>
+          <p>Patients who had completed the MycarinG study or required rescue therapy during the MycarinG observation
+            period were eligible to enroll in MG0004. MG0004 was discontinued earlier than planned for nonsafety
+            reasons.<sup><a href="#ref-3">3</a></sup></p>
+          <p>In MG0004, 71 patients were randomly assigned in a 1:1 ratio to receive once-weekly subcutaneous infusions
+            of
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg
+            (n&nbsp;=&nbsp;36; mean [SD] age, 53.7 [17.2] years) or
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg
+            (n&nbsp;=&nbsp;35; mean [SD] age, 50.6 [14.2] years) for up to 52 weeks, followed by an 8-week observation
+            period. Switching between the 7 mg/kg and 10 mg/kg doses was allowed at the investigator's discretion based
+            on tolerability and efficacy. The primary objective was to evaluate the long-term safety and tolerability of
+            chronic weekly
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> doses in
+            patients with gMG.<sup><a href="#ref-3">3</a></sup></p>
+          <p>Safety was assessed in a safety set that included all patients who received at least 1 dose of
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span>. TEAEs were
+            reported in 85.7% of all patients (60/70),<sup><a href="#fn-b-mg0004">b</a></sup> 78.6% (33/42) in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg group,
+            and 76.0% (38/50) of patients in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg group.
+            Infections were reported in 28.6% (20/70) of all patients. UTI was one of the most frequently reported
+            TEAEs and occurred in 10.0% (7/70) of all patients, including 4.8% of patients (2/42) in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 10 mg/kg group
+            and 10.0% of patients (5/50) in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> 7 mg/kg group.
+            No serious or severe infections were reported in any of the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> groups during
+            the study. No discontinuations because of UTIs were reported during the study. No deaths occurred during the
+            study.<sup><a href="#ref-3">3</a></sup></p>
+          <div class="mini-foot">
+            <sup id="fn-b-mg0004">b</sup> Patients who switched doses were counted in the
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RLZ</span> groups. Hence
+            the total of denominators in the two treatment groups is larger than the cohort of 70 patients.
+          </div>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DISCLAIMERS -->
+    <section id="disclaimers">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">Disclaimers</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p>Please note that the information contained in this response is for your personal use only and due to
+            copyright may not be forwarded or published.</p>
+          <p>Medical literature databases are selective in their sources, and the information obtained from the search
+            may not represent the totality of the literature or available data on this topic.</p>
+          <p>Information provided in this document is not intended to draw any conclusions regarding the efficacy and
+            safety of
+            <span data-type="drug" data-emtree="rozanolixizumab" data-mesh="" data-snomed="">RYSTIGGO</span> for any
+            indication or dosage.</p>
+          <p>Links to all third-party websites are provided as a convenience and do not imply an endorsement or
+            recommendation by UCB. UCB accepts no responsibility or liability for the content or services of other
+            websites. UCB encourages you to review the policies and terms of all websites you may choose to visit.</p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: REFERENCES -->
+    <section id="references">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h2 class="h2">References</h2>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <ol>
+            <li id="ref-1">RYSTIGGO<sup>®</sup> (rozanolixizumab-noli) [package insert]. Smyrna, GA: UCB, Inc.
+              Available from: <a href="https://www.ucb-usa.com/RYSTIGGO-prescribing-information.pdf" target="_blank"
+                rel="noopener noreferrer">https://www.ucb-usa.com/RYSTIGGO-prescribing-information.pdf</a></li>
+            <li id="ref-2">Bril V, Drużdż A, Grosskreutz J, Habib AA, Mantegazza R, Sacconi S, et al. Safety and
+              efficacy of rozanolixizumab in patients with generalised myasthenia gravis (MycarinG): a randomised,
+              double-blind, placebo-controlled, adaptive phase 3 study. <em>Lancet Neurol.</em>
+              2023;22(5):383&ndash;94.<br>
+              Available from: <a href="https://doi.org/10.1016/S1474-4422(23)00077-7" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1016/S1474-4422(23)00077-7</a></li>
+            <li id="ref-3">Bril V, Drużdż A, Grosskreutz J, Habib AA, Kaminski HJ, Mantegazza R, et al. Safety and
+              efficacy of chronic weekly rozanolixizumab in generalized myasthenia gravis: the randomized open-label
+              extension MG0004 study. <em>J Neurol.</em> 2025;272(3):275&ndash;87.<br>
+              Available from: <a href="https://doi.org/10.1007/s00415-025-12958-9" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1007/s00415-025-12958-9</a></li>
+          </ol>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: FEEDBACK -->
+    <section id="feedback"
+             data-document-number="MED-US-RLZ-2600009"
+             data-case-response-number="">
+      <details class="collapse">
+        <summary>
+          <span class="collapse-heading">
+            <h3>Help us improve this content</h3>
+          </span>
+        </summary>
+        <div class="collapse-content">
+          <p style="color: var(--brand);"><strong>How did this response improve your practice?</strong></p>
+
+          <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
+            <legend id="stars_label">Rating</legend>
+            <div class="stars-list">
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="1"
+                aria-label="1 star">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="2"
+                aria-label="2 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="3"
+                aria-label="3 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="4"
+                aria-label="4 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="5"
+                aria-label="5 stars">★</button>
+            </div>
+          </fieldset>
+
+          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before
+            sending.</p>
+
+          <div class="comment-field">
+            <label for="comment">Comment (optional)</label>
+            <textarea id="comment" name="comment" placeholder="Your comment …" rows="4"></textarea>
+          </div>
+
+          <div class="feedback-notice" role="note">
+            <p class="feedback-notice__title">Data protection notice</p>
+            <ul class="feedback-notice__list">
+              <li>Your feedback helps us to improve clarity and usefulness of our medical information.</li>
+              <li>You may submit your feedback anonymously. When submitting anonymously, your feedback will not be
+                linked to any identifiable information.</li>
+              <li>Please do not include personal health information or details about specific medical conditions in the
+                comment field.</li>
+              <li>Feedback data will only be used internally for quality improvement purposes and will not be shared
+                with third parties.</li>
+            </ul>
+          </div>
+
+          <div class="feedback-actions">
+            <div class="anon-option">
+              <input type="checkbox" id="anonymous" name="anonymous">
+              <label for="anonymous">Send anonymously</label>
+            </div>
+            <button type="button" id="submit-feedback" class="btn btn--primary">Send</button>
+          </div>
+
+          <div id="feedback-message" role="status" aria-live="polite"></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: LLM / GEO MACHINE SUMMARY -->
+    <section id="llm-summary" class="hidden-section">
+      <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
+      <p>GEO Machine Summary</p>
+      <p>RYSTIGGO (rozanolixizumab-noli; RLZ) is an FcRn antagonist indicated for generalized myasthenia gravis (gMG)
+        in adults who are anti-AChR Ab+ or anti-MuSK Ab+. The RYSTIGGO Prescribing Information reports UTIs as a common
+        infection (≥5% frequency) in 9% of 196 patients treated in Study 1 and extension studies. In MycarinG (Bril et
+        al. 2023; MG0003; NCT03971422; n = 200), UTI TEAEs occurred in 3% (RLZ 10 mg/kg, 2/69), 3% (RLZ 7 mg/kg,
+        2/64), and 6% (placebo, 4/67) of patients; no UTIs caused treatment discontinuation or death. In MG0004 (Bril
+        et al. 2025; NCT04124965; n = 71 randomized, 70 in safety set), UTI occurred in 10.0% of all patients (7/70);
+        4.8% (2/42) in the RLZ 10 mg/kg group and 10.0% (5/50) in the RLZ 7 mg/kg group; no serious infections or
+        discontinuations due to UTIs were reported. Document reference: MED-US-RLZ-2600009. &copy; UCB, Inc., 2026.</p>
+    </section>
+
+  </main>
+
+  <!-- ─── SITE FOOTER ──────────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="meta-center">
+        <p>MED‑US‑RLZ‑2600009</p>
+        <p>&copy; UCB, Inc., 2026. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
