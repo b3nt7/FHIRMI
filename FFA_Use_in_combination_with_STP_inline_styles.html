@@ -1411,6 +1411,18 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
     ]
   }
   </script>
+
+  <!-- ── Print footer override ──────────────────────────────────────────
+       The inlined @page block above already contains the correct footer;
+       this block is the canonical document-specific declaration kept in
+       line with the pattern used across all HTML files in this set.    -->
+  <style>
+    @page {
+      @bottom-left {
+        content: "Fenfluramine \25BC  Use in combination with stiripentol\AMED-EU-FFA-2500009, \00A9  UCB Pharma SA, 2026. All rights reserved.";
+      }
+    }
+  </style>
 </head>
 
 <!-- ═══════════════════════════════════════════════════════════════════
