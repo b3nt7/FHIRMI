@@ -215,9 +215,9 @@
         <!-- Document reference code and preparation date.
              <time datetime="…"> provides the machine-readable ISO date
              while the text node shows the human-friendly format. -->
-        <div class="header-meta-block">
-          <p class="doc-code">MED‑EU‑FFA‑2500009</p>
-          <p class="doc-date">Preparation date:&nbsp;<time datetime="2026-02">Feb 2026</time></p>
+        <div style="text-align:right;">
+          <p style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">Scan to open</p>
+          <img src="assets/img/qr_fhirmi.svg" alt="QR code — scan to open" width="80" height="80">
         </div>
       </div><!-- /header-flex -->
 
@@ -1908,12 +1908,18 @@
        header so the footer is visually consistent with the page heading. -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p class="meta-center"><span class="drug">Fenfluramine</span>
-        <span class="monitor-flag" aria-label="This medicine is subject to additional monitoring">&#9660;</span>
-        <span class="subtitle">Use in combination with stiripentol</span><br>
-        MED‑EU‑FFA‑2500009, &copy; UCB Pharma SA, 2026. All rights
-        reserved.
-      </p>
+      <div class="footer-flex">
+        <p class="footer-meta">
+          <span class="drug">Fenfluramine</span>
+          <span class="monitor-flag" aria-label="This medicine is subject to additional monitoring">&#9660;</span>
+          <span class="subtitle">Use in combination with stiripentol</span><br>
+          MED‑EU‑FFA‑2500009, &copy; UCB Pharma SA, 2026. All rights reserved.
+        </p>
+        <div class="footer-qr">
+          <span class="footer-qr__label">Scan to open</span>
+          <img src="assets/img/qr_fhirmi.svg" alt="QR code — scan to open" width="60" height="60">
+        </div>
+      </div>
     </div>
   </footer>
 

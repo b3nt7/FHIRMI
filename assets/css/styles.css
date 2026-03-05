@@ -1066,11 +1066,45 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    17. FOOTER
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .site-footer {
-  text-align: center;
   padding: var(--space-1) 0;
+  background: #fff;
+  border-top: 0.0625rem solid var(--border);
 }
 
-/* Optional centred meta block within the footer */
+/* Flex row: doc meta left, QR right */
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Left-bound doc info block */
+.footer-meta {
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+  text-align: left;
+}
+
+/* Right-hand QR block */
+.footer-qr {
+  text-align: right;
+  flex-shrink: 0;
+}
+.footer-qr__label {
+  display: block;
+  margin: 0 0 0.25rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+/* Legacy centred meta block (kept for backward compat) */
 .site-footer .meta-center {
   text-align: center;
   margin: 0 auto;
@@ -1281,4 +1315,13 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 
   /* ── Site footer: hidden in print (copyright + page number in @page footer) ── */
   .site-footer { display: none; }
+
+  /* ── Strip section card borders and backgrounds for a clean white PDF ── */
+  #summary, #detailed-response, #appendix, #off-label,
+  #disclaimers, #references, #feedback {
+    border: none;
+    box-shadow: none;
+    background: none;
+    padding-inline: 0;
+  }
 }
