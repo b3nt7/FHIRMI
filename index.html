@@ -40,11 +40,22 @@
   </style>
 </head>
 <body>
-  <header style="text-align:center;margin-bottom:2rem;">
-    <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
-      alt="UCB logo with tagline inspired by patients, driven by science."
-      style="height:64px;display:block;margin:0 auto 1rem;">
-    <p style="color:#001489;font-size:1.1rem;font-weight:600;letter-spacing:0.02em;margin:0;">UCB Medical Information</p>
+  <header class="site-header" role="banner" style="width:100%;">
+    <div class="container">
+      <div class="header-flex">
+        <div class="header-logo">
+          <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
+            alt="UCB logo with tagline inspired by patients, driven by science.">
+        </div>
+        <div style="text-align:right;">
+          <p style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">Scan to open</p>
+          <img src="assets/img/qr_fhirmi.svg" alt="QR code — scan to open UCB Medical Information" width="80" height="80">
+        </div>
+      </div>
+      <div class="page-title" style="text-align:center;">
+        <h1 class="h1" style="justify-content:center;">UCB Medical Information</h1>
+      </div>
+    </div>
   </header>
   <a class="btn btn--primary" href="FFA_Use_in_combination_with_STP.html">🇪🇺 FFA &mdash; Use in Combination with STP</a>
   <!-- <a class="btn btn--primary" href="FFA_Use_in_combination_with_STP_inline_styles.html">🇪🇺 FFA &mdash; Use in Combination with STP &mdash; Inline styles</a> -->
@@ -53,25 +64,5 @@
   <a class="btn btn--primary" href="MX_CRD_BKZ_PSO_Use_in_patients_with_plaque_psoriasis.html">🇲🇽 BKZ &mdash; Uso en pacientes con psoriasis en placas</a>
   <a class="btn btn--primary" href="CA_CRD_CZP_Use_in_patients_with_a_history_of_malignancy.html">🇨🇦 CZP &mdash; Use in patients with a history of malignancy</a>
   <a class="btn btn--primary" href="JP_CRD_LEV_The_amount_of_dilution_solution.html">🇯🇵 LEV &mdash; 希釈液量について / The amount of dilution solution</a>
-
-  <div style="position:fixed;bottom:1.5rem;right:1.5rem;text-align:center;z-index:999;">
-    <p style="color:#001489;font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 0.5rem;">Scan here to open</p>
-    <div id="qr"
-      style="display:inline-block;padding:0.75rem;background:#fff;border-radius:1rem;box-shadow:0 4px 18px rgba(0,0,0,0.09);"></div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
-    integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSe2BTCxIgwHjMaFjLlgdM8KGaJrFGhDFpkA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    new QRCode(document.getElementById('qr'), {
-      text: 'https://b3nt7.github.io/FHIRMI/',
-      width: 160,
-      height: 160,
-      colorDark: '#001489',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.M
-    });
-  </script>
 </body>
 </html>
