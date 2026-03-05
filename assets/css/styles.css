@@ -1068,7 +1068,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 .site-footer {
   padding: var(--space-1) 0;
   background: #fff;
-  border-top: 0.0625rem solid var(--border);
+  border-top: none;
 }
 
 /* Flex row: doc meta left, QR right */
