@@ -678,6 +678,20 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   margin: 0 0 var(--space-025) 0;
 }
 
+/* Footnote entries as <p> blocks — reset margins so entries sit tight */
+.mini-foot p,
+.tblfig .tblfig-footer td p {
+  margin: 0;
+  line-height: inherit;
+}
+
+/* Hanging indent: label (sup) stays at left edge; wrapped text indents */
+.mini-foot p.fn-entry,
+.tblfig .tblfig-footer td p.fn-entry {
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    14. REFERENCES  (#references)
