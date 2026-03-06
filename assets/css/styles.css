@@ -276,9 +276,8 @@ a:hover { color: #a84544;      text-decoration: underline; }
 
 /* Teal variant — feedback section */
 .card--teal {
-  background:        color-mix(in srgb, var(--teal) 25%, white);
-  border-color:      color-mix(in srgb, var(--teal) 45%, transparent);
-  padding-block-end: var(--space-1);
+  background:   color-mix(in srgb, var(--teal) 25%, white);
+  border-color: color-mix(in srgb, var(--teal) 45%, transparent);
 }
 
 
