@@ -746,15 +746,16 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    Background and border now match the comment textarea and notice box
    so all three interactive areas share a single visual language. */
 .stars {
+  position: relative;      /* anchor for absolutely-positioned legend */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  width: fit-content;
-  padding: 0.35rem 1.25rem;
+  width: fit-content;      /* sized to the stars only */
+  padding: 0.6rem 1.25rem; /* equal top & bottom → stars perfectly centred */
   border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent);
   border-radius: 100vmax;
-  background: color-mix(in srgb, #6bcaba 15%, white); /* matches comment + notice */
+  background: color-mix(in srgb, #6bcaba 15%, white);
+  margin-top: 0.6rem;      /* room for the floating "Rating" label above */
   margin-bottom: var(--space-05);
   transition: border-color .2s ease, border-width .2s ease, box-shadow .2s ease;
 }
@@ -768,28 +769,28 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   box-shadow: 0 0 0 0.15rem color-mix(in srgb, #6bcaba 30%, transparent);
 }
 
-/* The <legend> text is invisible (font-size: 0) to avoid double-rendering
-   in the pill; a ::before pseudo-element renders "Rating" visually instead,
-   while the original legend text remains accessible to screen readers. */
+/* Legend floats on the top border — R aligns with C and D at 1.7rem. */
 .stars legend {
-  font-size: 0;
+  position: absolute;
+  inset-block-start: -0.4rem;  /* vertically centred on the top border */
+  inset-inline-start: 1.7rem;  /* R under C under D */
+  font-size: 0;                 /* hide raw text node; ::before renders it */
   margin: 0;
   padding: 0;
+  white-space: nowrap;
 }
 
 .stars legend::before {
   content: "Rating";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
+  display: inline-block;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding-inline: 0.6rem;
-  padding-block: 0.25rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding-inline: 0.3rem;
   color: var(--brand);
-  background: transparent;
+  background: color-mix(in srgb, var(--teal) 25%, white); /* matches feedback card */
 }
 
 /* Row of five star buttons inside the pill */
@@ -799,18 +800,18 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   gap: 0.5rem;
 }
 
-/* Individual star button — pill-shaped, transparent until selected */
+/* Individual star button — circular, star centred inside */
 .stars .star {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding-inline: 0.6rem;
-  padding-block: 0.25rem;
-  min-height: 1.6rem;
-  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-size: 1.05rem;
   line-height: 1;
   cursor: pointer;
-  border-radius: 100vmax;
+  border-radius: 50%;
   border: 0.0625rem solid color-mix(in srgb, var(--brand) 45%, transparent);
   background: transparent;
   color: var(--brand);
@@ -892,15 +893,16 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 .comment-field label {
   position: absolute;
   inset-block-start: -0.4rem;   /* vertically centred on the top border */
-  inset-inline-start: 1.7rem;   /* indented to align with textarea text */
+  inset-inline-start: 1.7rem;   /* C aligns with R and D */
   padding-inline: 0.3rem;
-  background: color-mix(in srgb, #6bcaba 25%, white); /* matches #feedback background */
-  font-size: 0.85rem;
+  background: color-mix(in srgb, var(--teal) 25%, white); /* matches feedback card */
+  font-size: 0.75rem;
   font-weight: 700;
   line-height: 1;
-  z-index: 2;           /* above the textarea border */
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--brand);
+  z-index: 2;           /* above the textarea border */
 }
 
 /* Textarea: teal-tinted fill and border to match the card palette */
@@ -1003,10 +1005,10 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 .feedback-notice__title {
   position: absolute;
   inset-block-start: -0.4rem;    /* vertically centred on the top border */
-  inset-inline-start: 1.7rem;   /* aligned with the comment label */
+  inset-inline-start: 1.7rem;    /* D aligns with R and C */
   padding-inline: 0.3rem;
-  background: color-mix(in srgb, #6bcaba 25%, white); /* matches #feedback card */
-  font-size: 0.78rem;            /* matches notice body text */
+  background: color-mix(in srgb, var(--teal) 25%, white); /* matches feedback card */
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
