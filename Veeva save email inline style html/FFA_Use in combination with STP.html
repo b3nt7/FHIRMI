@@ -1,10 +1,60 @@
+<!-- =================================================================
+     UCB Medical Information — Veeva Save Email: FFA_Use in combination with STP.html
+
+     Document  : Fenfluramine — Use in combination with stiripentol
+     Reference : MED-EU-FFA-2500009
+     Format    : Approved email — table-based HTML with all styles inline.
+                 Compatible with major email clients (Outlook, Gmail, Apple Mail).
+     Prepared  : Feb 2026   |   © UCB Pharma SA 2026
+
+     Structure overview (email table layout)
+     ─────────────────────────────────────────
+     <body>
+       · OUTER WRAPPER table (100% width, transparent background)
+         └── 600px CONTAINER table
+               ├── HEADER row       — UCB logo (top right)
+               ├── TITLE row        — Document title
+               ├── DIVIDER row      — Horizontal rule
+               ├── H1: Summary      — Collapsible-equivalent heading
+               │     ├── H2: EU SmPC
+               │     └── H2: Published Data  (summary bullets, Tables 1–9 overview)
+               ├── H1: Detailed Response
+               │     ├── H2: Relevant Information From the EU SmPC
+               │     │     ├── H3: Posology and Method of Administration
+               │     │     │     ├── TABLE 1 (SmPC posology table)
+               │     │     │     └── H4: Special Populations
+               │     │     ├── H3: Special Warnings and Precautions
+               │     │     └── H3: Pharmacological Properties
+               │     └── H2: Published Data (Detailed)
+               │           ├── H3: Prospective Studies
+               │           │     └── H4: Study 2  (TABLES 2–4)
+               │           ├── H4: Pooled Analysis  (TABLES 5–6)
+               │           ├── H4: OLE Study  (TABLES 7–8)
+               │           └── H3: Real-World Studies  (TABLE 9)
+               ├── H1: Disclaimers
+               ├── H1: References
+               └── FOOTER / PRIVACY row
+
+     Key conventions
+     ────────────────
+     · All styles are inline (style="…") — no external CSS or <style> block.
+     · role="presentation" on all layout tables (accessibility: not data tables).
+     · Font: Helvetica/Arial, base 11pt, black on white.
+     · Drug spans omit data-* semantic attributes (email context).
+     ================================================================= -->
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- ── HEAD ──────────────────────────────────────────────────────── -->
+<!-- Minimal head for email HTML: only charset and subject-line title. -->
 <head>
+  <!-- Character encoding — ensures correct rendering of special characters -->
   <meta charset="UTF-8">
+
+  <!-- Email subject line / browser tab title if opened in a browser -->
   <title>Fenfluramine - Use in combination with stiripentol</title>
 </head>
+<!-- ── END HEAD ─────────────────────────────────────────────────── -->
 
 <!-- STANDART PARAGRAPH FONT: Arial is most compatible, black on white, 11pt -->
 

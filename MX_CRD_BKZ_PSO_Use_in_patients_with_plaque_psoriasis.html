@@ -4,31 +4,90 @@
      Document  : Bimekizumab — Uso en pacientes con psoriasis en placas
      Reference : MED-GL-BKZ-2400080
      Prepared  : Feb 2026   |   © UCB de México, 2026
+     Language  : Spanish (es)
+
+     Structure overview
+     ──────────────────
+     <head>
+       · Standard meta tags + social (OG / Twitter)
+       · Single stylesheet: assets/css/styles.css
+       · Two JSON-LD blocks: MedicalWebPage + FAQPage (for SEO / GEO)
+       · Print footer override (@page rule)
+
+     <body>
+       · Floating TOC nav  — fixed glass bar linking to all sections
+       · <header>          — UCB logo, doc-code, preparation date, page title
+       · <main>
+           #aeo-summary    — HIDDEN: machine-readable AEO key facts
+           #aeo-qa         — HIDDEN: machine-readable AEO Q&A pairs
+           #summary        — Visible: collapsible IPP + Published Data summaries
+           #detailed-response — Visible: full study write-ups (BE VIVID/READY/SURE/RADIANT/BRIGHT OLE + safety)
+           #appendix       — Visible: Tabla 10 baseline demographics + Figura 1 & 2 study designs
+           #disclaimers    — Visible: regulatory / copyright disclaimers (Descargos)
+           #references     — Visible: numbered citation list (Referencias)
+           #feedback       — Visible: star rating + comment + send widget (Retroalimentación)
+           #llm-summary    — HIDDEN: machine-readable GEO paragraph for LLMs
+       · <footer>          — doc-code, copyright
+       · <script>          — assets/js/main.js (scroll-spy, star rating, feedback)
+
+     Key HTML conventions
+     ─────────────────────
+     · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
+         data-snomed="…"> — semantic tagging for FHIR / ontology consumers
+     · hidden-section / card--hidden: display:none — content for automated readers only
+     · collapse: native <details>/<summary> pattern for collapsible sections
+     · Anchor targets for TOC: either <section id="…"> or <a id="…"> inside
+         <summary> so the target is always visible (even when collapsed)
+     · Tables use role="table" with header rows carrying scope="col"
      ================================================================= -->
 <!doctype html>
 <html lang="es">
 
+<!-- ═══════════════════════════════════════════════════════════════════
+     HEAD
+     All invisible metadata: character encoding, viewport, crawl hints,
+     social sharing cards, stylesheet, structured-data JSON-LD blocks,
+     and print footer CSS rule.
+     ═══════════════════════════════════════════════════════════════════ -->
 <head>
+  <!-- Character encoding — declared first so all subsequent bytes are read correctly -->
   <meta charset="utf-8" />
+
+  <!-- Browser tab / bookmark title -->
   <title>Bimekizumab — Uso en pacientes con psoriasis en placas</title>
+
+  <!-- Responsive scaling and crawl directives -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.example.com/bkz-pso-mx/" />
+
+  <!-- Short description shown in search-engine result snippets -->
   <meta name="description"
     content="Información médica sobre bimekizumab (BKZ; Bimzelx) en pacientes con psoriasis en placas de moderada a severa: datos de eficacia y seguridad de los estudios BE VIVID, BE READY, BE SURE, BE RADIANT y BE BRIGHT." />
+
+  <!-- ── Open Graph — controls preview card when shared on social platforms ── -->
   <meta property="og:title" content="Bimekizumab — Uso en pacientes con psoriasis en placas" />
   <meta property="og:description"
     content="Información médica UCB: BKZ en PSO en placas — eficacia y seguridad de los estudios de Fase 3 y 3b." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://www.example.com/bkz-pso-mx/" />
   <meta property="og:image" content="https://www.example.com/bkz-pso-mx/og-image.jpg" />
+
+  <!-- ── Twitter / X card — controls the preview card when shared on Twitter/X ── -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Bimekizumab — Uso en pacientes con psoriasis en placas" />
   <meta name="twitter:description" content="Información médica UCB: BKZ en PSO en placas." />
   <meta name="twitter:image" content="https://www.example.com/bkz-pso-mx/og-image.jpg" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/img/ucb-logo.png">
+
+  <!-- Shared stylesheet — all design tokens, component styles, and responsive layout -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
+  <!-- ── Structured data: MedicalWebPage (JSON-LD) ──
+       Enables rich results in search engines and GEO-aware AI systems.
+       Declares the drug, condition, specialty, publisher, and sub-page anchors. ── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,6 +109,9 @@
   }
   </script>
 
+  <!-- ── Structured data: FAQPage (JSON-LD) ──
+       Provides structured Q&A content for Google FAQ rich results and AI-powered
+       answer engines. Each Question/Answer pair corresponds to a clinical key point. ── -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -62,6 +124,9 @@
   }
   </script>
 
+  <!-- ── Print footer override ──
+       Inserts document reference and copyright into the bottom-left corner of
+       every printed page using CSS @page / @bottom-left named string. ── -->
   <style>
     @page {
       @bottom-left {
@@ -70,9 +135,18 @@
     }
   </style>
 </head>
+<!-- ═══════════════════════════════════════════════════════════════════
+     END HEAD
+     ═══════════════════════════════════════════════════════════════════ -->
 
+<!-- ═══════════════════════════════════════════════════════════════════
+     BODY
+     ═══════════════════════════════════════════════════════════════════ -->
 <body>
 
+  <!-- ─── FLOATING TOC NAV ───────────────────────────────────────────── -->
+  <!-- Fixed glass navigation bar. JS scroll-spy adds/removes .is-active
+       on the <a> elements in #toc-list as the user scrolls past each section. -->
   <div class="container">
     <nav id="toc" class="navbox" aria-label="Secciones de la página">
       <span class="navbox__title">Contenido</span>
@@ -88,18 +162,24 @@
     </nav>
   </div>
 
+  <!-- ─── SITE HEADER ──────────────────────────────────────────────────── -->
+  <!-- Full-width banner: UCB logo (left), doc-code + QR code (right),
+       drug name + subtitle centred below. -->
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-flex">
+        <!-- UCB logo with tagline -->
         <div class="header-logo">
           <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
             alt="Logotipo UCB con el lema inspired by patients, driven by science.">
         </div>
+        <!-- QR code + "Scan to open" label (top right) -->
         <div style="text-align:right;">
           <p style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">Scan to open</p>
           <img src="assets/img/MED-GL-BKZ-2400080/qr.svg" alt="QR code — scan to open" width="80" height="80">
         </div>
       </div>
+      <!-- Page title: drug name + subtitle -->
       <div class="page-title">
         <h1>
           <span class="drug">Bimekizumab</span>
@@ -110,8 +190,13 @@
     </div>
   </header>
 
+  <!-- ─── MAIN CONTENT ──────────────────────────────────────────────── -->
   <main id="main" class="container" role="main">
 
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO KEY FACTS
+         display:none — consumed by automated answer engines / FHIR extractors.
+         Contains a plain-text summary of the document's key clinical facts. -->
     <section id="aeo-summary" class="card card--hidden">
       <span class="hidden-meta" data-label="AEO"></span>
       <p>Hechos clave — Bimekizumab en psoriasis en placas de moderada a severa</p>
@@ -123,6 +208,10 @@
         170.5/100 PY durante 4 años, sin nuevos hallazgos de seguridad.</p>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO Q&A PAIRS
+         display:none — machine-readable question-and-answer pairs for
+         automated answer engines (FAQPage JSON-LD mirrors these). -->
     <section id="aeo-qa" class="card card--hidden">
       <span class="hidden-meta" data-label="AEO-QA"></span>
       <p>Preguntas y respuestas clave AEO</p>
@@ -263,7 +352,7 @@
             los estudios se muestran en el <a href="#appendix">Apéndice</a>.
           </p>
           <p>Para ser elegibles para los estudios clínicos de Fase 3 y 3b, los pacientes debían tener &ge;&nbsp;18
-            años con diagnóstico de PSO en placas de moderada a severa (puntuación PASI absoluta &ge;&nbsp;12,
+            años con diagnóstico de PSO en placas de moderada a severa (puntuación PASI<sup><a href="#fn-pasi-score">f</a></sup> absoluta &ge;&nbsp;12,
             superficie corporal afectada [BSA] &ge;&nbsp;10% y puntuación IGA &ge;&nbsp;3 en una escala de 5 puntos)
             y ser candidatos para terapia sistémica o fototerapia. Las características demográficas y de la
             enfermedad al inicio fueron similares en todos los estudios; los detalles se muestran en el
@@ -773,6 +862,20 @@
             </table>
           </div>
 
+          <p>Al finalizar el estudio, los pacientes pudieron participar en la OLE, en la que los pacientes tratados
+            con
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+            continuaron el tratamiento con
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+            (n&nbsp;=&nbsp;336) y los pacientes tratados con SEC cambiaron a
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+            (n&nbsp;=&nbsp;318). En la semana 144 (semana 96 de la OLE), de los pacientes tratados con
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+            continuo cuyos datos estaban disponibles en el momento del análisis (casos observados [CO]; n&nbsp;=&nbsp;283),
+            el 76.0% alcanzó una respuesta PASI 100 y el 93.3% alcanzó una puntuación PASI absoluta
+            &le;&nbsp;2.<sup><a href="#ref-10">10</a></sup>
+          </p>
+
           <!-- BE BRIGHT OLE -->
           <h4 id="be-bright">Mantenimiento de la Respuesta — OLE BE BRIGHT</h4>
           <p>El mantenimiento de la eficacia de
@@ -857,8 +960,15 @@
 
           <p>Un total de 771 pacientes aleatorizados para recibir
             <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
-            al inicio ingresaron a BE BRIGHT. Los resultados sobre el mantenimiento de la eficacia durante 4 años
-            se presentan en las Tablas 7 y 8.<sup><a href="#ref-7">7</a></sup>
+            al inicio ingresaron a BE BRIGHT. Al inicio de la OLE, 699 (90.7%) y 583 (75.6%) pacientes presentaron
+            respuestas PASI 90 y PASI 100, respectivamente; 685 (88.8%) presentaron respuestas IGA 0/1; y 621 (80.5%)
+            presentaron respuestas DLQI 0/1. Los resultados sobre el mantenimiento de la eficacia con
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+            por año durante 4 años se presentan en la Tabla 7 (en el grupo total de
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>)
+            y la Tabla 8 (en pacientes que recibieron
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+            Q4W hasta la semana 16 y Q8W a partir de entonces).<sup><a href="#ref-7">7</a></sup>
           </p>
 
           <div class="tblfig">
@@ -1229,7 +1339,37 @@
             </table>
           </div>
 
+          <p>Los detalles sobre la evaluación de los TEAEs solo están disponibles actualmente para BE SURE,
+            BE VIVID, BE READY y la OLE de BE BRIGHT durante un período de tratamiento de hasta 3 años (grupo
+            total de <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+            N&nbsp;=&nbsp;1495). Durante 3 años, se reportaron 16 muertes, ninguna de las cuales fue clasificada
+            como relacionada con el tratamiento por los investigadores. De los TEAEs de candidiasis oral, el 99.3%
+            de los casos fueron de intensidad leve o moderada, 5 casos fueron graves y ninguno fue serio. Durante
+            este período, el 10.3% (n&nbsp;=&nbsp;154) de los pacientes presentó un evento de candidiasis oral,
+            el 5.2% (n&nbsp;=&nbsp;78) presentó dos eventos, el 2.5% (n&nbsp;=&nbsp;38) presentó tres eventos,
+            el 1.5% (n&nbsp;=&nbsp;22) presentó cuatro eventos y el 2.1% (n&nbsp;=&nbsp;32) presentó
+            &ge;&nbsp;cinco eventos.
+          </p>
+
+          <p>A lo largo de 3 años de tratamiento, se reportaron neoplasias malignas, excluyendo cáncer de piel
+            no melanoma, en 21 pacientes; cada uno presentó un evento maligno. Un caso de cáncer de próstata y
+            un caso de cáncer de mama fueron clasificados como relacionados con el tratamiento con
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+            por los investigadores. Hubo 7 casos de enfermedad inflamatoria intestinal confirmada o probable;
+            de estos, 5 llevaron a la interrupción del tratamiento y fueron considerados por los investigadores
+            como relacionados con el tratamiento con
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>.
+          </p>
+
+          <p>Las infecciones oportunistas tuvieron una EAIR de 0.9/100 años-PY a lo largo de 3 años; la mayoría
+            fueron infecciones fúngicas mucocutáneas localizadas, excepto un caso grave de herpes zóster
+            oftálmico que se resolvió y no requirió la interrupción del tratamiento con
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>.
+          </p>
+
           <div class="mini-foot">
+            <sup id="fn-pasi-score">f</sup> Las puntuaciones PASI varían de 0 a 72; las puntuaciones más altas indican
+            un empeoramiento de la enfermedad.<br>
             <sup id="fn-ust">g</sup> UST se administró en una dosis de 45&nbsp;mg o 90&nbsp;mg (según el peso inicial)
             en las semanas 0 y 4 y cada 12 semanas a partir de entonces.<br>
             <sup id="fn-ada">h</sup> ADA se administró en una dosis inicial de 80&nbsp;mg, seguida de 40&nbsp;mg cada 2
@@ -1631,6 +1771,11 @@
       </details>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: LLM / GEO SUMMARY
+         display:none — a plain-text paragraph optimised for large language
+         model indexing (Generative Engine Optimisation). Mirrors the clinical
+         conclusions visible in the document body. -->
     <section id="llm-summary" class="card card--hidden">
       <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
       <p>Resumen para sistemas de IA</p>
@@ -1646,9 +1791,13 @@
     </section>
   </main>
 
+  <!-- ─── SITE FOOTER ──────────────────────────────────────────────────── -->
+  <!-- Contains: document reference line (drug name, doc code, date, copyright)
+       and a repeat of the QR code for printed copies. -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-flex">
+        <!-- Document metadata line -->
         <p class="footer-meta">
           <span class="drug">Bimekizumab</span>
           &mdash;
@@ -1663,7 +1812,14 @@
     </div>
   </footer>
 
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────────────────── -->
+  <!-- main.js handles: scroll-spy (TOC active states), star-rating widget,
+       and the feedback form submission (fetch POST). -->
   <script src="assets/js/main.js"></script>
+
 </body>
+<!-- ═══════════════════════════════════════════════════════════════════
+     END BODY
+     ═══════════════════════════════════════════════════════════════════ -->
 
 </html>
