@@ -1,11 +1,33 @@
 <!DOCTYPE html>
+<!-- ============================================================
+  UCB Medical Information — Navigation Index
+  Purpose : Landing page listing all available CRD/FFA documents.
+  Layout  : Centered flex column of glass-style navigation buttons.
+  Assets  : assets/css/styles.css, UCB logo SVG, QR code SVG.
+============================================================ -->
 <html lang="en">
+
+<!-- ============ HEAD ============ -->
 <head>
+  <!-- Character encoding and responsive viewport -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title (browser tab / bookmark label) -->
   <title>Index</title>
+
+  <!-- Favicon — UCB logo PNG -->
   <link rel="icon" type="image/png" href="assets/img/ucb-logo.png">
+
+  <!-- Shared stylesheet (typography, layout utilities, btn classes, site-header) -->
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Page-specific styles
+       - Centers all content vertically and horizontally in a full-viewport column.
+       - Applies a subtle grey-blue gradient background.
+       - Overrides shared .btn--primary with a frosted-glass appearance
+         (semi-transparent white fill, backdrop-filter blur, no text-shadow).
+  -->
   <style>
     body {
       display: flex;
@@ -39,32 +61,77 @@
     }
   </style>
 </head>
+<!-- ============ END HEAD ============ -->
+
+<!-- ============ BODY ============ -->
 <body>
+
+  <!-- ============ SITE HEADER ============
+       Full-width banner containing:
+       - UCB logo (left)
+       - QR code linking to UCB Medical Information (right)
+       - Page title centred below the logo/QR row
+  -->
   <header class="site-header" role="banner" style="width:100%;">
     <div class="container">
       <div class="header-flex">
+        <!-- UCB logo with tagline -->
         <div class="header-logo">
           <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
             alt="UCB logo with tagline inspired by patients, driven by science.">
         </div>
+        <!-- QR code — scan to open this site on a mobile device -->
         <div style="text-align:right;">
           <p style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">Scan to open</p>
           <img src="assets/img/qr_fhirmi.svg" alt="QR code — scan to open UCB Medical Information" width="80" height="80">
         </div>
       </div>
+      <!-- Page title -->
       <div class="page-title" style="text-align:center;">
         <h1 class="h1" style="justify-content:center;">UCB Medical Information</h1>
       </div>
     </div>
   </header>
+  <!-- ============ END SITE HEADER ============ -->
+
+  <!-- ============ NAVIGATION LINKS ============
+       Each anchor uses .btn .btn--primary (glass style defined above).
+       Flag emoji indicates the country/region of the document.
+       Drug abbreviations: FFA = Fenfluramine, BKZ = Bimekizumab,
+         RLZ = Riluzole, CZP = Certolizumab pegol, LEV = Levetiracetam,
+         BRV = Brivaracetam.
+  -->
+
+  <!-- EU — FFA: Use in Combination with Standard of Care / STP -->
   <a class="btn btn--primary" href="FFA_Use_in_combination_with_STP.html">🇪🇺 FFA &mdash; Use in Combination with STP</a>
+
+  <!-- EU — FFA inline-styles variant (currently commented out / not published) -->
   <!-- <a class="btn btn--primary" href="FFA_Use_in_combination_with_STP_inline_styles.html">🇪🇺 FFA &mdash; Use in Combination with STP &mdash; Inline styles</a> -->
+
+  <!-- Global — BKZ: Plaque psoriasis, nail involvement, IL-17 inhibitor comparison -->
   <a class="btn btn--primary" href="GRD_BKZ_PSO_Comparison_to_an_LI-17_inhibitor_in_patients_having_nail_involvement.html">🌍 BKZ &mdash; Comparison to IL-17 inhibitor in patients with psoriasis having nail involvement</a>
+
+  <!-- US — RLZ: Urinary tract infections as an adverse event -->
   <a class="btn btn--primary" href="US_CRD_RLZ_occurrence_of_urinary_tract_infections_as_an_adverse_event.html">🇺🇸 RLZ &mdash; Occurrence of urinary tract infections as an adverse event</a>
+
+  <!-- MX (Mexico) — BKZ: Plaque psoriasis (Spanish-language document) -->
   <a class="btn btn--primary" href="MX_CRD_BKZ_PSO_Use_in_patients_with_plaque_psoriasis.html">🇲🇽 BKZ &mdash; Uso en pacientes con psoriasis en placas</a>
+
+  <!-- CA (Canada) — CZP: Use in patients with a history of malignancy -->
   <a class="btn btn--primary" href="CA_CRD_CZP_Use_in_patients_with_a_history_of_malignancy.html">🇨🇦 CZP &mdash; Use in patients with a history of malignancy</a>
+
+  <!-- JP (Japan) — LEV: Amount of dilution solution (bilingual JP/EN title) -->
   <a class="btn btn--primary" href="JP_CRD_LEV_The_amount_of_dilution_solution.html">🇯🇵 LEV &mdash; 希釈液量について / The amount of dilution solution</a>
+
+  <!-- GB (UK) — BRV: Carbohydrate content of film-coated tablets -->
   <a class="btn btn--primary" href="UK_CRD_BRV_Carbohydrate_content_of_film-coated_tablets.html">🇬🇧 BRV &mdash; Carbohydrate content of film-coated tablets</a>
+
+  <!-- DE (Germany) — BKZ: Gender-specific differences in PsA (German-language document) -->
   <a class="btn btn--primary" href="DE_CRD_BKZ_PsA_Gender-specific_differences.html">🇩🇪 BKZ &mdash; Geschlechtsspezifische Unterschiede bei Psoriasisarthritis</a>
+
+  <!-- ============ END NAVIGATION LINKS ============ -->
+
 </body>
+<!-- ============ END BODY ============ -->
+
 </html>
