@@ -688,8 +688,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Hanging indent: label (sup) stays at left edge; wrapped text indents */
 .mini-foot p.fn-entry,
 .tblfig .tblfig-footer td p.fn-entry {
-  padding-left: 1em;
-  text-indent: -1em;
+  padding-left: 0.75em;
+  text-indent: -0.75em;
 }
 
 
