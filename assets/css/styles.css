@@ -7,7 +7,20 @@
    · All colours via CSS custom properties defined in :root
    · Pill-shaped controls: all-caps text, border-radius: 100vmax
    · Floating TOC: fixed glass bar aligned to the content container
-   · Sections 1–19 follow document order; media queries at the end
+   · Sections 1–20 follow document order; media queries at the end
+
+   Button system
+   ─────────────
+   · .btn              — solid brand-blue pill (default for body use)
+   · .btn--glass       — semi-transparent glass pill (opt-in anywhere)
+   · #toc .btn         — glass automatically via context rule (no class needed)
+   · .btn.is-active    — solid blue, applied by scroll-spy script
+
+   Card system
+   ───────────
+   · .card             — standard bordered card (apply to any section)
+   · .card--teal       — teal variant (feedback)
+   · .card--hidden     — display:none (AEO / LLM machine-readable blocks)
    ================================================================= */
 
 
@@ -235,26 +248,16 @@ a:hover { color: #a84544;      text-decoration: underline; }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   5. SECTION BOXES
-   Every major content section is a styled card.
-   The feedback section overrides colour to use the teal palette.
+   5. CARDS  (.card)
+   Class-based card treatment — apply to any section element.
+   Variants handle colour overrides; no ID coupling required.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* Ensure every anchor target (any element with an id) lands below the
-   fixed navbox. 6 rem gives a small gap above the section heading. */
+/* Ensure every anchor target lands below the fixed navbox.
+   6 rem gives a small gap above the section heading. */
 [id] { scroll-margin-top: 6rem; }
 
-/* Shared card style for all main sections */
-#aeo-summary,
-#aeo-qa,
-#summary,
-#detailed-response,
-#appendix,
-#off-label,
-#disclaimers,
-#references,
-#llm-summary,
-#feedback {
+.card {
   border: 0.0625rem solid var(--border);
   border-radius: var(--radius);
   padding: var(--space-05);
@@ -262,31 +265,18 @@ a:hover { color: #a84544;      text-decoration: underline; }
   margin: var(--space-075) 0;
 }
 
-/* Remove default top margin from the first h1 inside a section box
+/* Remove top margin from the first heading or collapsible block
    so it sits flush with the card's top padding. */
-#aeo-summary       > h1:first-child,
-#aeo-qa            > h1:first-child,
-#summary           > h1:first-child,
-#detailed-response > h1:first-child,
-#off-label         > h1:first-child,
-#disclaimers       > h1:first-child,
-#references        > h1:first-child,
-#llm-summary       > h1:first-child {
+.card > :is(h1, h2, h3, h4, h5, h6):first-child,
+.card > details:first-child {
   margin-top: 0;
 }
 
-/* #appendix opens with a <details> not an <h1>,
-   so remove the details' top margin instead to keep flush card padding. */
-#appendix          > details:first-child {
-  margin-top: 0;
-}
-
-/* Feedback box: teal-tinted background and matching border.
-   Extra bottom padding balances the Send / anonymous row visually. */
-#feedback {
+/* Teal variant — feedback section */
+.card--teal {
   background:        color-mix(in srgb, #6bcaba 25%, white);
   border-color:      color-mix(in srgb, #6bcaba 45%, transparent);
-  padding-block-end: var(--space-1); /* matches bottom gap in other section boxes */
+  padding-block-end: var(--space-1);
 }
 
 
@@ -332,10 +322,10 @@ a:hover { color: #a84544;      text-decoration: underline; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    7. PILL BUTTONS  (.btn)
-   Base pill used for navigation, actions, and back-to-top links.
-   Variants (--primary, --outline, --ghost) and states (is-active)
-   are layered on top with !important to guarantee override regardless
-   of DOM context.
+   Default button is solid brand blue — the standard for body use.
+   Add .btn--glass explicitly for a semi-transparent glass pill.
+   The navbox automatically renders its unselected pills as glass
+   via the #toc context rule (section 8); no extra class needed there.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .btn,
 button.btn {
@@ -347,76 +337,68 @@ button.btn {
   padding-inline: var(--pill-pad-x);
   padding-block: 0;
   border-radius: 100vmax;
-  border: 0.0625rem solid #808AC4;  /* mid-blue chip outline */
+  border: 0.0625rem solid transparent;  /* transparent — solid fill defines the edge */
   box-sizing: border-box;
   cursor: pointer;
-  text-decoration: none;            /* overrides global link underline */
+  text-decoration: none;                /* overrides global link underline */
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1;
-  background: #CCD0E7;              /* light brand-blue chip fill */
-  color: var(--brand);
+  background: var(--brand);            /* solid brand blue */
+  color: #fff;
+  box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45);
   transition:
     background-color .22s ease,
     color            .22s ease,
     border-color     .22s ease,
     box-shadow       .22s ease,
-    filter           .22s ease,     /* needed for brightness() hover on primary pills */
+    filter           .22s ease,
     transform        .12s ease;
 }
+.btn:hover,
+button.btn:hover { filter: brightness(1.08); }
 
-/* Primary — solid brand fill; transparent border so pill edge is smooth
-   (a matching-colour border would show a seam at the rounded end-caps). */
-.btn--primary {
-  color: #fff !important;
-  background: var(--brand) !important;
-  border-color: transparent !important;
-  box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45) !important; /* symmetric glow, no top-edge artefact */
+/* Glass variant — semi-transparent fill with backdrop blur.
+   Explicitly opt-in with class="btn btn--glass" anywhere in the body.
+   Navbox pills use this style automatically via the #toc context rule. */
+.btn--glass {
+  background:   rgba(204, 208, 231, 0.32) !important;  /* #CCD0E7 @ 32% */
+  color:        var(--brand) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow:
+    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,  /* top-edge glass bevel */
+    0 0.125rem 0.375rem rgba(0, 20, 137, 0.08) !important;
+  -webkit-backdrop-filter: saturate(140%) blur(0.5rem);
+  backdrop-filter:         saturate(140%) blur(0.5rem);
 }
-.btn--primary:hover { filter: brightness(1.08); }
+.btn--glass:hover { color: #a84544 !important; filter: none; }
 
-/* Outline — white fill, brand border; subtle hover tint */
+/* Outline variant — white fill, brand border; kept for edge cases */
 .btn--outline {
-  background: #fff !important;
-  color: var(--brand) !important;
-  border: 0.0625rem solid var(--brand) !important;
-  box-shadow: none;
+  background:   #fff !important;
+  color:        var(--brand) !important;
+  border-color: var(--brand) !important;
+  box-shadow:   none;
 }
 .btn--outline:hover { background: rgba(0, 20, 137, 0.06) !important; }
 
-/* Ghost — fully transparent, semi-opaque brand border */
-.btn--ghost {
-  background: transparent !important;
-  color: var(--brand) !important;
-  border: 0.0625rem solid color-mix(in srgb, var(--brand) 45%, transparent) !important;
-  box-shadow: none;
-}
-.btn--ghost:hover { background: color-mix(in srgb, var(--brand) 10%, transparent); }
-
-/* Active state — applied by the scroll-spy script to highlight the
-   current section. Slight upward nudge gives a "pressed in" feel. */
+/* Active state — applied by scroll-spy to the current section's TOC pill.
+   For solid pills: subtle upward lift. Glass pills switch to solid blue
+   (handled in section 8 for the TOC context). */
 .btn.is-active {
-  background: var(--brand) !important;
-  color: #fff !important;
-  border-color: var(--brand) !important;
-  box-shadow:
-    0 0.0625rem 0 rgba(255, 255, 255, 0.28) inset,  /* top-edge highlight bevel */
-    0 0.375rem 1.125rem rgba(0, 20, 137, 0.22);      /* soft blue drop-shadow    */
   transform: translateY(-0.0625rem);
+  box-shadow:
+    0 0.0625rem 0 rgba(255, 255, 255, 0.28) inset,
+    0 0.375rem 1.125rem rgba(0, 20, 137, 0.22);
 }
 
-/* Back-to-top — compact primary pill placed at section ends.
-   Slightly shorter than the standard pill height.
-   border-color: transparent avoids the end-cap seam (same as --primary). */
+/* Back-to-top — compact solid pill at section ends.
+   Inherits solid blue from .btn; only geometry differs. */
 a.btn.back-to-toc {
   min-height: calc(var(--pill-h) - 0.25rem);
   padding-inline: var(--pill-pad-x-compact);
-  background: var(--brand) !important;
-  color: #fff !important;
-  border-color: transparent !important;
-  box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45);
 }
 a.btn.back-to-toc:hover { filter: brightness(1.08); }
 
@@ -472,33 +454,37 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Slightly smaller label in the compact glass bar */
 #toc .navbox__title { font-size: 0.8rem; }
 
-/* Unselected TOC pills: glassy #CCD0E7 chip, white-ish border, subtle bevel.
-   Opacity 0.32 lets the navbox glass tint show through the button body. */
-#toc .btn {
-  white-space: nowrap;      /* prevent button text from wrapping */
-  min-width: max-content;   /* pill never narrower than its label */
-  flex-shrink: 0;           /* pills do not compress when list is tight */
-  background: rgba(204, 208, 231, 0.32);      /* #CCD0E7 at 32% — glassy fill */
-  border-color: rgba(255, 255, 255, 0.35);    /* soft white border             */
+/* Unselected TOC pills — glass style applied via context rule.
+   No class needed on the HTML; being inside #toc is sufficient.
+   Geometry (nowrap, max-content, no-shrink) keeps the scrollable row tidy. */
+#toc .btn:not(.is-active) {
+  white-space: nowrap;
+  min-width: max-content;
+  flex-shrink: 0;
+  background:   rgba(204, 208, 231, 0.32);      /* #CCD0E7 @ 32% — glassy fill */
+  color:        var(--brand);
+  border-color: rgba(255, 255, 255, 0.35);      /* soft white border            */
   box-shadow:
-    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset, /* top-edge glass bevel  */
-    0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);    /* subtle depth shadow   */
+    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,  /* top-edge glass bevel */
+    0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);     /* subtle depth shadow  */
+  -webkit-backdrop-filter: none;
+  backdrop-filter:         none;                /* navbox itself provides blur  */
 }
 
-/* Active TOC pill overrides:
-   · Transparent border — solid brand fill defines the pill shape cleanly;
-     a coloured border creates a visible seam at the rounded end-caps.
-   · Symmetric glow (y-offset = 0) so top and bottom edges look identical.
-   · transform: none cancels the base is-active translateY lift, which
-     would cause a top-edge artefact against the glass background. */
+/* Geometry also needed on active pills so the row stays consistent */
 #toc .btn.is-active {
+  white-space: nowrap;
+  min-width: max-content;
+  flex-shrink: 0;
+  /* Switch to solid blue — overrides the glass context */
+  background:   var(--brand) !important;
+  color:        #fff !important;
   border-color: transparent !important;
-  box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45) !important;
-  transform: none !important;
+  box-shadow:   0 0 0.875rem rgba(0, 20, 137, 0.45) !important;
+  transform:    none !important;   /* suppress lift; avoids artefact on glass bg */
 }
 
-/* Hover on unselected TOC pills: text shifts to warm red (#a84544),
-   matching the global link hover colour for visual consistency. */
+/* Hover on unselected pills: warm red, matching global link hover */
 #toc .btn:not(.is-active):hover { color: #a84544; }
 
 
@@ -548,11 +534,27 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   padding-left: 1.125rem;
 }
 
+/* Headings inside <summary> — any level (h1–h6) works.
+   Normalise margin and display so the heading sits inline with the chevron
+   and doesn't fight the flex layout or add unwanted vertical space. */
+.collapse > summary > :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  display: inline;
+}
+
 /* Focus ring only for keyboard navigation (:focus-visible), not mouse clicks,
    so clicking to expand does not leave a visible selection frame. */
 .collapse summary:focus-visible {
   outline: 0.0625rem dotted var(--accent);
   outline-offset: 0.125rem;
+}
+
+
+/* Injected by main.js — invisible anchor at the very top of the page
+   so href="#top" always resolves without breaking the Back button. */
+.top-anchor {
+  position: absolute;
+  inset-block-start: 0;
 }
 
 
@@ -565,9 +567,10 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Inline metadata spans (e.g. data-label="AEO") — invisible to users */
 .hidden-meta { display: none !important; }
 
-/* Entire sections hidden from view (e.g. LLM summary, AEO blocks) */
-.hidden-section,
-.hidden-section * { display: none !important; }
+/* Entire sections hidden from view (AEO blocks, LLM summary, etc.)
+   Use class="card card--hidden" on the section element. */
+.card--hidden,
+.card--hidden * { display: none !important; }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -599,6 +602,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 
 /* Last data row has no bottom border (table border provides the edge) */
 .tblfig tr:last-child td { border-bottom: 0; }
+
+.tblfig td img { max-width: 100%; height: auto; display: block; }
 
 /* Header row tiers: .hdr defaults to level-3 (lightest); .hdr-1 / .hdr-2
    allow darker shading on top-level columns without extra markup. */
@@ -954,8 +959,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    role="note" on the element marks it as supplementary information. */
 .feedback-notice {
   position: relative;                                   /* context for floating title */
-  font-size: 0.85rem;                                   /* matches table footer text */
-  line-height: 1.45;
+  font-size: 0.78rem;                                   /* smaller than body text */
+  line-height: 1.2;                                     /* tight — secondary fine print */
   background: color-mix(in srgb, #6bcaba 15%, white);  /* matches comment + rating */
   border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent); /* harmonised */
   border-radius: var(--radius);                         /* matches all other section boxes */
@@ -974,7 +979,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   inset-inline-start: 1.7rem;   /* aligned with the comment label */
   padding-inline: 0.3rem;
   background: color-mix(in srgb, #6bcaba 25%, white); /* matches #feedback card */
-  font-size: 0.85rem;            /* matches "Rating" and "COMMENT (OPTIONAL)" floating labels */
+  font-size: 0.78rem;            /* matches notice body text */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -984,15 +989,15 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   margin: 0;
 }
 
-/* Bullet list of the four notice statements */
+/* Notice list — no bullets, no indent; items separated by small gap only */
 .feedback-notice__list {
+  list-style: none;
   margin: 0;
-  padding-left: 1rem;
+  padding: 0;
 }
 .feedback-notice__list li {
   margin: var(--space-025) 0;
 }
-.feedback-notice__list li::marker { color: var(--brand); }
 
 /* Actions row: anonymous checkbox left, Send button right */
 .feedback-actions {
@@ -1011,7 +1016,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Send button positioning within the flex layout.
-   Visual styling comes from .btn + .btn--primary classes on the element. */
+   Visual styling comes from .btn (solid blue base). */
 #submit-feedback {
   align-self: center;
   margin: 0;
@@ -1251,18 +1256,11 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   /* ── Hide non-print elements ── */
   #toc,
   .back-to-toc-wrapper,
-  .hidden-section,
+  .card--hidden,
   #feedback { display: none !important; }
 
-  /* ── Strip section card box styling ── */
-  #aeo-summary,
-  #aeo-qa,
-  #summary,
-  #detailed-response,
-  #appendix,
-  #disclaimers,
-  #references,
-  #llm-summary {
+  /* ── Strip card box styling — clean white sheet ── */
+  .card {
     border: none;
     border-radius: 0;
     padding: 0;
@@ -1271,18 +1269,9 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
     margin: 0 0 1.5em;
   }
 
-  /* ── Restore heading top-margin removed by the card's first-child rule ── */
-  #aeo-summary       > h1:first-child,
-  #aeo-qa            > h1:first-child,
-  #summary           > h1:first-child,
-  #detailed-response > h1:first-child,
-  #disclaimers       > h1:first-child,
-  #references        > h1:first-child,
-  #llm-summary       > h1:first-child {
-    margin-top: 0.5em;
-  }
-
-  #appendix          > details:first-child {
+  /* ── Restore heading/details top-margin removed by the card first-child rule ── */
+  .card > :is(h1, h2, h3, h4, h5, h6):first-child,
+  .card > details:first-child {
     margin-top: 0.5em;
   }
 
@@ -1316,12 +1305,4 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   /* ── Site footer: hidden in print (copyright + page number in @page footer) ── */
   .site-footer { display: none; }
 
-  /* ── Strip section card borders and backgrounds for a clean white PDF ── */
-  #summary, #detailed-response, #appendix, #off-label,
-  #disclaimers, #references, #feedback {
-    border: none;
-    box-shadow: none;
-    background: none;
-    padding-inline: 0;
-  }
 }

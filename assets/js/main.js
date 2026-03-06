@@ -22,7 +22,7 @@
       const topAnchor = document.createElement('div');
       topAnchor.id = 'top';
       // Visually hidden, no layout shift
-      topAnchor.setAttribute('style', 'position:absolute; inset-block-start:0;');
+      topAnchor.className = 'top-anchor';
       document.body.prepend(topAnchor);
     }
   })();
