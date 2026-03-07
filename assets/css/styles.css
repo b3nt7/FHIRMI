@@ -31,10 +31,14 @@
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
 html,
-body { height: 100%; }
+body {
+  height: 100%;
+}
 
 html {
   /* Keeps anchor-jump targets visible below the fixed TOC bar.
@@ -54,12 +58,15 @@ html:focus-within {
 body {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 1rem;        /* base = 16 px in most browsers */
+  font-size: 1rem;
+  /* base = 16 px in most browsers */
   line-height: 1.45;
   color: #000;
   background: #fff;
-  -webkit-font-smoothing: antialiased;  /* macOS / iOS: thinner strokes */
-  -moz-osx-font-smoothing: grayscale;   /* Firefox on macOS */
+  -webkit-font-smoothing: antialiased;
+  /* macOS / iOS: thinner strokes */
+  -moz-osx-font-smoothing: grayscale;
+  /* Firefox on macOS */
 }
 
 
@@ -70,44 +77,61 @@ body {
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
   /* ── Brand colours ── */
-  --brand:          #001489;   /* UCB Reflex Blue — primary action colour */
-  --accent:         #784e90;   /* Purple — used for focus rings           */
-  --teal:           #6bcaba;   /* Teal — feedback card & TOC pill         */
-  --teal-dark:      #0d7a6e;   /* Dark teal — text on teal glass surfaces */
+  --brand: #001489;
+  /* UCB Reflex Blue — primary action colour */
+  --accent: #ED9B33;
+  /* Marigold — used for focus rings         */
+  --teal: #6bcaba;
+  /* Teal — feedback card & TOC pill         */
+  --teal-dark: #00816D;
+  /* Dark teal — text on teal glass surfaces */
 
   /* ── Neutral / border ── */
-  --border:         #d1d5db;   /* Light grey — default box borders        */
+  --border: #d1d5db;
+  /* Light grey — default box borders        */
 
   /* ── Table header palette (lightest → darkest) ── */
-  --tbl-h1:         #808AC4;   /* Level-1 header row background  */
-  --tbl-h2:         #99A1D0;   /* Level-2 header row background  */
-  --tbl-h3:         #B3B9DC;   /* Level-3 header row background  */
-  --tbl-interim:    #CCD0E7;   /* Interim / sub-group row        */
-  --tbl-foot:       #E6E8F3;   /* Table footer row               */
+  --tbl-h1: #808AC4;
+  /* Level-1 header row background  */
+  --tbl-h2: #99A1D0;
+  /* Level-2 header row background  */
+  --tbl-h3: #B3B9DC;
+  /* Level-3 header row background  */
+  --tbl-interim: #CCD0E7;
+  /* Interim / sub-group row        */
+  --tbl-foot: #E6E8F3;
+  /* Table footer row               */
 
   /* ── Miscellaneous ── */
-  --text-muted:     #d1d5db;   /* Muted / secondary text         */
-  --radius:         1.25rem;   /* Corner radius for box-shaped elements (not pills) */
-  --shadow:         0 0.5rem rgba(0, 0, 0, 0.05); /* Subtle elevation shadow */
+  --text-muted: #d1d5db;
+  /* Muted / secondary text         */
+  --radius: 1.25rem;
+  /* Corner radius for box-shaped elements (not pills) */
+  --shadow: 0 0.5rem rgba(0, 0, 0, 0.05);
+  /* Subtle elevation shadow */
 
   /* ── Spacing scale ──
      Named by their rem value so usage is self-documenting at call site. */
-  --space-0:        0;
-  --space-025:      0.25rem;
-  --space-05:       0.5rem;
-  --space-075:      0.75rem;
-  --space-1:        1rem;
-  --space-125:      1.25rem;
-  --space-15:       1.5rem;
-  --space-2:        2rem;
+  --space-0: 0;
+  --space-025: 0.25rem;
+  --space-05: 0.5rem;
+  --space-075: 0.75rem;
+  --space-1: 1rem;
+  --space-125: 1.25rem;
+  --space-15: 1.5rem;
+  --space-2: 2rem;
 
   /* ── Container ── */
-  --container-max:  61.25rem;  /* ≈ 980 px — matches Veeva email width */
+  --container-max: 61.25rem;
+  /* ≈ 980 px — matches Veeva email width */
 
   /* ── Pill control geometry ── */
-  --pill-h:              2rem;    /* Standard pill height                     */
-  --pill-pad-x:          0.9rem;  /* Standard horizontal padding              */
-  --pill-pad-x-compact:  0.7rem;  /* Compact variant (back-to-top pill)       */
+  --pill-h: 2rem;
+  /* Standard pill height                     */
+  --pill-pad-x: 0.9rem;
+  /* Standard horizontal padding              */
+  --pill-pad-x-compact: 0.7rem;
+  /* Compact variant (back-to-top pill)       */
 }
 
 
@@ -118,19 +142,47 @@ body {
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* Shared heading traits */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.25;
   font-weight: 700;
   color: var(--brand);
 }
 
 /* Individual heading sizes and vertical rhythm */
-h1 { font-size: 1.45rem; margin: var(--space-075) 0 var(--space-025); }
-h2 { font-size: 1.35rem; margin: var(--space-05)  0 var(--space-025); }
-h3 { font-size: 1.25rem; margin: var(--space-05)  0 var(--space-025); }
-h4 { font-size: 1.15rem; margin: var(--space-025) 0 var(--space-025); }
-h5 { font-size: 1.05rem; margin: var(--space-025) 0 var(--space-025); }
-h6 { font-size: 1.00rem; margin: var(--space-025) 0 var(--space-025); }
+h1 {
+  font-size: 1.45rem;
+  margin: var(--space-075) 0 var(--space-025);
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: var(--space-05) 0 var(--space-025);
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin: var(--space-05) 0 var(--space-025);
+}
+
+h4 {
+  font-size: 1.15rem;
+  margin: var(--space-025) 0 var(--space-025);
+}
+
+h5 {
+  font-size: 1.05rem;
+  margin: var(--space-025) 0 var(--space-025);
+}
+
+h6 {
+  font-size: 1.00rem;
+  margin: var(--space-025) 0 var(--space-025);
+}
 
 /* Body text — compact vertical margin keeps sections tight */
 p,
@@ -143,11 +195,18 @@ ol {
 
 /* Indent lists consistently */
 ul,
-ol { padding-left: 1.125rem; }
+ol {
+  padding-left: 1.125rem;
+}
 
 /* List item text stays black; marker (bullet) picks up brand blue */
-ul li          { color: #000; }
-ul li::marker  { color: var(--brand); }
+ul li {
+  color: #000;
+}
+
+ul li::marker {
+  color: var(--brand);
+}
 
 /* Nested lists: same indent, small top/bottom gap */
 ul ul,
@@ -160,16 +219,31 @@ ol ol {
 sup,
 sub {
   font-size: 66%;
-  line-height: 0;           /* avoids increasing line height of parent */
+  line-height: 0;
+  /* avoids increasing line height of parent */
   position: relative;
   vertical-align: baseline;
 }
-sup { top: -0.6em; }
-sub { bottom: -0.4em; }
 
-/* Global link style — brand blue, underlined; hover shifts to warm red */
-a       { color: var(--brand); text-decoration: underline; }
-a:hover { color: #a84544;      text-decoration: underline; }
+sup {
+  top: -0.6em;
+}
+
+sub {
+  bottom: -0.4em;
+}
+
+/* Global link style — brand blue, underlined; hover shifts to marigold */
+a {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 /* Note: .btn overrides text-decoration: none for button-style links */
 
 
@@ -222,10 +296,14 @@ a:hover { color: #a84544;      text-decoration: underline; }
   color: #000;
 }
 
-.header-meta-block p { margin: 0; }
+.header-meta-block p {
+  margin: 0;
+}
 
 /* Page title band below the logo row */
-.page-title { padding: 0 0 var(--space-1); }
+.page-title {
+  padding: 0 0 var(--space-1);
+}
 
 /* The h1 and its child spans share the same oversized style.
    Spans allow fine-grained control (drug name, monitoring flag, subtitle). */
@@ -233,10 +311,12 @@ a:hover { color: #a84544;      text-decoration: underline; }
 .page-title .drug,
 .page-title .monitor-flag,
 .page-title .subtitle {
-  font-size: 1.9rem;  /* larger than section h1s to establish clear hierarchy */
+  font-size: 1.9rem;
+  /* larger than section h1s to establish clear hierarchy */
   line-height: 1.3;
   font-weight: 800;
-  color: #000;        /* black, not brand blue, for the document title */
+  color: #000;
+  /* black, not brand blue, for the document title */
 }
 
 /* Flex row so drug name, flag, and subtitle wrap gracefully on narrow screens */
@@ -257,7 +337,9 @@ a:hover { color: #a84544;      text-decoration: underline; }
 
 /* Ensure every anchor target lands below the fixed navbox.
    6 rem gives a small gap above the section heading. */
-[id] { scroll-margin-top: 6rem; }
+[id] {
+  scroll-margin-top: 6rem;
+}
 
 .card {
   border: 0.0625rem solid var(--border);
@@ -269,14 +351,14 @@ a:hover { color: #a84544;      text-decoration: underline; }
 
 /* Remove top margin from the first heading or collapsible block
    so it sits flush with the card's top padding. */
-.card > :is(h1, h2, h3, h4, h5, h6):first-child,
-.card > details:first-child {
+.card> :is(h1, h2, h3, h4, h5, h6):first-child,
+.card>details:first-child {
   margin-top: 0;
 }
 
 /* Teal variant — feedback section */
 .card--teal {
-  background:   color-mix(in srgb, var(--teal) 25%, white);
+  background: color-mix(in srgb, var(--teal) 25%, white);
   border-color: color-mix(in srgb, var(--teal) 45%, transparent);
 }
 
@@ -288,7 +370,8 @@ a:hover { color: #a84544;      text-decoration: underline; }
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .navbox {
   border: 0.0625rem solid var(--border);
-  border-radius: 100vmax; /* always a perfect pill regardless of height */
+  border-radius: 100vmax;
+  /* always a perfect pill regardless of height */
   background: #E6E8F3;
   padding: var(--space-075);
   width: 100%;
@@ -338,52 +421,72 @@ button.btn {
   padding-inline: var(--pill-pad-x);
   padding-block: 0;
   border-radius: 100vmax;
-  border: 0.0625rem solid transparent;  /* transparent — solid fill defines the edge */
+  border: 0.0625rem solid transparent;
+  /* transparent — solid fill defines the edge */
   box-sizing: border-box;
   cursor: pointer;
-  text-decoration: none;                /* overrides global link underline */
+  text-decoration: none;
+  /* overrides global link underline */
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1;
-  background: var(--brand);            /* solid brand blue */
+  background: var(--brand);
+  /* solid brand blue */
   color: #fff;
   box-shadow: 0 0 0.875rem rgba(0, 20, 137, 0.45);
   transition:
     background-color .22s ease,
-    color            .22s ease,
-    border-color     .22s ease,
-    box-shadow       .22s ease,
-    filter           .22s ease,
-    transform        .12s ease;
+    color .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease,
+    transform .12s ease;
 }
+
 .btn:hover,
-button.btn:hover { filter: brightness(1.08); }
+button.btn:hover {
+  filter: brightness(1.08);
+  color: var(--accent);
+  text-decoration: none;
+}
 
 /* Glass variant — semi-transparent fill with backdrop blur.
    Explicitly opt-in with class="btn btn--glass" anywhere in the body.
    Navbox pills use this style automatically via the #toc context rule. */
 .btn--glass {
-  background:   rgba(204, 208, 231, 0.32) !important;  /* #CCD0E7 @ 32% */
-  color:        var(--brand) !important;
+  background: rgba(204, 208, 231, 0.32) !important;
+  /* #CCD0E7 @ 32% */
+  color: var(--brand) !important;
   border-color: rgba(255, 255, 255, 0.35) !important;
   box-shadow:
-    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,  /* top-edge glass bevel */
+    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,
+    /* top-edge glass bevel */
     0 0.125rem 0.375rem rgba(0, 20, 137, 0.08) !important;
   -webkit-backdrop-filter: saturate(140%) blur(0.5rem);
-  backdrop-filter:         saturate(140%) blur(0.5rem);
+  backdrop-filter: saturate(140%) blur(0.5rem);
 }
-.btn--glass:hover { color: #a84544 !important; filter: none; }
+
+.btn--glass:hover {
+  color: var(--accent) !important;
+  text-decoration: none;
+  filter: none;
+}
 
 /* Outline variant — white fill, brand border; kept for edge cases */
 .btn--outline {
-  background:   #fff !important;
-  color:        var(--brand) !important;
+  background: #fff !important;
+  color: var(--brand) !important;
   border-color: var(--brand) !important;
-  box-shadow:   none;
+  box-shadow: none;
 }
-.btn--outline:hover { background: rgba(0, 20, 137, 0.06) !important; }
+
+.btn--outline:hover {
+  background: rgba(0, 20, 137, 0.06) !important;
+  color: var(--accent);
+  text-decoration: none;
+}
 
 /* Active state — applied by scroll-spy to the current section's TOC pill.
    For solid pills: subtle upward lift. Glass pills switch to solid blue
@@ -401,7 +504,11 @@ a.btn.back-to-toc {
   min-height: calc(var(--pill-h) - 0.25rem);
   padding-inline: var(--pill-pad-x-compact);
 }
-a.btn.back-to-toc:hover { filter: brightness(1.08); }
+
+a.btn.back-to-toc:hover {
+  filter: brightness(1.08);
+  text-decoration: none;
+}
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -413,10 +520,13 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 #toc.navbox {
   position: fixed;
-  inset-block-start: 1rem;   /* 1 rem gap from viewport top */
+  inset-block-start: 1rem;
+  /* 1 rem gap from viewport top */
   inset-inline-start: 50%;
-  transform: translateX(-50%); /* horizontal centering via translate */
-  z-index: 9999;               /* above all page content */
+  transform: translateX(-50%);
+  /* horizontal centering via translate */
+  z-index: 9999;
+  /* above all page content */
 
   /* Width clamps to the content container width with a small side margin */
   width: min(100% - 1rem, var(--container-max));
@@ -429,31 +539,46 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   /* Glass effect: near-invisible blue tint; backdrop-filter does the frosting */
   -webkit-backdrop-filter: saturate(180%) blur(1.25rem);
   backdrop-filter: saturate(180%) blur(1.25rem);
-  background: rgba(0, 20, 137, 0.04);         /* 4% brand blue — barely tinted */
-  border: 0.0625rem solid rgba(255, 255, 255, 0.28); /* soft white rim */
+  background: rgba(0, 20, 137, 0.04);
+  /* 4% brand blue — barely tinted */
+  border: 0.0625rem solid rgba(255, 255, 255, 0.28);
+  /* soft white rim */
   box-shadow:
-    0 0 0 0.0625rem rgba(255, 255, 255, 0.22) inset, /* inner highlight (glass bevel) */
-    0 0.5rem 2rem rgba(0, 20, 137, 0.18),             /* blue ambient glow below bar  */
-    0 0.125rem 0.375rem rgba(0, 0, 0, 0.06);          /* crisp close shadow           */
+    0 0 0 0.0625rem rgba(255, 255, 255, 0.22) inset,
+    /* inner highlight (glass bevel) */
+    0 0.5rem 2rem rgba(0, 20, 137, 0.18),
+    /* blue ambient glow below bar  */
+    0 0.125rem 0.375rem rgba(0, 0, 0, 0.06);
+  /* crisp close shadow           */
 }
 
 /* Button list inside the floating TOC: single row, horizontally scrollable.
    flex: 1 + min-width: 0 constrains the list to remaining width after title. */
 #toc .navbox__list {
   display: flex;
-  flex-wrap: nowrap;      /* single row — no line breaks */
-  flex: 1;                /* fill available width after the title label */
-  min-width: 0;           /* allow flex child to shrink below its intrinsic size */
+  flex-wrap: nowrap;
+  /* single row — no line breaks */
+  flex: 1;
+  /* fill available width after the title label */
+  min-width: 0;
+  /* allow flex child to shrink below its intrinsic size */
   gap: 0.2rem;
-  overflow-x: auto;       /* scroll horizontally when buttons exceed bar width */
+  overflow-x: auto;
+  /* scroll horizontally when buttons exceed bar width */
   overflow-y: hidden;
-  justify-content: flex-start; /* left-aligned so scroll makes sense */
+  justify-content: flex-start;
+  /* left-aligned so scroll makes sense */
 }
+
 /* Hide scrollbar visually (scroll still works via touch / trackpad) */
-#toc .navbox__list::-webkit-scrollbar { display: none; }
+#toc .navbox__list::-webkit-scrollbar {
+  display: none;
+}
 
 /* Slightly smaller label in the compact glass bar */
-#toc .navbox__title { font-size: 0.8rem; }
+#toc .navbox__title {
+  font-size: 0.8rem;
+}
 
 /* Unselected TOC pills — glass style applied via context rule.
    No class needed on the HTML; being inside #toc is sufficient.
@@ -462,14 +587,19 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   white-space: nowrap;
   min-width: max-content;
   flex-shrink: 0;
-  background:   rgba(204, 208, 231, 0.32);      /* #CCD0E7 @ 32% — glassy fill */
-  color:        var(--brand);
-  border-color: rgba(255, 255, 255, 0.35);      /* soft white border            */
+  background: rgba(204, 208, 231, 0.32);
+  /* #CCD0E7 @ 32% — glassy fill */
+  color: var(--brand);
+  border-color: rgba(255, 255, 255, 0.35);
+  /* soft white border            */
   box-shadow:
-    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,  /* top-edge glass bevel */
-    0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);     /* subtle depth shadow  */
+    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,
+    /* top-edge glass bevel */
+    0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);
+  /* subtle depth shadow  */
   -webkit-backdrop-filter: none;
-  backdrop-filter:         none;                /* navbox itself provides blur  */
+  backdrop-filter: none;
+  /* navbox itself provides blur  */
 }
 
 /* Geometry also needed on active pills so the row stays consistent */
@@ -477,36 +607,43 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   white-space: nowrap;
   min-width: max-content;
   flex-shrink: 0;
-  background:   var(--brand) !important;
-  color:        #fff !important;
+  background: var(--brand) !important;
+  color: #fff !important;
   /* Semi-transparent white border — matches visual weight of glass/teal pills */
   border-color: rgba(255, 255, 255, 0.4) !important;
   /* Compact shadow matching glass pill: inner top highlight + small drop shadow */
   box-shadow:
     0 0.0625rem 0 rgba(255, 255, 255, 0.28) inset,
     0 0.125rem 0.375rem rgba(0, 20, 137, 0.25) !important;
-  transform:    none !important;
+  transform: none !important;
 }
 
-/* Hover on active pill: reddish text + underline, same as inactive hover */
+/* Hover on active pill: marigold text + underline, same as inactive hover */
 #toc .btn.is-active:hover {
-  color: #a84544 !important;
-  text-decoration: underline;
+  color: var(--accent) !important;
+  text-decoration: none;
 }
 
-/* Hover on unselected pills: warm red, matching global link hover */
-#toc .btn:not(.is-active):hover { color: #a84544; }
+/* Hover on unselected pills: marigold, matching global link hover */
+#toc .btn:not(.is-active):hover {
+  color: var(--accent);
+  text-decoration: none;
+}
 
 /* Feedback pill — light teal glass tint to echo the feedback card colour.
    Targets by href so no extra class is needed in any HTML file. */
 #toc .btn[href="#feedback"]:not(.is-active) {
-  background:   color-mix(in srgb, var(--teal) 28%, transparent);
+  background: color-mix(in srgb, var(--teal) 28%, transparent);
   border-color: color-mix(in srgb, var(--teal) 50%, transparent);
   box-shadow:
     0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,
     0 0.125rem 0.375rem color-mix(in srgb, var(--teal) 20%, transparent);
 }
-#toc .btn[href="#feedback"]:not(.is-active):hover { color: #a84544; }
+
+#toc .btn[href="#feedback"]:not(.is-active):hover {
+  color: var(--accent);
+  text-decoration: none;
+}
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -517,13 +654,16 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* Remove the built-in disclosure triangle in WebKit browsers */
-.collapse summary::-webkit-details-marker { display: none; }
+.collapse summary::-webkit-details-marker {
+  display: none;
+}
 
 .collapse summary {
   cursor: pointer;
   display: flex;
   align-items: center;
-  list-style: none;  /* remove Firefox's built-in disclosure marker */
+  list-style: none;
+  /* remove Firefox's built-in disclosure marker */
   padding: var(--space-05) 0;
 }
 
@@ -536,18 +676,23 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   flex-shrink: 0;
   width: 0.65em;
   height: 0.65em;
-  border-right:  0.18em solid var(--brand);
+  border-right: 0.18em solid var(--brand);
   border-bottom: 0.18em solid var(--brand);
-  transform: rotate(-45deg);        /* → pointing right (collapsed) */
+  transform: rotate(-45deg);
+  /* → pointing right (collapsed) */
   margin-right: var(--space-05);
   transition: transform .2s ease-in-out, border-color .2s ease;
 }
 
 /* When the <details> is open, rotate the chevron to point downward */
-.collapse[open] summary::before { transform: rotate(45deg); }
+.collapse[open] summary::before {
+  transform: rotate(45deg);
+}
 
 /* Hover: chevron shifts to warm red — matches link hover colour */
-.collapse summary:hover::before { border-color: #a84544; }
+.collapse summary:hover::before {
+  border-color: var(--accent);
+}
 
 /* Indent expanded content to align under the heading text (past chevron) */
 .collapse .collapse-content {
@@ -558,7 +703,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Headings inside <summary> — any level (h1–h6) works.
    Normalise margin and display so the heading sits inline with the chevron
    and doesn't fight the flex layout or add unwanted vertical space. */
-.collapse > summary > :is(h1, h2, h3, h4, h5, h6) {
+.collapse>summary> :is(h1, h2, h3, h4, h5, h6) {
   margin: 0;
   display: inline;
 }
@@ -586,12 +731,16 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* Inline metadata spans (e.g. data-label="AEO") — invisible to users */
-.hidden-meta { display: none !important; }
+.hidden-meta {
+  display: none !important;
+}
 
 /* Entire sections hidden from view (AEO blocks, LLM summary, etc.)
    Use class="card card--hidden" on the section element. */
 .card--hidden,
-.card--hidden * { display: none !important; }
+.card--hidden * {
+  display: none !important;
+}
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -602,11 +751,13 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .tblfig table {
   width: 100%;
-  border-collapse: separate;   /* required for border-radius on table */
+  border-collapse: separate;
+  /* required for border-radius on table */
   border-spacing: 0;
   border: 0.0625rem solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;            /* clips row backgrounds to rounded corners */
+  overflow: hidden;
+  /* clips row backgrounds to rounded corners */
   margin: var(--space-05) 0;
   background: #fff;
 }
@@ -622,16 +773,38 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Last data row has no bottom border (table border provides the edge) */
-.tblfig tr:last-child td { border-bottom: 0; }
+.tblfig tr:last-child td {
+  border-bottom: 0;
+}
 
-.tblfig td img { max-width: 100%; height: auto; display: block; }
+.tblfig td img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* Header row tiers: .hdr defaults to level-3 (lightest); .hdr-1 / .hdr-2
    allow darker shading on top-level columns without extra markup. */
-.tblfig .hdr th    { font-size: 0.95rem; font-weight: 700; background: var(--tbl-h3); }
-.tblfig .hdr-1 th  { background: var(--tbl-h1); }  /* darkest  */
-.tblfig .hdr-2 th  { background: var(--tbl-h2); }
-.tblfig .hdr-3 th  { background: var(--tbl-h3); }  /* lightest */
+.tblfig .hdr th {
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: var(--tbl-h3);
+}
+
+.tblfig .hdr-1 th {
+  background: var(--tbl-h1);
+}
+
+/* darkest  */
+.tblfig .hdr-2 th {
+  background: var(--tbl-h2);
+}
+
+.tblfig .hdr-3 th {
+  background: var(--tbl-h3);
+}
+
+/* lightest */
 
 /* Interim rows span full width, styled as a subgroup label */
 .tblfig .interim-row td[colspan] {
@@ -654,12 +827,29 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    Single-purpose helper classes for text and cell alignment.
    Applied directly in HTML to avoid inline styles.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.text-left    { text-align: left; }
-.text-center  { text-align: center; }
-.text-right   { text-align: right; }
-.align-top    { vertical-align: top; }
-.align-middle { vertical-align: middle; }
-.align-bottom { vertical-align: bottom; }
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -725,14 +915,14 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 }
 
 /* Remove native list numbering; ::before pseudo-element provides custom one */
-#references ol > li {
+#references ol>li {
   list-style: none;
   position: relative;
   margin: var(--space-025) 0;
 }
 
 /* Brand-blue numbered counter placed in the gutter to the left of the item */
-#references ol > li::before {
+#references ol>li::before {
   counter-increment: refnum;
   content: counter(refnum) ".";
   position: absolute;
@@ -754,16 +944,20 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    Background and border now match the comment textarea and notice box
    so all three interactive areas share a single visual language. */
 .stars {
-  position: relative;      /* anchor for absolutely-positioned legend */
+  position: relative;
+  /* anchor for absolutely-positioned legend */
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;      /* sized to the stars only */
-  padding: 0.6rem 1.25rem; /* equal top & bottom → stars perfectly centred */
+  width: fit-content;
+  /* sized to the stars only */
+  padding: 0.6rem 1.25rem;
+  /* equal top & bottom → stars perfectly centred */
   border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent);
   border-radius: 100vmax;
   background: color-mix(in srgb, #6bcaba 15%, white);
-  margin-top: 0.6rem;      /* room for the floating "Rating" label above */
+  margin-top: 0.6rem;
+  /* room for the floating "Rating" label above */
   margin-bottom: var(--space-05);
   transition: border-color .2s ease, border-width .2s ease, box-shadow .2s ease;
 }
@@ -780,9 +974,12 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 /* Legend floats on the top border — R aligns with C and D at 1.7rem. */
 .stars legend {
   position: absolute;
-  inset-block-start: -0.4rem;  /* vertically centred on the top border */
-  inset-inline-start: 1.7rem;  /* R under C under D */
-  font-size: 0;                 /* hide raw text node; ::before renders it */
+  inset-block-start: -0.4rem;
+  /* vertically centred on the top border */
+  inset-inline-start: 1.7rem;
+  /* R under C under D */
+  font-size: 0;
+  /* hide raw text node; ::before renders it */
   margin: 0;
   padding: 0;
   white-space: nowrap;
@@ -798,7 +995,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   line-height: 1;
   padding-inline: 0.3rem;
   color: var(--brand);
-  background: color-mix(in srgb, var(--teal) 25%, white); /* matches feedback card */
+  background: color-mix(in srgb, var(--teal) 25%, white);
+  /* matches feedback card */
 }
 
 /* Row of five star buttons inside the pill */
@@ -825,17 +1023,22 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   color: var(--brand);
   transition:
     background-color .2s ease,
-    color            .2s ease,
-    border-color     .2s ease,
-    box-shadow       .2s ease,
-    text-shadow      .2s ease,
-    transform        .15s ease;
+    color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    text-shadow .2s ease,
+    transform .15s ease;
 }
 
 /* Hover: light brand-blue fill */
-.stars .star:hover  { background: color-mix(in srgb, var(--brand) 12%, transparent); }
+.stars .star:hover {
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
 /* Active: subtle scale-down press feedback */
-.stars .star:active { transform: scale(0.98); }
+.stars .star:active {
+  transform: scale(0.98);
+}
 
 /* Selected stars: gold gradient with a soft 3-D depth effect.
    · Gradient (light → mid → deep gold) gives a convex lit-from-above feel.
@@ -845,31 +1048,54 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 .stars .star[aria-checked="true"],
 .stars .star.selected {
   background: linear-gradient(160deg, #ffe57a 0%, #f5c218 55%, #e6a817 100%);
-  color: #7a4d00;                 /* dark amber — readable on gold */
+  color: #7a4d00;
+  /* dark amber — readable on gold */
   border-color: #d4920a;
-  transform: scale(1.2);          /* slightly larger than unselected peers */
+  transform: scale(1.2);
+  /* slightly larger than unselected peers */
   text-shadow:
-    0  1px 0   rgba(255, 255, 255, 0.60),  /* bright highlight on top of star glyph */
-    0  2px 3px rgba(80,  40,  0,   0.25);  /* warm depth shadow below */
+    0 1px 0 rgba(255, 255, 255, 0.60),
+    /* bright highlight on top of star glyph */
+    0 2px 3px rgba(80, 40, 0, 0.25);
+  /* warm depth shadow below */
   box-shadow:
-    0 1px 0   rgba(255, 255, 255, 0.45) inset, /* inner top-edge bevel */
-    0 3px 8px rgba(195, 130,  0,  0.50),        /* warm golden glow */
-    0 1px 2px rgba(0,   0,    0,  0.15);        /* crisp close shadow */
+    0 1px 0 rgba(255, 255, 255, 0.45) inset,
+    /* inner top-edge bevel */
+    0 3px 8px rgba(195, 130, 0, 0.50),
+    /* warm golden glow */
+    0 1px 2px rgba(0, 0, 0, 0.15);
+  /* crisp close shadow */
 }
 
 /* Short horizontal shake for the rating pill on a failed submit attempt.
    Applied via JS as an animation on .stars.has-error. */
 @keyframes rating-shake {
-  0%, 100% { transform: translateX(0); }
-  20%      { transform: translateX(-0.3rem); }
-  40%      { transform: translateX( 0.3rem); }
-  60%      { transform: translateX(-0.2rem); }
-  80%      { transform: translateX( 0.2rem); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-0.3rem);
+  }
+
+  40% {
+    transform: translateX(0.3rem);
+  }
+
+  60% {
+    transform: translateX(-0.2rem);
+  }
+
+  80% {
+    transform: translateX(0.2rem);
+  }
 }
 
 /* Error state on the rating pill — red border + glow + shake */
 .stars.has-error {
-  border-color: #c0392b;
+  border-color: #f18070;
   border-width: 0.125rem;
   box-shadow: 0 0 0 0.15rem rgba(192, 57, 43, 0.20);
   animation: rating-shake 0.35s ease;
@@ -882,17 +1108,21 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   display: none;
   margin-top: -0.6rem;
   font-size: 0.8rem;
-  color: #c0392b;
+  color: #f18070;
   font-weight: 600;
 }
-.stars-error.is-visible { display: block; }
+
+.stars-error.is-visible {
+  display: block;
+}
 
 /* ── Comment field ── */
 /* Wrapper is a positioning context for the floating label */
 .comment-field {
   position: relative;
   width: 100%;
-  margin-top: 1.5rem;  /* keeps the floating label from overlapping the rating pill */
+  margin-top: 1.5rem;
+  /* keeps the floating label from overlapping the rating pill */
 }
 
 /* Floating label: sits on the top border of the textarea.
@@ -900,17 +1130,21 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    through the border rather than sitting on top of it. */
 .comment-field label {
   position: absolute;
-  inset-block-start: -0.4rem;   /* vertically centred on the top border */
-  inset-inline-start: 1.7rem;   /* C aligns with R and D */
+  inset-block-start: -0.4rem;
+  /* vertically centred on the top border */
+  inset-inline-start: 1.7rem;
+  /* C aligns with R and D */
   padding-inline: 0.3rem;
-  background: color-mix(in srgb, var(--teal) 25%, white); /* matches feedback card */
+  background: color-mix(in srgb, var(--teal) 25%, white);
+  /* matches feedback card */
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--brand);
-  z-index: 2;           /* above the textarea border */
+  z-index: 2;
+  /* above the textarea border */
 }
 
 /* Textarea: teal-tinted fill and border to match the card palette */
@@ -921,8 +1155,10 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent);
   border-radius: var(--radius);
   font-size: 1em;
-  resize: vertical;   /* user can drag taller, but not wider */
-  background: color-mix(in srgb, #6bcaba 15%, white); /* 15% — lighter than the card */
+  resize: vertical;
+  /* user can drag taller, but not wider */
+  background: color-mix(in srgb, #6bcaba 15%, white);
+  /* 15% — lighter than the card */
 }
 
 /* Focus / filled state: thicker teal border + soft glow ring */
@@ -945,11 +1181,15 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   width: 1.2rem;
   height: 1.2rem;
   margin: 0;
-  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent); /* harmonised */
-  border-radius: 0.4rem;           /* softly rounded corners */
-  background: color-mix(in srgb, #6bcaba 15%, white);                   /* harmonised */
+  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent);
+  /* harmonised */
+  border-radius: 0.4rem;
+  /* softly rounded corners */
+  background: color-mix(in srgb, #6bcaba 15%, white);
+  /* harmonised */
   cursor: pointer;
-  position: relative;              /* positioning context for the ::after tick */
+  position: relative;
+  /* positioning context for the ::after tick */
   vertical-align: middle;
   transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
@@ -974,11 +1214,12 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: 50%;
-  transform: translate(-50%, -50%) rotate(45deg); /* rotate forms the ✓ shape */
+  transform: translate(-50%, -50%) rotate(45deg);
+  /* rotate forms the ✓ shape */
   width: 0.4rem;
   height: 0.8rem;
-  border-right:  0.15rem solid #fff;
-  border-bottom: 0.15rem solid #fff;
+  border-right: 0.15rem solid var(--accent);
+  border-bottom: 0.15rem solid var(--accent);
 }
 
 /* ── Feedback layout ── */
@@ -995,15 +1236,23 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    than the card to create a subtle inset / secondary feel.
    role="note" on the element marks it as supplementary information. */
 .feedback-notice {
-  position: relative;                                   /* context for floating title */
-  font-size: 0.78rem;                                   /* smaller than body text */
-  line-height: 1.2;                                     /* tight — secondary fine print */
-  background: color-mix(in srgb, #6bcaba 15%, white);  /* matches comment + rating */
-  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent); /* harmonised */
-  border-radius: var(--radius);                         /* matches all other section boxes */
-  padding: var(--space-075) var(--space-075) var(--space-05); /* extra top clears floating label */
+  position: relative;
+  /* context for floating title */
+  font-size: 0.78rem;
+  /* smaller than body text */
+  line-height: 1.2;
+  /* tight — secondary fine print */
+  background: color-mix(in srgb, #6bcaba 15%, white);
+  /* matches comment + rating */
+  border: 0.0625rem solid color-mix(in srgb, #6bcaba 50%, transparent);
+  /* harmonised */
+  border-radius: var(--radius);
+  /* matches all other section boxes */
+  padding: var(--space-075) var(--space-075) var(--space-05);
+  /* extra top clears floating label */
   color: #000;
-  margin-block: 1.5rem;  /* equal space above and below, mirroring .comment-field margin-top */
+  margin-block: 1.5rem;
+  /* equal space above and below, mirroring .comment-field margin-top */
 }
 
 /* "DATA PROTECTION NOTICE" — floats on the top border of the notice box,
@@ -1012,17 +1261,21 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    just as the comment label does above the textarea. */
 .feedback-notice__title {
   position: absolute;
-  inset-block-start: -0.4rem;    /* vertically centred on the top border */
-  inset-inline-start: 1.7rem;    /* D aligns with R and C */
+  inset-block-start: -0.4rem;
+  /* vertically centred on the top border */
+  inset-inline-start: 1.7rem;
+  /* D aligns with R and C */
   padding-inline: 0.3rem;
-  background: color-mix(in srgb, var(--teal) 25%, white); /* matches feedback card */
+  background: color-mix(in srgb, var(--teal) 25%, white);
+  /* matches feedback card */
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--brand);
   line-height: 1;
-  z-index: 2;                    /* above the border line */
+  z-index: 2;
+  /* above the border line */
   margin: 0;
 }
 
@@ -1032,6 +1285,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   margin: 0;
   padding: 0;
 }
+
 .feedback-notice__list li {
   margin: var(--space-025) 0;
 }
@@ -1066,7 +1320,10 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   font-size: 0.9em;
   text-align: center;
 }
-#feedback-message:empty { display: none; }
+
+#feedback-message:empty {
+  display: none;
+}
 
 /* ── Submitted state (.feedback-submitted on .collapse-content) ──
    Applied by JS when a valid session token exists.
@@ -1075,18 +1332,31 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    The action button (#submit-feedback) stays visible — JS has changed its
    label to "Update my response"; no button hiding or showing needed.
    Disabled textarea/checkbox: normalised greying across browsers. */
-.feedback-submitted .stars               { pointer-events: none; opacity: 0.8; }
-.feedback-submitted .stars-error         { display: none !important; }
+.feedback-submitted .stars {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.feedback-submitted .stars-error {
+  display: none !important;
+}
 
 /* Anonymous checkbox row: visible but frozen so the user can see their submission */
-.feedback-submitted .anon-option         { pointer-events: none; }
-.feedback-submitted .anon-option label   { opacity: 0.65; cursor: default; }
+.feedback-submitted .anon-option {
+  pointer-events: none;
+}
+
+.feedback-submitted .anon-option label {
+  opacity: 0.65;
+  cursor: default;
+}
 
 /* Normalise disabled-state greying for custom-styled controls */
 .comment-field textarea:disabled {
   opacity: 0.65;
   cursor: default;
 }
+
 .anon-option input[type="checkbox"]:disabled {
   opacity: 0.5;
   cursor: default;
@@ -1136,6 +1406,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   text-align: right;
   flex-shrink: 0;
 }
+
 .footer-qr__label {
   display: block;
   margin: 0 0 0.25rem;
@@ -1167,31 +1438,71 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    ≤ 22.5 rem ≈ 360 px — very small / older devices
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 30rem) {
-  h1 { font-size: 1.30rem; }
-  h2 { font-size: 1.20rem; }
-  h3 { font-size: 1.15rem; }
-  h4 { font-size: 1.10rem; }
-  h5 { font-size: 1.00rem; }
-  h6 { font-size: 0.95rem; }
+  h1 {
+    font-size: 1.30rem;
+  }
 
-  p, ul, ol { font-size: 0.95rem; }
+  h2 {
+    font-size: 1.20rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  h4 {
+    font-size: 1.10rem;
+  }
+
+  h5 {
+    font-size: 1.00rem;
+  }
+
+  h6 {
+    font-size: 0.95rem;
+  }
+
+  p,
+  ul,
+  ol {
+    font-size: 0.95rem;
+  }
 
   .tblfig th,
-  .tblfig td { font-size: 0.9rem; }
+  .tblfig td {
+    font-size: 0.9rem;
+  }
 
   /* Reduce container side padding on small screens */
-  .container { padding-inline: var(--space-075); }
+  .container {
+    padding-inline: var(--space-075);
+  }
 
   /* Tighten navbox padding on small screens */
-  .navbox { margin: var(--space-1) 0; padding: var(--space-075); }
+  .navbox {
+    margin: var(--space-1) 0;
+    padding: var(--space-075);
+  }
 }
 
 @media (max-width: 22.5rem) {
-  h1 { font-size: 1.2rem; }
-  h2 { font-size: 1.15rem; }
-  h3 { font-size: 1.10rem; }
+  h1 {
+    font-size: 1.2rem;
+  }
 
-  p, ul, ol { font-size: 0.9rem; }
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  h3 {
+    font-size: 1.10rem;
+  }
+
+  p,
+  ul,
+  ol {
+    font-size: 0.9rem;
+  }
 }
 
 
@@ -1201,6 +1512,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    motion in their OS accessibility settings (prefers-reduced-motion).
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (prefers-reduced-motion: reduce) {
+
   .btn,
   button.btn,
   a.btn,
@@ -1263,6 +1575,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
     white-space: pre-line;
     padding: 1.36cm 0 0.5cm 0.3cm;
   }
+
   @bottom-right {
     content: counter(page) " of " counter(pages);
     font-family: Helvetica, Arial, sans-serif;
@@ -1275,14 +1588,27 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
 @media print {
 
   /* ── Reset scroll-related overrides; set 10pt root so rem units scale correctly ── */
-  html { scroll-padding-top: 0; font-size: 10pt; }
-  html, body { height: auto; }
+  html {
+    scroll-padding-top: 0;
+    font-size: 10pt;
+  }
+
+  html,
+  body {
+    height: auto;
+  }
 
   /* ── Base font for print ── */
-  body { font-size: 10pt; line-height: 1.4; }
+  body {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
 
   /* ── Container: full width, no side padding ── */
-  .container { max-width: 100%; padding-inline: 0; }
+  .container {
+    max-width: 100%;
+    padding-inline: 0;
+  }
 
   /* ── Preserve table header background colours ── */
   * {
@@ -1294,7 +1620,9 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   #toc,
   .back-to-toc-wrapper,
   .card--hidden,
-  #feedback { display: none !important; }
+  #feedback {
+    display: none !important;
+  }
 
   /* ── Strip card box styling — clean white sheet ── */
   .card {
@@ -1307,8 +1635,8 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   }
 
   /* ── Restore heading/details top-margin removed by the card first-child rule ── */
-  .card > :is(h1, h2, h3, h4, h5, h6):first-child,
-  .card > details:first-child {
+  .card> :is(h1, h2, h3, h4, h5, h6):first-child,
+  .card>details:first-child {
     margin-top: 0.5em;
   }
 
@@ -1316,30 +1644,53 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
      CSS alone forces content visible; JS (beforeprint) also sets [open]
      so the chevron rotates and native UA state is consistent.          */
   details.collapse,
-  details.collapse > * { display: block !important; }
+  details.collapse>* {
+    display: block !important;
+  }
 
   /* Hide the toggle chevron and summary hover/focus chrome */
-  details.collapse > summary::before,
-  details.collapse > summary::-webkit-details-marker {
+  details.collapse>summary::before,
+  details.collapse>summary::-webkit-details-marker {
     display: none !important;
   }
-  details.collapse > summary {
+
+  details.collapse>summary {
     cursor: default;
     pointer-events: none;
   }
 
   /* ── Page-break control ── */
-  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
-  .tblfig { break-inside: avoid; }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    break-after: avoid;
+  }
+
+  .tblfig {
+    break-inside: avoid;
+  }
 
   /* ── Site header: show only the page-title in print.
      The logo lives in the @page @top-left margin box (every page).
      .header-flex (logo img + doc-code row) is hidden; .page-title is kept
      in normal document flow so it appears left-bound before #summary.      */
-  .site-header { display: block; background: none; padding: 0; margin: 0 0 1em; }
-  .site-header .header-flex { display: none; }
+  .site-header {
+    display: block;
+    background: none;
+    padding: 0;
+    margin: 0 0 1em;
+  }
+
+  .site-header .header-flex {
+    display: none;
+  }
 
   /* ── Site footer: hidden in print (copyright + page number in @page footer) ── */
-  .site-footer { display: none; }
+  .site-footer {
+    display: none;
+  }
 
 }
