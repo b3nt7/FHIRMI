@@ -56,7 +56,7 @@ html:focus-within {
 
 body {
   margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   /* base = 16 px in most browsers */
   line-height: 1.45;
@@ -1525,7 +1525,7 @@ button.btn:hover {
        @page { @bottom-left { content: "…" } } override block in <head>.
        This rule supplies only the shared typographic properties.         */
     content: "";
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 7.5pt;
     color: #000;
     white-space: pre-line;
@@ -1534,7 +1534,7 @@ button.btn:hover {
 
   @bottom-right {
     content: counter(page) " of " counter(pages);
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 7.5pt;
     color: #000;
     padding: 1.68cm 0.5cm 0.5cm 0;
