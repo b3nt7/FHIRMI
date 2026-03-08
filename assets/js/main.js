@@ -258,6 +258,9 @@
   //     Stored object      : { token, rating, comment, anonymous }
   //     Token is session-only and not linked to any user identity.
   // ------------------------------------------------------------
+  // Cloudflare Worker endpoint (D1 database — ucb-mi-feedback)
+  const FEEDBACK_ENDPOINT = 'https://ucb-mi-feedback.fw6k95f6d8.workers.dev';
+
   const actionBtn       = document.getElementById('submit-feedback');
   const feedbackMsg     = document.getElementById('feedback-message');
   const collapseContent = document.querySelector('#feedback .collapse-content');
@@ -317,6 +320,14 @@
 
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     enterSubmittedState(data);
+
+    // Fire-and-forget POST to Cloudflare Worker — UI is not blocked by this.
+    // Failures are logged to the console but never shown to the user.
+    fetch(FEEDBACK_ENDPOINT, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(data),
+    }).catch(err => console.warn('Feedback submission failed:', err));
   }
 
   // Freeze the form and switch button label to "Update my feedback"
