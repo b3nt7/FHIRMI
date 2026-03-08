@@ -703,19 +703,33 @@
       <summary><h2>Button Variants (reference — delete in production)</h2></summary>
 
       <div class="collapse-content">
-        <!-- Solid brand blue — default .btn -->
-        <a class="btn" href="#">Solid blue (default)</a>
+        <p>There are only two visual contexts for buttons. No extra classes are needed in HTML.</p>
 
-        <!-- Glass — semi-transparent, opt-in with .btn--glass -->
-        <a class="btn btn--glass" href="#">Glass pill</a>
+        <h4>In the document body</h4>
+        <p>Use <code>class="btn"</code> — solid brand blue, white text. Hover: marigold text + marigold border.</p>
+        <!-- Solid brand blue — the only body button variant -->
+        <a class="btn" href="#">Solid blue (.btn)</a>
 
-        <!-- Outline — white fill, brand border, opt-in with .btn--outline -->
-        <a class="btn btn--outline" href="#">Outline pill</a>
+        <h4>In the floating TOC navbox (<code>#toc</code>)</h4>
+        <p>Pills are styled automatically by the <code>#toc .btn</code> context rule — no extra class needed.</p>
+        <p><strong>Unselected</strong> (inactive): glass pill — semi-transparent blue-grey fill, white border.<br>
+           <strong>Active</strong> (current section): solid brand blue, semi-transparent white border.<br>
+           <strong>Teal</strong> (Feedback link): teal-tinted glass, targeted by <code>href="#feedback"</code>.<br>
+           All hover: marigold text + marigold border.</p>
+        <!-- Simulated navbox context — inline styles replicate #toc context rules -->
+        <nav class="navbox" aria-label="Button example">
+          <ul class="navbox__list" style="justify-content:flex-start;flex-wrap:wrap;">
+            <li><a class="btn" href="#"
+                style="background:rgba(204,208,231,0.52);color:var(--brand);border-color:rgba(255,255,255,0.55);box-shadow:0 0.0625rem 0 rgba(255,255,255,0.55) inset,0 0.125rem 0.375rem rgba(0,20,137,0.08);">Inactive (glass)</a></li>
+            <li><a class="btn" href="#"
+                style="background:var(--brand);color:#fff;border-color:rgba(255,255,255,0.4);box-shadow:0 0.0625rem 0 rgba(255,255,255,0.28) inset,0 0.125rem 0.375rem rgba(0,20,137,0.25);">Active (blue)</a></li>
+            <li><a class="btn" href="#"
+                style="background:color-mix(in srgb,var(--teal) 28%,transparent);color:var(--brand);border-color:color-mix(in srgb,var(--teal) 50%,transparent);box-shadow:0 0.0625rem 0 rgba(255,255,255,0.55) inset,0 0.125rem 0.375rem color-mix(in srgb,var(--teal) 20%,transparent);">Feedback (teal)</a></li>
+          </ul>
+        </nav>
 
-        <!-- Active state — normally applied by scroll-spy JS -->
-        <a class="btn is-active" href="#">Active (scroll-spy)</a>
-
-        <!-- Back-to-top compact pill -->
+        <h4>Back-to-top</h4>
+        <p>Uses standard <code>.btn</code> inside <code>.back-to-toc-wrapper</code> (right-aligned).</p>
         <div class="back-to-toc-wrapper">
           <a href="#toc" class="btn back-to-toc">Back to top</a>
         </div>
@@ -857,7 +871,7 @@
   <section id="feedback" class="card card--teal"
            data-document-number="[DOC-NUMBER]"
            data-case-response-number="[CASE-NUMBER]"
-           data-label-update="Update my response"
+           data-label-update="Update my feedback"
            data-label-resend="RE-SEND"
            data-msg-thanks="Thank you for your feedback!">
     <details class="collapse">

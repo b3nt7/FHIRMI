@@ -248,7 +248,7 @@
   //
   //     A single button (#submit-feedback) serves all three states:
   //       fresh     — label "Send";               click → submit
-  //       submitted — label "Update my response"; click → open editing
+  //       submitted — label "Update my feedback"; click → open editing
   //       editing   — label "RE-SEND";            click → submit (upsert)
   //
   //     State is indicated by .feedback-submitted on .collapse-content.
@@ -265,7 +265,7 @@
   const feedbackSection = document.getElementById('feedback');
   const docNumber       = feedbackSection?.dataset.documentNumber     ?? '';
   const caseNumber      = feedbackSection?.dataset.caseResponseNumber ?? '';
-  const labelUpdate     = feedbackSection?.dataset.labelUpdate ?? 'Update my response';
+  const labelUpdate     = feedbackSection?.dataset.labelUpdate ?? 'Update my feedback';
   const labelResend     = feedbackSection?.dataset.labelResend ?? 'RE-SEND';
   const msgThanks       = feedbackSection?.dataset.msgThanks   ?? 'Thank you for your feedback!';
 
@@ -319,7 +319,7 @@
     enterSubmittedState(data);
   }
 
-  // Freeze the form and switch button label to "Update my response"
+  // Freeze the form and switch button label to "Update my feedback"
   function enterSubmittedState(data) {
     applyRating(data.rating);
     const textarea  = document.getElementById('comment');

@@ -1118,7 +1118,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
    Stars remain gold (rating preserved) but non-interactive.
    Anonymous checkbox stays visible and frozen (shows what was submitted).
    The action button (#submit-feedback) stays visible — JS has changed its
-   label to "Update my response"; no button hiding or showing needed.
+   label to "Update my feedback"; no button hiding or showing needed.
    Disabled textarea/checkbox: normalised greying across browsers. */
 .feedback-submitted .stars               { pointer-events: none; opacity: 0.8; }
 .feedback-submitted .stars-error         { display: none !important; }
@@ -3128,7 +3128,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
           <!-- ── Actions row ────────────────────────────────────────────
                Flex row: anonymous checkbox (left) + action button (right).
                A single button (#submit-feedback) serves all three states:
-               · fresh     → label "Send"               · submitted  → label "Update my response"
+               · fresh     → label "Send"               · submitted  → label "Update my feedback"
                · editing   → label "RE-SEND"
                JS changes the label and click behaviour; the button stays
                in the same position with the same primary-blue style throughout. -->
@@ -3460,7 +3460,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
   //
   //     A single button (#submit-feedback) serves all three states:
   //       fresh     — label "Send";               click → submit
-  //       submitted — label "Update my response"; click → open editing
+  //       submitted — label "Update my feedback"; click → open editing
   //       editing   — label "RE-SEND";            click → submit (upsert)
   //
   //     State is indicated by .feedback-submitted on .collapse-content.
@@ -3527,7 +3527,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
     enterSubmittedState(data);
   }
 
-  // Freeze the form and switch button label to "Update my response"
+  // Freeze the form and switch button label to "Update my feedback"
   function enterSubmittedState(data) {
     applyRating(data.rating);
     const textarea  = document.getElementById('comment');
@@ -3535,7 +3535,7 @@ a.btn.back-to-toc:hover { filter: brightness(1.08); }
     if (textarea)  { textarea.value  = data.comment;   textarea.disabled  = true; }
     if (anonCheck) { anonCheck.checked = data.anonymous; anonCheck.disabled = true; }
 
-    if (actionBtn) actionBtn.textContent = 'Update my response';
+    if (actionBtn) actionBtn.textContent = 'Update my feedback';
     collapseContent?.classList.add('feedback-submitted');
     if (feedbackMsg) feedbackMsg.textContent = 'Thank you for your feedback!';
     clearStarError();
