@@ -513,7 +513,10 @@ button.btn:hover {
   gap: 0.2rem;
   overflow-x: auto;
   /* scroll horizontally when buttons exceed bar width */
-  overflow-y: hidden;
+  overflow-y: visible;
+  /* must be visible so border on hover is not clipped (was: hidden) */
+  padding-block: 0.125rem;
+  /* room for the 0.0625rem border on hover without clipping */
   justify-content: flex-start;
   /* left-aligned so scroll makes sense */
 }
