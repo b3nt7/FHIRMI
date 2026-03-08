@@ -41,8 +41,8 @@ body {
 
 html {
   /* Keeps anchor-jump targets visible below the fixed TOC bar.
-     5 rem ≈ navbox height (≈3.8 rem) + comfortable breathing room. */
-  scroll-padding-top: 5rem;
+     6 rem = navbox clearance (≈4 rem top-to-bottom) + ~2 rem breathing room. */
+  scroll-padding-top: 6rem;
   /* Prevent iOS Safari from auto-inflating font sizes on narrow viewports,
      which would make <p> appear disproportionately larger than headings/tables. */
   -webkit-text-size-adjust: 100%;
@@ -254,9 +254,10 @@ a:hover {
   padding-inline: var(--space-1);
 }
 
-/* Header: top padding is enlarged so the logo clears the fixed TOC bar */
+/* Header: top padding is enlarged so the logo clears the fixed TOC bar.
+   calc(1rem gap-from-top + 3.05rem navbox-height + 2rem breathing) = 6rem */
 .site-header {
-  padding: calc(var(--space-1) + 4rem) 0 var(--space-1);
+  padding: calc(var(--space-1) + 5rem) 0 var(--space-1);
   background: #fff;
 }
 
@@ -331,8 +332,10 @@ a:hover {
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* Ensure every anchor target lands below the fixed navbox.
-   6 rem gives a small gap above the section heading. */
-[id] {
+   6 rem = navbox clearance + breathing room.
+   Exclude #toc itself: it is position:fixed so scroll-margin on it
+   causes Safari to produce an unexpected scroll offset. */
+[id]:not(#toc) {
   scroll-margin-top: 6rem;
 }
 
