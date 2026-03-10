@@ -49,6 +49,7 @@
      All invisible metadata: character encoding, viewport, crawl hints,
      social sharing cards, stylesheet, and structured-data JSON-LD blocks.
      ═══════════════════════════════════════════════════════════════════ -->
+
 <head>
   <meta charset="utf-8" />
   <!-- UTF-8 declared first so the browser reads all subsequent bytes correctly -->
@@ -72,15 +73,18 @@
 
   <!-- ── Open Graph (og:) — controls the preview card when shared on
        LinkedIn, Facebook, Teams, Slack, etc. ── -->
-  <meta property="og:title" content="Bimekizumab — Comparison to an IL-17 Inhibitor in Patients With Nail Involvement" />
-  <meta property="og:description" content="UCB medical information: BKZ vs secukinumab for nail psoriasis — BE RADIANT ad hoc analysis." />
+  <meta property="og:title"
+    content="Bimekizumab — Comparison to an IL-17 Inhibitor in Patients With Nail Involvement" />
+  <meta property="og:description"
+    content="UCB medical information: BKZ vs secukinumab for nail psoriasis — BE RADIANT ad hoc analysis." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://www.example.com/bkz-il17-nails/" />
   <meta property="og:image" content="https://www.example.com/bkz-il17-nails/og-image.jpg" />
 
   <!-- ── Twitter / X card — controls the preview card when shared on Twitter/X ── -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bimekizumab — Comparison to an IL-17 Inhibitor in Patients With Nail Involvement" />
+  <meta name="twitter:title"
+    content="Bimekizumab — Comparison to an IL-17 Inhibitor in Patients With Nail Involvement" />
   <meta name="twitter:description" content="Medical information on BKZ vs secukinumab for nail psoriasis." />
   <meta name="twitter:image" content="https://www.example.com/bkz-il17-nails/og-image.jpg" />
 
@@ -149,33 +153,14 @@
       }
     }
 
-    /* Figure 1 analysis-tab buttons */
-    .fig1-tab {
-      background: rgba(204,208,231,0.52);
-      color: var(--blue);
-      border: 0.0625rem solid rgba(255,255,255,0.55);
-      border-radius: 100vmax;
-      padding: 0.28rem 0.85rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      cursor: pointer;
-      font-family: Tahoma, sans-serif;
-      transition: color 0.15s ease, border-color 0.15s ease;
-    }
-    .fig1-tab:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-    .fig1-tab.is-active {
-      background: var(--blue);
-      color: #fff;
-      border-color: rgba(255,255,255,0.4);
-    }
-    .fig1-tab.is-active:hover {
-      color: #fff;
-      border-color: var(--accent);
+    /* Figure 1 analysis-tab buttons — inactive glass pill, identical to navbox */
+    #fig1-tabs .btn:not(.is-active) {
+      background: color-mix(in srgb, var(--tbl-interim) 52%, transparent);
+      color: var(--brand);
+      border-color: rgba(255, 255, 255, 0.55);
+      box-shadow:
+        0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,
+        0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);
     }
   </style>
 </head>
@@ -183,6 +168,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      BODY
      ═══════════════════════════════════════════════════════════════════ -->
+
 <body>
 
   <!-- ─── FLOATING TOC ─────────────────────────────────────────────────
@@ -217,7 +203,9 @@
             alt="UCB logo with tagline inspired by patients, driven by science.">
         </div>
         <div style="text-align:right;">
-          <p style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">Scan to open</p>
+          <p
+            style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">
+            Scan to open</p>
           <img src="assets/img/MED-GL-BKZ-2300603/qr.svg" alt="QR code — scan to open" width="80" height="80">
         </div>
       </div><!-- /header-flex -->
@@ -227,7 +215,8 @@
         <h1>
           <span class="drug">Bimekizumab</span>
           &mdash;
-          <span class="subtitle">Comparison to an IL-17 inhibitor in patients with plaque psoriasis having nail involvement</span>
+          <span class="subtitle">Comparison to an IL-17 inhibitor in patients with plaque psoriasis having nail
+            involvement</span>
         </h1>
       </div>
     </div>
@@ -282,12 +271,14 @@
       <!-- ── Summary: CCDS ─────────────────────────────────────────── -->
       <details class="collapse">
         <summary>
-            <h2>Relevant Information From the Company Core Data Sheet (CCDS)</h2>
+          <h2>Relevant Information From the Company Core Data Sheet (CCDS)</h2>
         </summary>
         <div class="collapse-content">
           <p>The CCDS for
-            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">bimekizumab</span>
-            (<span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>; Bimzelx) contains
+            <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+              data-snomed="785160002">bimekizumab</span>
+            (<span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>;
+            Bimzelx) contains
             no information regarding the comparison of BKZ to an interleukin (IL)-17 inhibitor with regards to psoriasis
             (PSO) involving the nails in patients with plaque PSO.
           </p>
@@ -300,15 +291,17 @@
            Sub-bullets (BulletList2) are nested under the main bullet. -->
       <details class="collapse">
         <summary>
-            <h2>Published Data</h2>
+          <h2>Published Data</h2>
         </summary>
         <div class="collapse-content">
           <ul>
             <li>
               <a id="ref1-first"></a>
               <p>In BE RADIANT, an ad hoc analysis was conducted to compare the efficacy of
-                <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
-                and secukinumab (<span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>)
+                <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                  data-snomed="785160002">BKZ</span>
+                and secukinumab (<span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                  data-snomed="774843009">SEC</span>)
                 for the treatment of nail PSO. This analysis comprised patients who had moderate to severe nail
                 involvement (modified Nail Psoriasis Severity Index [mNAPSI] score &gt; 10) at baseline (BKZ,
                 n&nbsp;=&nbsp;116; SEC, n&nbsp;=&nbsp;99) [Click <a href="#be-radiant">here</a> for details].
@@ -318,18 +311,22 @@
                   <a id="ref2-first"></a>
                   <p>Complete clearance of nail PSO (mNAPSI score = 0) at Week 48 was achieved by 70.7% of patients in
                     the
-                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>
                     group and 53.5% of patients in the
-                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>
                     group (nonresponder imputation [NRI]) [Click <a href="#efficacy-results">here</a> for
                     details].<sup><a href="#ref-2">2</a></sup>
                   </p>
                 </li>
                 <li>
                   <p>Each nail was individually evaluated for nail manifestations. Higher proportions of patients in the
-                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>
                     group than in the
-                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>
                     group achieved complete clearance for all nail manifestations (mNAPSI subscore = 0) except for red
                     spots on the lunula [Click <a href="#nail-manifestations-table">here</a> for
                     details].<sup><a href="#ref-2">2</a></sup>
@@ -337,17 +334,23 @@
                 </li>
                 <li>
                   <p>Over 48 weeks, in the overall population (<span data-type="drug" data-emtree="bimekizumab"
-                      data-mesh="D000088523" data-snomed="785160002">BKZ</span>,<sup><a href="#fn-a-safety">a</a></sup> n&nbsp;=&nbsp;373;
-                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                      data-mesh="D000088523" data-snomed="785160002">BKZ</span>,<sup><a href="#fn-a-safety">a</a></sup>
+                    n&nbsp;=&nbsp;373;
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;370), the rate of occurrence of any treatment-emergent adverse event (TEAE) was 86.1%
                     for the
-                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>
                     group and 81.4% for the
-                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>
                     group, and the rate of occurrence of serious TEAEs was similar for the
-                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>
                     (5.9%) and
-                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>
                     (5.7%) groups [Click <a href="#safety-data">here</a> for
                     details].<sup><a href="#ref-3">3</a></sup>
                   </p>
@@ -355,11 +358,13 @@
               </ul>
               <div class="mini-foot">
                 <p class="fn-entry"><sup id="fn-a-safety">a</sup> Patients received
-                <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
-                320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.</p>
+                  <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                    data-snomed="785160002">BKZ</span>
+                  320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.
+                </p>
                 <p>BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index; NRI&nbsp;= nonresponder
-                imputation; PSO&nbsp;= psoriasis; QXW&nbsp;= every X weeks;
-                SEC&nbsp;= secukinumab.</p>
+                  imputation; PSO&nbsp;= psoriasis; QXW&nbsp;= every X weeks;
+                  SEC&nbsp;= secukinumab.</p>
               </div>
             </li>
           </ul>
@@ -378,7 +383,7 @@
       <h1>Detailed Response</h1>
       <details class="collapse">
         <summary>
-            <h2>Published Data</h2><a id="PublishedDataDetail"></a>
+          <h2>Published Data</h2><a id="PublishedDataDetail"></a>
         </summary>
         <div class="collapse-content">
 
@@ -386,7 +391,8 @@
           <h2 id="be-radiant">BE RADIANT</h2>
           <h4>Overview</h4>
           <p>BE RADIANT was a Phase 3b, 48-week, randomized, double-blind,
-            <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>-controlled,
+            <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+              data-snomed="774843009">SEC</span>-controlled,
             parallel-group study conducted in 743 adult patients to evaluate the efficacy and safety of
             <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
             in patients with moderate to severe plaque PSO; the primary endpoint was complete skin clearance at Week
@@ -437,11 +443,12 @@
               <tr>
                 <td>
                   <!-- Analysis selector tabs -->
-                  <div id="fig1-tabs" style="display:flex;justify-content:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;">
-                    <button id="tab-locf" class="fig1-tab" onclick="fig1Show('locf')">LOCF</button>
-                    <button id="tab-oc"   class="fig1-tab" onclick="fig1Show('oc')">OC</button>
-                    <button id="tab-mnri" class="fig1-tab" onclick="fig1Show('mnri')">mNRI</button>
-                    <button id="tab-nri"  class="fig1-tab" onclick="fig1Show('nri')">NRI</button>
+                  <div id="fig1-tabs"
+                    style="display:flex;justify-content:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                    <button id="tab-locf" class="btn" onclick="fig1Show('locf')">LOCF</button>
+                    <button id="tab-oc" class="btn" onclick="fig1Show('oc')">OC</button>
+                    <button id="tab-mnri" class="btn" onclick="fig1Show('mnri')">mNRI</button>
+                    <button id="tab-nri" class="btn" onclick="fig1Show('nri')">NRI</button>
                   </div>
 
                   <!-- Plotly chart -->
@@ -450,25 +457,28 @@
                   </div>
 
                   <!-- Custom HTML legend — superscript b links to footer footnote -->
-                  <div style="display:flex;justify-content:center;gap:2rem;margin:0.1rem 0 0.25rem;font-size:0.85rem;font-family:Tahoma,sans-serif;">
+                  <div
+                    style="display:flex;justify-content:center;gap:2rem;margin:0.1rem 0 0.25rem;font-size:0.85rem;font-family:Tahoma,sans-serif;">
                     <span style="display:inline-flex;align-items:center;gap:0.4rem;">
                       <svg width="28" height="14" aria-hidden="true">
-                        <line x1="0" y1="7" x2="28" y2="7" stroke="#001489" stroke-width="2.5"/>
-                        <circle cx="14" cy="7" r="4.5" fill="#001489"/>
+                        <line x1="0" y1="7" x2="28" y2="7" stroke="#001489" stroke-width="2.5" />
+                        <circle cx="14" cy="7" r="4.5" fill="#001489" />
                       </svg>
-                      BKZ<sup><a href="#fig1-fn-b" style="color:#001489;">b</a></sup> (n&nbsp;=&nbsp;116)
+                      <span>BKZ<sup><a href="#fig1-fn-b" style="color:#001489;">b</a></sup> (n&nbsp;=&nbsp;116)</span>
                     </span>
                     <span style="display:inline-flex;align-items:center;gap:0.4rem;">
                       <svg width="28" height="14" aria-hidden="true">
-                        <line x1="0" y1="7" x2="28" y2="7" stroke="#F18070" stroke-width="2.5"/>
-                        <circle cx="14" cy="7" r="4.5" fill="#F18070"/>
+                        <line x1="0" y1="7" x2="28" y2="7" stroke="#F18070" stroke-width="2.5" />
+                        <circle cx="14" cy="7" r="4.5" fill="#F18070" />
                       </svg>
-                      SEC (n&nbsp;=&nbsp;99)
+                      <span>SEC (n&nbsp;=&nbsp;99)</span>
                     </span>
                   </div>
 
                   <!-- Active analysis label -->
-                  <p id="fig1-analysis-label" style="text-align:center;font-size:0.8rem;color:#555;font-style:italic;margin:0 0 0.5rem;font-family:Tahoma,sans-serif;"></p>
+                  <p id="fig1-analysis-label"
+                    style="text-align:center;font-size:0.8rem;color:#555;font-style:italic;margin:0 0 0.5rem;font-family:Tahoma,sans-serif;">
+                  </p>
 
                   <noscript>
                     <img src="assets/img/MED-GL-BKZ-2300603/Figure1.svg"
@@ -476,123 +486,132 @@
                   </noscript>
 
                   <script>
-                  (function () {
-                    var WEEKS = [0, 16, 32, 48];
+                    (function () {
+                      var WEEKS = [0, 16, 32, 48];
 
-                    // Label positions: at W16 SEC > BKZ → BKZ below; at W32/W48 BKZ > SEC → BKZ above
-                    var POS_BKZ = ['top center', 'bottom center', 'top center', 'top center'];
-                    var POS_SEC = ['top center', 'top center',    'bottom center', 'bottom center'];
+                      // Label positions: at W16 SEC > BKZ → BKZ below; at W32/W48 BKZ > SEC → BKZ above
+                      var POS_BKZ = ['top center', 'bottom center', 'top center', 'top center'];
+                      var POS_SEC = ['top center', 'top center', 'bottom center', 'bottom center'];
 
-                    var analyses = {
-                      locf: {
-                        label: 'LOCF — Last Observation Carried Forward',
-                        bkz: { y: [0, 26.7, 62.1, 70.7], text: ['', '26.7%', '62.1%', '70.7%'],
-                               hover: 'BKZ: %{y}%<extra></extra>' },
-                        sec: { y: [0, 33.3, 49.5, 53.5], text: ['', '33.3%', '49.5%', '53.5%'],
-                               hover: 'SEC: %{y}%<extra></extra>' }
-                      },
-                      oc: {
-                        label: 'OC — Observed Case',
-                        bkz: { y: [0, 27.2, 64.3, 76.6], text: ['', '27.2%', '64.3%', '76.6%'],
-                               hover: 'BKZ: %{y}% (%{customdata})<extra></extra>',
-                               customdata: ['', '31/114', '72/112', '82/107'] },
-                        sec: { y: [0, 33.3, 53.3, 60.9], text: ['', '33.3%', '53.3%', '60.9%'],
-                               hover: 'SEC: %{y}% (%{customdata})<extra></extra>',
-                               customdata: ['', '33/99', '49/92', '53/87'] }
-                      },
-                      mnri: {
-                        label: 'mNRI — Modified Nonresponder Imputation',
-                        bkz: { y: [0, 27.1, 63.5, 73.5], text: ['', '27.1%', '63.5%', '73.5%'],
-                               hover: 'BKZ: %{y}%<extra></extra>' },
-                        sec: { y: [0, 33.3, 51.5, 58.1], text: ['', '33.3%', '51.5%', '58.1%'],
-                               hover: 'SEC: %{y}%<extra></extra>' }
-                      },
-                      nri: {
-                        label: 'NRI — Nonresponder Imputation',
-                        bkz: { y: [0, 26.7, 62.1, 70.7], text: ['', '26.7%', '62.1%', '70.7%'],
-                               hover: 'BKZ: %{y}%<extra></extra>' },
-                        sec: { y: [0, 33.3, 49.5, 53.5], text: ['', '33.3%', '49.5%', '53.5%'],
-                               hover: 'SEC: %{y}%<extra></extra>' }
-                      }
-                    };
-
-                    function makeTrace(data, color, posArr) {
-                      return {
-                        x: WEEKS, y: data.y,
-                        type: 'scatter', mode: 'lines+markers+text',
-                        line:     { color: color, width: 2.5 },
-                        marker:   { color: color, size: 9, symbol: 'circle' },
-                        text: data.text, textposition: posArr,
-                        textfont: { color: color, size: 12, family: 'Tahoma, sans-serif' },
-                        customdata: data.customdata || ['', '', '', ''],
-                        hovertemplate: data.hover,
-                        showlegend: false
+                      var analyses = {
+                        locf: {
+                          label: 'LOCF — last observation carried forward',
+                          bkz: { y: [0, 26.7, 62.1, 70.7], text: ['', '26.7%', '62.1%', '70.7%'] },
+                          sec: { y: [0, 33.3, 49.5, 53.5], text: ['', '33.3%', '49.5%', '53.5%'] },
+                          hover: ['BKZ: 0%<br>SEC: 0%', 'BKZ: 26.7%<br>SEC: 33.3%', 'BKZ: 62.1%<br>SEC: 49.5%', 'BKZ: 70.7%<br>SEC: 53.5%']
+                        },
+                        oc: {
+                          label: 'OC — observed case',
+                          bkz: { y: [0, 27.2, 64.3, 76.6], text: ['', '27.2%', '64.3%', '76.6%'] },
+                          sec: { y: [0, 33.3, 53.3, 60.9], text: ['', '33.3%', '53.3%', '60.9%'] },
+                          hover: ['BKZ: 0%<br>SEC: 0%', 'BKZ: 27.2% (31/114)<br>SEC: 33.3% (33/99)', 'BKZ: 64.3% (72/112)<br>SEC: 53.3% (49/92)', 'BKZ: 76.6% (82/107)<br>SEC: 60.9% (53/87)']
+                        },
+                        mnri: {
+                          label: 'mNRI<sup><a href="#fig1-fn-c">c</a></sup>&nbsp;&mdash;&nbsp;modified nonresponder imputation',
+                          bkz: { y: [0, 27.1, 63.5, 73.5], text: ['', '27.1%', '63.5%', '73.5%'] },
+                          sec: { y: [0, 33.3, 51.5, 58.1], text: ['', '33.3%', '51.5%', '58.1%'] },
+                          hover: ['BKZ: 0%<br>SEC: 0%', 'BKZ: 27.1%<br>SEC: 33.3%', 'BKZ: 63.5%<br>SEC: 51.5%', 'BKZ: 73.5%<br>SEC: 58.1%']
+                        },
+                        nri: {
+                          label: 'NRI — nonresponder imputation',
+                          bkz: { y: [0, 26.7, 62.1, 70.7], text: ['', '26.7%', '62.1%', '70.7%'] },
+                          sec: { y: [0, 33.3, 49.5, 53.5], text: ['', '33.3%', '49.5%', '53.5%'] },
+                          hover: ['BKZ: 0%<br>SEC: 0%', 'BKZ: 26.7%<br>SEC: 33.3%', 'BKZ: 62.1%<br>SEC: 49.5%', 'BKZ: 70.7%<br>SEC: 53.5%']
+                        }
                       };
-                    }
 
-                    var layout = {
-                      font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 13 },
-                      margin: { t: 32, r: 24, b: 48, l: 110 },
-                      xaxis: {
-                        title: { text: 'Week', standoff: 12 },
-                        tickmode: 'array', tickvals: WEEKS, ticktext: ['0', '16', '32', '48'],
-                        hoverformat: '"Week "d',
-                        range: [-3, 51], showgrid: false, zeroline: false,
-                        linecolor: '#d1d5db', linewidth: 1
-                      },
-                      yaxis: {
-                        title: { text: 'Proportion of patients with<br>mNAPSI score of 0 (%)', standoff: 16 },
-                        range: [0, 100], ticksuffix: '%',
-                        gridcolor: '#e8eaf0', gridwidth: 1,
-                        zeroline: true, zerolinecolor: '#d1d5db', zerolinewidth: 1,
-                        linecolor: '#d1d5db', linewidth: 1
-                      },
-                      showlegend: false,
-                      plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
-                      hovermode: 'x unified'
-                    };
+                      function makeTrace(data, color, posArr) {
+                        return {
+                          x: WEEKS, y: data.y,
+                          type: 'scatter', mode: 'lines+markers+text',
+                          line: { color: color, width: 2.5 },
+                          marker: { color: color, size: 9, symbol: 'circle' },
+                          text: data.text, textposition: posArr,
+                          textfont: { color: color, size: 12, family: 'Tahoma, sans-serif' },
+                          hoverinfo: 'skip',
+                          showlegend: false
+                        };
+                      }
 
-                    var config = {
-                      responsive: true, displaylogo: false,
-                      modeBarButtonsToRemove: ['select2d','lasso2d','autoScale2d','hoverClosestCartesian','hoverCompareCartesian','toggleSpikelines'],
-                      toImageButtonOptions: { format: 'svg', filename: 'fig1-mnапsi-0' }
-                    };
+                      // Invisible trace at the midpoint y — captures hover for both lines
+                      function makeHoverTrace(a) {
+                        return {
+                          x: WEEKS,
+                          y: a.bkz.y.map(function (v, i) { return (v + a.sec.y[i]) / 2; }),
+                          type: 'scatter', mode: 'none',
+                          hovertext: a.hover,
+                          hovertemplate: '%{hovertext}<extra></extra>',
+                          showlegend: false
+                        };
+                      }
 
-                    window.fig1Show = function (key) {
-                      var a = analyses[key];
-                      ['locf','oc','mnri','nri'].forEach(function (k) {
-                        document.getElementById('tab-' + k).classList.toggle('is-active', k === key);
-                      });
-                      document.getElementById('fig1-analysis-label').textContent = a.label;
-                      Plotly.react('fig1-chart',
-                        [makeTrace(a.bkz, '#001489', POS_BKZ), makeTrace(a.sec, '#F18070', POS_SEC)],
+                      var layout = {
+                        font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 13 },
+                        margin: { t: 32, r: 24, b: 48, l: 110 },
+                        xaxis: {
+                          title: { text: 'Week', standoff: 12 },
+                          tickmode: 'array', tickvals: WEEKS, ticktext: ['0', '16', '32', '48'],
+                          range: [-3, 51], showgrid: false, zeroline: false,
+                          linecolor: '#d1d5db', linewidth: 1
+                        },
+                        yaxis: {
+                          title: { text: 'Proportion of patients with<br>mNAPSI score of 0 (%)', standoff: 16 },
+                          range: [0, 100], ticksuffix: '%',
+                          gridcolor: '#e8eaf0', gridwidth: 1,
+                          zeroline: true, zerolinecolor: '#d1d5db', zerolinewidth: 1,
+                          linecolor: '#d1d5db', linewidth: 1
+                        },
+                        showlegend: false,
+                        plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
+                        hovermode: 'x'
+                      };
+
+                      var config = {
+                        responsive: true, displaylogo: false,
+                        modeBarButtonsToRemove: ['select2d', 'lasso2d', 'autoScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
+                        toImageButtonOptions: { format: 'svg', filename: 'fig1-mnапsi-0' }
+                      };
+
+                      window.fig1Show = function (key) {
+                        var a = analyses[key];
+                        ['locf', 'oc', 'mnri', 'nri'].forEach(function (k) {
+                          document.getElementById('tab-' + k).classList.toggle('is-active', k === key);
+                        });
+                        document.getElementById('fig1-analysis-label').innerHTML = a.label;
+                        Plotly.react('fig1-chart',
+                          [makeTrace(a.bkz, '#001489', POS_BKZ), makeTrace(a.sec, '#F18070', POS_SEC), makeHoverTrace(a)],
+                          layout, config);
+                      };
+
+                      // Initial render — LOCF
+                      Plotly.newPlot('fig1-chart',
+                        [makeTrace(analyses.locf.bkz, '#001489', POS_BKZ), makeTrace(analyses.locf.sec, '#F18070', POS_SEC), makeHoverTrace(analyses.locf)],
                         layout, config);
-                    };
-
-                    // Initial render — LOCF
-                    Plotly.newPlot('fig1-chart',
-                      [makeTrace(analyses.locf.bkz, '#001489', POS_BKZ), makeTrace(analyses.locf.sec, '#F18070', POS_SEC)],
-                      layout, config);
-                    ['locf','oc','mnri','nri'].forEach(function (k) {
-                      document.getElementById('tab-' + k).classList.toggle('is-active', k === 'locf');
-                    });
-                    document.getElementById('fig1-analysis-label').textContent = analyses.locf.label;
-                  })();
+                      ['locf', 'oc', 'mnri', 'nri'].forEach(function (k) {
+                        document.getElementById('tab-' + k).classList.toggle('is-active', k === 'locf');
+                      });
+                      document.getElementById('fig1-analysis-label').textContent = analyses.locf.label;
+                    })();
                   </script>
                 </td>
               </tr>
               <tr class="tblfig-footer">
                 <td colspan="1">
-                  <p class="fn-entry"><sup id="fig1-fn-a">a</sup> Only patients with an mNAPSI score &gt; 10 at baseline were included in this
-                  analysis.</p>
+                  <p class="fn-entry"><sup id="fig1-fn-a">a</sup> Only patients with an mNAPSI score &gt; 10 at baseline
+                    were included in this
+                    analysis.</p>
                   <p class="fn-entry"><sup id="fig1-fn-b">b</sup> Patients received
-                  <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
-                  320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.</p>
-                  <p class="fn-entry"><sup>c</sup> For mNRI, patients who discontinued the study were considered nonresponders at
-                  subsequent timepoints; multiple imputation was used for all other missing data.</p>
-                  <p>BKZ&nbsp;= bimekizumab; LOCF&nbsp;=&nbsp;last observation carried forward; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
-                  mNRI&nbsp;= modified nonresponder imputation; NRI&nbsp;= nonresponder imputation;
-                  OC&nbsp;= observed case; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.</p>
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>
+                    320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.
+                  </p>
+                  <p class="fn-entry"><sup id="fig1-fn-c">c</sup> For mNRI, patients who discontinued the study were considered
+                    nonresponders at
+                    subsequent timepoints; multiple imputation was used for all other missing data.</p>
+                  <p>BKZ&nbsp;= bimekizumab; LOCF&nbsp;=&nbsp;last observation carried forward; mNAPSI&nbsp;= modified
+                    Nail Psoriasis Severity Index;
+                    mNRI&nbsp;= modified nonresponder imputation; NRI&nbsp;= nonresponder imputation;
+                    OC&nbsp;= observed case; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.</p>
                 </td>
               </tr>
             </table>
@@ -604,7 +623,8 @@
               <tr>
                 <td colspan="4">
                   <h6>Table 1 — Proportion of Patients Who Achieved Complete Nail Clearance by Type of Nail
-                    Manifestation (NRI) (Adapted).<sup><a href="#tbl1-fn-a">a</a>,<a href="#tbl1-fn-b">b</a>,<a href="#ref-2">2</a></sup>
+                    Manifestation (NRI) (Adapted).<sup><a href="#tbl1-fn-a">a</a>,<a href="#tbl1-fn-b">b</a>,<a
+                        href="#ref-2">2</a></sup>
                   </h6>
                 </td>
               </tr>
@@ -624,14 +644,16 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>,
                     n&nbsp;=&nbsp;103</td>
                   <td class="text-center">63.1</td>
                   <td class="text-center">83.5</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;84</td>
                   <td class="text-center">64.3</td>
                   <td class="text-center">66.7</td>
@@ -642,14 +664,16 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>,
                     n&nbsp;=&nbsp;69</td>
                   <td class="text-center">65.2</td>
                   <td class="text-center">85.5</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;56</td>
                   <td class="text-center">69.6</td>
                   <td class="text-center">75.0</td>
@@ -660,14 +684,16 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>,
                     n&nbsp;=&nbsp;101</td>
                   <td class="text-center">36.6</td>
                   <td class="text-center">78.2</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;86</td>
                   <td class="text-center">41.9</td>
                   <td class="text-center">59.3</td>
@@ -678,14 +704,16 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>,
                     n&nbsp;=&nbsp;59</td>
                   <td class="text-center">69.5</td>
                   <td class="text-center">79.7</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;58</td>
                   <td class="text-center">70.7</td>
                   <td class="text-center">69.0</td>
@@ -696,14 +724,16 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>,
                     n&nbsp;=&nbsp;61</td>
                   <td class="text-center">68.9</td>
                   <td class="text-center">83.6</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;51</td>
                   <td class="text-center">80.4</td>
                   <td class="text-center">80.4</td>
@@ -714,14 +744,16 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>,
                     n&nbsp;=&nbsp;47</td>
                   <td class="text-center">61.7</td>
                   <td class="text-center">68.1</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;44</td>
                   <td class="text-center">47.7</td>
                   <td class="text-center">63.6</td>
@@ -732,27 +764,32 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>,
+                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>,
                     n&nbsp;=&nbsp;21</td>
                   <td class="text-center">81.0</td>
                   <td class="text-center">81.0</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>,
+                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">SEC</span>,
                     n&nbsp;=&nbsp;22</td>
                   <td class="text-center">90.9</td>
                   <td class="text-center">81.8</td>
                 </tr>
                 <tr class="tblfig-footer">
                   <td colspan="4">
-                    <p class="fn-entry"><sup id="tbl1-fn-a">a</sup> Only patients with an mNAPSI score &gt;&nbsp;10 and subscore &gt;&nbsp;0 at baseline
-                    were included in this analysis.</p>
+                    <p class="fn-entry"><sup id="tbl1-fn-a">a</sup> Only patients with an mNAPSI score &gt;&nbsp;10 and
+                      subscore &gt;&nbsp;0 at baseline
+                      were included in this analysis.</p>
                     <p class="fn-entry"><sup id="tbl1-fn-b">b</sup> Patients received
-                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
-                    320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.</p>
+                      <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                        data-snomed="785160002">BKZ</span>
+                      320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.
+                    </p>
                     <p>BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
-                    NRI&nbsp;= nonresponder imputation; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.</p>
+                      NRI&nbsp;= nonresponder imputation; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.</p>
                   </td>
                 </tr>
               </tbody>
@@ -788,7 +825,7 @@
     <section id="appendix" class="card">
       <details class="collapse">
         <summary>
-            <h1>Appendix</h1><a id="AppendixDetail"></a>
+          <h1>Appendix</h1><a id="AppendixDetail"></a>
         </summary>
         <div class="collapse-content">
 
@@ -805,11 +842,13 @@
               <tr class="hdr hdr-1">
                 <th scope="col">Characteristic</th>
                 <th scope="col" class="text-center">
-                  <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span><sup><a href="#tbl2-fn-a">a</a></sup>
+                  <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                    data-snomed="785160002">BKZ</span><sup><a href="#tbl2-fn-a">a</a></sup>
                   (n&nbsp;=&nbsp;116)
                 </th>
                 <th scope="col" class="text-center">
-                  <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">SEC</span>
+                  <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                    data-snomed="774843009">SEC</span>
                   (n&nbsp;=&nbsp;99)
                 </th>
               </tr>
@@ -923,14 +962,16 @@
                 <tr class="tblfig-footer">
                   <td colspan="3">
                     <p class="fn-entry"><sup id="tbl2-fn-a">a</sup> Patients received
-                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
-                    320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.</p>
+                      <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                        data-snomed="785160002">BKZ</span>
+                      320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.
+                    </p>
                     <p>BKZ&nbsp;= bimekizumab; BSA&nbsp;= body surface area;
-                    DLQI&nbsp;= Dermatology Life Quality Index;
-                    IGA&nbsp;= Investigator&rsquo;s Global Assessment;
-                    mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
-                    PASI&nbsp;= Psoriasis Area Severity Index;
-                    SD&nbsp;= standard deviation; SEC&nbsp;= secukinumab.</p>
+                      DLQI&nbsp;= Dermatology Life Quality Index;
+                      IGA&nbsp;= Investigator&rsquo;s Global Assessment;
+                      mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
+                      PASI&nbsp;= Psoriasis Area Severity Index;
+                      SD&nbsp;= standard deviation; SEC&nbsp;= secukinumab.</p>
                   </td>
                 </tr>
               </tbody>
@@ -950,16 +991,17 @@
               <tr>
                 <td>
                   <img src="assets/img/MED-GL-BKZ-2300603/Figure2.svg"
-                    alt="Schematic of the BE RADIANT study design showing randomisation of patients to bimekizumab 320 mg or secukinumab 300 mg over 48 weeks."
->
+                    alt="Schematic of the BE RADIANT study design showing randomisation of patients to bimekizumab 320 mg or secukinumab 300 mg over 48 weeks.">
                 </td>
               </tr>
               <tr class="tblfig-footer">
                 <td colspan="1">
                   <p class="fn-entry"><sup>a</sup>
-                  <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670" data-snomed="774843009">Secukinumab</span>
-                  was administered at a dose of 300&nbsp;mg weekly to Week 4, followed by Q4W dosing through
-                  Week 48.</p>
+                    <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
+                      data-snomed="774843009">Secukinumab</span>
+                    was administered at a dose of 300&nbsp;mg weekly to Week 4, followed by Q4W dosing through
+                    Week 48.
+                  </p>
                   <p>QXW&nbsp;= every X weeks.</p>
                 </td>
               </tr>
@@ -978,7 +1020,7 @@
     <section id="disclaimers" class="card">
       <details class="collapse">
         <summary>
-            <h2>Disclaimers</h2>
+          <h2>Disclaimers</h2>
         </summary>
         <div class="collapse-content">
           <p>Please note that the information contained in this response is for your personal use only and due to
@@ -1006,7 +1048,7 @@
     <section id="references" class="card">
       <details class="collapse">
         <summary>
-            <h2>References</h2>
+          <h2>References</h2>
         </summary>
         <div class="collapse-content">
           <ol>
@@ -1018,7 +1060,8 @@
             <li id="ref-3">Reich K, Warren RB, Lebwohl M, Gooderham M, Strober B, Langley RG, et al. Bimekizumab
               versus secukinumab in plaque psoriasis. <em>N Engl J Med.</em> 2021;385:142&ndash;52.
               <br>Available from: <a href="https://doi.org/10.1056/NEJMoa2102383" target="_blank"
-                rel="noopener noreferrer">https://doi.org/10.1056/NEJMoa2102383</a></li>
+                rel="noopener noreferrer">https://doi.org/10.1056/NEJMoa2102383</a>
+            </li>
           </ol>
           <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
         </div>
@@ -1029,12 +1072,11 @@
          SECTION: FEEDBACK
          Optional HCP feedback widget: star rating, comment textarea,
          data-protection notice, and Send button. -->
-    <section id="feedback" class="card card--teal"
-             data-document-number="MED-GL-BKZ-2300603"
-             data-case-response-number="">
+    <section id="feedback" class="card card--teal" data-document-number="MED-GL-BKZ-2300603"
+      data-case-response-number="">
       <details class="collapse">
         <summary>
-            <h3>Help us improve this content</h3>
+          <h3>Help us improve this content</h3>
         </summary>
         <div class="collapse-content">
           <p style="color: var(--brand);"><strong>How did this response improve your practice?</strong></p>
@@ -1100,7 +1142,8 @@
         BE RADIANT Phase 3b study in patients with moderate to severe plaque psoriasis who had an mNAPSI score &gt; 10
         at baseline. At Week 48, 70.7% of BKZ-treated patients versus 53.5% of SEC-treated patients achieved complete
         nail clearance (mNAPSI = 0; NRI). Higher proportions of BKZ-treated patients achieved complete clearance for
-        most individual nail manifestation types. Safety profiles in the overall population were broadly comparable, with
+        most individual nail manifestation types. Safety profiles in the overall population were broadly comparable,
+        with
         TEAE rates of 86.1% (BKZ) versus 81.4% (SEC); oral candidiasis was more frequent with BKZ. The Company Core
         Data Sheet for bimekizumab contains no information on comparison to an IL-17 inhibitor for nail psoriasis. Refer
         to the authorised product information for dosing, populations, and monitoring.</p>
@@ -1116,7 +1159,8 @@
         <p class="footer-meta">
           <span class="drug">Bimekizumab</span>
           &mdash;
-          <span class="subtitle">Comparison to an IL-17 inhibitor in patients with plaque psoriasis having nail involvement</span><br>
+          <span class="subtitle">Comparison to an IL-17 inhibitor in patients with plaque psoriasis having nail
+            involvement</span><br>
           MED‑GL‑BKZ‑2300603, Preparation date: Feb 2026, &copy; UCB SA, 2026. All rights reserved.
         </p>
         <div class="footer-qr">
