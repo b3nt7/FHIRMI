@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.3.1 Safari/605.1.15" version="29.6.1">
+  <diagram name="BE RADIANT Study Design" id="be-radiant-study">
+    <mxGraphModel dx="895" dy="570" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1000" pageHeight="450" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lbl-N" parent="1" style="text;html=1;align=center;verticalAlign=middle;                  fontColor=#001489;fontSize=10;fontFamily=Tahoma;fontStyle=0" value="N = 743" vertex="1">
+          <mxGeometry height="18" width="65" x="29" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-random" parent="1" style="text;html=1;align=center;verticalAlign=middle;                  fontColor=#555555;fontSize=10;fontFamily=Tahoma;fontStyle=0" value="1:1&lt;br&gt;randomisation" vertex="1">
+          <mxGeometry height="28" width="65" x="29" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-n373" parent="1" style="text;html=1;align=center;verticalAlign=middle;                  fontColor=#001489;fontSize=10;fontFamily=Tahoma;" value="n = 373" vertex="1">
+          <mxGeometry height="18" width="60" x="103" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-n370" parent="1" style="text;html=1;align=center;verticalAlign=middle;                  fontColor=#001489;fontSize=10;fontFamily=Tahoma;" value="n = 370" vertex="1">
+          <mxGeometry height="18" width="60" x="103" y="241" as="geometry" />
+        </mxCell>
+        <mxCell id="tl-dur-w0-w16" edge="1" parent="1" style="endArrow=open;startArrow=open;html=1;endFill=0;startFill=0;                  strokeColor=#888888;strokeWidth=1.2;strokeColor=#999999;fontFamily=Tahoma;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="163" y="305" as="sourcePoint" />
+            <mxPoint x="384" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tl-dur-w16-w48" edge="1" parent="1" style="endArrow=open;startArrow=open;html=1;endFill=0;startFill=0;                  strokeColor=#888888;strokeWidth=1.2;strokeColor=#808080;shape=wire;dashed=1;fontFamily=Tahoma;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="305" as="sourcePoint" />
+            <mxPoint x="864" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl-2to5" parent="1" style="text;html=1;align=center;verticalAlign=middle;                  fontColor=#555555;fontSize=10;fontFamily=Tahoma;labelPosition=center;verticalLabelPosition=middle;" value="2–5 weeks" vertex="1">
+          <mxGeometry height="30" width="126" x="31" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-w0" parent="1" style="text;html=1;align=center;verticalAlign=top;                  fontColor=#333333;fontSize=12;fontFamily=Tahoma;" value="&lt;b&gt;Week 0&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="90" x="117" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-w16" parent="1" style="text;html=1;align=center;verticalAlign=top;                  fontColor=#333333;fontSize=12;fontFamily=Tahoma;" value="&lt;b&gt;Week 16&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="90" x="342" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-w48" parent="1" style="text;html=1;align=center;verticalAlign=top;                  fontColor=#333333;fontSize=12;fontFamily=Tahoma;" value="&lt;b&gt;Week 48&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="62" x="804" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-7" edge="1" parent="1" style="endArrow=open;startArrow=none;html=1;endFill=0;startFill=0;                  strokeColor=#888888;strokeWidth=1.2;strokeColor=#CCCCCC;fontFamily=Tahoma;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="31" y="305" as="sourcePoint" />
+            <mxPoint x="159" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-9" parent="1" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;fontFamily=Tahoma;" value="" vertex="1">
+          <mxGeometry height="19" width="21" x="7" y="206" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-14" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=0;strokeColor=#FFFFFF;fillColor=#001489;fontColor=#FFFFFF;fontStyle=1;strokeWidth=5;fontFamily=Tahoma;" value="&lt;span style=&quot;&quot;&gt;Bimekizumab&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;320 mg Q4W&lt;/span&gt;&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="165" y="141" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-15" edge="1" parent="1" source="43EaB7oZx6B6dP3u7P1J-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;strokeWidth=3;fontFamily=Tahoma;" target="43EaB7oZx6B6dP3u7P1J-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="164" y="162" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-16" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=0;strokeColor=#FFFFFF;fillColor=#F18070;fontColor=#001489;fontStyle=1;strokeWidth=5;fontFamily=Tahoma;" value="&lt;span style=&quot;&quot;&gt;Secukinumab&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;300 mg Q4W&lt;sup&gt;&lt;u&gt;a&lt;/u&gt;&lt;/sup&gt;&lt;/span&gt;&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="700" x="165" y="239" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-18" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=0;strokeColor=#FFFFFF;fillColor=#001489;fontColor=#FFFFFF;fontStyle=1;strokeWidth=5;fontFamily=Tahoma;" value="&lt;span style=&quot;&quot;&gt;Bimekizumab&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;320 mg Q4W&lt;/span&gt;&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="470" x="393" y="106" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-19" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=0;strokeColor=#FFFFFF;fillColor=#8089C4;fontColor=#001489;fontStyle=1;strokeWidth=5;fontFamily=Tahoma;" value="&lt;span style=&quot;&quot;&gt;Bimekizumab&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;320 mg Q8W&lt;/span&gt;&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="470" x="393" y="179" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-20" edge="1" parent="1" source="43EaB7oZx6B6dP3u7P1J-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Tahoma;" target="43EaB7oZx6B6dP3u7P1J-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="29" y="199" as="sourcePoint" />
+            <mxPoint x="252" y="208" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;fillColor=#808080;strokeWidth=5;fontFamily=Tahoma;" value="Double-blind initial period" vertex="1">
+          <mxGeometry height="50" width="470" x="393" y="23" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#999999,#1A1A1A);fontColor=#333333;strokeColor=#FFFFFF;strokeWidth=5;fontFamily=Tahoma;" value="&lt;span style=&quot;caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 11px; font-weight: 700;&quot;&gt;Double-blind initial period&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="165" y="23" as="geometry" />
+        </mxCell>
+        <mxCell id="43EaB7oZx6B6dP3u7P1J-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCCCCC;fontColor=#333333;strokeColor=#FFFFFF;strokeWidth=5;fontFamily=Tahoma;" value="&lt;span style=&quot;caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: 11px; font-weight: 700;&quot;&gt;Screening period&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="134" x="24" y="23" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-rerandom" parent="1" style="text;html=1;align=left;verticalAlign=middle;                  fontStyle=2;fontSize=10;fontColor=#555555;fontFamily=Tahoma;" value="re-randomised 1:1&lt;br&gt;at Week 16" vertex="1">
+          <mxGeometry height="28" width="87" x="395" y="154" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
