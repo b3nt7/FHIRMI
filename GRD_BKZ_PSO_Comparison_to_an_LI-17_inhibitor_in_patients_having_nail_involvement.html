@@ -92,6 +92,9 @@
        rules are contained in styles.css -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
+  <!-- ── Plotly.js — interactive figure charts (web only; not executed in Veeva) ── -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
   <!-- ── Structured data: MedicalWebPage (JSON-LD) ──
        Tells search engines and AI crawlers (GEO) that this is a medical page
        about bimekizumab for psoriasis nail involvement. -->
@@ -144,6 +147,35 @@
       @bottom-left {
         content: "Bimekizumab \2014  Comparison to an IL-17 inhibitor in patients with nail involvement\AMED-GL-BKZ-2300603, \00A9  UCB Pharma SA, 2026. All rights reserved.";
       }
+    }
+
+    /* Figure 1 analysis-tab buttons */
+    .fig1-tab {
+      background: rgba(204,208,231,0.52);
+      color: var(--blue);
+      border: 0.0625rem solid rgba(255,255,255,0.55);
+      border-radius: 100vmax;
+      padding: 0.28rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      font-family: Tahoma, sans-serif;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .fig1-tab:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .fig1-tab.is-active {
+      background: var(--blue);
+      color: #fff;
+      border-color: rgba(255,255,255,0.4);
+    }
+    .fig1-tab.is-active:hover {
+      color: #fff;
+      border-color: var(--accent);
     }
   </style>
 </head>
@@ -404,21 +436,161 @@
               </tr>
               <tr>
                 <td>
-                  <img src="assets/img/MED-GL-BKZ-2300603/Figure1.svg"
-                    alt="Bar chart showing the proportion of patients with baseline mNAPSI greater than 10 who achieved mNAPSI equal to 0 at weeks 4, 8, 12, 16, 20, 24, 32, 40, and 48, comparing BKZ and SEC treatment groups under NRI, mNRI, and OC analyses."
->
+                  <!-- Analysis selector tabs -->
+                  <div id="fig1-tabs" style="display:flex;justify-content:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                    <button id="tab-locf" class="fig1-tab" onclick="fig1Show('locf')">LOCF</button>
+                    <button id="tab-oc"   class="fig1-tab" onclick="fig1Show('oc')">OC</button>
+                    <button id="tab-mnri" class="fig1-tab" onclick="fig1Show('mnri')">mNRI</button>
+                    <button id="tab-nri"  class="fig1-tab" onclick="fig1Show('nri')">NRI</button>
+                  </div>
+
+                  <!-- Plotly chart -->
+                  <div id="fig1-chart" style="width:100%;height:400px;" role="img"
+                    aria-label="Line graph showing the proportion of patients with baseline mNAPSI greater than 10 who achieved mNAPSI equal to 0 at Weeks 0, 16, 32, and 48, comparing BKZ and SEC treatment groups.">
+                  </div>
+
+                  <!-- Custom HTML legend — superscript b links to footer footnote -->
+                  <div style="display:flex;justify-content:center;gap:2rem;margin:0.1rem 0 0.25rem;font-size:0.85rem;font-family:Tahoma,sans-serif;">
+                    <span style="display:inline-flex;align-items:center;gap:0.4rem;">
+                      <svg width="28" height="14" aria-hidden="true">
+                        <line x1="0" y1="7" x2="28" y2="7" stroke="#001489" stroke-width="2.5"/>
+                        <circle cx="14" cy="7" r="4.5" fill="#001489"/>
+                      </svg>
+                      BKZ<sup><a href="#fig1-fn-b" style="color:#001489;">b</a></sup> (n&nbsp;=&nbsp;116)
+                    </span>
+                    <span style="display:inline-flex;align-items:center;gap:0.4rem;">
+                      <svg width="28" height="14" aria-hidden="true">
+                        <line x1="0" y1="7" x2="28" y2="7" stroke="#F18070" stroke-width="2.5"/>
+                        <circle cx="14" cy="7" r="4.5" fill="#F18070"/>
+                      </svg>
+                      SEC (n&nbsp;=&nbsp;99)
+                    </span>
+                  </div>
+
+                  <!-- Active analysis label -->
+                  <p id="fig1-analysis-label" style="text-align:center;font-size:0.8rem;color:#555;font-style:italic;margin:0 0 0.5rem;font-family:Tahoma,sans-serif;"></p>
+
+                  <noscript>
+                    <img src="assets/img/MED-GL-BKZ-2300603/Figure1.svg"
+                      alt="Line graph showing the proportion of patients with baseline mNAPSI greater than 10 who achieved mNAPSI equal to 0 at Weeks 0, 16, 32, and 48, comparing BKZ and SEC treatment groups.">
+                  </noscript>
+
+                  <script>
+                  (function () {
+                    var WEEKS = [0, 16, 32, 48];
+
+                    // Label positions: at W16 SEC > BKZ → BKZ below; at W32/W48 BKZ > SEC → BKZ above
+                    var POS_BKZ = ['top center', 'bottom center', 'top center', 'top center'];
+                    var POS_SEC = ['top center', 'top center',    'bottom center', 'bottom center'];
+
+                    var analyses = {
+                      locf: {
+                        label: 'LOCF — Last Observation Carried Forward',
+                        bkz: { y: [0, 26.7, 62.1, 70.7], text: ['', '26.7%', '62.1%', '70.7%'],
+                               hover: 'BKZ: %{y}%<extra></extra>' },
+                        sec: { y: [0, 33.3, 49.5, 53.5], text: ['', '33.3%', '49.5%', '53.5%'],
+                               hover: 'SEC: %{y}%<extra></extra>' }
+                      },
+                      oc: {
+                        label: 'OC — Observed Case',
+                        bkz: { y: [0, 27.2, 64.3, 76.6], text: ['', '27.2%', '64.3%', '76.6%'],
+                               hover: 'BKZ: %{y}% (%{customdata})<extra></extra>',
+                               customdata: ['', '31/114', '72/112', '82/107'] },
+                        sec: { y: [0, 33.3, 53.3, 60.9], text: ['', '33.3%', '53.3%', '60.9%'],
+                               hover: 'SEC: %{y}% (%{customdata})<extra></extra>',
+                               customdata: ['', '33/99', '49/92', '53/87'] }
+                      },
+                      mnri: {
+                        label: 'mNRI — Modified Nonresponder Imputation',
+                        bkz: { y: [0, 27.1, 63.5, 73.5], text: ['', '27.1%', '63.5%', '73.5%'],
+                               hover: 'BKZ: %{y}%<extra></extra>' },
+                        sec: { y: [0, 33.3, 51.5, 58.1], text: ['', '33.3%', '51.5%', '58.1%'],
+                               hover: 'SEC: %{y}%<extra></extra>' }
+                      },
+                      nri: {
+                        label: 'NRI — Nonresponder Imputation',
+                        bkz: { y: [0, 26.7, 62.1, 70.7], text: ['', '26.7%', '62.1%', '70.7%'],
+                               hover: 'BKZ: %{y}%<extra></extra>' },
+                        sec: { y: [0, 33.3, 49.5, 53.5], text: ['', '33.3%', '49.5%', '53.5%'],
+                               hover: 'SEC: %{y}%<extra></extra>' }
+                      }
+                    };
+
+                    function makeTrace(data, color, posArr) {
+                      return {
+                        x: WEEKS, y: data.y,
+                        type: 'scatter', mode: 'lines+markers+text',
+                        line:     { color: color, width: 2.5 },
+                        marker:   { color: color, size: 9, symbol: 'circle' },
+                        text: data.text, textposition: posArr,
+                        textfont: { color: color, size: 12, family: 'Tahoma, sans-serif' },
+                        customdata: data.customdata || ['', '', '', ''],
+                        hovertemplate: data.hover,
+                        showlegend: false
+                      };
+                    }
+
+                    var layout = {
+                      font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 13 },
+                      margin: { t: 32, r: 24, b: 48, l: 110 },
+                      xaxis: {
+                        title: { text: 'Week', standoff: 12 },
+                        tickmode: 'array', tickvals: WEEKS, ticktext: ['0', '16', '32', '48'],
+                        hoverformat: '"Week "d',
+                        range: [-3, 51], showgrid: false, zeroline: false,
+                        linecolor: '#d1d5db', linewidth: 1
+                      },
+                      yaxis: {
+                        title: { text: 'Proportion of patients with<br>mNAPSI score of 0 (%)', standoff: 16 },
+                        range: [0, 100], ticksuffix: '%',
+                        gridcolor: '#e8eaf0', gridwidth: 1,
+                        zeroline: true, zerolinecolor: '#d1d5db', zerolinewidth: 1,
+                        linecolor: '#d1d5db', linewidth: 1
+                      },
+                      showlegend: false,
+                      plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
+                      hovermode: 'x unified'
+                    };
+
+                    var config = {
+                      responsive: true, displaylogo: false,
+                      modeBarButtonsToRemove: ['select2d','lasso2d','autoScale2d','hoverClosestCartesian','hoverCompareCartesian','toggleSpikelines'],
+                      toImageButtonOptions: { format: 'svg', filename: 'fig1-mnапsi-0' }
+                    };
+
+                    window.fig1Show = function (key) {
+                      var a = analyses[key];
+                      ['locf','oc','mnri','nri'].forEach(function (k) {
+                        document.getElementById('tab-' + k).classList.toggle('is-active', k === key);
+                      });
+                      document.getElementById('fig1-analysis-label').textContent = a.label;
+                      Plotly.react('fig1-chart',
+                        [makeTrace(a.bkz, '#001489', POS_BKZ), makeTrace(a.sec, '#F18070', POS_SEC)],
+                        layout, config);
+                    };
+
+                    // Initial render — LOCF
+                    Plotly.newPlot('fig1-chart',
+                      [makeTrace(analyses.locf.bkz, '#001489', POS_BKZ), makeTrace(analyses.locf.sec, '#F18070', POS_SEC)],
+                      layout, config);
+                    ['locf','oc','mnri','nri'].forEach(function (k) {
+                      document.getElementById('tab-' + k).classList.toggle('is-active', k === 'locf');
+                    });
+                    document.getElementById('fig1-analysis-label').textContent = analyses.locf.label;
+                  })();
+                  </script>
                 </td>
               </tr>
               <tr class="tblfig-footer">
                 <td colspan="1">
                   <p class="fn-entry"><sup id="fig1-fn-a">a</sup> Only patients with an mNAPSI score &gt; 10 at baseline were included in this
                   analysis.</p>
-                  <p class="fn-entry"><sup>b</sup> Patients received
+                  <p class="fn-entry"><sup id="fig1-fn-b">b</sup> Patients received
                   <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523" data-snomed="785160002">BKZ</span>
                   320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.</p>
                   <p class="fn-entry"><sup>c</sup> For mNRI, patients who discontinued the study were considered nonresponders at
                   subsequent timepoints; multiple imputation was used for all other missing data.</p>
-                  <p>BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
+                  <p>BKZ&nbsp;= bimekizumab; LOCF&nbsp;=&nbsp;last observation carried forward; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
                   mNRI&nbsp;= modified nonresponder imputation; NRI&nbsp;= nonresponder imputation;
                   OC&nbsp;= observed case; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.</p>
                 </td>

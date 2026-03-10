@@ -84,6 +84,8 @@ body {
   /* Teal — feedback card & TOC pill         */
   --teal-dark: #00816D;
   /* Dark teal — text on teal glass surfaces */
+  --accent2: #F18070;
+  /* Coral red — comparator line in figures  */
 
   /* ── Neutral / border ── */
   --border: #d1d5db;
