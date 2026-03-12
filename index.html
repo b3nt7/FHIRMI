@@ -41,21 +41,26 @@
     }
 
     /* Glass buttons — override shared stylesheet's blue --primary for this page only */
+    body .btn {
+      border-radius: 0.75rem;
+    }
     .btn--primary {
+      border-radius: 0.75rem !important;
       color: #001489 !important;
       background: rgba(255, 255, 255, 0.38) !important;
       border: 1px solid rgba(255, 255, 255, 0.7) !important;
       backdrop-filter: blur(14px) saturate(1.4) !important;
       -webkit-backdrop-filter: blur(14px) saturate(1.4) !important;
       box-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.09),
+        0 2px 8px rgba(0, 0, 0, 0.07),
+        0 8px 24px rgba(0, 0, 0, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
       text-shadow: none !important;
-      /* Equal width for all buttons; text wraps; flag stays vertically centred */
+      /* Equal width for all cards; text wraps; flag pins to top-left */
       width: min(36rem, 90vw) !important;
       white-space: normal !important;
       text-align: left !important;
-      padding-block: 0.5rem !important;
+      padding: 1rem 1.25rem !important;
       align-items: center !important;
       justify-content: flex-start !important;
     }
@@ -68,12 +73,13 @@
     .btn--primary:hover {
       background: rgba(255, 255, 255, 0.58) !important;
       box-shadow:
-        0 6px 22px rgba(0, 0, 0, 0.13),
+        0 4px 12px rgba(0, 0, 0, 0.10),
+        0 12px 32px rgba(0, 0, 0, 0.11),
         inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
       filter: none !important;
     }
 
-    /* Circular flag / globe icons in navigation buttons */
+    /* Circular flag / globe icons in navigation cards */
     .flag-circle {
       display: inline-block;
       width: 1.45em;
@@ -81,7 +87,8 @@
       border-radius: 50%;
       object-fit: cover;
       vertical-align: middle;
-      margin-right: 0.5em;
+      margin-right: 0.6em;
+
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
       flex-shrink: 0;
     }
