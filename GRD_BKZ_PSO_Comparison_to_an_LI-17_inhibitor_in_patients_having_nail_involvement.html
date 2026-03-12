@@ -153,21 +153,6 @@
       }
     }
 
-    /* Figure 1 analysis-tab buttons — inactive glass pill, identical to navbox */
-    #fig1-tabs .btn:not(.is-active) {
-      background: color-mix(in srgb, var(--tbl-interim) 52%, transparent);
-      color: var(--brand);
-      border-color: rgba(255, 255, 255, 0.55);
-      box-shadow:
-        0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,
-        0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);
-    }
-
-    #fig1-tabs .btn:not(.is-active):hover,
-    #fig1-tabs .btn.is-active:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
   </style>
 </head>
 
@@ -208,10 +193,8 @@
           <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
             alt="UCB logo with tagline inspired by patients, driven by science.">
         </div>
-        <div style="text-align:right;">
-          <p
-            style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">
-            Scan to open</p>
+        <div class="footer-qr">
+          <p class="footer-qr__label">Scan to open</p>
           <img src="assets/img/MED-GL-BKZ-2300603/qr.svg" alt="QR code — scan to open" width="80" height="80">
         </div>
       </div><!-- /header-flex -->
@@ -382,7 +365,7 @@
     <!-- ══════════════════════════════════════════════════════════════
          SECTION: DETAILED RESPONSE
          Card-box wrapper containing the full BE RADIANT nail analysis:
-         overview, efficacy results (Figure 1, Table 1), and safety.
+         overview, efficacy results (Figure 1, Figure 2), and safety.
          h1 "Detailed Response" is always visible; the Published Data
          <details> collapses the body content below it. -->
     <section id="detailed-response" class="card">
@@ -433,7 +416,7 @@
           <p>The proportion of patients with an mNAPSI score of &gt;&nbsp;10 at baseline who achieved complete
             clearance of nail PSO (mNAPSI score = 0) over 48 weeks is shown in <strong>Figure 1</strong>, and the
             proportion of patients who achieved complete clearance of each type of nail manifestation (mNAPSI subscore
-            = 0) at Weeks 16 and 48 is shown in <strong>Table 1</strong>.<sup><a href="#ref-2">2</a></sup>
+            = 0) at Weeks 16 and 48 is shown in <strong>Figure 2</strong>.<sup><a href="#ref-2">2</a></sup>
           </p>
 
           <!-- FIGURE 1: mNAPSI = 0 bar chart -->
@@ -449,8 +432,7 @@
               <tr>
                 <td>
                   <!-- Analysis selector tabs -->
-                  <div id="fig1-tabs"
-                    style="display:flex;justify-content:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                  <div id="fig1-tabs" class="tab-group">
                     <button id="tab-locf" class="btn" onclick="fig1Show('locf')">LOCF</button>
                     <button id="tab-oc" class="btn" onclick="fig1Show('oc')">OC</button>
                     <button id="tab-mnri" class="btn" onclick="fig1Show('mnri')">mNRI</button>
@@ -458,21 +440,20 @@
                   </div>
 
                   <!-- Plotly chart -->
-                  <div id="fig1-chart" style="width:100%;height:400px;" role="img"
+                  <div id="fig1-chart" class="fig-chart" style="height:400px;" role="img"
                     aria-label="Line graph showing the proportion of patients with baseline mNAPSI greater than 10 who achieved mNAPSI equal to 0 at Weeks 0, 16, 32, and 48, comparing BKZ and SEC treatment groups.">
                   </div>
 
                   <!-- Custom HTML legend — superscript b links to footer footnote -->
-                  <div
-                    style="display:flex;justify-content:center;gap:2rem;margin:0.1rem 0 0.25rem;font-size:0.85rem;font-family:Tahoma,sans-serif;">
-                    <span style="display:inline-flex;align-items:center;gap:0.4rem;">
+                  <div class="fig-legend">
+                    <span class="fig-legend__item">
                       <svg width="28" height="14" aria-hidden="true">
                         <line x1="0" y1="7" x2="28" y2="7" stroke="#001489" stroke-width="2.5" />
                         <circle cx="14" cy="7" r="4.5" fill="#001489" />
                       </svg>
                       <span>BKZ<sup><a href="#fig1-fn-b">b</a></sup> (n&nbsp;=&nbsp;116)</span>
                     </span>
-                    <span style="display:inline-flex;align-items:center;gap:0.4rem;">
+                    <span class="fig-legend__item">
                       <svg width="28" height="14" aria-hidden="true">
                         <line x1="0" y1="7" x2="28" y2="7" stroke="#F18070" stroke-width="2.5" />
                         <circle cx="14" cy="7" r="4.5" fill="#F18070" />
@@ -482,8 +463,7 @@
                   </div>
 
                   <!-- Active analysis label -->
-                  <p id="fig1-analysis-label"
-                    style="text-align:center;font-size:0.8rem;font-style:italic;margin:0 0 0.5rem;font-family:Tahoma,sans-serif;">
+                  <p id="fig1-analysis-label" class="fig-label">
                   </p>
 
                   <noscript>
@@ -624,182 +604,151 @@
             </table>
           </div>
 
-          <!-- TABLE 1: Nail clearance by manifestation type -->
-          <div class="tblfig" id="nail-manifestations-table">
+          <!-- ── Figure 2: Nail Clearance by Manifestation (Horizontal Bar, tabbed) ── -->
+          <div class="tblfig">
             <table role="table">
               <tr>
-                <td colspan="4">
-                  <h6>Table 1 — Proportion of Patients Who Achieved Complete Nail Clearance by Type of Nail
-                    Manifestation (NRI) (Adapted).<sup><a href="#tbl1-fn-a">a</a>,<a href="#tbl1-fn-b">b</a>,<a
-                        href="#ref-2">2</a></sup>
+                <td colspan="1">
+                  <h6>Figure 2 — Proportion of Patients Who Achieved Complete Nail Clearance (mNAPSI Subscore of 0)
+                    by Type of Nail Manifestation (NRI) (Adapted).<sup><a href="#fig2-fn-a">a</a>,<a
+                        href="#fig2-fn-b">b</a>,<a href="#ref-2">2</a></sup>
                   </h6>
                 </td>
               </tr>
-              <tr class="hdr hdr-1">
-                <th scope="col" rowspan="2">Nail Manifestation</th>
-                <th scope="col" rowspan="2">Patients With an mNAPSI Subscore &gt;&nbsp;0</th>
-                <th scope="col" colspan="2">Patients Who Achieved an mNAPSI Subscore of 0, %</th>
+              <tr>
+                <td>
+                  <!-- Week selector tabs -->
+                  <div id="fig2-tabs" class="tab-group">
+                    <button id="fig2-tab-w16" class="btn" onclick="fig2Show('w16')">Week 16</button>
+                    <button id="fig2-tab-w48" class="btn" onclick="fig2Show('w48')">Week 48</button>
+                  </div>
+
+                  <!-- Plotly chart -->
+                  <div id="fig2-chart" class="fig-chart" style="height:380px;" role="img"
+                    aria-label="Horizontal bar chart showing proportion of patients achieving mNAPSI subscore of 0 by nail manifestation type, comparing BKZ and SEC.">
+                  </div>
+
+                  <!-- Custom HTML legend -->
+                  <div class="fig-legend">
+                    <span class="fig-legend__item">
+                      <span class="fig-legend__swatch" style="background:#001489;"></span>
+                      <span>BKZ<sup><a href="#fig2-fn-b">b</a></sup></span>
+                    </span>
+                    <span class="fig-legend__item">
+                      <span class="fig-legend__swatch" style="background:#F18070;"></span>
+                      <span>SEC</span>
+                    </span>
+                  </div>
+
+                  <noscript>
+                    <p>Interactive chart requires JavaScript to view Figure 2.</p>
+                  </noscript>
+
+                  <script>
+                    (function () {
+                      var CATS = [
+                        'Red spots in lunula',
+                        'Splinter hemorrhages',
+                        'Nail bed hyperkeratosis',
+                        'Leukonychia',
+                        'Pitting',
+                        'Nail plate crumbling',
+                        'Onycholysis/oil drop dyschromia'
+                      ];
+
+                      // n values in same reversed order as CATS
+                      var N_BKZ = [21, 47, 61, 59, 101, 69, 103];
+                      var N_SEC = [22, 44, 51, 58,  86, 56,  84];
+
+                      var data = {
+                        w16: {
+                          bkz: [81.0, 61.7, 68.9, 69.5, 36.6, 65.2, 63.1],
+                          sec: [90.9, 47.7, 80.4, 70.7, 41.9, 69.6, 64.3]
+                        },
+                        w48: {
+                          bkz: [81.0, 68.1, 83.6, 79.7, 78.2, 85.5, 83.5],
+                          sec: [81.8, 63.6, 80.4, 69.0, 59.3, 75.0, 66.7]
+                        }
+                      };
+
+                      function makeTrace(xVals, label, color, nArr) {
+                        return {
+                          x: xVals, y: CATS,
+                          name: label,
+                          type: 'bar',
+                          orientation: 'h',
+                          marker: { color: color },
+                          text: xVals.map(function (v) { return v + '%'; }),
+                          textposition: 'outside',
+                          cliponaxis: false,
+                          textfont: { color: '#000', size: 11, family: 'Tahoma, sans-serif' },
+                          hovertemplate: '<b>%{y}</b><br>' + label + ' (n=%{customdata}): %{x:.1f}%<extra></extra>',
+                          customdata: nArr,
+                          showlegend: false
+                        };
+                      }
+
+                      var layout = {
+                        font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 12, color: '#000' },
+                        margin: { t: 16, r: 56, b: 48, l: 210 },
+                        barmode: 'group',
+                        bargap: 0.28,
+                        bargroupgap: 0.08,
+                        xaxis: {
+                          title: { text: 'Patients with mNAPSI subscore of 0\u00a0[%]', standoff: 10 },
+                          range: [0, 107],
+                          ticksuffix: '%',
+                          gridcolor: '#e8eaf0', gridwidth: 1,
+                          zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
+                          linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                        },
+                        yaxis: {
+                          showgrid: false, zeroline: false,
+                          linecolor: '#000', linewidth: 1, tickcolor: '#000',
+                          automargin: true
+                        },
+                        showlegend: false,
+                        plot_bgcolor: '#ffffff',
+                        paper_bgcolor: '#ffffff'
+                      };
+
+                      var config = {
+                        responsive: true, displaylogo: false,
+                        modeBarButtonsToRemove: ['select2d', 'lasso2d', 'autoScale2d', 'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
+                        toImageButtonOptions: { format: 'svg', filename: 'fig2-nail-clearance-by-manifestation' }
+                      };
+
+                      window.fig2Show = function (week) {
+                        ['w16', 'w48'].forEach(function (k) {
+                          document.getElementById('fig2-tab-' + k).classList.toggle('is-active', k === week);
+                        });
+                        var d = data[week];
+                        Plotly.react('fig2-chart',
+                          [Object.assign(makeTrace(d.sec, 'SEC', '#F18070', N_SEC),
+                             { hoverlabel: { font: { color: '#001489' } } }),
+                           makeTrace(d.bkz, 'BKZ', '#001489', N_BKZ)],
+                          layout, config);
+                      };
+
+                      // Initial render — Week 16
+                      fig2Show('w16');
+                    })();
+                  </script>
+                </td>
               </tr>
-              <tr class="hdr hdr-2">
-                <th scope="col">Week 16</th>
-                <th scope="col">Week 48</th>
+              <tr class="tblfig-footer">
+                <td colspan="1">
+                  <p class="fn-entry"><sup id="fig2-fn-a">a</sup> Only patients with an mNAPSI score &gt;&nbsp;10 and subscore
+                    &gt;&nbsp;0 at baseline were included in this analysis.</p>
+                  <p class="fn-entry"><sup id="fig2-fn-b">b</sup> Patients received
+                    <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
+                      data-snomed="785160002">BKZ</span>
+                    320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.
+                  </p>
+                  <p>BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
+                    NRI&nbsp;= nonresponder imputation; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.</p>
+                </td>
               </tr>
-              <tbody>
-                <!-- Onycholysis / oil drop dyschromia -->
-                <tr class="interim-row">
-                  <td colspan="4">Onycholysis/oil drop dyschromia</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                      data-snomed="785160002">BKZ</span>,
-                    n&nbsp;=&nbsp;103</td>
-                  <td class="text-center">63.1</td>
-                  <td class="text-center">83.5</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
-                      data-snomed="774843009">SEC</span>,
-                    n&nbsp;=&nbsp;84</td>
-                  <td class="text-center">64.3</td>
-                  <td class="text-center">66.7</td>
-                </tr>
-                <!-- Nail plate crumbling -->
-                <tr class="interim-row">
-                  <td colspan="4">Nail plate crumbling</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                      data-snomed="785160002">BKZ</span>,
-                    n&nbsp;=&nbsp;69</td>
-                  <td class="text-center">65.2</td>
-                  <td class="text-center">85.5</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
-                      data-snomed="774843009">SEC</span>,
-                    n&nbsp;=&nbsp;56</td>
-                  <td class="text-center">69.6</td>
-                  <td class="text-center">75.0</td>
-                </tr>
-                <!-- Pitting -->
-                <tr class="interim-row">
-                  <td colspan="4">Pitting</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                      data-snomed="785160002">BKZ</span>,
-                    n&nbsp;=&nbsp;101</td>
-                  <td class="text-center">36.6</td>
-                  <td class="text-center">78.2</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
-                      data-snomed="774843009">SEC</span>,
-                    n&nbsp;=&nbsp;86</td>
-                  <td class="text-center">41.9</td>
-                  <td class="text-center">59.3</td>
-                </tr>
-                <!-- Leukonychia -->
-                <tr class="interim-row">
-                  <td colspan="4">Leukonychia</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                      data-snomed="785160002">BKZ</span>,
-                    n&nbsp;=&nbsp;59</td>
-                  <td class="text-center">69.5</td>
-                  <td class="text-center">79.7</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
-                      data-snomed="774843009">SEC</span>,
-                    n&nbsp;=&nbsp;58</td>
-                  <td class="text-center">70.7</td>
-                  <td class="text-center">69.0</td>
-                </tr>
-                <!-- Nail bed hyperkeratosis -->
-                <tr class="interim-row">
-                  <td colspan="4">Nail bed hyperkeratosis</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                      data-snomed="785160002">BKZ</span>,
-                    n&nbsp;=&nbsp;61</td>
-                  <td class="text-center">68.9</td>
-                  <td class="text-center">83.6</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
-                      data-snomed="774843009">SEC</span>,
-                    n&nbsp;=&nbsp;51</td>
-                  <td class="text-center">80.4</td>
-                  <td class="text-center">80.4</td>
-                </tr>
-                <!-- Splinter hemorrhages -->
-                <tr class="interim-row">
-                  <td colspan="4">Splinter hemorrhages</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                      data-snomed="785160002">BKZ</span>,
-                    n&nbsp;=&nbsp;47</td>
-                  <td class="text-center">61.7</td>
-                  <td class="text-center">68.1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
-                      data-snomed="774843009">SEC</span>,
-                    n&nbsp;=&nbsp;44</td>
-                  <td class="text-center">47.7</td>
-                  <td class="text-center">63.6</td>
-                </tr>
-                <!-- Red spots in lunula -->
-                <tr class="interim-row">
-                  <td colspan="4">Red spots in lunula</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                      data-snomed="785160002">BKZ</span>,
-                    n&nbsp;=&nbsp;21</td>
-                  <td class="text-center">81.0</td>
-                  <td class="text-center">81.0</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
-                      data-snomed="774843009">SEC</span>,
-                    n&nbsp;=&nbsp;22</td>
-                  <td class="text-center">90.9</td>
-                  <td class="text-center">81.8</td>
-                </tr>
-                <tr class="tblfig-footer">
-                  <td colspan="4">
-                    <p class="fn-entry"><sup id="tbl1-fn-a">a</sup> Only patients with an mNAPSI score &gt;&nbsp;10 and
-                      subscore &gt;&nbsp;0 at baseline
-                      were included in this analysis.</p>
-                    <p class="fn-entry"><sup id="tbl1-fn-b">b</sup> Patients received
-                      <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                        data-snomed="785160002">BKZ</span>
-                      320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.
-                    </p>
-                    <p>BKZ&nbsp;= bimekizumab; mNAPSI&nbsp;= modified Nail Psoriasis Severity Index;
-                      NRI&nbsp;= nonresponder imputation; QXW&nbsp;= every X weeks; SEC&nbsp;= secukinumab.</p>
-                  </td>
-                </tr>
-              </tbody>
             </table>
           </div>
 
@@ -826,8 +775,8 @@
 
     <!-- ══════════════════════════════════════════════════════════════
          SECTION: APPENDIX
-         Baseline demographics table (Table 2) and BE RADIANT study
-         design figure (Figure 2), as referenced from the published
+         Baseline demographics table (Table 1) and BE RADIANT study
+         design figure (Figure 3), as referenced from the published
          data section. -->
     <section id="appendix" class="card">
       <details class="collapse">
@@ -836,12 +785,12 @@
         </summary>
         <div class="collapse-content">
 
-          <!-- TABLE 2: Baseline Demographics -->
+          <!-- TABLE 1: Baseline Demographics -->
           <div class="tblfig">
             <table role="table">
               <tr>
                 <td colspan="3">
-                  <h6>Table 2 — Baseline Demographics of Patients With a Baseline mNAPSI Score &gt;&nbsp;10 in the
+                  <h6>Table 1 — Baseline Demographics of Patients With a Baseline mNAPSI Score &gt;&nbsp;10 in the
                     BE&nbsp;RADIANT Study (Adapted).<sup><a href="#ref-2">2</a></sup>
                   </h6>
                 </td>
@@ -850,7 +799,7 @@
                 <th scope="col">Characteristic</th>
                 <th scope="col" class="text-center">
                   <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-                    data-snomed="785160002">BKZ</span><sup><a href="#tbl2-fn-a">a</a></sup>
+                    data-snomed="785160002">BKZ</span><sup><a href="#tbl1-fn-a">a</a></sup>
                   (n&nbsp;=&nbsp;116)
                 </th>
                 <th scope="col" class="text-center">
@@ -917,42 +866,42 @@
                   <td colspan="3">mNAPSI, mean &plusmn; SD</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Overall score</td>
+                  <td class="row-indent">Overall score</td>
                   <td class="text-center">28.5 &plusmn; 17.9</td>
                   <td class="text-center">29.6 &plusmn; 20.6</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Onycholysis/oil drop dyschromia</td>
+                  <td class="row-indent">Onycholysis/oil drop dyschromia</td>
                   <td class="text-center">9.0 &plusmn; 7.5</td>
                   <td class="text-center">9.1 &plusmn; 7.3</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Nail plate crumbling</td>
+                  <td class="row-indent">Nail plate crumbling</td>
                   <td class="text-center">4.4 &plusmn; 6.4</td>
                   <td class="text-center">4.1 &plusmn; 6.0</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Pitting</td>
+                  <td class="row-indent">Pitting</td>
                   <td class="text-center">8.4 &plusmn; 7.0</td>
                   <td class="text-center">8.4 &plusmn; 7.3</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Leukonychia</td>
+                  <td class="row-indent">Leukonychia</td>
                   <td class="text-center">2.0 &plusmn; 2.9</td>
                   <td class="text-center">2.9 &plusmn; 3.6</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Nail bed hyperkeratosis</td>
+                  <td class="row-indent">Nail bed hyperkeratosis</td>
                   <td class="text-center">2.4 &plusmn; 3.2</td>
                   <td class="text-center">2.8 &plusmn; 3.8</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Splinter hemorrhages</td>
+                  <td class="row-indent">Splinter hemorrhages</td>
                   <td class="text-center">1.6 &plusmn; 2.5</td>
                   <td class="text-center">1.5 &plusmn; 2.5</td>
                 </tr>
                 <tr>
-                  <td style="padding-inline-start:1.5rem">Red spots in lunula</td>
+                  <td class="row-indent">Red spots in lunula</td>
                   <td class="text-center">0.6 &plusmn; 1.7</td>
                   <td class="text-center">0.7 &plusmn; 2.2</td>
                 </tr>
@@ -968,7 +917,7 @@
                 </tr>
                 <tr class="tblfig-footer">
                   <td colspan="3">
-                    <p class="fn-entry"><sup id="tbl2-fn-a">a</sup> Patients received
+                    <p class="fn-entry"><sup id="tbl1-fn-a">a</sup> Patients received
                       <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
                         data-snomed="785160002">BKZ</span>
                       320&nbsp;mg Q4W from Week 0 to Week 16 and either Q4W or Q8W from Week 16 to Week 48.
@@ -985,537 +934,26 @@
             </table>
           </div>
 
-          <!-- FIGURE 2: BE RADIANT Study Design -->
+          <!-- FIGURE 3: BE RADIANT Study Design -->
           <div class="tblfig">
-            <table role="table">
+            <table role="table" style="width:auto;">
               <tr>
                 <td colspan="1">
-                  <h6>Figure 2 — BE RADIANT Study Design
+                  <h6>Figure 3 — BE RADIANT Study Design
                     (Adapted).<sup><a href="#ref-2">2</a>,<a href="#ref-3">3</a></sup>
                   </h6>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 868 315" width="100%" role="img" aria-label="BE RADIANT study design flow diagram">
-                    <defs />
-                    <rect fill="#ffffff" width="100%" height="100%" x="0" y="0"
-                      style="fill: light-dark(#ffffff, var(--ge-dark-color, #121212));" />
-                    <g>
-                      <g data-cell-id="0">
-                        <g data-cell-id="1">
-                          <g data-cell-id="lbl-N">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="22" y="171" width="65" height="18" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 180px; margin-left: 55px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 10px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          N = 743</div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="55" y="183" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="10px" text-anchor="middle">N = 743</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-random">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="22" y="200" width="65" height="28" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 214px; margin-left: 55px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 10px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          1:1<br />randomisation</div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="55" y="217" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="10px" text-anchor="middle">1:1...</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-n373">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="96" y="122" width="60" height="18" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 131px; margin-left: 126px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 10px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          n = 373</div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="126" y="134" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="10px" text-anchor="middle">n = 373</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-n370">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="96" y="220" width="60" height="18" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 229px; margin-left: 126px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 10px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          n = 370</div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="126" y="232" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="10px" text-anchor="middle">n = 370</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="tl-dur-w0-w16">
-                            <g>
-                              <path d="M 158.68 284 L 374.32 284" fill="none" stroke="#999999" stroke-width="1.2"
-                                stroke-miterlimit="10" pointer-events="stroke"
-                                style="stroke: light-dark(rgb(153, 153, 153), rgb(106, 106, 106));" />
-                              <path d="M 164.54 280.4 L 157.34 284 L 164.54 287.6" fill="none" stroke="#999999"
-                                stroke-width="1.2" stroke-miterlimit="10" pointer-events="all"
-                                style="stroke: light-dark(rgb(153, 153, 153), rgb(106, 106, 106));" />
-                              <path d="M 368.46 287.6 L 375.66 284 L 368.46 280.4" fill="none" stroke="#999999"
-                                stroke-width="1.2" stroke-miterlimit="10" pointer-events="all"
-                                style="stroke: light-dark(rgb(153, 153, 153), rgb(106, 106, 106));" />
-                            </g>
-                          </g>
-                          <g data-cell-id="tl-dur-w16-w48">
-                            <g>
-                              <path d="M 385.68 284 L 854.32 284" fill="none" stroke="#808080" stroke-width="1.2"
-                                stroke-miterlimit="10" pointer-events="stroke"
-                                style="stroke: light-dark(rgb(128, 128, 128), rgb(127, 127, 127));" />
-                              <path d="M 385.68 284 L 854.32 284" fill="none" stroke="none" pointer-events="stroke" />
-                              <path d="M 391.54 280.4 L 384.34 284 L 391.54 287.6" fill="none" stroke="#808080"
-                                stroke-width="1.2" stroke-miterlimit="10" pointer-events="all"
-                                style="stroke: light-dark(rgb(128, 128, 128), rgb(127, 127, 127));" />
-                              <path d="M 848.46 287.6 L 855.66 284 L 848.46 280.4" fill="none" stroke="#808080"
-                                stroke-width="1.2" stroke-miterlimit="10" pointer-events="all"
-                                style="stroke: light-dark(rgb(128, 128, 128), rgb(127, 127, 127));" />
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-2to5">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="24" y="284" width="126" height="30" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 299px; margin-left: 87px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 10px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          2–5 weeks</div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="87" y="302" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="10px" text-anchor="middle">2–5 weeks</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-w0">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="110" y="284" width="90" height="30" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 291px; margin-left: 155px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          <b>Week 0</b></div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="155" y="303" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="12px" text-anchor="middle">Week 0</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-w16">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="335" y="284" width="90" height="30" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 291px; margin-left: 380px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          <b>Week 16</b></div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="380" y="303" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="12px" text-anchor="middle">Week 16</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-w48">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="797" y="284" width="62" height="30" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 291px; margin-left: 828px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          <b>Week 48</b></div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="828" y="303" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="12px" text-anchor="middle">Week 48</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-7">
-                            <g>
-                              <path d="M 24 284 L 149.32 284" fill="none" stroke="#cccccc" stroke-width="1.2"
-                                stroke-miterlimit="10" pointer-events="stroke"
-                                style="stroke: light-dark(rgb(204, 204, 204), rgb(62, 62, 62));" />
-                              <path d="M 143.46 287.6 L 150.66 284 L 143.46 280.4" fill="none" stroke="#cccccc"
-                                stroke-width="1.2" stroke-miterlimit="10" pointer-events="all"
-                                style="stroke: light-dark(rgb(204, 204, 204), rgb(62, 62, 62));" />
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-9">
-                            <g transform="translate(0.5,0.5)">
-                              <ellipse cx="10.5" cy="194.5" rx="10.5" ry="9.5" fill="#ffffff" stroke="#ffffff"
-                                pointer-events="all"
-                                style="fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-14">
-                            <g>
-                              <path
-                                d="M 158 120 L 368 120 L 368 120 L 378 145 L 368 170 L 368 170 L 158 170 L 158 145 Z"
-                                fill="#001489" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10"
-                                pointer-events="all"
-                                style="fill: light-dark(rgb(0, 20, 137), rgb(196, 213, 255)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 145px; margin-left: 268px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #FFFFFF; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#FFFFFF, #121212); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; ">
-                                          <span style="">Bimekizumab</span>
-                                          <div><span style="">320 mg Q4W</span> </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="268" y="149" fill="#FFFFFF" font-family="Tahoma"
-                                    font-size="12px" text-anchor="middle" font-weight="bold">Bimekizumab...</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-15">
-                            <g>
-                              <path d="M 21 194.5 L 89.52 194.48 L 89.52 145.04 L 158 145" fill="none" stroke="#000000"
-                                stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"
-                                style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-16">
-                            <g>
-                              <path
-                                d="M 158 218 L 848 218 L 848 218 L 858 243 L 848 268 L 848 268 L 158 268 L 158 243 Z"
-                                fill="#f18070" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10"
-                                pointer-events="all"
-                                style="fill: light-dark(rgb(241, 128, 112), rgb(185, 88, 74)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 243px; margin-left: 508px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #001489; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#001489, #c4d5ff); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; ">
-                                          <span style="">Secukinumab</span>
-                                          <div><span style="">300 mg Q4W<sup><a href="#fig2-fn-a" style="display:inline;text-decoration:underline;color:inherit;vertical-align:baseline;">a</a></sup></span> 
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="508" y="247" fill="#001489" font-family="Tahoma"
-                                    font-size="12px" text-anchor="middle" font-weight="bold">Secukinumab...</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-18">
-                            <g>
-                              <path d="M 386 85 L 846 85 L 846 85 L 856 110 L 846 135 L 846 135 L 386 135 L 386 110 Z"
-                                fill="#001489" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10"
-                                pointer-events="all"
-                                style="fill: light-dark(rgb(0, 20, 137), rgb(196, 213, 255)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 110px; margin-left: 621px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #FFFFFF; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#FFFFFF, #121212); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; ">
-                                          <span style="">Bimekizumab</span>
-                                          <div><span style="">320 mg Q4W</span> </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="621" y="114" fill="#FFFFFF" font-family="Tahoma"
-                                    font-size="12px" text-anchor="middle" font-weight="bold">Bimekizumab...</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-19">
-                            <g>
-                              <path
-                                d="M 386 158 L 846 158 L 846 158 L 856 183 L 846 208 L 846 208 L 386 208 L 386 183 Z"
-                                fill="#8089c4" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10"
-                                pointer-events="all"
-                                style="fill: light-dark(rgb(128, 137, 196), rgb(107, 115, 165)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 183px; margin-left: 621px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #001489; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#001489, #c4d5ff); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; ">
-                                          <span style="">Bimekizumab</span>
-                                          <div><span style="">320 mg Q8W</span> </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="621" y="187" fill="#001489" font-family="Tahoma"
-                                    font-size="12px" text-anchor="middle" font-weight="bold">Bimekizumab...</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-20">
-                            <g>
-                              <path d="M 21 194.5 L 89.52 194.48 L 89.52 243.04 L 158 243" fill="none" stroke="#000000"
-                                stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"
-                                style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-3">
-                            <g>
-                              <rect x="386" y="2" width="470" height="50" rx="7.5" ry="7.5" fill="#808080"
-                                stroke="#ffffff" stroke-width="5" pointer-events="all"
-                                style="fill: light-dark(rgb(128, 128, 128), rgb(127, 127, 127)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 468px; height: 1px; padding-top: 27px; margin-left: 387px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                          Double-blind initial period</div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="621" y="31" fill="light-dark(#000000, #ffffff)"
-                                    font-family="Tahoma" font-size="12px" text-anchor="middle">Double-blind initial
-                                    period</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-5">
-                            <g>
-                              <rect x="158" y="2" width="220" height="50" rx="7.5" ry="7.5" fill="#999999"
-                                stroke="#ffffff" stroke-width="5" pointer-events="all"
-                                style="fill: light-dark(rgb(153, 153, 153), rgb(26, 26, 26)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 27px; margin-left: 159px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #333333; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#333333, #c1c1c1); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                          <span
-                                            style="caret-color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 11px; font-weight: 700;">Double-blind
-                                            initial period</span></div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="268" y="31" fill="#333333" font-family="Tahoma"
-                                    font-size="12px" text-anchor="middle">Double-blind initial period</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="43EaB7oZx6B6dP3u7P1J-4">
-                            <g>
-                              <rect x="17" y="2" width="134" height="50" rx="7.5" ry="7.5" fill="#cccccc"
-                                stroke="#ffffff" stroke-width="5" pointer-events="all"
-                                style="fill: light-dark(rgb(204, 204, 204), rgb(62, 62, 62)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 132px; height: 1px; padding-top: 27px; margin-left: 18px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: center; color: #333333; ">
-                                        <div
-                                          style="display: inline-block; font-size: 12px; font-family: Tahoma; color: light-dark(#333333, #c1c1c1); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                          <span
-                                            style="caret-color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 11px; font-weight: 700;">Screening
-                                            period</span></div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="84" y="31" fill="#333333" font-family="Tahoma"
-                                    font-size="12px" text-anchor="middle">Screening period</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                          <g data-cell-id="lbl-rerandom">
-                            <g transform="translate(0.5,0.5)">
-                              <rect x="388" y="133" width="87" height="28" fill="none" stroke="none"
-                                pointer-events="all" />
-                            </g>
-                            <g>
-                              <g>
-                                <switch>
-                                  <foreignObject style="overflow: visible; text-align: left;" pointer-events="none"
-                                    width="100%" height="100%"
-                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                                    <div xmlns="http://www.w3.org/1999/xhtml"
-                                      style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 147px; margin-left: 390px;">
-                                      <div
-                                        style="box-sizing: border-box; font-size: 0; text-align: left; color: #555555; ">
-                                        <div
-                                          style="display: inline-block; font-size: 10px; font-family: Tahoma; color: light-dark(#555555, #a4a4a4); line-height: 1.2; pointer-events: all; white-space: nowrap; ">
-                                          re-randomised 1:1<br />at Week 16</div>
-                                      </div>
-                                    </div>
-                                  </foreignObject><text x="390" y="150" fill="#555555" font-family="Tahoma"
-                                    font-size="10px">re-randomised 1:1...</text>
-                                </switch>
-                              </g>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
+                  <div style="overflow-x:auto;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 868 315" width="868" height="315" style="max-width:100%;height:auto;display:block;" role="img" aria-label="BE RADIANT study design flow diagram"><defs/><rect fill="#ffffff" width="100%" height="100%" x="0" y="0" style="fill: light-dark(#ffffff, var(--ge-dark-color, #121212));"/><g><g data-cell-id="0"><g data-cell-id="1"><g data-cell-id="lbl-N"><g transform="translate(0.5,0.5)"><rect x="22" y="171" width="65" height="18" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 180px; margin-left: 55px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 0.75rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">N = 743</div></div></div></foreignObject><text x="55" y="183" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="0.75rem" text-anchor="middle">N = 743</text></switch></g></g></g><g data-cell-id="lbl-random"><g transform="translate(0.5,0.5)"><rect x="22" y="200" width="65" height="28" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 214px; margin-left: 55px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 0.75rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">1:1<br />randomisation</div></div></div></foreignObject><text x="55" y="217" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="0.75rem" text-anchor="middle">1:1...</text></switch></g></g></g><g data-cell-id="lbl-n373"><g transform="translate(0.5,0.5)"><rect x="96" y="122" width="60" height="18" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 131px; margin-left: 126px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 0.75rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">n = 373</div></div></div></foreignObject><text x="126" y="134" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="0.75rem" text-anchor="middle">n = 373</text></switch></g></g></g><g data-cell-id="lbl-n370"><g transform="translate(0.5,0.5)"><rect x="96" y="220" width="60" height="18" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 229px; margin-left: 126px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 0.75rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">n = 370</div></div></div></foreignObject><text x="126" y="232" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="0.75rem" text-anchor="middle">n = 370</text></switch></g></g></g><g data-cell-id="tl-dur-w0-w16"><g transform="translate(0.5,0.5)"><path d="M 158.68 284 L 374.32 284" fill="none" stroke="#999999" stroke-width="1.2" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(153, 153, 153), rgb(106, 106, 106));"/><path d="M 164.54 280.4 L 157.34 284 L 164.54 287.6" fill="none" stroke="#999999" stroke-width="1.2" stroke-miterlimit="10" pointer-events="all" style="stroke: light-dark(rgb(153, 153, 153), rgb(106, 106, 106));"/><path d="M 368.46 287.6 L 375.66 284 L 368.46 280.4" fill="none" stroke="#999999" stroke-width="1.2" stroke-miterlimit="10" pointer-events="all" style="stroke: light-dark(rgb(153, 153, 153), rgb(106, 106, 106));"/></g></g><g data-cell-id="tl-dur-w16-w48"><g transform="translate(0.5,0.5)"><path d="M 385.68 284 L 854.32 284" fill="none" stroke="#808080" stroke-width="1.2" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(128, 128, 128), rgb(127, 127, 127));"/><path d="M 385.68 284 L 854.32 284" fill="none" stroke="none" pointer-events="stroke"/><path d="M 391.54 280.4 L 384.34 284 L 391.54 287.6" fill="none" stroke="#808080" stroke-width="1.2" stroke-miterlimit="10" pointer-events="all" style="stroke: light-dark(rgb(128, 128, 128), rgb(127, 127, 127));"/><path d="M 848.46 287.6 L 855.66 284 L 848.46 280.4" fill="none" stroke="#808080" stroke-width="1.2" stroke-miterlimit="10" pointer-events="all" style="stroke: light-dark(rgb(128, 128, 128), rgb(127, 127, 127));"/></g></g><g data-cell-id="lbl-2to5"><g transform="translate(0.5,0.5)"><rect x="24" y="284" width="126" height="30" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 299px; margin-left: 87px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 0.75rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">2–5 weeks</div></div></div></foreignObject><text x="87" y="302" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="0.75rem" text-anchor="middle">2–5 weeks</text></switch></g></g></g><g data-cell-id="lbl-w0"><g transform="translate(0.5,0.5)"><rect x="110" y="284" width="90" height="30" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 291px; margin-left: 155px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; "><b>Week 0</b></div></div></div></foreignObject><text x="155" y="303" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle">Week 0</text></switch></g></g></g><g data-cell-id="lbl-w16"><g transform="translate(0.5,0.5)"><rect x="335" y="284" width="90" height="30" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 291px; margin-left: 380px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; "><b>Week 16</b></div></div></div></foreignObject><text x="380" y="303" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle">Week 16</text></switch></g></g></g><g data-cell-id="lbl-w48"><g transform="translate(0.5,0.5)"><rect x="797" y="284" width="62" height="30" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 291px; margin-left: 828px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; "><b>Week 48</b></div></div></div></foreignObject><text x="828" y="303" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle">Week 48</text></switch></g></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-7"><g transform="translate(0.5,0.5)"><path d="M 24 284 L 149.32 284" fill="none" stroke="#cccccc" stroke-width="1.2" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(204, 204, 204), rgb(62, 62, 62));"/><path d="M 143.46 287.6 L 150.66 284 L 143.46 280.4" fill="none" stroke="#cccccc" stroke-width="1.2" stroke-miterlimit="10" pointer-events="all" style="stroke: light-dark(rgb(204, 204, 204), rgb(62, 62, 62));"/></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-9"><g transform="translate(0.5,0.5)"><ellipse cx="10.5" cy="194.5" rx="10.5" ry="9.5" fill="#ffffff" stroke="#ffffff" pointer-events="all" style="fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-14"><g transform="translate(0.5,0.5)"><path d="M 158 120 L 368 120 L 368 120 L 378 145 L 368 170 L 368 170 L 158 170 L 158 145 Z" fill="#001489" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 20, 137), rgb(196, 213, 255)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 145px; margin-left: 268px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #FFFFFF; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#FFFFFF, #121212); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; "><span style="">Bimekizumab</span><div><span style="">320 mg Q4W</span> </div></div></div></div></foreignObject><text x="268" y="149" fill="#FFFFFF" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle" font-weight="bold">Bimekizumab...</text></switch></g></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-15"><g transform="translate(0.5,0.5)"><path d="M 21 194.5 L 89.5 194.5 L 89.5 145 L 158 145" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-16"><g transform="translate(0.5,0.5)"><path d="M 158 218 L 848 218 L 848 218 L 858 243 L 848 268 L 848 268 L 158 268 L 158 243 Z" fill="#f18070" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(241, 128, 112), rgb(185, 88, 74)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 243px; margin-left: 508px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #001489; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#001489, #c4d5ff); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; "><span style="">Secukinumab</span><div><span style="">300 mg Q4W<sup>a</sup></span> </div></div></div></div></foreignObject><text x="508" y="247" fill="#001489" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle" font-weight="bold">Secukinumab...</text></switch></g></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-18"><g transform="translate(0.5,0.5)"><path d="M 386 85 L 846 85 L 846 85 L 856 110 L 846 135 L 846 135 L 386 135 L 386 110 Z" fill="#001489" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 20, 137), rgb(196, 213, 255)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 110px; margin-left: 621px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #FFFFFF; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#FFFFFF, #121212); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; "><span style="">Bimekizumab</span><div><span style="">320 mg Q4W</span> </div></div></div></div></foreignObject><text x="621" y="114" fill="#FFFFFF" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle" font-weight="bold">Bimekizumab...</text></switch></g></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-19"><g transform="translate(0.5,0.5)"><path d="M 386 158 L 846 158 L 846 158 L 856 183 L 846 208 L 846 208 L 386 208 L 386 183 Z" fill="#8089c4" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(128, 137, 196), rgb(107, 115, 165)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 183px; margin-left: 621px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #001489; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#001489, #c4d5ff); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; "><span style="">Bimekizumab</span><div><span style="">320 mg Q8W</span> </div></div></div></div></foreignObject><text x="621" y="187" fill="#001489" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle" font-weight="bold">Bimekizumab...</text></switch></g></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-20"><g transform="translate(0.5,0.5)"><path d="M 21 194.5 L 89.5 194.5 L 89.5 243 L 158 243" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-3"><g transform="translate(0.5,0.5)"><rect x="386" y="2" width="470" height="50" rx="7.5" ry="7.5" fill="#808080" stroke="#ffffff" stroke-width="5" pointer-events="all" style="fill: light-dark(rgb(128, 128, 128), rgb(127, 127, 127)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 468px; height: 1px; padding-top: 27px; margin-left: 387px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><b>Double-blind maintenance treatment period</b></div></div></div></foreignObject><text x="621" y="31" fill="light-dark(#000000, #ffffff)" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle">Double-blind maintenance treatment period</text></switch></g></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-5"><g transform="translate(0.5,0.5)"><rect x="158" y="2" width="220" height="50" rx="7.5" ry="7.5" fill="#999999" stroke="#ffffff" stroke-width="5" pointer-events="all" style="fill: light-dark(rgb(153, 153, 153), rgb(26, 26, 26)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 218px; height: 1px; padding-top: 27px; margin-left: 159px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #333333; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#333333, #c1c1c1); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><span style="caret-color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 0.6875rem; font-weight: 700;">Double-blind initial period</span></div></div></div></foreignObject><text x="268" y="31" fill="#333333" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle">Double-blind initial period</text></switch></g></g></g><g data-cell-id="43EaB7oZx6B6dP3u7P1J-4"><g transform="translate(0.5,0.5)"><rect x="17" y="2" width="134" height="50" rx="7.5" ry="7.5" fill="#cccccc" stroke="#ffffff" stroke-width="5" pointer-events="all" style="fill: light-dark(rgb(204, 204, 204), rgb(62, 62, 62)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 132px; height: 1px; padding-top: 27px; margin-left: 18px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #333333; "><div style="display: inline-block; font-size: 1rem; font-family: inherit; color: light-dark(#333333, #c1c1c1); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><span style="caret-color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 0.6875rem; font-weight: 700;">Screening period</span></div></div></div></foreignObject><text x="84" y="31" fill="#333333" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="1rem" text-anchor="middle">Screening period</text></switch></g></g></g><g data-cell-id="lbl-rerandom"><g transform="translate(0.5,0.5)"><rect x="388" y="133" width="87" height="28" fill="none" stroke="none" pointer-events="all"/></g><g><g><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 147px; margin-left: 390px;"><div style="box-sizing: border-box; font-size: 0; text-align: left; color: #555555; "><div style="display: inline-block; font-size: 0.75rem; font-family: inherit; color: light-dark(#555555, #a4a4a4); line-height: 1.2; pointer-events: all; white-space: nowrap; ">re-randomised 1:1<br />at Week 16</div></div></div></foreignObject><text x="390" y="150" fill="#555555" font-family="Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="0.75rem">re-randomised 1:1...</text></switch></g></g></g></g></g></g></svg>
+</div>
                 </td>
               </tr>
               <tr class="tblfig-footer">
                 <td colspan="1">
-                  <p class="fn-entry"><sup id="fig2-fn-a">a</sup>
+                  <p class="fn-entry"><sup id="fig3-fn-a">a</sup>
                     <span data-type="drug" data-emtree="secukinumab" data-mesh="D000072670"
                       data-snomed="774843009">Secukinumab</span>
                     was administered at a dose of 300&nbsp;mg weekly to Week 4, followed by Q4W dosing through
@@ -1598,7 +1036,7 @@
           <h3>Help us improve this content</h3>
         </summary>
         <div class="collapse-content">
-          <p style="color: var(--brand);"><strong>How did this response improve your practice?</strong></p>
+          <p class="text-brand"><strong>How did this response improve your practice?</strong></p>
 
           <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
             <legend id="stars_label">Rating</legend>

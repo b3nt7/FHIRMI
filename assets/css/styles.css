@@ -7,13 +7,15 @@
    · All colours via CSS custom properties defined in :root
    · Pill-shaped controls: all-caps text, border-radius: 100vmax
    · Floating TOC: fixed glass bar aligned to the content container
-   · Sections 1–20 follow document order; media queries at the end
+   · Sections 1–21 follow document order; media queries at the end
 
    Button system
    ─────────────
-   · .btn              — solid brand-blue pill (body use; hover → marigold text + border)
-   · #toc .btn         — glass pill automatically via context rule (no extra class needed)
-   · #toc .btn.is-active — solid blue active pill, applied by scroll-spy script
+   · .btn                    — solid brand-blue pill (body use; hover → marigold text + border)
+   · #toc .btn               — glass pill automatically via context rule (no extra class needed)
+   · #toc .btn.is-active     — solid blue active pill, applied by scroll-spy script
+   · .tab-group .btn         — glass pill (same look as TOC); wrapper auto-gets flex layout
+   · .tab-group .btn.is-active — solid blue active pill; toggled by JS classList
 
    Card system
    ───────────
@@ -606,7 +608,39 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   9. COLLAPSIBLE SECTIONS  (.collapse)
+   9. TAB GROUP BUTTONS  (.tab-group)
+   Any container with .tab-group gets the same glass pill behaviour
+   as the TOC navbox — inactive pills are glass, active pill is solid
+   blue, hover on both is marigold. Add class="tab-group" to the
+   wrapper div; the buttons inside just need class="btn".
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.tab-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.tab-group .btn:not(.is-active) {
+  background: color-mix(in srgb, var(--tbl-interim) 52%, transparent);
+  color: var(--brand);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 0.0625rem 0 rgba(255, 255, 255, 0.55) inset,
+    0 0.125rem 0.375rem rgba(0, 20, 137, 0.08);
+}
+
+.tab-group .btn:not(.is-active):hover,
+.tab-group .btn.is-active:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   10. COLLAPSIBLE SECTIONS  (.collapse)
    Built on the native <details> / <summary> elements.
    The default browser triangle marker is replaced with a CSS-drawn
    chevron (two-border square rotated 45°) that rotates on open.
@@ -684,7 +718,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   10. HIDDEN HELPERS
+   11. HIDDEN HELPERS
    Elements used for machine-readable metadata or LLM context that
    must never be visible in the rendered document.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -703,7 +737,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   11. TABLES & FIGURES  (.tblfigfig)
+   12. TABLES & FIGURES  (.tblfigfig)
    Shared wrapper for data tables and figures, styled for the Veeva
    email / HTML output format. border-collapse: separate with
    border-spacing: 0 is required so border-radius clips correctly.
@@ -781,8 +815,47 @@ button.btn:hover {
 }
 
 
+/* Plotly / figure chart container */
+.fig-chart {
+  width: 100%;
+}
+
+/* Legend row below a chart: centred flex, items separated by gap */
+.fig-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+}
+
+/* One legend entry — swatch/icon + label inline */
+.fig-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Solid colour swatch (bar charts) — sized to visually match bar width */
+.fig-legend__swatch {
+  display: inline-block;
+  width: 1rem;        /* 16 px equivalent */
+  height: 0.875rem;   /* 14 px equivalent */
+  border-radius: 0.125rem;
+  flex-shrink: 0;
+}
+
+/* Active-analysis label below the legend (italic small print) */
+.fig-label {
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   12. UTILITIES
+   13. UTILITIES
    Single-purpose helper classes for text and cell alignment.
    Applied directly in HTML to avoid inline styles.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -811,8 +884,17 @@ button.btn:hover {
 }
 
 
+.row-indent {
+  padding-inline-start: 1.5rem;
+}
+
+.text-brand {
+  color: var(--brand);
+}
+
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   13. FOOTNOTES  (.mini-foot)
+   14. FOOTNOTES  (.mini-foot)
    Compact footnote block with a short horizontal rule above it,
    used below tables or figures to hold abbreviation keys.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -851,7 +933,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   14. REFERENCES  (#references)
+   15. REFERENCES  (#references)
    Custom numbered list using CSS counters so numbers can be styled
    in brand blue without affecting the list item text colour.
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -892,7 +974,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   15. FEEDBACK  (#feedback)
+   16. FEEDBACK  (#feedback)
    Star-rating widget, floating-label comment textarea, anonymous
    checkbox, and Send button. All elements use a teal (--teal)
    palette that ties them visually to the feedback card background.
@@ -1322,7 +1404,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   16. BACK-TO-TOP WRAPPER
+   17. BACK-TO-TOP WRAPPER
    Right-aligns the back-to-top pill at the bottom of each section.
    The pill itself inherits all styles from .btn (section 7).
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -1333,7 +1415,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   17. FOOTER
+   18. FOOTER
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .site-footer {
   padding: var(--space-1) 0;
@@ -1390,7 +1472,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   18. RESPONSIVE
+   19. RESPONSIVE
    Two narrow-viewport breakpoints reduce type sizes proportionally.
    ≤ 30 rem ≈ 480 px — typical small phone
    ≤ 22.5 rem ≈ 360 px — very small / older devices
@@ -1465,7 +1547,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   19. REDUCED MOTION
+   20. REDUCED MOTION
    Disables all transitions for users who have requested reduced
    motion in their OS accessibility settings (prefers-reduced-motion).
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -1482,7 +1564,7 @@ button.btn:hover {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   20. PRINT
+   21. PRINT
    Rules applied only when the document is sent to a printer or saved
    as PDF.  Goals:
      · No floating navbox or back-to-top chrome
