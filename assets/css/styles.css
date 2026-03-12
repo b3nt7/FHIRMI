@@ -129,8 +129,10 @@ body {
   /* ≈ 980 px — matches Veeva email width */
 
   /* ── Pill control geometry ── */
-  --pill-h: 2rem;       /* pill height — same for every button */
-  --pill-pad-x: 0.9rem; /* horizontal padding — same for every button */
+  --pill-h: 2rem;
+  /* pill height — same for every button */
+  --pill-pad-x: 0.9rem;
+  /* horizontal padding — same for every button */
 }
 
 
@@ -839,8 +841,10 @@ button.btn:hover {
 /* Solid colour swatch (bar charts) — sized to visually match bar width */
 .fig-legend__swatch {
   display: inline-block;
-  width: 1rem;        /* 16 px equivalent */
-  height: 0.875rem;   /* 14 px equivalent */
+  width: 1rem;
+  /* 16 px equivalent */
+  height: 0.875rem;
+  /* 14 px equivalent */
   border-radius: 0.125rem;
   flex-shrink: 0;
 }
