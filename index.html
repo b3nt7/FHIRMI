@@ -45,12 +45,17 @@
       border-radius: 1.5rem;
     }
     .btn--primary {
+      display: -webkit-grid !important;
       display: grid !important;
+      -webkit-grid-template-columns: auto 1fr !important;
       grid-template-columns: auto 1fr !important;
+      -webkit-align-items: center !important;
       align-items: center !important;
+      -webkit-column-gap: 0.5em !important;
       column-gap: 0.5em !important;
       height: auto !important;
       min-height: 0 !important;
+      box-sizing: border-box !important;
       border-radius: 1.5rem !important;
       color: #001489 !important;
       background: rgba(255, 255, 255, 0.38) !important;
@@ -63,13 +68,18 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
       text-shadow: none !important;
       width: min(36rem, 90vw) !important;
+      /* longhand padding overrides padding-block:0 from .btn on all browsers */
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
+      padding-right: 1.25rem !important;
       /* left padding seats flag centre at x ≈ border-radius (1.5rem) */
-      padding: 0.75rem 1.25rem 0.75rem 0.85rem !important;
+      padding-left: 0.85rem !important;
     }
     /* Text span — second grid column; always wraps within its 1fr cell */
     .btn--primary span {
       white-space: normal;
       overflow-wrap: break-word;
+      word-wrap: break-word;
       word-break: break-word;
       line-height: 1.4;
     }
