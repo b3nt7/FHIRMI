@@ -45,14 +45,19 @@
       border-radius: 1.5rem;
     }
     .btn--primary {
-      display: -webkit-grid !important;
-      display: grid !important;
-      -webkit-grid-template-columns: auto 1fr !important;
-      grid-template-columns: auto 1fr !important;
+      display: -webkit-box !important;
+      display: -webkit-flex !important;
+      display: flex !important;
+      -webkit-box-orient: horizontal !important;
+      -webkit-box-direction: normal !important;
+      -webkit-flex-direction: row !important;
+      flex-direction: row !important;
+      -webkit-box-align: center !important;
       -webkit-align-items: center !important;
       align-items: center !important;
-      -webkit-column-gap: 0.5em !important;
-      column-gap: 0.5em !important;
+      -webkit-justify-content: flex-start !important;
+      justify-content: flex-start !important;
+      gap: 0.5em !important;
       height: auto !important;
       min-height: 0 !important;
       box-sizing: border-box !important;
@@ -68,20 +73,23 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
       text-shadow: none !important;
       width: min(36rem, 90vw) !important;
-      /* longhand padding overrides padding-block:0 from .btn on all browsers */
+      /* longhand beats padding-block:0 from .btn on every engine */
       padding-top: 0.75rem !important;
       padding-bottom: 0.75rem !important;
       padding-right: 1.25rem !important;
-      /* left padding seats flag centre at x ≈ border-radius (1.5rem) */
       padding-left: 0.85rem !important;
     }
-    /* Text span — second grid column; always wraps within its 1fr cell */
+    /* Text cell — grows to fill remaining width and wraps freely */
     .btn--primary span {
-      white-space: normal;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      word-break: break-word;
-      line-height: 1.4;
+      -webkit-box-flex: 1 !important;
+      -webkit-flex: 1 1 0% !important;
+      flex: 1 1 0% !important;
+      min-width: 0 !important;
+      white-space: normal !important;
+      overflow-wrap: break-word !important;
+      word-wrap: break-word !important;
+      word-break: break-word !important;
+      line-height: 1.4 !important;
     }
     .btn--primary:hover {
       background: rgba(255, 255, 255, 0.58) !important;
