@@ -219,7 +219,7 @@
 
   function clearStarError() {
     if (starsPill)  starsPill.classList.remove('has-error');
-    if (starsError) { starsError.classList.remove('is-visible'); starsError.setAttribute('aria-hidden', 'true'); }
+    if (starsError) { starsError.classList.add('is-hidden'); starsError.setAttribute('aria-hidden', 'true'); }
   }
 
   if (starBtns.length) {
@@ -298,7 +298,7 @@
         starsPill.classList.add('has-error');
       }
       if (starsError) {
-        starsError.classList.add('is-visible');
+        starsError.classList.remove('is-hidden');
         starsError.removeAttribute('aria-hidden');
       }
       starsPill?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

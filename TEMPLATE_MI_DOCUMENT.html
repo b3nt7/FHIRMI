@@ -272,8 +272,8 @@
 
       <!-- QR code — 80×80 px, encodes the live URL of this document.
            "Scan to open" label styled inline to match all other documents. -->
-      <div style="text-align:right;">
-        <p style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">Scan to open</p>
+      <div class="footer-qr">
+        <p class="footer-qr__label">Scan to open</p>
         <img src="assets/img/[DOC-NUMBER]/qr.svg" alt="QR code — scan to open" width="80" height="80">
       </div>
 
@@ -474,12 +474,12 @@
                         The cell's bottom border IS the visual separator line.
                Row 2  — header tier 1: class="hdr hdr-1"  darkest  #808AC4
                Row 3  — header tier 2: class="hdr hdr-2"  medium   #99A1D0
-               Row 4  — header tier 3: class="hdr hdr-3"  lightest #B3B9DC
+               Row 4  — header tier 3: class="hdr"         lightest (default)
                …      — <tbody> with data rows, interim rows, tblfig-footer
 
-             IMPORTANT: each header row needs BOTH classes — the base .hdr class
-             sets font size and weight; .hdr-N overrides the background colour.
-             Without .hdr, font styling is not applied.
+             IMPORTANT: .hdr-1 and .hdr-2 must be combined with .hdr — the base
+             .hdr class sets font size and weight; -1/-2 override the background.
+             Tier 3 (lightest) uses .hdr alone — no modifier class needed.
 
              rowspan — use on a <th> to make it span multiple header rows.
              colspan — use on a <th> to group sub-columns broken out in the row below.
@@ -513,9 +513,9 @@
               <th scope="col">[Sub-group B]</th>
             </tr>
 
-            <!-- Row 4: Header tier 3 — lightest (#B3B9DC)
+            <!-- Row 4: Header tier 3 — lightest (default .hdr, no modifier needed)
                  Individual column labels; one <th> per data column (rowspan cells excluded). -->
-            <tr class="hdr hdr-3">
+            <tr class="hdr">
               <th scope="col">[Column 1]</th>
               <th scope="col">[Column 2]</th>
               <th scope="col">[Column 3]</th>
@@ -723,7 +723,7 @@
                 </div>
 
                 <!-- Chart container \u2014 adjust height to suit figure content -->
-                <div id="figA-chart" class="fig-chart" style="height:320px;"
+                <div id="figA-chart" class="fig-chart fig-chart--rg"
                   role="img"
                   aria-label="[Line graph showing proportion of patients achieving [endpoint]
                     over time, comparing [DRUG] and [comparator]]">
@@ -920,16 +920,14 @@
                 <!-- Square-swatch legend above chart -->
                 <div class="fig-legend">
                   <span class="fig-legend__item">
-                    <span class="fig-legend__swatch"
-                      style="background:#cccccc;"></span>Placebo
+                    <span class="fig-legend__swatch fig-legend__swatch--placebo"></span>Placebo
                   </span>
                   <span class="fig-legend__item">
-                    <span class="fig-legend__swatch"
-                      style="background:#001489;"></span>[DRUG]
+                    <span class="fig-legend__swatch fig-legend__swatch--drug"></span>[DRUG]
                   </span>
                 </div>
 
-                <div id="figB-chart" class="fig-chart" style="height:240px;"
+                <div id="figB-chart" class="fig-chart fig-chart--sm"
                   role="img"
                   aria-label="[Grouped horizontal bar chart comparing [DRUG] and Placebo
                     for [endpoint] by subgroup]">
@@ -1047,7 +1045,7 @@
 
              Reference: CA_CRD_CZP\u2026malignancy.html; DE_CRD_BKZ_PsA\u2026html.  -->
         <div class="tblfig">
-          <table role="table" style="width:auto;">
+          <table role="table">
             <tr>
               <td colspan="1">
                 <h6>Figure [N] &mdash; [Endpoint] Response Rate and Odds Ratio (OR) by
@@ -1065,7 +1063,7 @@
                     onclick="figCShow('forest')">OR</button>
                 </div>
 
-                <div id="figC-chart" class="fig-chart" style="height:280px;"
+                <div id="figC-chart" class="fig-chart fig-chart--md"
                   role="img"
                   aria-label="[Grouped horizontal bar chart of [endpoint] response rates
                     by subgroup, comparing [DRUG] and Placebo]">
@@ -1074,12 +1072,10 @@
                 <!-- Legend \u2014 visible in bar tab, hidden in forest tab -->
                 <div id="figC-legend" class="fig-legend">
                   <span class="fig-legend__item">
-                    <span class="fig-legend__swatch"
-                      style="background:#cccccc;"></span>Placebo
+                    <span class="fig-legend__swatch fig-legend__swatch--placebo"></span>Placebo
                   </span>
                   <span class="fig-legend__item">
-                    <span class="fig-legend__swatch"
-                      style="background:#001489;"></span>[DRUG]
+                    <span class="fig-legend__swatch fig-legend__swatch--drug"></span>[DRUG]
                   </span>
                 </div>
 
@@ -1295,12 +1291,12 @@
                     var legend = document.getElementById('figC-legend');
                     if (key === 'forest') {
                       config.toImageButtonOptions.filename = 'fig[N]-forest-or';
-                      legend.style.display = 'none';
+                      legend.classList.add('is-hidden');
                       Plotly.react('figC-chart',
                         [traceOR, traceORText], forestLayout, config);
                     } else {
                       config.toImageButtonOptions.filename = 'fig[N]-bar';
-                      legend.style.display = '';
+                      legend.classList.remove('is-hidden');
                       Plotly.react('figC-chart',
                         [tracePBO, traceDRUG], barLayout, config);
                     }
@@ -1366,7 +1362,7 @@
            All hover: marigold text + marigold border.</p>
         <!-- Simulated navbox context — inline styles replicate #toc context rules -->
         <nav class="navbox" aria-label="Button example">
-          <ul class="navbox__list" style="justify-content:flex-start;flex-wrap:wrap;">
+          <ul class="navbox__list justify-start">
             <li><a class="btn" href="#"
                 style="background:rgba(204,208,231,0.52);color:var(--brand);border-color:rgba(255,255,255,0.55);box-shadow:0 0.0625rem 0 rgba(255,255,255,0.55) inset,0 0.125rem 0.375rem rgba(0,20,137,0.08);">Inactive (glass)</a></li>
             <li><a class="btn" href="#"
@@ -1529,7 +1525,7 @@
       <div class="collapse-content">
 
         <!-- Question giving the rating its meaning -->
-        <p style="color: var(--brand);"><strong>How did this response improve your practice?</strong></p>
+        <p class="text-brand"><strong>How did this response improve your practice?</strong></p>
 
         <!-- ── 1. Star rating ──────────────────────────────────
              .stars   = pill-shaped fieldset, position:relative for
@@ -1549,8 +1545,8 @@
             <button type="button" role="radio" aria-checked="false" class="star" data-rating="5" aria-label="5 stars">★</button>
           </div>
         </fieldset>
-        <!-- Validation error — JS adds .is-visible on submit without rating -->
-        <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">Please select a rating before sending.</p>
+        <!-- Validation error — hidden via .is-hidden; JS removes it on failed submit -->
+        <p id="stars-error" class="stars-error is-hidden" role="alert" aria-hidden="true">Please select a rating before sending.</p>
 
         <!-- ── 2. Comment textarea ────────────────────────────
              .comment-field = position:relative context for the

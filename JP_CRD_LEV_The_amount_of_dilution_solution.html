@@ -131,8 +131,8 @@
           <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
             alt="UCBロゴ（患者から生まれ、科学で動く）">
         </div>
-        <div style="text-align:right;">
-          <p style="margin:0 0 0.25rem;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#001489;">Scan to open</p>
+        <div class="footer-qr">
+          <p class="footer-qr__label">Scan to open</p>
           <img src="assets/img/MED-JP-LEV-2400002/qr.svg" alt="QR code — scan to open" width="80" height="80">
         </div>
       </div><!-- /header-flex -->
@@ -290,8 +290,7 @@
         <div class="collapse-content">
 
           <!-- 承認外情報 免責 -->
-          <div role="note" aria-label="承認外情報に関する注意事項"
-            style="border:2px solid var(--brand);border-radius:var(--radius);padding:1rem 1.25rem;margin-block:1rem;background:color-mix(in srgb,var(--brand) 8%,white);">
+          <div role="note" aria-label="承認外情報に関する注意事項" class="note-brand">
             <p><strong>以下の回答内に承認外情報を含みます。</strong>
               ご質問に回答するための参考情報として提供するもので、承認外の使用を推奨するものではありません。
               製品のご使用にあたっては、最新の電子化された添付文書をご確認ください。
@@ -394,7 +393,7 @@
             <h3>このコンテンツの改善にご協力ください</h3>
         </summary>
         <div class="collapse-content">
-          <p style="color: var(--brand);"><strong>この回答はあなたの診療にどのように役立ちましたか？</strong></p>
+          <p class="text-brand"><strong>この回答はあなたの診療にどのように役立ちましたか？</strong></p>
 
           <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
             <legend id="stars_label">評価</legend>
@@ -412,7 +411,7 @@
             </div>
           </fieldset>
 
-          <p id="stars-error" class="stars-error" role="alert" aria-hidden="true">送信前に評価を選択してください。</p>
+          <p id="stars-error" class="stars-error is-hidden" role="alert" aria-hidden="true">送信前に評価を選択してください。</p>
 
           <div class="comment-field">
             <label for="comment">コメント（任意）</label>
