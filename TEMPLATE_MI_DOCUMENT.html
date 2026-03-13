@@ -236,6 +236,12 @@
     }
   }
   </script>
+
+  <!-- ── Plotly.js ────────────────────────────────────────────
+       Include ONLY when the document contains interactive Plotly charts.
+       Omit from documents that use only static SVG figures.
+       Pin the minor version; upgrade intentionally after testing.          -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 </head>
 <!-- ═══════════════════════════════════════════════════════════ END HEAD -->
 
@@ -671,7 +677,649 @@
               </td>
             </tr>
           </table>
-        </div><!-- /.tblfig (figure) -->
+        </div><!-- /.tblfig (static SVG figure) -->
+
+        <!-- \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+             INTERACTIVE PLOTLY FIGURE PATTERNS
+             Three templates matching chart types used across GRD, CA, and DE documents.
+             Each pattern is a working example with dummy data.
+             Replace all [PLACEHOLDER] text and dummy values before production use.
+
+             PATTERN A \u2014 Line chart, multi-analysis tabs        (\u2192 GRD Fig\u202f1 pattern)
+             PATTERN B \u2014 Grouped horizontal bar chart (simple)  (\u2192 GRD Fig\u202f2 / DE bar-tab)
+             PATTERN C \u2014 Tabbed bar chart + log-scale forest plot (\u2192 CA / DE combined)
+
+             SHARED RULES
+             \u00b7 Each chart lives in its own IIFE \u2014 no global variable pollution.
+             \u00b7 Every Plotly figure ID (figA-chart etc.) must be unique per page.
+             \u00b7 Colors: [DRUG] = #001489 (UCB blue), comparator = #F18070 (coral),
+               placebo = #cccccc (grey), secondary = #8089c4 (muted blue).
+             \u00b7 Font family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif.
+             \u00b7 config.responsive:true ensures charts reflow on window resize.
+             \u00b7 Narrow no-break space \u202f (\u005cu202f) is used between numbers and % signs.
+             \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 -->
+
+        <!-- \u2500\u2500 PATTERN A: Line Chart with multi-analysis tabs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+             WHEN TO USE: Time-course endpoint data shown with multiple
+             imputation methods (e.g. LOCF, OC, NRI, mNRI) as switchable tabs.
+             Reference: GRD_BKZ_PSO_Comparison\u2026nail_involvement.html, Figure\u202f1.   -->
+        <div class="tblfig">
+          <table role="table">
+            <tr>
+              <td colspan="1">
+                <h6>Figure [N] &mdash; [Proportion of Patients Achieving Endpoint] by Treatment
+                  Group (Adapted).<sup><a href="#figA-fn-a">a</a>,<a href="#ref-1">1</a></sup>
+                </h6>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <!-- Tab buttons \u2014 one per analysis method; extend as needed -->
+                <div class="tab-group">
+                  <button id="figA-tab-a1" class="btn is-active"
+                    onclick="figAShow('a1')">[Analysis 1]</button>
+                  <button id="figA-tab-a2" class="btn"
+                    onclick="figAShow('a2')">[Analysis 2]</button>
+                </div>
+
+                <!-- Chart container \u2014 adjust height to suit figure content -->
+                <div id="figA-chart" class="fig-chart" style="height:320px;"
+                  role="img"
+                  aria-label="[Line graph showing proportion of patients achieving [endpoint]
+                    over time, comparing [DRUG] and [comparator]]">
+                </div>
+
+                <!-- Legend with SVG line + circle swatches -->
+                <div class="fig-legend">
+                  <span class="fig-legend__item">
+                    <svg width="28" height="14" aria-hidden="true">
+                      <line x1="0" y1="7" x2="28" y2="7" stroke="#001489" stroke-width="2.5"/>
+                      <circle cx="14" cy="7" r="4.5" fill="#001489"/>
+                    </svg>
+                    <span>[DRUG]<sup><a href="#figA-fn-b">b</a></sup>
+                      (n&nbsp;=&nbsp;[N])</span>
+                  </span>
+                  <span class="fig-legend__item">
+                    <svg width="28" height="14" aria-hidden="true">
+                      <line x1="0" y1="7" x2="28" y2="7" stroke="#F18070" stroke-width="2.5"/>
+                      <circle cx="14" cy="7" r="4.5" fill="#F18070"/>
+                    </svg>
+                    <span>[Comparator] (n&nbsp;=&nbsp;[N])</span>
+                  </span>
+                </div>
+
+                <!-- Dynamic analysis label \u2014 updated by figAShow() -->
+                <p id="figA-analysis-label" class="fig-label"></p>
+
+                <!-- No-JS fallback (Veeva, PDF export) -->
+                <noscript>
+                  <img src="assets/img/[MED-DOC-NUMBER]/Figure[N].svg"
+                    alt="[Line chart description]">
+                </noscript>
+
+                <script>
+                (function () {
+                  /* \u2500\u2500 Time points on the x-axis \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  var TP = [0, 4, 8, 12, 16, 24]; /* \u2190 replace with actual weeks/visits */
+
+                  /* \u2500\u2500 Analyses object \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+                     One key per tab button. Arrays must be the same length as TP.
+                     text:  '' for t=0 (no label at baseline), '%' string otherwise.
+                     hover: single combined tooltip string per time point.          */
+                  var AN = {
+                    a1: {
+                      label: '[Analysis 1]\u00a0\u2014\u00a0[full name, e.g. LOCF]',
+                      drug: { y: [0,22,38,51,58,65],
+                              text: ['','22\u202f%','38\u202f%','51\u202f%','58\u202f%','65\u202f%'] },
+                      comp: { y: [0,18,30,42,50,56],
+                              text: ['','18\u202f%','30\u202f%','42\u202f%','50\u202f%','56\u202f%'] },
+                      hover: ['[DRUG]: 0%<br>[Comp]: 0%',
+                              '[DRUG]: 22%<br>[Comp]: 18%',
+                              '[DRUG]: 38%<br>[Comp]: 30%',
+                              '[DRUG]: 51%<br>[Comp]: 42%',
+                              '[DRUG]: 58%<br>[Comp]: 50%',
+                              '[DRUG]: 65%<br>[Comp]: 56%']
+                    },
+                    a2: {
+                      label: '[Analysis 2]\u00a0\u2014\u00a0[full name, e.g. NRI]',
+                      drug: { y: [0,21,36,49,55,62],
+                              text: ['','21\u202f%','36\u202f%','49\u202f%','55\u202f%','62\u202f%'] },
+                      comp: { y: [0,17,28,40,48,53],
+                              text: ['','17\u202f%','28\u202f%','40\u202f%','48\u202f%','53\u202f%'] },
+                      hover: ['[DRUG]: 0%<br>[Comp]: 0%',
+                              '[DRUG]: 21%<br>[Comp]: 17%',
+                              '[DRUG]: 36%<br>[Comp]: 28%',
+                              '[DRUG]: 49%<br>[Comp]: 40%',
+                              '[DRUG]: 55%<br>[Comp]: 48%',
+                              '[DRUG]: 62%<br>[Comp]: 53%']
+                    }
+                  };
+
+                  var TABS = Object.keys(AN);
+
+                  /* \u2500\u2500 Trace factory \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  function makeLine(data, color, pos) {
+                    return {
+                      x: TP, y: data.y,
+                      type: 'scatter', mode: 'lines+markers+text',
+                      line: { color: color, width: 2.5 },
+                      marker: { color: color, size: 9, symbol: 'circle' },
+                      text: data.text, textposition: pos,
+                      textfont: { color: color, size: 12,
+                                  family: 'Tahoma, sans-serif' },
+                      hoverinfo: 'skip', showlegend: false
+                    };
+                  }
+
+                  /* Invisible midpoint trace \u2014 single combined hover tooltip */
+                  function makeHover(a) {
+                    return {
+                      x: TP,
+                      y: a.drug.y.map(function (v, i) {
+                        return (v + a.comp.y[i]) / 2;
+                      }),
+                      type: 'scatter', mode: 'none',
+                      hovertext: a.hover,
+                      hovertemplate: '%{hovertext}<extra></extra>',
+                      showlegend: false
+                    };
+                  }
+
+                  /* \u2500\u2500 Layout \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  var layout = {
+                    font: { family: "Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                            size: 13, color: '#000' },
+                    margin: { t: 32, r: 24, b: 56, l: 80 },
+                    xaxis: {
+                      title: { text: 'Week', standoff: 12 },
+                      tickmode: 'array', tickvals: TP,
+                      ticktext: TP.map(String),
+                      range: [-2, 26], /* \u2190 extend slightly beyond last time point */
+                      showgrid: false, zeroline: false,
+                      linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                    },
+                    yaxis: {
+                      title: { text: 'Patients achieving [endpoint]\u202f[%]',
+                               standoff: 16 },
+                      range: [0, 100], ticksuffix: '\u202f%',
+                      gridcolor: '#e8eaf0', gridwidth: 1,
+                      zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
+                      linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                    },
+                    showlegend: false,
+                    plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
+                    hovermode: 'x'
+                  };
+
+                  var config = {
+                    responsive: true, displaylogo: false,
+                    modeBarButtonsToRemove: ['select2d','lasso2d','autoScale2d',
+                      'hoverClosestCartesian','hoverCompareCartesian',
+                      'toggleSpikelines'],
+                    toImageButtonOptions: {
+                      format: 'svg', filename: 'fig[N]-line'
+                    }
+                  };
+
+                  /* Label positions \u2014 adjust 'top center'/'bottom center' per time
+                     point when one line sits directly above/below the other to
+                     prevent label collision.                                        */
+                  var POS_DRUG = TP.map(function () { return 'top center'; });
+                  var POS_COMP = TP.map(function () { return 'bottom center'; });
+
+                  /* \u2500\u2500 Tab switching \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  window.figAShow = function (key) {
+                    var a = AN[key];
+                    TABS.forEach(function (k) {
+                      document.getElementById('figA-tab-' + k)
+                        .classList.toggle('is-active', k === key);
+                    });
+                    document.getElementById('figA-analysis-label').innerHTML =
+                      a.label;
+                    Plotly.react('figA-chart',
+                      [makeLine(a.drug, '#001489', POS_DRUG),
+                       makeLine(a.comp, '#F18070', POS_COMP),
+                       makeHover(a)],
+                      layout, config);
+                  };
+
+                  figAShow('a1'); /* initial render */
+                }());
+                </script>
+              </td>
+            </tr>
+            <tr class="tblfig-footer">
+              <td colspan="1">
+                <p class="fn-entry"><sup id="figA-fn-a">a</sup> [Footnote a \u2014 describe
+                  population, inclusion criteria, or analysis scope.]</p>
+                <p class="fn-entry"><sup id="figA-fn-b">b</sup> [Footnote b \u2014 dosing or
+                  treatment-period detail for [DRUG].]</p>
+                <p>[ABBREV]&nbsp;= [full form]; [ABBREV2]&nbsp;= [full form].</p>
+              </td>
+            </tr>
+          </table>
+        </div><!-- /.tblfig (Pattern A: line chart) -->
+
+        <!-- \u2500\u2500 PATTERN B: Grouped Horizontal Bar Chart (no tabs) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+             WHEN TO USE: Two-group comparison of a single endpoint at one
+             time point across subgroups (e.g. by sex, disease severity).
+             GROUPS array is listed bottom-to-top (Plotly reverses h-bars).
+             cliponaxis:false prevents outside text labels from being clipped.
+             Reference: GRD\u2026nail_involvement.html Figure\u202f2; DE\u2026Gender.html ACR\u202f50 tab. -->
+        <div class="tblfig">
+          <table role="table">
+            <tr>
+              <td colspan="1">
+                <h6>Figure [N] &mdash; [Proportion of Patients Achieving Endpoint] at
+                  Week&nbsp;[N] by Subgroup (Adapted).<sup><a href="#ref-1">1</a></sup>
+                </h6>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <!-- Square-swatch legend above chart -->
+                <div class="fig-legend">
+                  <span class="fig-legend__item">
+                    <span class="fig-legend__swatch"
+                      style="background:#cccccc;"></span>Placebo
+                  </span>
+                  <span class="fig-legend__item">
+                    <span class="fig-legend__swatch"
+                      style="background:#001489;"></span>[DRUG]
+                  </span>
+                </div>
+
+                <div id="figB-chart" class="fig-chart" style="height:240px;"
+                  role="img"
+                  aria-label="[Grouped horizontal bar chart comparing [DRUG] and Placebo
+                    for [endpoint] by subgroup]">
+                </div>
+
+                <noscript>
+                  <img src="assets/img/[MED-DOC-NUMBER]/Figure[N].svg"
+                    alt="[Bar chart description]">
+                </noscript>
+
+                <script>
+                (function () {
+                  /* \u2500\u2500 Subgroups \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+                     Listed bottom-to-top \u2014 Plotly reverses horizontal bar order.
+                     Top subgroup in the chart = last element of the array.        */
+                  var GROUPS = [
+                    'Subgroup B<br>(n\u202f=\u202f[N])',  /* rendered at top */
+                    'Subgroup A<br>(n\u202f=\u202f[N])'   /* rendered at bottom */
+                  ];
+
+                  /* \u2500\u2500 Placebo trace \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  var tracePBO = {
+                    x: [12.5, 8.3], y: GROUPS,
+                    name: 'Placebo',
+                    type: 'bar', orientation: 'h',
+                    marker: { color: '#cccccc' },
+                    /* \u2013 after the % acts as a visual separator between PBO and DRUG labels */
+                    text: ['12.5\u202f%\u202f\u2013', '8.3\u202f%\u202f\u2013'],
+                    textposition: 'outside', cliponaxis: false,
+                    textfont: { color: '#555', size: 11,
+                                family: 'Tahoma, sans-serif' },
+                    hovertemplate: 'Placebo<br>[Endpoint]: %{x}\u202f%<extra></extra>',
+                    showlegend: false
+                  };
+
+                  /* \u2500\u2500 [DRUG] trace \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  var traceDRUG = {
+                    x: [38.5, 54.2], y: GROUPS,
+                    name: '[DRUG]',
+                    type: 'bar', orientation: 'h',
+                    marker: { color: '#001489' },
+                    text: ['38.5\u202f%', '54.2\u202f%'],
+                    textposition: 'outside', cliponaxis: false,
+                    textfont: { color: '#000', size: 11,
+                                family: 'Tahoma, sans-serif' },
+                    hovertemplate: '[DRUG]<br>[Endpoint]: %{x}\u202f%<extra></extra>',
+                    showlegend: false
+                  };
+
+                  /* \u2500\u2500 Layout \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  var layout = {
+                    font: { family: "Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                            size: 13, color: '#000' },
+                    margin: { t: 16, r: 40, b: 56, l: 16 },
+                    barmode: 'group',
+                    bargap: 0.3,         /* gap between subgroup clusters (0\u20131) */
+                    bargroupgap: 0.1,    /* gap between bars within a cluster (0\u20131) */
+                    xaxis: {
+                      title: { text: 'Patients achieving [endpoint]\u202f[%]',
+                               standoff: 10 },
+                      range: [0, 72], /* \u2190 set ~10\u202f% above tallest bar + its label */
+                      tickvals: [0, 20, 40, 60],
+                      ticksuffix: '\u202f%',
+                      gridcolor: '#e8eaf0', gridwidth: 1,
+                      zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
+                      linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                    },
+                    yaxis: {
+                      showgrid: false, zeroline: false,
+                      linecolor: '#000', linewidth: 1,
+                      tickcolor: '#000', automargin: true
+                    },
+                    showlegend: false,
+                    plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff'
+                  };
+
+                  var config = {
+                    responsive: true, displaylogo: false,
+                    modeBarButtonsToRemove: ['select2d','lasso2d','autoScale2d',
+                      'hoverClosestCartesian','hoverCompareCartesian',
+                      'toggleSpikelines'],
+                    toImageButtonOptions: {
+                      format: 'svg', filename: 'fig[N]-bar'
+                    }
+                  };
+
+                  Plotly.newPlot('figB-chart', [tracePBO, traceDRUG], layout, config);
+                }());
+                </script>
+              </td>
+            </tr>
+            <tr class="tblfig-footer">
+              <td colspan="1">
+                <p>[ABBREV]&nbsp;= [full form]; [ABBREV2]&nbsp;= [full form].</p>
+              </td>
+            </tr>
+          </table>
+        </div><!-- /.tblfig (Pattern B: horizontal bar chart) -->
+
+        <!-- \u2500\u2500 PATTERN C: Tabbed Bar Chart + Log-scale Forest Plot \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+             WHEN TO USE: A single figure shows both raw response rates
+             (bar tab) and odds/hazard ratios (forest-plot tab) for the
+             same subgroups.
+
+             Log-scale axis rules:
+             \u00b7 xaxis.type:'log' renders the x-axis on a log scale.
+             \u00b7 shapes with xref:'x' may not render correctly on log axes
+               \u2014 always use xref:'paper' for significance brackets and the
+               null-effect line.
+             \u00b7 Annotation xref:'x' is also unreliable \u2014 use xref:'paper'.
+             \u00b7 Paper coordinate: x_paper = (log10(x_data) \u2212 log10(xmin))
+                                          / (log10(xmax) \u2212 log10(xmin))
+             \u00b7 Significance bracket arms: start at CI_HIGH \u00d7 1.2 to give an
+               equal log-space gap from both markers.
+
+             Reference: CA_CRD_CZP\u2026malignancy.html; DE_CRD_BKZ_PsA\u2026html.  -->
+        <div class="tblfig">
+          <table role="table" style="width:auto;">
+            <tr>
+              <td colspan="1">
+                <h6>Figure [N] &mdash; [Endpoint] Response Rate and Odds Ratio (OR) by
+                  Subgroup (Adapted).<sup><a href="#ref-1">1</a></sup>
+                </h6>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <!-- Tab buttons \u2014 bar tab active by default -->
+                <div class="tab-group">
+                  <button class="btn is-active" id="figC-tab-bar"
+                    onclick="figCShow('bar')">[Endpoint]</button>
+                  <button class="btn" id="figC-tab-forest"
+                    onclick="figCShow('forest')">OR</button>
+                </div>
+
+                <div id="figC-chart" class="fig-chart" style="height:280px;"
+                  role="img"
+                  aria-label="[Grouped horizontal bar chart of [endpoint] response rates
+                    by subgroup, comparing [DRUG] and Placebo]">
+                </div>
+
+                <!-- Legend \u2014 visible in bar tab, hidden in forest tab -->
+                <div id="figC-legend" class="fig-legend">
+                  <span class="fig-legend__item">
+                    <span class="fig-legend__swatch"
+                      style="background:#cccccc;"></span>Placebo
+                  </span>
+                  <span class="fig-legend__item">
+                    <span class="fig-legend__swatch"
+                      style="background:#001489;"></span>[DRUG]
+                  </span>
+                </div>
+
+                <noscript>
+                  <img src="assets/img/[MED-DOC-NUMBER]/Figure[N].svg"
+                    alt="[Figure description]">
+                </noscript>
+
+                <script>
+                (function () {
+                  /* \u2500\u2500 Subgroups (bottom-to-top) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  var GROUPS = [
+                    'Subgroup B<br>(n\u202f=\u202f[N])',
+                    'Subgroup A<br>(n\u202f=\u202f[N])'
+                  ];
+
+                  /* \u2550\u2550 BAR CHART TRACES \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 */
+                  var tracePBO = {
+                    x: [12.5, 8.3], y: GROUPS,
+                    name: 'Placebo',
+                    type: 'bar', orientation: 'h',
+                    marker: { color: '#cccccc' },
+                    text: ['12.5\u202f%\u202f\u2013', '8.3\u202f%\u202f\u2013'],
+                    textposition: 'outside', cliponaxis: false,
+                    textfont: { color: '#555', size: 11, family: 'Tahoma, sans-serif' },
+                    hovertemplate: 'Placebo<br>[Endpoint]: %{x}\u202f%<extra></extra>',
+                    showlegend: false
+                  };
+
+                  var traceDRUG = {
+                    x: [38.5, 54.2], y: GROUPS,
+                    name: '[DRUG]',
+                    type: 'bar', orientation: 'h',
+                    marker: { color: '#001489' },
+                    text: ['38.5\u202f%', '54.2\u202f%'],
+                    textposition: 'outside', cliponaxis: false,
+                    textfont: { color: '#000', size: 11, family: 'Tahoma, sans-serif' },
+                    hovertemplate: '[DRUG]<br>[Endpoint]: %{x}\u202f%<extra></extra>',
+                    showlegend: false
+                  };
+
+                  var barLayout = {
+                    font: { family: "Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                            size: 13, color: '#000' },
+                    margin: { t: 16, r: 40, b: 56, l: 16 },
+                    barmode: 'group', bargap: 0.3, bargroupgap: 0.1,
+                    xaxis: {
+                      title: { text: 'Patients achieving [endpoint]\u202f[%]',
+                               standoff: 10 },
+                      range: [0, 72], tickvals: [0, 20, 40, 60],
+                      ticksuffix: '\u202f%',
+                      gridcolor: '#e8eaf0', gridwidth: 1,
+                      zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
+                      linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                    },
+                    yaxis: {
+                      showgrid: false, zeroline: false,
+                      linecolor: '#000', linewidth: 1,
+                      tickcolor: '#000', automargin: true
+                    },
+                    showlegend: false,
+                    plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff'
+                  };
+
+                  /* \u2550\u2550 FOREST PLOT TRACES \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 */
+                  var OR_VALS = [4.2,  19.7]; /* bottom subgroup first */
+                  var CI_LOW  = [2.9,  11.2];
+                  var CI_HIGH = [6.2,  34.7];
+                  var OR_TEXT = [
+                    '4.2 (2.9\u201336.2)',   /* bottom */
+                    '19.7 (11.2\u201334.7)'  /* top    */
+                  ];
+
+                  var traceOR = {
+                    x: OR_VALS, y: GROUPS,
+                    type: 'scatter', mode: 'markers',
+                    marker: { symbol: 'square', size: 14, color: '#001489' },
+                    error_x: {
+                      type: 'data',
+                      array:      CI_HIGH.map(function (h, i) {
+                                    return h - OR_VALS[i];
+                                  }),
+                      arrayminus: OR_VALS.map(function (h, i)  {
+                                    return h - CI_LOW[i];
+                                  }),
+                      color: '#001489', thickness: 2.5, width: 10
+                    },
+                    customdata: OR_TEXT,
+                    hovertemplate:
+                      '<b>%{y}</b><br>OR (90\u202fCI): %{customdata}<extra></extra>',
+                    showlegend: false
+                  };
+
+                  /* Right-margin text column for OR (CI) values */
+                  var X_TEXT_COL = 60; /* data-unit x-position for the OR text column */
+                  var traceORText = {
+                    x: OR_TEXT.map(function () { return X_TEXT_COL; }),
+                    y: GROUPS,
+                    type: 'scatter', mode: 'text',
+                    text: OR_TEXT,
+                    textposition: 'middle right',
+                    textfont: { size: 11, color: '#000',
+                                family: 'Tahoma, sans-serif' },
+                    hoverinfo: 'skip', showlegend: false
+                  };
+
+                  /* \u2500\u2500 Log-scale axis range & paper-coordinate helper \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+                     X_MIN / X_MAX define the visible x range (data units).
+                     Adjust so CI_LOW[min] and CI_HIGH[max] fit with margin. */
+                  var X_MIN = 0.8, X_MAX = 150;
+                  var log10 = function (v) { return Math.log(v) / Math.LN10; };
+                  var xPaper = function (v) {
+                    return (log10(v) - log10(X_MIN)) /
+                           (log10(X_MAX) - log10(X_MIN));
+                  };
+
+                  /* \u2500\u2500 Significance bracket (between the two subgroups) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+                     Arm starts at CI_HIGH \u00d7 1.2 \u2014 gives equal log-space gap from
+                     the CI whisker tip for both subgroups.
+                     Use xref:'x', yref:'y' for arms (data-space y is reliable
+                     for categorical axes; only x on log-scale is problematic
+                     for shapes, so keep them in data-x space here but note that
+                     the null-effect line must use xref:'paper').
+                     Vertical connector x must be \u2264 X_TEXT_COL to avoid overlap.  */
+                  var ARM0 = CI_HIGH[0] * 1.2; /* bottom subgroup arm start */
+                  var ARM1 = CI_HIGH[1] * 1.2; /* top subgroup arm start    */
+                  var ARM_END = 55;             /* right end of both arms (< X_TEXT_COL) */
+
+                  var forestLayout = {
+                    font: { family: "Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                            size: 13, color: '#000' },
+                    margin: { t: 48, r: 120, b: 56, l: 16 },
+                    xaxis: {
+                      title: {
+                        text: 'Odds Ratio (OR, log scale)<br>'
+                            + '<span style="font-size:10px;color:#555">'
+                            + '\u2190\u202fFavours Placebo\u202f\u2508\u202f'
+                            + 'Favours [DRUG]\u202f\u2192</span>',
+                        standoff: 12
+                      },
+                      type: 'log',
+                      range: [log10(X_MIN), log10(X_MAX)],
+                      tickvals: [1, 2, 5, 10, 20, 50, 100],
+                      showgrid: false, zeroline: false,
+                      linecolor: '#000', linewidth: 1,
+                      tickcolor: '#000', automargin: true
+                    },
+                    yaxis: {
+                      showgrid: false, zeroline: false,
+                      linecolor: '#000', linewidth: 1,
+                      tickcolor: '#000', automargin: true
+                    },
+                    shapes: [
+                      /* Null-effect reference line at OR\u202f=\u202f1
+                         xref:'x' works for the dotted line here because Plotly
+                         correctly places a vertical line at x=1 on log scale.  */
+                      { type: 'line', xref: 'x', yref: 'paper',
+                        x0: 1, x1: 1, y0: 0, y1: 1,
+                        line: { color: '#888', width: 1.5, dash: 'dot' } },
+                      /* Bracket arms \u2014 xref:'x', yref:'y' (categorical y is safe) */
+                      { type: 'line', xref: 'x', yref: 'y',
+                        x0: ARM0, x1: ARM_END, y0: 0, y1: 0,
+                        line: { color: '#333', width: 1.5 } },
+                      { type: 'line', xref: 'x', yref: 'y',
+                        x0: ARM1, x1: ARM_END, y0: 1, y1: 1,
+                        line: { color: '#333', width: 1.5 } },
+                      /* Vertical connector */
+                      { type: 'line', xref: 'x', yref: 'y',
+                        x0: ARM_END, x1: ARM_END, y0: 0, y1: 1,
+                        line: { color: '#333', width: 1.5 } }
+                    ],
+                    annotations: [
+                      /* OR (CI) column header \u2014 paper coords required on log scale */
+                      { xref: 'paper', yref: 'paper',
+                        x: xPaper(X_TEXT_COL) + 0.02, y: 1.08,
+                        text: '<b>OR (90\u202fCI)</b>',
+                        showarrow: false,
+                        font: { size: 11, color: '#000',
+                                family: 'Tahoma, sans-serif' },
+                        xanchor: 'center', yanchor: 'bottom' },
+                      /* p-value label for the significance bracket
+                         x: xPaper(ARM_END) + small offset so label sits just
+                         to the right of the vertical connector.               */
+                      { xref: 'paper', yref: 'paper',
+                        x: xPaper(ARM_END) + 0.01, y: 0.5,
+                        text: 'p\u202f<\u202f0.001',
+                        showarrow: false,
+                        font: { size: 11, color: '#000',
+                                family: 'Tahoma, sans-serif' },
+                        xanchor: 'left', yanchor: 'middle' }
+                    ],
+                    showlegend: false,
+                    plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff'
+                  };
+
+                  /* \u2500\u2500 Shared config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  var config = {
+                    responsive: true, displaylogo: false,
+                    modeBarButtonsToRemove: ['select2d','lasso2d','autoScale2d',
+                      'hoverClosestCartesian','hoverCompareCartesian',
+                      'toggleSpikelines'],
+                    toImageButtonOptions: {
+                      format: 'svg', filename: 'fig[N]-bar'
+                    }
+                  };
+
+                  /* \u2500\u2500 Tab switching \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+                  window.figCShow = function (key) {
+                    ['bar', 'forest'].forEach(function (k) {
+                      document.getElementById('figC-tab-' + k)
+                        .classList.toggle('is-active', k === key);
+                    });
+                    var legend = document.getElementById('figC-legend');
+                    if (key === 'forest') {
+                      config.toImageButtonOptions.filename = 'fig[N]-forest-or';
+                      legend.style.display = 'none';
+                      Plotly.react('figC-chart',
+                        [traceOR, traceORText], forestLayout, config);
+                    } else {
+                      config.toImageButtonOptions.filename = 'fig[N]-bar';
+                      legend.style.display = '';
+                      Plotly.react('figC-chart',
+                        [tracePBO, traceDRUG], barLayout, config);
+                    }
+                    Plotly.Plots.resize('figC-chart');
+                  };
+
+                  figCShow('bar'); /* initial render: bar tab */
+                }());
+                </script>
+              </td>
+            </tr>
+            <tr class="tblfig-footer">
+              <td colspan="1">
+                <p>[ABBREV]&nbsp;= [full form]; CI&nbsp;= confidence interval;
+                  OR&nbsp;= odds ratio.</p>
+              </td>
+            </tr>
+          </table>
+        </div><!-- /.tblfig (Pattern C: tabbed bar + forest plot) -->
 
         <!-- ── Standalone mini-foot ───────────────────────────
              Used for footnotes that belong to a paragraph (not a
