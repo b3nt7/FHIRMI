@@ -81,6 +81,9 @@
   <!-- Gemeinsames Stylesheet — Design-Tokens, Komponentenstile und responsives Layout -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
+  <!-- Plotly.js — interaktive Abbildungen -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
   <!-- ── Seitenspezifisch: Kartenrahmen für #smpc und #published-data ── -->
   <style>
     #smpc,
@@ -221,12 +224,12 @@
       <div class="collapse-content">
         <p>Die EU SmPC zu
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>
+            data-snomed="785160002">bimekizumab</span>
           (<span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimzelx</span>) besagt, dass das Geschlecht des Patienten keinen Einfluss auf
+            data-snomed="785160002">Bimzelx</span>, BKZ) besagt, dass das Geschlecht des Patienten keinen Einfluss auf
           die Wirksamkeit von
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>
+            data-snomed="785160002">BKZ</span>
           bei Patienten mit Psoriasisarthritis (PsA) hat. Die EU SmPC besagt ferner, dass die pharmakokinetische
           Modellierung der Population darauf hindeutet, dass Frauen im Vergleich zu Männern eine um 10&nbsp;%
           schnellere scheinbare Clearance (CL/F) aufweisen könnten; dieser Unterschied ist jedoch klinisch nicht
@@ -252,7 +255,7 @@
         <p>Eine in zwei Phase-III-Studien (BE COMPLETE und BE OPTIMAL) mit Patienten mit aktiver PsA durchgeführte
           Untergruppenanalyse, die Untergruppen nach Geschlecht umfasste, zeigte, dass Patienten in allen
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>-Untergruppen nach 16 Wochen Verbesserungen bei ACR&nbsp;50,
+            data-snomed="785160002">BKZ</span>-Untergruppen nach 16 Wochen Verbesserungen bei ACR&nbsp;50,
           PASI&nbsp;90 und HAQ&nbsp;DI im Vergleich zu denen aufwiesen, die Placebo erhielten. Diese Verbesserungen
           wurden in allen Untergruppen sowohl bei männlichen als auch bei weiblichen Patienten als klinisch bedeutsam
           angesehen.<sup><a href="#ref-2">2</a></sup>
@@ -260,11 +263,11 @@
         <p>BE COMPLETE war eine Phase-III-Studie an erwachsenen Patienten mit aktiver PsA, die zuvor unzureichend
           auf Tumornekrosefaktor-Inhibitoren angesprochen hatten oder diese nicht vertrugen. In Woche 16 waren in der
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>-Gruppe (n&nbsp;=&nbsp;267) die ACR-50- und HAQ-DI-Ansprechraten
+            data-snomed="785160002">BKZ</span>-Gruppe (n&nbsp;=&nbsp;267) die ACR-50- und HAQ-DI-Ansprechraten
           bei männlichen Patienten höher als bei weiblichen Patienten. Diese Unterschiede in den Ansprechraten nach
           Geschlecht waren in der
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>-Gruppe stärker ausgeprägt als in der Placebogruppe
+            data-snomed="785160002">BKZ</span>-Gruppe stärker ausgeprägt als in der Placebogruppe
           (n&nbsp;=&nbsp;133).<sup><a href="#ref-2">2</a></sup>
         </p>
         <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Zurück nach oben</a></div>
@@ -280,7 +283,7 @@
         <p>BE OPTIMAL war eine Phase-III-Studie an erwachsenen Patienten mit aktiver PsA, die zuvor noch keine
           krankheitsmodifizierenden Antirheumatika (Biologika) erhalten hatten. In Woche 16 waren in der
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>-Gruppe (n&nbsp;=&nbsp;431) die ACR-50-, PASI-90- und
+            data-snomed="785160002">BKZ</span>-Gruppe (n&nbsp;=&nbsp;431) die ACR-50-, PASI-90- und
           HAQ-DI-Ansprechraten bei männlichen Patienten höher als bei weiblichen Patienten. Diese Unterschiede in
           den Ansprechraten zwischen den Untergruppen der Geschlechter wurden in der Placebogruppe
           (n&nbsp;=&nbsp;281) nicht beobachtet.<sup><a href="#ref-2">2</a></sup>
@@ -297,59 +300,253 @@
       <div class="collapse-content">
         <p>In einer gepoolten Analyse der oben genannten Studien wurden die ACR-50-Ansprechraten nach 16 Wochen nach
           Geschlecht beurteilt. Weitere Einzelheiten finden Sie in
-          <strong>Tabelle&nbsp;1</strong>.<sup><a href="#ref-2">2</a></sup>
+          <strong>Abbildung&nbsp;1</strong>.<sup><a href="#ref-2">2</a></sup>
         </p>
 
-        <div class="tblfig">
-          <table role="table">
-            <tr>
-              <td colspan="5">
-                <h6>Tabelle&nbsp;1 &mdash; ACR-50-Ansprechrate in Woche&nbsp;16 in BE COMPLETE und BE OPTIMAL nach
-                  Geschlecht (gepoolte Analyse) (angepasst).<sup><a href="#ref-2">2</a></sup>
-                </h6>
-              </td>
-            </tr>
-            <tr class="hdr hdr-1">
-              <th scope="col" rowspan="2">Geschlecht (n)</th>
-              <th scope="colgroup" colspan="4">ACR&nbsp;50 in Woche&nbsp;16</th>
-            </tr>
-            <tr class="hdr hdr-2">
-              <th scope="col">Placebo<br>n&nbsp;=&nbsp;414</th>
-              <th scope="col">Bimekizumab<br>160&nbsp;mg Q4W<br>n&nbsp;=&nbsp;698</th>
-              <th scope="col">Chancenverhältnis<br>(90%-KI)</th>
-              <th scope="col">Wechselwirkungen<br>p-Wert</th>
-            </tr>
-            <tr>
-              <td>Männlich (518)</td>
-              <td class="text-center">5,3&nbsp;%</td>
-              <td class="text-center">52,0&nbsp;%</td>
-              <td class="text-center">19,7 (11,2&ndash;34,7)</td>
-              <td class="text-center">p&nbsp;&lt;&nbsp;0,001</td>
-            </tr>
-            <tr>
-              <td>Weiblich (594)</td>
-              <td class="text-center">11,9&nbsp;%</td>
-              <td class="text-center">36,2&nbsp;%</td>
-              <td class="text-center">4,2 (2,9&ndash;6,2)</td>
-              <td class="text-center">&mdash;</td>
-            </tr>
-            <tr class="tblfig-footer">
-              <td colspan="5"><p>ACR&nbsp;50&nbsp;= Kriterien des American College of Rheumatology für
-                ≥&nbsp;50%iges Ansprechen; KI&nbsp;= Konfidenzintervall; Q4W&nbsp;= alle 4&nbsp;Wochen.</p></td>
-            </tr>
-          </table>
-        </div>
+          <!-- ABBILDUNG 1 -->
+          <div class="tblfig" id="fig1">
+            <table role="table" style="width:auto;">
+              <tr>
+                <td colspan="1">
+                  <h6>Abbildung&nbsp;1 &mdash; ACR-50-Ansprechrate in Woche&nbsp;16 und Chancenverhältnis
+                    nach Geschlecht in BE COMPLETE und BE OPTIMAL (gepoolte Analyse) (angepasst).<sup><a
+                        href="#ref-2">2</a></sup>
+                  </h6>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="tab-group">
+                    <button class="btn is-active" id="fig1-tab-bar"
+                      onclick="fig1Show('bar')">ACR 50</button>
+                    <button class="btn" id="fig1-tab-forest"
+                      onclick="fig1Show('forest')">OR</button>
+                  </div>
+                  <div id="fig1-chart" class="fig-chart" style="height:280px;"
+                    role="img"
+                    aria-label="Gruppiertes Balkendiagramm der ACR-50-Ansprechrate unter Placebo und BKZ nach Geschlecht"></div>
+                  <div id="fig1-legend" class="fig-legend">
+                    <span class="fig-legend__item">
+                      <span class="fig-legend__swatch" style="background:#cccccc;"></span>Placebo
+                    </span>
+                    <span class="fig-legend__item">
+                      <span class="fig-legend__swatch" style="background:#001489;"></span>BKZ
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="tblfig-footer">
+                <td colspan="1">
+                  <p>ACR&nbsp;50&nbsp;= Kriterien des American College of Rheumatology für ≥&nbsp;50%iges
+                    Ansprechen; KI&nbsp;= Konfidenzintervall; ns&nbsp;= nicht signifikant; OR&nbsp;= Odds Ratio (Chancenverhältnis);
+                    Q4W&nbsp;= alle 4&nbsp;Wochen.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <script>
+          (function () {
+            /* Männlich appears at top → must be last in the array (Plotly reverses h-bar order) */
+            var GROUPS = [
+              'Weiblich<br>(n = 594)',
+              'Männlich<br>(n = 518)'
+            ];
+
+            /* ── Bar chart (ACR-50 %) ───────────────────────────────── */
+            var tracePlacebo = {
+              x: [11.9, 5.3], y: GROUPS,
+              name: 'Placebo',
+              type: 'bar', orientation: 'h',
+              marker: { color: '#cccccc' },
+              text: ['11,9 %', '5,3 %'],
+              textposition: 'outside', cliponaxis: false,
+              textfont: { color: '#001489', size: 11, family: 'Tahoma, sans-serif' },
+              hovertemplate: 'Placebo<br>ACR-50: %{x} %<extra></extra>',
+              showlegend: false
+            };
+
+            var traceBKZ = {
+              x: [36.2, 52.0], y: GROUPS,
+              name: 'BKZ',
+              type: 'bar', orientation: 'h',
+              marker: { color: '#001489' },
+              text: ['36,2 %', '52,0 %'],
+              textposition: 'outside', cliponaxis: false,
+              textfont: { color: '#000', size: 11, family: 'Tahoma, sans-serif' },
+              hovertemplate: 'BKZ<br>ACR-50: %{x} %<extra></extra>',
+              showlegend: false
+            };
+
+            var barLayout = {
+              font: { family: "Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif", size: 12, color: '#000' },
+              margin: { t: 16, r: 64, b: 48, l: 16 },
+              barmode: 'group', bargap: 0.3, bargroupgap: 0.08,
+              xaxis: {
+                title: { text: 'ACR-50-Ansprechen [%]', standoff: 10 },
+                range: [0, 68],
+                tickvals: [0, 20, 40, 60],
+                ticksuffix: ' %',
+                gridcolor: '#e8eaf0', gridwidth: 1,
+                zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
+                linecolor: '#000', linewidth: 1, tickcolor: '#000'
+              },
+              yaxis: {
+                showgrid: false, zeroline: false,
+                linecolor: '#000', linewidth: 1, tickcolor: '#000', automargin: true
+              },
+              showlegend: false, plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
+              shapes: [], annotations: []
+            };
+
+            /* ── Forest plot (OR, log scale) ────────────────────────── */
+            var OR_VALS = [4.2, 19.7];
+            var CI_LOW  = [2.9, 11.2];
+            var CI_HIGH = [6.2, 34.7];
+            var OR_TEXT = [
+              '4,2<br>(2,9 – 6,2)',
+              '19,7<br>(11,2 – 34,7)'
+            ];
+            var P_TEXT = ['—', 'p < 0,001'];
+
+            var traceForest = {
+              x: OR_VALS, y: GROUPS,
+              type: 'scatter', mode: 'markers',
+              customdata: OR_TEXT.map(function(t, i) { return t + '<br>' + P_TEXT[i]; }),
+              marker: { symbol: 'square', size: 14, color: '#001489' },
+              error_x: {
+                type: 'data',
+                array:      CI_HIGH.map(function(h, i) { return h - OR_VALS[i]; }),
+                arrayminus: OR_VALS.map(function(v, i)  { return v - CI_LOW[i];  }),
+                color: '#001489', thickness: 2.5, width: 10
+              },
+              hovertemplate: '<b>%{y}</b><br>OR (90%-KI): %{customdata}<extra></extra>',
+              showlegend: false
+            };
+
+
+
+            var forestLayout = {
+              font: { family: "Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif", size: 13, color: '#000' },
+              margin: { t: 48, r: 110, b: 56, l: 16 },
+              xaxis: {
+                title: {
+                  text: 'Chancenverhältnis (OR, log-Skala)<br><span style="font-size:10px;color:#555">← Bevorzugt Placebo ┊ Bevorzugt BKZ →</span>',
+                  standoff: 12
+                },
+                type: 'log',
+                range: [Math.log10(0.8), Math.log10(150)],
+                tickvals: [1, 2, 5, 10, 20, 50, 100],
+                showgrid: false, zeroline: false,
+                linecolor: '#000', linewidth: 1, tickcolor: '#000', automargin: true
+              },
+              yaxis: {
+                showgrid: false, zeroline: false,
+                linecolor: '#000', linewidth: 1, tickcolor: '#000', automargin: true
+              },
+              shapes: [
+                /* Null-line */
+                { type: 'line', xref: 'x', yref: 'paper',
+                  x0: 1, x1: 1, y0: 0, y1: 1,
+                  line: { color: '#888', width: 1.5, dash: 'dot' } },
+                /* Interaction bracket: arms start at upper_CI × 1.2 (equal log gap) */
+                /* Männlich (y=1): upper CI 34.7 → arm starts at 34.7×1.2 ≈ 42 */
+                { type:'line', xref:'x', yref:'y', x0:42,  x1:55, y0:1, y1:1, line:{color:'#333',width:1.5} },
+                /* Weiblich (y=0): upper CI 6.2 → arm starts at 6.2×1.2 ≈ 7.4 */
+                { type:'line', xref:'x', yref:'y', x0:7.4, x1:55, y0:0, y1:0, line:{color:'#333',width:1.5} },
+                /* Vertical connector */
+                { type:'line', xref:'x', yref:'y', x0:55,  x1:55, y0:0, y1:1, line:{color:'#333',width:1.5} }
+              ],
+              annotations: [
+                /* Interaction p-value — midpoint of vertical connector */
+                { xref:'paper', yref:'paper', x:0.83, y:0.5, text:'p < 0,001', showarrow:false,
+                  font:{size:11,color:'#000'}, xanchor:'left', yanchor:'middle' },
+                {
+                  x: 1.02, xref: 'paper', y: 1.06, yref: 'paper',
+                  text: '<b>OR (90%-KI)</b>', showarrow: false,
+                  font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' },
+                  xanchor: 'left', yanchor: 'bottom'
+                },
+                {
+                  x: 1.02, xref: 'paper',
+                  y: 'Weiblich<br>(n = 594)', yref: 'y',
+                  text: '4,2<br>(2,9 – 6,2)', showarrow: false,
+                  font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' },
+                  xanchor: 'left', yanchor: 'middle', align: 'left'
+                },
+                {
+                  x: 1.02, xref: 'paper',
+                  y: 'Männlich<br>(n = 518)', yref: 'y',
+                  text: '19,7<br>(11,2 – 34,7)', showarrow: false,
+                  font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' },
+                  xanchor: 'left', yanchor: 'middle', align: 'left'
+                }
+              ],
+              showlegend: false, plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff'
+            };
+
+            /* ── Shared config ──────────────────────────────────────── */
+            var config = {
+              responsive: true, displaylogo: false,
+              modeBarButtonsToRemove: [
+                'select2d','lasso2d','autoScale2d',
+                'hoverClosestCartesian','hoverCompareCartesian','toggleSpikelines'
+              ],
+              toImageButtonOptions: { format: 'svg', filename: 'fig1' }
+            };
+
+            /* ── Tab switching ──────────────────────────────────────── */
+            window.fig1Show = function (key) {
+              ['bar', 'forest'].forEach(function (k) {
+                document.getElementById('fig1-tab-' + k).classList.toggle('is-active', k === key);
+              });
+              var legend = document.getElementById('fig1-legend');
+              if (key === 'bar') {
+                config.toImageButtonOptions.filename = 'fig1-acr50-ansprechen';
+                legend.style.display = '';
+                Plotly.react('fig1-chart', [tracePlacebo, traceBKZ], barLayout, config);
+              } else {
+                config.toImageButtonOptions.filename = 'fig1-chancenverhaeltnis-or';
+                legend.style.display = 'none';
+                Plotly.react('fig1-chart', [traceForest], forestLayout, config);
+              }
+            };
+
+            /* Defer render until the parent <details> is open;
+               Plotly cannot measure a hidden (0×0) container. */
+            var _fig1Done = false;
+            function _fig1Init() {
+              if (_fig1Done) return;
+              var el = document.getElementById('fig1-chart');
+              if (el && el.offsetWidth > 0) {
+                _fig1Done = true;
+                fig1Show('bar');
+              }
+            }
+
+            var _det = document.getElementById('fig1-chart').closest('details');
+            if (_det) {
+              _det.addEventListener('toggle', function () {
+                if (_det.open) {
+                  if (!_fig1Done) { _fig1Init(); }
+                  else { Plotly.Plots.resize('fig1-chart'); }
+                }
+              });
+            }
+            _fig1Init(); /* renders immediately if section is already open */
+          }());
+          </script>
 
         <h3>Sicherheit</h3>
         <p>Eine gepoolte Sicherheitsanalyse von BE COMPLETE und BE OPTIMAL ergab, dass in Woche 16 häufiger
           behandlungsbedingte unerwünschte Ereignisse (BBUE) bei weiblichen Patienten berichtet wurden als bei
           männlichen Patienten, sowohl in der
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>-Gruppe (55,0&nbsp;% vs. 49,2&nbsp;%) als auch in der
+            data-snomed="785160002">BKZ</span>-Gruppe (55,0&nbsp;% vs. 49,2&nbsp;%) als auch in der
           Placebogruppe (51,8&nbsp;% vs. 35,3&nbsp;%). Die am häufigsten berichteten BBUE waren Infektionen und
           parasitäre Erkrankungen, die bei weiblichen mit
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span> behandelten Patienten um ≥&nbsp;5&nbsp;% häufiger auftraten
+            data-snomed="785160002">BKZ</span> behandelten Patienten um ≥&nbsp;5&nbsp;% häufiger auftraten
           als bei männlichen Patienten.<sup><a href="#ref-2">2</a></sup>
         </p>
 
@@ -375,7 +572,7 @@
         <p>Die in diesem Dokument bereitgestellten Informationen sind nicht dafür vorgesehen, Rückschlüsse auf die
           Wirksamkeit und Sicherheit von
           <span data-type="drug" data-emtree="bimekizumab" data-mesh="D000088523"
-            data-snomed="785160002">Bimekizumab</span>
+            data-snomed="785160002">BKZ</span>
           für eine Indikation oder Dosierung zu ziehen.</p>
         <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Zurück nach oben</a></div>
       </div>
@@ -391,7 +588,7 @@
       </summary>
       <div class="collapse-content">
         <ol>
-          <li id="ref-1">Bimzelx<sup>®</sup> (Bimekizumab) Zusammenfassung der Merkmale des Arzneimittels
+          <li id="ref-1">Bimzelx<sup>®</sup> (bimekizumab) Zusammenfassung der Merkmale des Arzneimittels
             [Fachinformation]. UCB Pharma SA. Verfügbar über die Europäische Arzneimittel-Agentur (EMA):
             <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/bimzelx" target="_blank"
               rel="noopener noreferrer">https://www.ema.europa.eu/en/medicines/human/EPAR/bimzelx</a></li>
