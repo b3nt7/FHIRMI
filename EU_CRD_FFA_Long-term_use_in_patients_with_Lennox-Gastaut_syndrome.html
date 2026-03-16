@@ -647,10 +647,10 @@
                       var MONTHS = ['3', '4\u20136', '7\u20139', '10\u201312', '13\u201315'];
 
                       var SERIES = [
-                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98,  95,  85,  77,  63],  color: '#001489', symbol: 'diamond',     sig: ['***', '***', '***', '***', '***'], eos: '\u221247.0%; <i>P</i><0.0001 (n=103)' },
-                        { name: 'TS',   y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#595959', symbol: 'square',      sig: ['***', '***', '***', '***', '***'], eos: '\u221239.2%; <i>P</i>=0.0002 (n=181)' },
-                        { name: 'AS',   y: [-46, -39, -64, -67, -79], n: [81,  78,  70,  63,  56],  color: '#4BACC6', symbol: 'triangle-up', sig: ['***', '***', '***', '*',   '***'], eos: '\u221240.4%; <i>P</i>=0.2849 (n=87)'  },
-                        { name: 'TA',   y: [-51, -52, -54, -55, -79], n: [40,  37,  31,  30,  26],  color: '#7030A0', symbol: 'x',           sig: ['*',   '***', '***', '**',  '***'], eos: '\u221237.8%; <i>P</i>=0.0501 (n=44)'  }
+                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98,  95,  85,  77,  63],  color: '#001489', sig: ['***', '***', '***', '***', '***'], eos: '\u221247.0%; <i>P</i><0.0001 (n=103)' },
+                        { name: 'TS',   y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#F18070', sig: ['***', '***', '***', '***', '***'], eos: '\u221239.2%; <i>P</i>=0.0002 (n=181)' },
+                        { name: 'AS',   y: [-46, -39, -64, -67, -79], n: [81,  78,  70,  63,  56],  color: '#FFC658', sig: ['***', '***', '***', '*',   '***'], eos: '\u221240.4%; <i>P</i>=0.2849 (n=87)'  },
+                        { name: 'TA',   y: [-51, -52, -54, -55, -79], n: [40,  37,  31,  30,  26],  color: '#9873AC', sig: ['*',   '***', '***', '**',  '***'], eos: '\u221237.8%; <i>P</i>=0.0501 (n=44)'  }
                       ];
 
                       var traces = SERIES.map(function (s) {
@@ -659,7 +659,7 @@
                           type: 'scatter', mode: 'lines+markers+text',
                           name: s.name + '\u2003' + s.eos,
                           line:   { color: s.color, width: 2 },
-                          marker: { color: s.color, size: 8, symbol: s.symbol },
+                          marker: { color: s.color, size: 10, symbol: 'circle' },
                           text: s.sig,
                           textposition: 'top center',
                           textfont: { color: '#000', size: 10, family: 'Tahoma, sans-serif' },
@@ -711,7 +711,7 @@
               </tr>
               <tr class="tblfig-footer">
                 <td>
-                  <p class="fn-entry">***p&lt;0.001, **p≤0.01, *p&lt;0.05 (Wilcoxon signed rank test).</p>
+                  <p class="fn-entry">***p&lt;0.001, **p&lt;0.01, *p&lt;0.05 (Wilcoxon signed rank test).</p>
                   <p class="fn-entry"><sup>a</sup> See footnote a above.</p>
                   <p class="fn-entry">AS = atonic seizures; EOS = end of the study; <span data-type="drug"
                       data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> = fenfluramine;

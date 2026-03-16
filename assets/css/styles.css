@@ -78,10 +78,14 @@ body {
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
   /* ── Brand colours ── */
-  --brand: #001489;
-  /* UCB Reflex Blue — primary action colour */
-  --accent: #ED9B33;
-  /* Marigold — used for focus rings         */
+  --brand:        #001489; /* UCB Reflex Blue — primary action colour  */
+  --accent:       #ED9B33; /* Marigold — used for focus rings          */
+
+  /* ── Chart series palette ── */
+  --lightsalmon:  #F18070;
+  --lightmarigold:#FFC658;
+  --lavender:     #9873AC;
+  --skyblue:      #71C5E8;
   --teal: #6bcaba;
   /* Teal — feedback card & TOC pill         */
   --teal-dark: #00816D;
