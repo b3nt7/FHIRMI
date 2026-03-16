@@ -542,7 +542,7 @@
                   <script>
                     (function () {
                       var MONTHS = ['1', '2', '3', '4-6', '7-9', '10-12', '13-15'];
-                      var X      = [0, 1, 2, 3, 4, 5, 6];
+                      var X      = [1, 2, 3, 5, 8, 11, 14];
                       var Y      = [-28.4, -35.5, -43.1, -37.8, -42.7, -52.3, -54.1];
                       var N      = [241, 239, 227, 217, 187, 169, 142];
 
@@ -609,7 +609,7 @@
                         xaxis: {
                           title: { text: 'Time in OLE (Months)', standoff: 40 },
                           tickmode: 'array', tickvals: X, ticktext: MONTHS,
-                          range: [-0.5, 6.5],
+                          range: [0, 15],
                           showgrid: false, zeroline: false,
                           linecolor: '#000', linewidth: 1, tickcolor: '#000'
                         },
@@ -618,7 +618,7 @@
                           range: [-62, 4],
                           tickvals: [0, -10, -20, -30, -40, -50, -60],
                           gridcolor: '#e8eaf0', gridwidth: 1,
-                          zeroline: true, zerolinecolor: '#000', zerolinewidth: 1.5,
+                          zeroline: false,
                           linecolor: '#000', linewidth: 1, tickcolor: '#000'
                         },
                         showlegend: false,
