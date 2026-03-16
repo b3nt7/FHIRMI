@@ -121,6 +121,7 @@
       }
     }
   </style>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 </head>
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -531,8 +532,111 @@
               </tr>
               <tr>
                 <td>
-                  <img src="assets/img/MED-EU-FFA-2600001/image1.png"
-                    alt="Figure 1 — Percent Change in Frequency of Fall Seizures During the OLE" class="img-full" />
+                  <div id="fig1-chart" class="fig-chart fig-chart--lg" role="img"
+                    aria-label="Line chart showing median percent change in frequency of fall seizures during the open-label extension from Month 1 to Month 13–15.">
+                  </div>
+                  <noscript>
+                    <img src="assets/img/MED-EU-FFA-2600001/image1.png"
+                      alt="Figure 1 — Percent Change in Frequency of Fall Seizures During the OLE" class="img-full" />
+                  </noscript>
+                  <script>
+                    (function () {
+                      var MONTHS = ['1', '2', '3', '4-6', '7-9', '10-12', '13-15'];
+                      var X      = [0, 1, 2, 3, 4, 5, 6];
+                      var Y      = [-28.4, -35.5, -43.1, -37.8, -42.7, -52.3, -54.1];
+                      var N      = [241, 239, 227, 217, 187, 169, 142];
+
+                      var traceLine = {
+                        x: X, y: Y,
+                        type: 'scatter', mode: 'lines+markers',
+                        line:   { color: '#001489', width: 2.5 },
+                        marker: { color: '#001489', size: 10, symbol: 'circle' },
+                        hovertemplate: 'Month %{customdata.m}: %{y}%<br>n = %{customdata.n}<extra></extra>',
+                        customdata: MONTHS.map(function (m, i) { return { m: m, n: N[i] }; }),
+                        showlegend: false
+                      };
+
+                      var annotations = [];
+
+                      /* *** marker + value label above each data point */
+                      X.forEach(function (xi, i) {
+                        annotations.push({
+                          x: xi, xref: 'x', y: Y[i], yref: 'y',
+                          text: '***', showarrow: false, yshift: 26,
+                          font: { size: 11, color: '#C47A1E', family: 'Tahoma, sans-serif' }
+                        });
+                        annotations.push({
+                          x: xi, xref: 'x', y: Y[i], yref: 'y',
+                          text: Y[i].toString().replace('-', '\u2212'),
+                          showarrow: false, yshift: 10,
+                          font: { size: 12, color: '#001489', family: 'Tahoma, sans-serif' }
+                        });
+                      });
+
+                      /* n= prefix left of n row */
+                      annotations.push({
+                        x: -0.5, xref: 'x', y: -0.15, yref: 'paper',
+                        text: 'n=', showarrow: false,
+                        xanchor: 'right', yanchor: 'middle',
+                        font: { size: 12, color: '#000', family: 'Tahoma, sans-serif' },
+                        cliponaxis: false
+                      });
+
+                      /* n values below x-axis ticks */
+                      X.forEach(function (xi, i) {
+                        annotations.push({
+                          x: xi, xref: 'x', y: -0.15, yref: 'paper',
+                          text: N[i].toString(), showarrow: false,
+                          xanchor: 'center', yanchor: 'middle',
+                          font: { size: 12, color: '#000', family: 'Tahoma, sans-serif' }
+                        });
+                      });
+
+                      /* Summary statistics box — upper right */
+                      annotations.push({
+                        xref: 'paper', yref: 'paper', x: 0.99, y: 0.99,
+                        xanchor: 'right', yanchor: 'top',
+                        text: 'Month 1 to EOS (n=241): \u221229.5% (<i>P</i><0.0001)<br>' +
+                              'Month 2 to EOS (n=240<sup>b</sup>): \u221231.1% (<i>P</i><0.0001)<br>' +
+                              'Median treatment duration (N=247): 364 days (range, 19\u2013537)',
+                        showarrow: false, align: 'left',
+                        font: { size: 12, color: '#001489', family: 'Tahoma, sans-serif' }
+                      });
+
+                      var layout = {
+                        font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 13, color: '#000' },
+                        margin: { t: 16, r: 24, b: 100, l: 130 },
+                        xaxis: {
+                          title: { text: 'Time in OLE (Months)', standoff: 40 },
+                          tickmode: 'array', tickvals: X, ticktext: MONTHS,
+                          range: [-0.5, 6.5],
+                          showgrid: false, zeroline: false,
+                          linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                        },
+                        yaxis: {
+                          title: { text: 'Median % Change in Frequency of<br>Seizures Associated With a Drop', standoff: 16 },
+                          range: [-62, 4],
+                          tickvals: [0, -10, -20, -30, -40, -50, -60],
+                          gridcolor: '#e8eaf0', gridwidth: 1,
+                          zeroline: true, zerolinecolor: '#000', zerolinewidth: 1.5,
+                          linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                        },
+                        showlegend: false,
+                        plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
+                        annotations: annotations,
+                        hovermode: 'closest'
+                      };
+
+                      var config = {
+                        responsive: true, displaylogo: false,
+                        modeBarButtonsToRemove: ['select2d', 'lasso2d', 'autoScale2d',
+                          'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
+                        toImageButtonOptions: { format: 'svg', filename: 'fig1-fall-seizures-ole' }
+                      };
+
+                      Plotly.newPlot('fig1-chart', [traceLine], layout, config);
+                    }());
+                  </script>
                 </td>
               </tr>
               <tr class="tblfig-footer">
