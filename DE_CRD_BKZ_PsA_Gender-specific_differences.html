@@ -323,7 +323,7 @@
                     <button class="btn" id="fig1-tab-forest"
                       onclick="fig1Show('forest')">OR</button>
                   </div>
-                  <div id="fig1-chart" class="fig-chart fig-chart--md"
+                  <div id="fig1-chart" class="fig-chart fig-chart--sm"
                     role="img"
                     aria-label="Gruppiertes Balkendiagramm der ACR-50-Ansprechrate unter Placebo und BKZ nach Geschlecht"></div>
                   <div id="fig1-legend" class="fig-legend">
@@ -381,11 +381,11 @@
 
             var barLayout = {
               font: { family: "Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif", size: 12, color: '#000' },
-              margin: { t: 16, r: 64, b: 48, l: 16 },
+              margin: { t: 16, r: 8, b: 48, l: 16 },
               barmode: 'group', bargap: 0.3, bargroupgap: 0.08,
               xaxis: {
                 title: { text: 'ACR-50-Ansprechen [%]', standoff: 10 },
-                range: [0, 68],
+                range: [0, 63],
                 tickvals: [0, 20, 40, 60],
                 ticksuffix: ' %',
                 gridcolor: '#e8eaf0', gridwidth: 1,
@@ -405,8 +405,8 @@
             var CI_LOW  = [2.9, 11.2];
             var CI_HIGH = [6.2, 34.7];
             var OR_TEXT = [
-              '4,2<br>(2,9 – 6,2)',
-              '19,7<br>(11,2 – 34,7)'
+              '4,2&nbsp;(2,9 – 6,2)',
+              '19,7&nbsp;(11,2 – 34,7)'
             ];
             var P_TEXT = ['—', 'p < 0,001'];
 
@@ -443,7 +443,7 @@
               },
               yaxis: {
                 showgrid: false, zeroline: false,
-                linecolor: '#000', linewidth: 1, tickcolor: '#000', automargin: true
+                linecolor: '#000', linewidth: 1, tickcolor: '#000', automargin: true,
               },
               shapes: [
                 /* Null-line */
@@ -464,21 +464,21 @@
                   font:{size:11,color:'#000'}, xanchor:'left', yanchor:'middle' },
                 {
                   x: 1.02, xref: 'paper', y: 1.06, yref: 'paper',
-                  text: '<b>OR (90%-KI)</b>', showarrow: false,
+                  text: 'OR (90%-KI)', showarrow: false,
                   font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' },
                   xanchor: 'left', yanchor: 'bottom'
                 },
                 {
                   x: 1.02, xref: 'paper',
                   y: 'Weiblich<br>(n = 594)', yref: 'y',
-                  text: '4,2<br>(2,9 – 6,2)', showarrow: false,
+                  text: '4,2 (2,9 – 6,2)', showarrow: false,
                   font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' },
                   xanchor: 'left', yanchor: 'middle', align: 'left'
                 },
                 {
                   x: 1.02, xref: 'paper',
                   y: 'Männlich<br>(n = 518)', yref: 'y',
-                  text: '19,7<br>(11,2 – 34,7)', showarrow: false,
+                  text: '19,7 (11,2 – 34,7)', showarrow: false,
                   font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' },
                   xanchor: 'left', yanchor: 'middle', align: 'left'
                 }
