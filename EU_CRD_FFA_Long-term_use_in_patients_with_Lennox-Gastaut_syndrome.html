@@ -647,10 +647,10 @@
                       var MONTHS = ['3', '4\u20136', '7\u20139', '10\u201312', '13\u201315'];
 
                       var SERIES = [
-                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98,  95,  85,  77,  63],  color: '#001489', sig: ['***', '***', '***', '***', '***'], eos: '\u221247.0%; <i>P</i><0.0001 (n=103)' },
-                        { name: 'TS',   y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#F18070', sig: ['***', '***', '***', '***', '***'], eos: '\u221239.2%; <i>P</i>=0.0002 (n=181)' },
-                        { name: 'AS',   y: [-46, -39, -64, -67, -79], n: [81,  78,  70,  63,  56],  color: '#FFC658', sig: ['***', '***', '***', '*',   '***'], eos: '\u221240.4%; <i>P</i>=0.2849 (n=87)'  },
-                        { name: 'TA',   y: [-51, -52, -54, -55, -79], n: [40,  37,  31,  30,  26],  color: '#9873AC', sig: ['*',   '***', '***', '**',  '***'], eos: '\u221237.8%; <i>P</i>=0.0501 (n=44)'  }
+                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98,  95,  85,  77,  63],  color: '#001489', sig: ['***', '***', '***', '***', '***'], tpos: ['bottom center', 'bottom center', 'top right',    'top right',    'top right'   ], eos: '\u221247.0%; <i>P</i><0.0001 (n=103)' },
+                        { name: 'TS',   y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#F18070', sig: ['***', '***', '***', '***', '***'], tpos: ['top center',    'top center',    'top center',   'bottom right', 'top center'  ], eos: '\u221239.2%; <i>P</i>=0.0002 (n=181)' },
+                        { name: 'AS',   y: [-46, -39, -64, -67, -79], n: [81,  78,  70,  63,  56],  color: '#FFC658', sig: ['***', '***', '***', '*',   '***'], tpos: ['top right',     'top right',     'bottom center','bottom center','bottom right' ], eos: '\u221240.4%; <i>P</i>=0.2849 (n=87)'  },
+                        { name: 'TA',   y: [-51, -52, -54, -55, -79], n: [40,  37,  31,  30,  26],  color: '#9873AC', sig: ['*',   '***', '***', '**',  '***'], tpos: ['bottom right',  'bottom right',  'bottom right', 'top center',   'bottom left' ], eos: '\u221237.8%; <i>P</i>=0.0501 (n=44)'  }
                       ];
 
                       var traces = SERIES.map(function (s) {
@@ -661,7 +661,7 @@
                           line:   { color: s.color, width: 2 },
                           marker: { color: s.color, size: 10, symbol: 'circle' },
                           text: s.sig,
-                          textposition: 'top center',
+                          textposition: s.tpos,
                           textfont: { color: '#000', size: 10, family: 'Tahoma, sans-serif' },
                           hovertemplate: '<b>' + s.name + '</b><br>Month %{customdata.m}: %{y}%<br>n\u2009=\u2009%{customdata.n}<extra></extra>',
                           customdata: MONTHS.map(function (m, i) { return { m: m, n: s.n[i] }; })
