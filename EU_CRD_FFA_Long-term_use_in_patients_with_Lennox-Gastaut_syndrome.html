@@ -647,17 +647,17 @@
                       var MONTHS = ['3', '4\u20136', '7\u20139', '10\u201312', '13\u201315'];
 
                       var SERIES = [
-                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98,  95,  85,  77,  63],  color: '#001489', sig: ['***', '***', '***', '***', '***'], tpos: ['bottom center', 'bottom center', 'top right',    'top right',    'top right'   ], eos: '\u221247.0%; <i>P</i><0.0001 (n=103)' },
-                        { name: 'TS',   y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#F18070', sig: ['***', '***', '***', '***', '***'], tpos: ['top center',    'top center',    'top center',   'bottom right', 'top center'  ], eos: '\u221239.2%; <i>P</i>=0.0002 (n=181)' },
-                        { name: 'AS',   y: [-46, -39, -64, -67, -79], n: [81,  78,  70,  63,  56],  color: '#FFC658', sig: ['***', '***', '***', '*',   '***'], tpos: ['top right',     'top right',     'bottom center','bottom center','bottom right' ], eos: '\u221240.4%; <i>P</i>=0.2849 (n=87)'  },
-                        { name: 'TA',   y: [-51, -52, -54, -55, -79], n: [40,  37,  31,  30,  26],  color: '#9873AC', sig: ['*',   '***', '***', '**',  '***'], tpos: ['bottom right',  'bottom right',  'bottom right', 'top center',   'bottom left' ], eos: '\u221237.8%; <i>P</i>=0.0501 (n=44)'  }
+                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98,  95,  85,  77,  63],  color: '#001489', sig: ['***', '***', '***', '***', '***'], tpos: ['bottom center', 'bottom center', 'top right',    'top right',    'top right'   ], pct: '\u221247.0%', pval: '<i>P</i><0.0001', nn: '(n=103)' },
+                        { name: 'TS',   y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#F18070', sig: ['***', '***', '***', '***', '***'], tpos: ['top center',    'top center',    'top center',   'bottom right', 'top center'  ], pct: '\u221239.2%', pval: '<i>P</i>=0.0002', nn: '(n=181)' },
+                        { name: 'AS',   y: [-46, -39, -64, -67, -79], n: [81,  78,  70,  63,  56],  color: '#FFC658', sig: ['***', '***', '***', '*',   '***'], tpos: ['top right',     'top right',     'bottom center','bottom center','bottom right' ], pct: '\u221240.4%', pval: '<i>P</i>=0.2849', nn: '(n=87)'  },
+                        { name: 'TA',   y: [-51, -52, -54, -55, -79], n: [40,  37,  31,  30,  26],  color: '#9873AC', sig: ['*',   '***', '***', '**',  '***'], tpos: ['bottom right',  'bottom right',  'bottom right', 'top center',   'bottom left' ], pct: '\u221237.8%', pval: '<i>P</i>=0.0501', nn: '(n=44)'  }
                       ];
 
                       var traces = SERIES.map(function (s) {
                         return {
                           x: X, y: s.y,
                           type: 'scatter', mode: 'lines+markers+text',
-                          name: s.name + '\u2003' + s.eos,
+                          name: s.name,
                           line:   { color: s.color, width: 2 },
                           marker: { color: s.color, size: 10, symbol: 'circle' },
                           text: s.sig,
@@ -668,15 +668,33 @@
                         };
                       });
 
+                      /* Custom legend annotations — 4 aligned columns */
+                      var LF   = { size: 11, family: 'Tahoma, Helvetica Neue, sans-serif' };
+                      var LX0  = 0.62;   /* left edge: series name column          */
+                      var LX1  = 0.79;   /* right edge: percentage column          */
+                      var LX2  = 0.805;  /* left edge: P-value column              */
+                      var LX3  = 0.99;   /* right edge: n column                   */
+                      var LY0  = 0.98;   /* header y                               */
+                      var LRH  = 0.115;  /* row height (paper units)               */
+
+                      var legendAnns = [];
+                      legendAnns.push({
+                        xref: 'paper', yref: 'paper', x: LX0, y: LY0,
+                        xanchor: 'left', yanchor: 'top', showarrow: false,
+                        text: 'Month 2 to EOS',
+                        font: Object.assign({}, LF, { size: 12, color: '#000' })
+                      });
+                      SERIES.forEach(function (s, i) {
+                        var ly = LY0 - LRH * (i + 1);
+                        legendAnns.push({ xref:'paper', yref:'paper', x:LX0, y:ly, xanchor:'left',  yanchor:'middle', showarrow:false, text:'\u25CF\u00a0' + s.name, font:Object.assign({},LF,{color:s.color}) });
+                        legendAnns.push({ xref:'paper', yref:'paper', x:LX1, y:ly, xanchor:'right', yanchor:'middle', showarrow:false, text:s.pct,  font:Object.assign({},LF,{color:'#000'}) });
+                        legendAnns.push({ xref:'paper', yref:'paper', x:LX2, y:ly, xanchor:'left',  yanchor:'middle', showarrow:false, text:s.pval, font:Object.assign({},LF,{color:'#000'}) });
+                        legendAnns.push({ xref:'paper', yref:'paper', x:LX3, y:ly, xanchor:'right', yanchor:'middle', showarrow:false, text:s.nn,   font:Object.assign({},LF,{color:'#000'}) });
+                      });
+
                       var layout = {
                         font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 12, color: '#000' },
                         margin: { t: 16, r: 16, b: 56, l: 130 },
-                        legend: {
-                          title: { text: '<u>Month 2 to EOS</u>', font: { size: 12, family: 'Tahoma, sans-serif', color: '#000' } },
-                          x: 0.99, y: 0.99, xanchor: 'right', yanchor: 'top',
-                          bgcolor: 'rgba(255,255,255,0.85)',
-                          font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' }
-                        },
                         xaxis: {
                           title: { text: 'Time in OLE (Months)', standoff: 12 },
                           tickmode: 'array', tickvals: X, ticktext: MONTHS,
@@ -692,7 +710,8 @@
                           zeroline: false,
                           linecolor: '#000', linewidth: 1, tickcolor: '#000'
                         },
-                        showlegend: true,
+                        showlegend: false,
+                        annotations: legendAnns,
                         plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
                         hovermode: 'x unified'
                       };
@@ -713,7 +732,7 @@
                 <td>
                   <p class="fn-entry">***p&lt;0.001, **p&lt;0.01, *p&lt;0.05 (Wilcoxon signed rank test).</p>
                   <p class="fn-entry"><sup>a</sup> See footnote a above.</p>
-                  <p class="fn-entry">AS = atonic seizures; EOS = end of the study; <span data-type="drug"
+                  <p>AS = atonic seizures; EOS = end of the study; <span data-type="drug"
                       data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> = fenfluramine;
                     GTCS = generalized tonic-clonic seizure; mITT = modified intention-to-treat; OLE = open-label
                     extension; TA = tonic-atonic seizures; TS = tonic seizures.</p>
