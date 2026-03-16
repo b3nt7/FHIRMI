@@ -552,7 +552,7 @@
                         line:   { color: '#001489', width: 2.5 },
                         marker: { color: '#001489', size: 10, symbol: 'circle' },
                         text: Y.map(function (v) { return v.toString().replace('-', '\u2212') + '\u00a0***'; }),
-                        textposition: 'top center',
+                        textposition: ['top right', 'top right', 'bottom right', 'top right', 'top right', 'top right', 'top right'],
                         textfont: { color: '#000', size: 12, family: 'Tahoma, sans-serif' },
                         hovertemplate: 'Month %{customdata.m}: %{y}%<br>n\u2009=\u2009%{customdata.n}<extra></extra>',
                         customdata: MONTHS.map(function (m, i) { return { m: m, n: N[i] }; }),
