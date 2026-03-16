@@ -780,7 +780,7 @@ button.btn:hover {
 }
 
 /* Table footer: abbreviation key / footnote row */
-.tblfig .tblfig-footer td[colspan] {
+.tblfig .tblfig-footer td {
   background: var(--tbl-foot);
   font-size: 0.85rem;
   font-weight: 400;
