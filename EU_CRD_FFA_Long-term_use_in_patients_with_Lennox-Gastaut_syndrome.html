@@ -1,0 +1,1230 @@
+<!-- =================================================================
+     UCB Medical Information — EU_CRD_FFA_Long-term_use_in_patients_with_Lennox-Gastaut_syndrome.html
+
+     Document  : Fenfluramine — Long-term use in patients with Lennox-Gastaut syndrome
+     Reference : MED-EU-FFA-2600001
+     Prepared  : March 2026   |   © UCB Pharma SA 2026
+
+     Structure overview
+     ──────────────────
+     <head>
+       · Standard meta tags + social (OG / Twitter)
+       · Single stylesheet: assets/css/styles.css
+       · Two JSON-LD blocks: MedicalWebPage + FAQPage (for SEO / GEO)
+
+     <body>
+       · Floating TOC nav  — fixed glass bar linking to all sections
+       · <header>          — UCB logo, doc-code, preparation date, page title
+       · <main>
+           #aeo-summary    — HIDDEN: machine-readable AEO key facts
+           #aeo-qa         — HIDDEN: machine-readable AEO Q&A pairs
+           #summary        — Visible: collapsible EU SmPC + Published Data summaries
+           #detailed-response — Visible: full EU SmPC detail + all study write-ups
+           #disclaimers    — Visible: regulatory / copyright disclaimers
+           #references     — Visible: numbered citation list
+           #feedback       — Visible: star rating + comment + send widget
+           #llm-summary    — HIDDEN: machine-readable GEO paragraph for LLMs
+       · <footer>          — doc-code, copyright
+       · <script>          — assets/js/main.js (scroll-spy, star rating, feedback)
+
+     Key HTML conventions
+     ─────────────────────
+     · Drug spans: <span data-type="drug" data-mesh="…" data-emtree="…"
+         data-snomed="…"> — semantic tagging for FHIR / ontology consumers
+     · hidden-section: display:none — content for automated readers only
+     · collapse: native <details>/<summary> pattern for collapsible sections
+     · Anchor targets for TOC: either <section id="…"> or <a id="…"> inside
+         <summary> so the target is always visible (even when collapsed)
+     · Tables use role="table" to reinforce semantics and border-collapse:separate
+         so border-radius works; header rows carry scope="col" where present
+     ================================================================= -->
+<!doctype html>
+<html lang="en">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HEAD
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>Fenfluramine — Long-term use in patients with Lennox-Gastaut syndrome</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://www.example.com/ffa-lgs/" />
+
+  <meta name="description"
+    content="Medical information response on fenfluramine (FFA; Fintepla) and long-term use in patients with Lennox-Gastaut syndrome (LGS): EU SmPC safety information on valvular heart disease and pulmonary arterial hypertension monitoring, Study 1601 open-label extension, and Study 1900 long-term outcomes." />
+
+  <meta property="og:title" content="Fenfluramine — Long-term use in patients with Lennox-Gastaut syndrome" />
+  <meta property="og:description"
+    content="UCB medical information on fenfluramine long-term use in LGS: cardiac monitoring, efficacy, and safety." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.example.com/ffa-lgs/" />
+  <meta property="og:image" content="https://www.example.com/ffa-lgs/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fenfluramine — Long-term use in patients with Lennox-Gastaut syndrome" />
+  <meta name="twitter:description" content="Medical information on long-term fenfluramine use in LGS." />
+  <meta name="twitter:image" content="https://www.example.com/ffa-lgs/og-image.jpg" />
+
+  <link rel="icon" type="image/png" href="assets/img/ucb-logo.png">
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- ── Structured data: MedicalWebPage (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Fenfluramine Long-term use in patients with Lennox-Gastaut syndrome",
+    "url": "https://www.example.com/ffa-lgs/",
+    "about": [
+      {"@type":"Drug","name":"Fenfluramine","identifier":"D005277"},
+      {"@type":"MedicalCondition","name":"Lennox-Gastaut Syndrome"}
+    ],
+    "medicalSpecialty": "Neurology",
+    "lastReviewed": "2026-03-01",
+    "publisher": {"@type": "Organization", "name": "UCB Pharma SA"},
+    "hasPart": [
+      {"@type":"WebPageElement","name":"Summary","url":"#aeo-summary"},
+      {"@type":"WebPageElement","name":"EU SmPC Information","url":"#eu-smpc"},
+      {"@type":"WebPageElement","name":"Study 1601 Part 1","url":"#study-1601-part1"},
+      {"@type":"WebPageElement","name":"Study 1601 OLE","url":"#study-1601-ole"},
+      {"@type":"WebPageElement","name":"Study 1900","url":"#study-1900"}
+    ]
+  }
+  </script>
+
+  <!-- ── Structured data: FAQPage (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"What cardiac monitoring does the EU SmPC require for fenfluramine in LGS?","acceptedAnswer":{"@type":"Answer","text":"The EU SmPC requires an echocardiogram before treatment initiation, every 6 months for the first 2 years, and annually thereafter. A final ECHO should be conducted 3 to 6 months after discontinuation. If pathological changes are found, benefit-risk must be evaluated with the prescriber, caregiver, and cardiologist."}},
+      {"@type":"Question","name":"What were the long-term efficacy findings for fenfluramine in the Study 1601 OLE for LGS?","acceptedAnswer":{"@type":"Answer","text":"Over 13 to 15 months (n=247), the median decrease in fall seizure frequency was 29.5% (p<0.0001). From Month 2 to end of study, 33.3% achieved ≥50% reduction, 13.8% achieved ≥75% reduction, 3.3% near seizure freedom, and 1.3% complete seizure freedom from falls."}},
+      {"@type":"Question","name":"Were any cases of valvular heart disease or pulmonary arterial hypertension reported in fenfluramine LGS studies?","acceptedAnswer":{"@type":"Answer","text":"No. In the Study 1601 OLE (up to 15 months, n=247) and Study 1900 (up to 4 years, n=147 LGS), no cases of valvular heart disease or pulmonary arterial hypertension were reported."}},
+      {"@type":"Question","name":"What were the most common adverse events with long-term fenfluramine use in LGS (Study 1601 OLE)?","acceptedAnswer":{"@type":"Answer","text":"Treatment-emergent adverse events occurring in ≥10% of patients were decreased appetite (16.2%), fatigue (13.4%), nasopharyngitis (12.6%), seizure (10.9%), and pyrexia (10.1%)."}}
+    ]
+  }
+  </script>
+
+  <!-- ── Print footer override ── -->
+  <style>
+    @page {
+      @bottom-left {
+        content: "Fenfluramine \25BC  Long-term use in patients with Lennox-Gastaut syndrome\AMED-EU-FFA-2600001, \00A9  UCB Pharma SA, 2026. All rights reserved.";
+      }
+    }
+  </style>
+</head>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     BODY
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<body>
+
+  <!-- ─── FLOATING TOC ───────────────────────────────────────────────── -->
+  <div class="container">
+    <nav id="toc" class="navbox" aria-label="Page sections">
+      <span class="navbox__title">In this response</span>
+      <ul id="toc-list" class="navbox__list">
+        <li><a class="btn" href="#summary">Summary</a></li>
+        <li><a class="btn" href="#detailed-response">European&nbsp;SmPC</a></li>
+        <li><a class="btn" href="#study-1601-part1">Study&nbsp;1601&nbsp;Part&nbsp;1</a></li>
+        <li><a class="btn" href="#study-1601-ole">Study&nbsp;1601&nbsp;OLE</a></li>
+        <li><a class="btn" href="#study-1900">Study&nbsp;1900</a></li>
+        <li><a class="btn" href="#disclaimers">Disclaimers</a></li>
+        <li><a class="btn" href="#references">References</a></li>
+        <li><a class="btn" href="#feedback">Feedback</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ─── SITE HEADER ──────────────────────────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-flex">
+        <div class="header-logo">
+          <img src="assets/img/UCB_Logo_Tagline_ReflexBlue_RGB_Logo.svg"
+            alt="UCB logo with tagline inspired by patients, driven by science.">
+        </div>
+        <!-- No QR code available for this document — QR div omitted -->
+      </div><!-- /header-flex -->
+
+      <div class="page-title">
+        <h1>
+          <span class="drug">Fenfluramine</span>
+          <span class="monitor-flag" aria-label="This medicine is subject to additional monitoring">&#9660;</span>
+          <span class="subtitle">Long-term use in patients with Lennox-Gastaut syndrome</span>
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── MAIN CONTENT ──────────────────────────────────────────────────── -->
+  <main id="main" class="container" role="main">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO KEY FACTS -->
+    <section id="aeo-summary" class="card card--hidden">
+      <span class="hidden-meta" data-label="AEO"></span>
+      <p>Key Facts — Fenfluramine Long-Term Use in Lennox-Gastaut Syndrome</p>
+      <p>Fenfluramine (<span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+          data-snomed="372806008">FFA</span>; Fintepla) adjunctive therapy in LGS demonstrated sustained efficacy over
+        13–15 months in the Study 1601 OLE (n=247): median 29.5% reduction in fall seizure frequency (p&lt;0.0001);
+        33.3% of patients achieved ≥50% reduction and 13.8% achieved ≥75% reduction in fall seizure frequency. No cases
+        of valvular heart disease (VHD) or pulmonary arterial hypertension (PAH) were reported. The EU SmPC mandates
+        ECHO monitoring every 6 months for the first 2 years and annually thereafter. Study 1900 (Gil-Nagel et al. 2025,
+        up to 4 years, n=147 LGS) confirmed no VHD or PAH cases, and 87.4% of patients showed improvement or stability
+        in global functioning per investigator assessment.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: AEO Q&A PAIRS -->
+    <section id="aeo-qa" class="card card--hidden">
+      <span class="hidden-meta" data-label="AEO-QA"></span>
+      <p>AEO Key Questions &amp; Answers</p>
+      <p>What cardiac monitoring does the EU SmPC require for <span data-type="drug" data-emtree="fenfluramine"
+          data-mesh="D005277" data-snomed="372806008">FFA</span> in LGS?</p>
+      <p>ECHO before treatment initiation, every 6 months for the first 2 years, and annually thereafter. A final ECHO
+        3–6 months after discontinuation. If pathological changes are found, benefit-risk must be evaluated with
+        prescriber, caregiver, and cardiologist.</p>
+      <p>What were the long-term efficacy findings for <span data-type="drug" data-emtree="fenfluramine"
+          data-mesh="D005277" data-snomed="372806008">FFA</span> in the Study 1601 OLE for LGS?</p>
+      <p>Over 13–15 months (n=247), the median decrease in fall seizure frequency was 29.5% (p&lt;0.0001). From Month 2
+        to end of study, 33.3% achieved ≥50% reduction, 13.8% achieved ≥75% reduction, 3.3% near seizure freedom, and
+        1.3% complete seizure freedom from falls.</p>
+      <p>Were any cases of VHD or PAH reported in <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+          data-snomed="372806008">FFA</span> LGS studies?</p>
+      <p>No. In the Study 1601 OLE (up to 15 months, n=247) and Study 1900 (up to 4 years, n=147 LGS), no cases of VHD
+        or PAH were reported.</p>
+      <p>What were the most common adverse events with long-term <span data-type="drug" data-emtree="fenfluramine"
+          data-mesh="D005277" data-snomed="372806008">FFA</span> use in LGS (Study 1601 OLE)?</p>
+      <p>TEAEs occurring in ≥10% of patients were decreased appetite (16.2%), fatigue (13.4%), nasopharyngitis (12.6%),
+        seizure (10.9%), and pyrexia (10.1%).</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: SUMMARY -->
+    <section id="summary" class="card">
+      <h1>Summary</h1>
+
+      <!-- ── Summary: EU SmPC ── -->
+      <details class="collapse">
+        <summary>
+          <h2>Relevant Information From the European Summary of Product Characteristics (EU SmPC)</h2><a
+            id="ref1-first"></a>
+        </summary>
+        <div class="collapse-content">
+          <p>The EU SmPC contains information on the long-term use of fenfluramine (<span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span>; Fintepla) in patients
+            with Lennox-Gastaut syndrome (LGS); however, this information has been published and is reported in this
+            document. Pulmonary arterial hypertension (PAH) has been reported as a respiratory, thoracic, and
+            mediastinal disorder, and valvular heart disease (VHD) has been reported as a cardiac disorder in
+            placebo-controlled clinical studies and postmarketing experience with <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> for Dravet syndrome (DS)
+            and LGS.</p>
+          <p>Contraindications for <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> therapy are aortic or mitral VHD and PAH, hypersensitivity to the
+            active substance or any of the excipients, and within 14 days of the administration of monoamine oxidase
+            inhibitors due to an increased risk of serotonin syndrome.<sup><a href="#ref-1">1</a></sup></p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+
+      <!-- ── Summary: Published Data ── -->
+      <details class="collapse">
+        <summary>
+          <h2>Published Data</h2>
+        </summary>
+        <div class="collapse-content">
+          <ul>
+            <li>Patients who completed Part 1 of Study 1601 were eligible for enrollment in the open-label extension
+              (OLE) of the study (Part 2), which evaluated the long-term safety and efficacy of adjunctive <span
+                data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> in
+              patients 2 to 35 years of age with LGS. A total of 247 patients (mean age, 14.3 ± 7.6 years) were enrolled
+              in the OLE; 158 (64.0%) patients completed this OLE. The median duration of exposure to <span
+                data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> was
+              364 days (range, 19–537) (see Detailed Response for full details).<sup><a href="#ref-2">2</a>, <a
+                  href="#ref-3">3</a></sup>
+              <ul>
+                <li>The most common (≥10% of patients) treatment-emergent adverse events (TEAEs) during the OLE included
+                  decreased appetite, fatigue, nasopharyngitis, seizure, and pyrexia.<sup><a href="#ref-2">2</a></sup>
+                </li>
+                <li>No patient exhibited any signs or symptoms of VHD or PAH during the OLE.<sup><a
+                      href="#ref-2">2</a></sup></li>
+                <li>Over the full 13- to 15-month duration of the OLE, the median decrease in fall seizure frequency was
+                  29.5% (n=241; p&lt;0.0001). From Month 2 to end of study (EOS), the median absolute change in
+                  seizure-free days was 2.3 days. Over the first year of <span data-type="drug"
+                    data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> treatment, the
+                  longest interval between fall seizures increased by a median of 4.0 days.<sup><a
+                      href="#ref-2">2</a></sup></li>
+                <li>From Month 2 to EOS, 33.3% of patients experienced a ≥50% reduction in fall seizure frequency, 13.8%
+                  experienced a ≥75% reduction, 3.3% experienced a near seizure-free response, and 1.3% experienced
+                  freedom from fall seizures.<sup><a href="#ref-2">2</a></sup></li>
+              </ul>
+            </li>
+            <li>Gil-Nagel et al. (2025) evaluated long-term safety and global functioning with <span data-type="drug"
+                data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> in pediatric and adult
+              patients with Dravet syndrome (DS) or LGS (n=147) in the OLE Study 1900 (see Detailed Response for full
+              details).<sup><a href="#ref-4">4</a></sup>
+              <ul>
+                <li>The most common (≥10% of patients) TEAEs reported in the LGS group included coronavirus infection,
+                  seizure, pyrexia, and nasopharyngitis.<sup><a href="#ref-4">4</a></sup></li>
+                <li>No cases of VHD or PAH were reported.<sup><a href="#ref-4">4</a></sup></li>
+                <li>At the final visit, improvement or no change in seizure and non-seizure outcomes with <span
+                    data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span>
+                  was observed in 87.4% and 85.3% of the patients according to investigator's and caregivers'
+                  assessment, respectively.<sup><a href="#ref-4">4</a></sup></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DETAILED RESPONSE -->
+    <section id="detailed-response" class="card">
+      <h1>Detailed Response</h1>
+
+      <!-- ── Detailed: EU SmPC ── -->
+      <details class="collapse">
+        <summary>
+          <h2 id="EuSmpcDetail">Relevant Information From the EU SmPC</h2><a id="eu-smpc"></a>
+        </summary>
+        <div class="collapse-content">
+
+          <h3>Special Warnings and Precautions For Use</h3>
+
+          <h4>Aortic or Mitral VHD and PAH</h4>
+          <p>Because of reported cases of VHD and PAH that may have been caused by <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> at higher doses used to
+            treat adult obesity, cardiac monitoring must be performed using echocardiography (ECHO). Patients with VHD
+            or PAH were excluded from the controlled clinical studies of <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> for the treatment of DS
+            and LGS. Neither PAH nor VHD were observed during these studies. However, post-marketing data show that they
+            can also occur with doses used to treat DS and LGS.<sup><a href="#ref-1">1</a></sup></p>
+          <p>Prior to starting treatment, patients must undergo an ECHO to establish a baseline prior to initiating
+            treatment and exclude any preexisting VHD or PAH.<sup><a href="#ref-1">1</a></sup></p>
+          <p>ECHO monitoring should be conducted every 6 months for the first 2 years and annually thereafter. Once
+            treatment is discontinued for any reason, a final ECHO should be conducted 3 to 6 months after the last dose
+            of treatment with <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span>.<sup><a href="#ref-1">1</a></sup></p>
+          <p>If an ECHO indicates pathological valvular changes, a follow-up ECHO should be considered at an earlier
+            timeframe to evaluate whether the abnormality is persistent. If pathological abnormalities on the ECHO are
+            observed, it is recommended to evaluate the benefit versus risk of continuing <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> treatment with the
+            prescriber, caregiver, and cardiologist.<sup><a href="#ref-1">1</a></sup></p>
+          <p>If treatment is stopped because of aortic or mitral VHD, appropriate monitoring and follow-up should be
+            provided in accordance with local guidelines for the treatment of aortic or mitral VHD.<sup><a
+                href="#ref-1">1</a></sup></p>
+          <p>If ECHO findings are suggestive of PAH, a repeat ECHO should be performed as soon as possible and within 3
+            months to confirm these findings. If the ECHO finding is confirmed suggestive of an increased probability of
+            PAH, defined as "intermediate probability" by the European Society of Cardiology (ESC) and the European
+            Respiratory Society (ERS) guidelines, it should lead to a benefit-risk evaluation of continuation of <span
+              data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> by the
+            prescriber, carer, and cardiologist. If the ECHO finding, after confirmation, suggests a high probability of
+            PAH, as defined by the ESC and ERS guidelines, it is recommended <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> treatment should be
+            stopped.<sup><a href="#ref-1">1</a></sup></p>
+          <p>For more information on Special Warnings and Precautions For Use, please refer to the EU SmPC: <a
+              href="https://www.ema.europa.eu/en/documents/product-information/fintepla-epar-product-information_en.pdf"
+              target="_blank"
+              rel="noopener noreferrer">https://www.ema.europa.eu/en/documents/product-information/fintepla-epar-product-information_en.pdf</a>
+          </p>
+
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+
+      <!-- ── Detailed: Published Data ── -->
+      <details class="collapse">
+        <summary>
+          <h2>Published Data</h2><a id="published-data"></a>
+        </summary>
+        <div class="collapse-content">
+
+          <!-- ── Study 1601 Part 1 ── -->
+          <h3 id="study-1601-part1">Study 1601 Part 1</h3>
+          <p>The efficacy and safety of <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> in patients with LGS when added to a patient's current antiseizure
+            medication (ASM) regimen was assessed in a Phase 3, randomized, double-blind, parallel-group,
+            placebo-controlled, multicenter study.</p>
+          <p>Patients had a diagnosis of LGS and were inadequately controlled on ≥1 ASM. The study had a 4-week baseline
+            period, followed by randomization into a 2-week titration period and a subsequent 12-week maintenance
+            period, during which the dose of <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> remained stable.<sup><a href="#ref-5">5</a></sup></p>
+          <p>The primary efficacy endpoint was the percent change in fall seizures between baseline and the treatment
+            and maintenance periods in patients who received <span data-type="drug" data-emtree="fenfluramine"
+              data-mesh="D005277" data-snomed="372806008">FFA</span> 0.7 mg/kg/day compared with those who received
+            placebo.<sup><a href="#ref-5">5</a></sup></p>
+          <p>Study 1601 met its primary efficacy endpoint; there was a significant difference in the median reduction in
+            fall seizure frequency from baseline with <span data-type="drug" data-emtree="fenfluramine"
+              data-mesh="D005277" data-snomed="372806008">FFA</span> 0.7 mg/kg/day compared with placebo during the
+            treatment and maintenance periods (26.5% vs. 7.6%, p=0.001).<sup><a href="#ref-5">5</a></sup></p>
+          <p>The most common non-cardiovascular TEAEs that occurred in patients treated with <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> (incidence ≥10%) were
+            decreased appetite, somnolence, fatigue, pyrexia, diarrhea, and vomiting.<sup><a href="#ref-5">5</a></sup>
+          </p>
+
+          <!-- ── Study 1601 OLE ── -->
+          <h3 id="study-1601-ole">Study 1601 Part 2 (Open-Label Extension Study)</h3>
+          <p>Patients with LGS who completed Study 1601 Part 1 were eligible for enrollment in the OLE of the study
+            (Part 2) to assess the long-term safety and efficacy of <span data-type="drug" data-emtree="fenfluramine"
+              data-mesh="D005277" data-snomed="372806008">FFA</span>.<sup><a href="#ref-3">3</a></sup></p>
+          <p>All patients underwent a 14-day transition period to <span data-type="drug" data-emtree="fenfluramine"
+              data-mesh="D005277" data-snomed="372806008">FFA</span> 0.2 mg/kg/day and then were maintained at 0.2
+            mg/kg/day, added to their current stable ASM regimens, for the first month of the OLE study. After Month 1,
+            the dose of <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> could be titrated to 0.7 mg/kg/day (maximum of 26 mg/day), according to
+            effectiveness and tolerability, for Months 2 to 6. From Month 6 to Year 1, patients received flexibly dosed
+            <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> 0.2
+            to 0.7 mg/kg/day (maximum of 26 mg/day) and could decrease or discontinue their concomitant ASMs; however,
+            they were required to continue ≥1 concomitant ASM. During treatment, the effectiveness and tolerability of
+            <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span>
+            were assessed at Months 1, 2, and 3 and every 3 months thereafter up to Month 12. After 1 year, treatment
+            was discontinued, and follow-up continued for 24 months in Germany, the Netherlands, and France and for 3 to
+            6 months in patients who lived in other countries. Every 3 months, color Doppler echocardiography was
+            performed to assess cardiac valve function/structure and evidence of PAH.<sup><a href="#ref-3">3</a></sup>
+          </p>
+          <p>Long-term safety outcomes included TEAEs with an incidence ≥10%, serious adverse events related to <span
+              data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span>, and
+            cardiovascular safety (incidence of VHD and PAH). Efficacy outcomes included the median percent change from
+            pre-randomized controlled trial (RCT) baseline in the frequency of Epilepsy Study Consortium (ESC)-confirmed
+            drop/fall seizures; responder rates for fall seizures; median absolute change in seizure-free days for fall
+            seizures; median change in longest interval between fall seizures. At the last visit, improvements from
+            baseline were evaluated by parents/caregivers and investigators using the Clinical Global
+            Impression–Improvement (CGI-I) scale. Changes from baseline were analyzed from Month 2 to EOS to ensure data
+            for <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span>
+            0.2 mg/kg/day, given during the first month of the OLE, were excluded. Change from baseline to Month 12 in
+            the Hospital Anxiety and Depression Scale (HADS); and change from baseline to Month 12 on the Quality of
+            Life in Childhood Epilepsy questionnaire (QOLCE). Efficacy was evaluated in the modified intention-to-treat
+            population.<sup><a href="#doc-fn-a">a</a>,</sup><sup><a href="#ref-2">2</a></sup></p>
+          <div class="mini-foot">
+            <p class="fn-entry"><sup id="doc-fn-a">a</sup> The mITT population included patients who received ≥ 1 dose of
+              <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span>,
+              had a valid pre-RCT baseline estimated frequency for fall seizures, and provided ≥ 30 days of valid seizure data
+              during the OLE.</p>
+          </div>
+          <p>A total of 247 patients (mean ± standard deviation age, 14.3 ± 7.6 years) were enrolled in the OLE study;
+            of these, 73 patients were adults (18–35 years), and 174 were pediatric patients (2 to &lt;18 years). A
+            total of 158 (64.0%) patients completed this OLE. The median duration of exposure to <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> was 364 days (range,
+            19–537). The mean ± standard deviation <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> dose was 0.4 ± 0.1 mg/kg/day. At baseline, patients had received a
+            median of 7 prior ASMs (range, 0–20) and were receiving a median of 3 concomitant ASMs (range, 1–7). The
+            most commonly used concomitant ASMs were valproate (n=140, 56.7%), clobazam (n=112, 45.3%), and lamotrigine
+            (n=87, 35.2%). The median fall seizure frequency per 28 days at baseline was 75 seizures (range,
+            4–2943).<sup><a href="#ref-2">2</a></sup></p>
+          <p>In the OLE, 205 patients (83.0%) experienced at least 1 TEAE. An overview of all TEAEs and those that
+            occurred in ≥10% of patients is provided in Table 1.<sup><a href="#ref-2">2</a></sup></p>
+
+          <!-- TABLE 1 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="4">
+                  <h6>Table 1 — Overview of All TEAEs and Those That Occurred in ≥ 10% of Patients at the Final Analysis
+                    (Adapted).<sup><a href="#ref-2">2</a></sup></h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col"></th>
+                <th scope="col">Patients Aged 2 to &lt;18 Years (n=174)</th>
+                <th scope="col">Patients Aged 18 to 35 Years (n=73)</th>
+                <th scope="col">All Patients (N=247)</th>
+              </tr>
+              <tr class="hdr hdr-3">
+                <th></th>
+                <th>n (%)</th>
+                <th>n (%)</th>
+                <th>n (%)</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>At least 1 TEAE</td>
+                  <td class="text-center">140 (80.5)</td>
+                  <td class="text-center">65 (89.0)</td>
+                  <td class="text-center">205 (83.0)</td>
+                </tr>
+                <tr class="hdr hdr-3">
+                  <td colspan="4">TEAEs that occurred in ≥10% of patients</td>
+                </tr>
+                <tr>
+                  <td>Decreased appetite</td>
+                  <td class="text-center">28 (16.1)</td>
+                  <td class="text-center">12 (16.4)</td>
+                  <td class="text-center">40 (16.2)</td>
+                </tr>
+                <tr>
+                  <td>Fatigue</td>
+                  <td class="text-center">23 (13.2)</td>
+                  <td class="text-center">10 (13.7)</td>
+                  <td class="text-center">33 (13.4)</td>
+                </tr>
+                <tr>
+                  <td>Nasopharyngitis</td>
+                  <td class="text-center">23 (13.2)</td>
+                  <td class="text-center">8 (11.0)</td>
+                  <td class="text-center">31 (12.6)</td>
+                </tr>
+                <tr>
+                  <td>Seizure</td>
+                  <td class="text-center">16 (9.2)</td>
+                  <td class="text-center">11 (15.1)</td>
+                  <td class="text-center">27 (10.9)</td>
+                </tr>
+                <tr>
+                  <td>Pyrexia</td>
+                  <td class="text-center">21 (12.1)</td>
+                  <td class="text-center">4 (5.5)</td>
+                  <td class="text-center">25 (10.1)</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="4">TEAE = treatment-emergent adverse event.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>A total of 41 patients (16.6%; n=30 aged 2 to &lt;18 years and n=11 aged 18 to 35 years) experienced at
+            least 1 serious TEAE. The serious TEAEs reported in ≥3 patients in the overall <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> group included changes
+            in seizure presentation in 10 patients (4.0%), status epilepticus in 8 patients (3.2%), pneumonia in 5
+            patients (2.0%), aspiration pneumonia in 3 patients (1.2%), somnolence in 3 patients (1.2%), and seizures in
+            3 patients (1.2%). Changes in seizure presentation TEAE included increase in seizure frequency (n=8),
+            acceleration of tonic seizures (n=1), and &gt;1 event of change in seizure presentation (n=1).<sup><a
+                href="#ref-2">2</a></sup></p>
+          <p>No patient exhibited any signs or symptoms of VHD or PAH. Death occurred in 1 patient due to aspiration
+            pneumonia, which was considered not related to <span data-type="drug" data-emtree="fenfluramine"
+              data-mesh="D005277" data-snomed="372806008">FFA</span>.<sup><a href="#ref-2">2</a></sup></p>
+          <p>In an OLE interim analysis (cutoff date 19 Oct 2020), weight loss of ≥7% from the OLE baseline was reported
+            in 42 of the 247 patients (17.0%); however, by the end of the OLE, 14 of these patients (33.3%) had regained
+            the weight.<sup><a href="#ref-3">3</a></sup> Data on weight loss were not reported in the final
+            analysis.<sup><a href="#ref-2">2</a></sup></p>
+          <p>Eighty-six patients (34.8%) discontinued the study prematurely; the reason for study withdrawal was lack of
+            efficacy in 57 patients (23.1%), self-withdrawal in 15 patients (6.1%), TEAEs in 13 patients (5.3%), and
+            death in 1 patient (0.4%).<sup><a href="#ref-2">2</a></sup></p>
+          <p>Over the full duration of the OLE (13 to 15 months), the median decrease in fall seizure frequency from
+            Month 1 to EOS was 29.5% (n=241; p&lt;0.0001), and that from Month 2 to EOS was 31.1% (p&lt;0.0001; Figure
+            1).<sup><a href="#ref-2">2</a></sup></p>
+
+          <!-- FIGURE 1 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td>
+                  <h6>Figure 1 — Percent Change in Frequency of Fall Seizures During the OLE (mITT; Adapted).<sup><a
+                        href="#fn-a">a</a></sup>,<sup><a href="#ref-2">2</a></sup></h6>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="assets/img/MED-EU-FFA-2600001/image1.png"
+                    alt="Figure 1 — Percent Change in Frequency of Fall Seizures During the OLE" class="img-full" />
+                </td>
+              </tr>
+              <tr class="tblfig-footer">
+                <td>
+                  <p class="fn-entry">***p&lt;0.0001 compared with baseline (Wilcoxon signed rank test).</p>
+                  <p class="fn-entry"><sup id="fn-a">a</sup> At Months 16–18 (n=10) of the OLE, the median percentage
+                    change in seizure frequency from baseline was –27.9% (p=0.1602).</p>
+                  <p class="fn-entry">One patient discontinued the study early and was excluded from the Month 2 to EOS
+                    assessment.</p>
+                  <p class="fn-entry">EOS = end of study; mITT = modified intention-to-treat; OLE = open-label
+                    extension; RCT = randomized controlled trial.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <p>The reduction in fall seizure frequency by subtype is shown in Figure 2.</p>
+
+          <!-- FIGURE 2 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td>
+                  <h6>Figure 2 — Percent Change in Fall Seizure Frequency by Subtype During the OLE (mITT;
+                    Adapted).<sup><a href="#fn-a">a</a></sup>,<sup><a href="#ref-2">2</a></sup></h6>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="assets/img/MED-EU-FFA-2600001/image2.png"
+                    alt="Figure 2 — Percent Change in Fall Seizure Frequency by Subtype During the OLE"
+                    class="img-full" />
+                </td>
+              </tr>
+              <tr class="tblfig-footer">
+                <td>
+                  <p class="fn-entry">***p&lt;0.001, **p≤0.01, *p&lt;0.05 (Wilcoxon signed rank test).</p>
+                  <p class="fn-entry"><sup>a</sup> See footnote a above.</p>
+                  <p class="fn-entry">AS = atonic seizures; EOS = end of the study; <span data-type="drug"
+                      data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> = fenfluramine;
+                    GTCS = generalized tonic-clonic seizure; mITT = modified intention-to-treat; OLE = open-label
+                    extension; TA = tonic-atonic seizures; TS = tonic seizures.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <p>In the subgroups by age, the median decrease in fall seizure frequency from Month 2 to EOS was –27.6% in
+            pediatric patients (2 to &lt;18 years; p=0.0005) and –40.0% in adult patients (18–35 years; p&lt;0.0001;
+            Table 2). The median absolute change in non-fall seizure frequency from Month 2 to EOS was –11.3 in
+            pediatric patients and –84.0 in adult patients; the change in the overall patient group was –32.5.<sup><a
+                href="#doc-fn-b">b</a></sup>,<sup><a href="#ref-2">2</a></sup></p>
+          <div class="mini-foot">
+            <p class="fn-entry"><sup id="doc-fn-b">b</sup> Seizures not associated with a fall included clonic seizures,
+              hemiclonic seizures, focal seizures with or without observable signs, myoclonic seizures, absence/atypical
+              absence, infantile spasms, epileptic spasms, and the following ESC-approved seizures not associated with a
+              fall: generalized tonic-clonic seizures, focal-to-bilateral tonic-clonic seizures, tonic seizures, atonic
+              seizures, and tonic-atonic seizures.</p>
+          </div>
+
+          <!-- TABLE 2 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="4">
+                  <h6>Table 2 — Median Change in Fall Seizure Frequency per 28 Days From Baseline Between Month 2 and
+                    EOS (Adapted).<sup><a href="#ref-2">2</a></sup></h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col"></th>
+                <th scope="col">Patients Aged 2 to &lt;18 Years (n=170)</th>
+                <th scope="col">Patients Aged 18 to 35 Years (n=70)</th>
+                <th scope="col">All Patients (N=240)</th>
+              </tr>
+              <tr class="hdr hdr-3">
+                <td colspan="4">Median % Change From Baseline Between Month 2 and EOS (p Value)</td>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>ESC-confirmed seizures associated with a fall</td>
+                  <td class="text-center">–27.6 (p=0.0005)</td>
+                  <td class="text-center">–40 (p&lt;0.0001)</td>
+                  <td class="text-center">–31.1 (p&lt;0.0001)</td>
+                </tr>
+                <tr class="row-indent">
+                  <td>Seizures typically associated with a fall<sup><a href="#tbl2-fn-a">a</a></sup></td>
+                  <td class="text-center">–25.3 (p=0.0008)</td>
+                  <td class="text-center">–38.4 (p&lt;0.0001)</td>
+                  <td class="text-center">–29.3 (p&lt;0.0001)</td>
+                </tr>
+                <tr class="row-indent">
+                  <td>All countable motor seizures<sup><a href="#tbl2-fn-b">b</a></sup></td>
+                  <td class="text-center">–25.9 (p=0.0003)</td>
+                  <td class="text-center">–38.4 (p&lt;0.0001)</td>
+                  <td class="text-center">–30.5 (p&lt;0.0001)</td>
+                </tr>
+                <tr>
+                  <td>All seizures</td>
+                  <td class="text-center">–27.7 (p=0.0010)</td>
+                  <td class="text-center">–32.8 (p&lt;0.0001)</td>
+                  <td class="text-center">–29.6 (p&lt;0.0001)</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="4">
+                    <p class="fn-entry"><sup id="tbl2-fn-a">a</sup> Included seizures associated with a fall not
+                      reviewed and confirmed by ESC.</p>
+                    <p class="fn-entry"><sup id="tbl2-fn-b">b</sup> Included generalized tonic-clonic seizures,
+                      focal-to-bilateral tonic-clonic seizures, tonic seizures, atonic seizures, tonic-atonic seizures,
+                      clonic seizures, focal seizures with clear observable motor signs, and hemiclonic seizures.</p>
+                    <p>EOS = end of study; ESC = Epilepsy Study Consortium; RCT = randomized-controlled trial.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Over the full duration of the OLE, 33.3% of patients experienced a ≥50% reduction in fall seizure
+            frequency, and 13.8% experienced a ≥75% reduction. Responder rates for fall seizures are presented in Figure
+            3.</p>
+
+          <!-- FIGURE 3 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td>
+                  <h6>Figure 3 — Responder Rates for Fall Seizures During the OLE From Month 2 to EOS (mITT;
+                    Adapted).<sup><a href="#fn-a">a</a></sup>,<sup><a href="#ref-2">2</a></sup></h6>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="assets/img/MED-EU-FFA-2600001/image3.png"
+                    alt="Figure 3 — Responder Rates for Fall Seizures During the OLE From Month 2 to EOS"
+                    class="img-full" />
+                </td>
+              </tr>
+              <tr class="tblfig-footer">
+                <td>
+                  <p class="fn-entry"><sup>a</sup> Responder rates were the percentage of patients who
+                    achieved ≥25%, ≥50%, ≥75%, and 100% reduction in seizure frequency (seizure freedom) or near seizure
+                    freedom (i.e., 0 or 1 fall seizure).</p>
+                  <p class="fn-entry">CI = confidence interval; EOS = end of the study; mITT = modified
+                    intention-to-treat; OLE = open-label extension.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <p>The absolute change in the median (range) seizure-free days for fall seizures from Month 2 to EOS was 2.3
+            days (–23.0 to 27.9; p&lt;0.0001). Compared to the baseline, the longest interval between fall seizures over
+            the first year of <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> treatment increased by a median of 4.0 days (range, –10 to 360;
+            p&lt;0.0001), from a median of 2.0 days (range, 1–17 days) at baseline to 7.0 days (range, 1–365 days) at 1
+            year.<sup><a href="#ref-2">2</a></sup></p>
+          <p>At the last visit of the OLE, investigators reported clinically meaningful improvement ("much improved" or
+            "very much improved") on the CGI-I scale in 83 of 237 patients (35.0%), and patients/caregivers reported
+            clinically meaningful improvement in 84 of 237 patients (35.4%). CGI-I ratings indicating any improvement
+            and clinically meaningful improvement are shown in Table 3.<sup><a href="#ref-2">2</a></sup></p>
+
+          <!-- TABLE 3 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="4">
+                  <h6>Table 3 — CGI-I Ratings of Improvement by Caregivers/Patients and Investigators at Last Visit of
+                    OLE (mITT; Adapted).<sup><a href="#ref-2">2</a></sup></h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col"></th>
+                <th scope="col">Patients Aged 2 to &lt;18 Years (n=167)</th>
+                <th scope="col">Patients Aged 18 to 35 Years (n=70)</th>
+                <th scope="col">All Patients (N=237)</th>
+              </tr>
+              <tr class="hdr hdr-3">
+                <td colspan="4">Any Improvement, n (%)</td>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>Investigators' Assessment</td>
+                  <td class="text-center">95 (56.9)</td>
+                  <td class="text-center">40 (57.1)</td>
+                  <td class="text-center">135 (57.0)</td>
+                </tr>
+                <tr>
+                  <td>Parents/Caregivers' Assessment</td>
+                  <td class="text-center">95 (56.9)</td>
+                  <td class="text-center">47 (67.1)</td>
+                  <td class="text-center">142 (59.9)</td>
+                </tr>
+                <tr class="hdr hdr-3">
+                  <td colspan="4">Clinically Meaningful Improvement,<sup><a href="#tbl3-fn-a">a</a></sup> n (%)</td>
+                </tr>
+                <tr>
+                  <td>Investigators' Assessment</td>
+                  <td class="text-center">56 (33.5)</td>
+                  <td class="text-center">27 (38.6)</td>
+                  <td class="text-center">83 (35.0)</td>
+                </tr>
+                <tr>
+                  <td>Parents/Caregivers' Assessment</td>
+                  <td class="text-center">57 (34.1)</td>
+                  <td class="text-center">27 (38.6)</td>
+                  <td class="text-center">84 (35.4)</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="4">
+                    <p class="fn-entry"><sup id="tbl3-fn-a">a</sup> "Much improved" and "very much improved" rating was
+                      considered as clinically meaningful improvement.</p>
+                    <p>CGI-I = Clinical Global Impression–Improvement; mITT = modified intention-to-treat; OLE =
+                      open-label extension.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>The mean changes in HADS assessment scores from baseline to Month 12 of the OLE were –0.8 for anxiety, –0.7
+            for depression, and –1.4 for emotional distress (Figure 4).<sup><a href="#ref-2">2</a></sup></p>
+
+          <!-- FIGURE 4 — wide/short image -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td>
+                  <h6>Figure 4 — Change From Baseline to Month 12 of the OLE in the HADS Scores of Patients Treated with
+                    <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+                      data-snomed="372806008">FFA</span> (mITT; Adapted).<sup><a href="#fn-4a">a</a></sup>,<sup><a
+                        href="#ref-2">2</a></sup>
+                  </h6>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="assets/img/MED-EU-FFA-2600001/image4.png"
+                    alt="Figure 4 — Change From Baseline to Month 12 of the OLE in the HADS Scores" class="img-full" />
+                </td>
+              </tr>
+              <tr class="tblfig-footer">
+                <td>
+                  <p class="fn-entry"><sup id="fn-4a">a</sup> HADS is a 14-item self-reported scale that
+                    evaluates anxiety and depression. The sum of the anxiety and depression scores results in an
+                    emotional distress score, and higher scores indicate greater severity. Mean scores were classified
+                    as follows: 0–7, normal; 8–10, borderline; 11–21, abnormal.</p>
+                  <p class="fn-entry"><span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+                      data-snomed="372806008">FFA</span> = fenfluramine; HADS = Hospital Anxiety and Depression Scale;
+                    mITT = modified intention-to-treat; OLE = open-label extension.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <p>QoL, assessed with the QOLCE, improved from baseline to Month 12 of the OLE by a mean of 2.9 points (n=148;
+            p=0.0166); the mean baseline score was 39.5 points (n=234), and that at Month 12 was 43.4 points
+            (n=149).<sup><a href="#ref-2">2</a></sup></p>
+
+          <!-- ── Study 1900 ── -->
+          <h3 id="study-1900">Study 1900</h3>
+          <p>Gil-Nagel et al. (2025)<sup><a href="#ref-4">4</a></sup> conducted a final analysis to evaluate long-term
+            safety (including tolerability and cardiovascular safety) and global functioning in pediatric and adult
+            patients with DS or LGS who were treated with <span data-type="drug" data-emtree="fenfluramine"
+              data-mesh="D005277" data-snomed="372806008">FFA</span> for up to 4 years in the OLE Study 1900
+            (NCT03936777).</p>
+          <p>A total of 412 patients (safety population) with DS (n=265) or LGS (n=147) who participated in previous
+            <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> OLE
+            studies (Studies 1503, 1601, and 1602) were enrolled in this long-term OLE study. Of the patients with LGS,
+            92 were pediatric patients aged 2 to &lt;18 years (median age [range], 10 [3–17] years; males, n=48 [52.2%];
+            median body weight [range], 31.8 [12.8–78.8] kg), and 55 were adults aged ≥18 years (median age [range], 22
+            [18–37] years; males, n=29 [52.7%]; median body weight [range], 57.3 [27.1–90.8] kg). The median duration of
+            exposure to <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> was 940.0 days (range, 123–1445; 993.0 [189–1443] days in pediatric
+            patients and 894.0 [123–1445] days in adults). The mean ± standard deviation <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> dose was 0.6 ± 0.1
+            mg/kg/day in pediatric patients and 0.4 ± 0.1 mg/kg/day in adults. Pediatric patients used a median (range)
+            of 3 (0–6) prior ASMs, and adults used a median (range) of 3 (1–6) prior ASMs. In the overall patient
+            population (n=412), the most common concomitant ASMs with <span data-type="drug" data-emtree="fenfluramine"
+              data-mesh="D005277" data-snomed="372806008">FFA</span> during the study were valproate (n=280; 68.0%),
+            clobazam (n=233; 56.6%), and diazepam (n=138; 33.5%). In the LGS group, 45 patients received concomitant
+            cannabidiol at some point during the study.<sup><a href="#ref-4">4</a></sup>
+          </p>
+          <p>In the LGS group, 80 pediatric patients (87.0%) and 48 adult patients (87.3%) experienced at least 1 TEAE.
+            An overview of all TEAEs and those that occurred in ≥10% of patients is provided in Table 4.<sup><a
+                href="#ref-4">4</a></sup></p>
+          <p>Of the 140 patients with LGS who completed the final visit, weight loss ≥7% was reported in 16 patients,
+            and weight loss ≥10% was reported in 9 patients.<sup><a href="#ref-4">4</a></sup></p>
+          <p>In the LGS group, no evidence of a clinically significant effect of <span data-type="drug"
+              data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> on electrocardiogram
+            parameters (QTcF), no cases of VHD or PAH, and no new or unexpected safety signals were reported.
+            Twenty-seven pediatric patients (29.3%) and 17 adult patients (30.9%) with LGS discontinued the study
+            prematurely; the reasons for study withdrawal included TEAEs, death, lack of efficacy, loss to follow-up,
+            physician decision, subject withdrawal, other reasons, and missing data.<sup><a href="#ref-4">4</a></sup>
+          </p>
+
+          <!-- TABLE 4 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="3">
+                  <h6>Table 4 — Overview of All TEAEs and Those That Occurred in ≥ 10% of Patients with LGS in the Final
+                    Analysis (Adapted).<sup><a href="#ref-4">4</a></sup></h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col"></th>
+                <th scope="col">Patients Aged 2 to &lt;18 Years (n=92)</th>
+                <th scope="col">Patients Aged ≥18 Years (n=55)</th>
+              </tr>
+              <tr class="hdr hdr-3">
+                <th></th>
+                <th>n (%)</th>
+                <th>n (%)</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>At least 1 TEAE</td>
+                  <td class="text-center">80 (87.0)</td>
+                  <td class="text-center">48 (87.3)</td>
+                </tr>
+                <tr>
+                  <td>Patients with serious TEAEs</td>
+                  <td class="text-center">22 (23.9)</td>
+                  <td class="text-center">16 (29.1)</td>
+                </tr>
+                <tr>
+                  <td>Patients with TEAEs leading to study discontinuation</td>
+                  <td class="text-center">2 (2.2)</td>
+                  <td class="text-center">2 (3.6)<sup><a href="#tbl4-fn-a">a</a></sup></td>
+                </tr>
+                <tr>
+                  <td>Patients with treatment-related TEAEs<sup><a href="#tbl4-fn-b">b</a></sup></td>
+                  <td class="text-center">14 (15.2)</td>
+                  <td class="text-center">8 (14.5)</td>
+                </tr>
+                <tr>
+                  <td>Patients with treatment-related serious TEAEs</td>
+                  <td class="text-center">1 (1.1)</td>
+                  <td class="text-center">3 (5.5)</td>
+                </tr>
+                <tr>
+                  <td>Patients with TEAEs leading to death<sup><a href="#tbl4-fn-c">c</a></sup></td>
+                  <td class="text-center">1 (1.1)</td>
+                  <td class="text-center">1 (1.8)</td>
+                </tr>
+                <tr class="hdr hdr-3">
+                  <td colspan="3">TEAEs that occurred in ≥10% of patients</td>
+                </tr>
+                <tr>
+                  <td>Coronavirus infection</td>
+                  <td class="text-center">20 (21.7)</td>
+                  <td class="text-center">22 (40.0)</td>
+                </tr>
+                <tr>
+                  <td>Seizure</td>
+                  <td class="text-center">25 (27.2)</td>
+                  <td class="text-center">12 (21.8)</td>
+                </tr>
+                <tr>
+                  <td>Pyrexia</td>
+                  <td class="text-center">9 (9.8)</td>
+                  <td class="text-center">6 (10.9)</td>
+                </tr>
+                <tr>
+                  <td>Nasopharyngitis</td>
+                  <td class="text-center">10 (10.9)</td>
+                  <td class="text-center">5 (9.1)</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="3">
+                    <p class="fn-entry"><sup id="tbl4-fn-a">a</sup> In 1 patient, AE was not listed as the primary
+                      reason for discontinuation.</p>
+                    <p class="fn-entry"><sup id="tbl4-fn-b">b</sup> Treatment relatedness was assessed by the
+                      investigator.</p>
+                    <p class="fn-entry"><sup id="tbl4-fn-c">c</sup> In the overall patient group (N=412), 3 deaths
+                      occurred due to cardiac arrest (n=1), non-compaction cardiomyopathy (n=1), and status epilepticus
+                      (n=1); all were considered not related to <span data-type="drug" data-emtree="fenfluramine"
+                        data-mesh="D005277" data-snomed="372806008">FFA</span>.</p>
+                    <p>LGS = Lennox-Gastaut syndrome; TEAE = treatment-emergent adverse event.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>In the LGS group, at the final visit, global functioning, as evaluated with CGI-I ratings, demonstrated
+            improvement or stability, indicating a sustained clinical benefit in seizure and non-seizure outcomes with
+            <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> in
+            87.4% of the patients according to investigator's assessment and in 85.3% of patients according to
+            caregivers' assessment. An overview of CGI-I ratings is provided in Table 5, and the proportions of patients
+            with the global and subdomain ratings of "improved" or "no change" are provided in Table 6.<sup><a
+                href="#ref-4">4</a></sup>
+          </p>
+
+          <!-- TABLE 5 -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="3">
+                  <h6>Table 5 — CGI-I Global Ratings at the Final Visit of the OLE in the LGS Group (Adapted).<sup><a
+                        href="#tbl5-fn-a">a</a></sup>,<sup><a href="#ref-4">4</a></sup></h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col">CGI-I Ratings</th>
+                <th scope="col">Investigator Assessment (n=143)</th>
+                <th scope="col">Caregiver's Assessment (n=143)</th>
+              </tr>
+              <tr class="hdr hdr-3">
+                <th></th>
+                <th>% of Patients</th>
+                <th>% of Patients</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>Very much improved</td>
+                  <td class="text-center">4.9</td>
+                  <td class="text-center">9.1</td>
+                </tr>
+                <tr>
+                  <td>Much improved</td>
+                  <td class="text-center">28.7</td>
+                  <td class="text-center">28.7</td>
+                </tr>
+                <tr>
+                  <td>Minimally improved</td>
+                  <td class="text-center">21.0</td>
+                  <td class="text-center">17.5</td>
+                </tr>
+                <tr>
+                  <td>No change</td>
+                  <td class="text-center">32.9</td>
+                  <td class="text-center">30.1</td>
+                </tr>
+                <tr>
+                  <td>Minimally worse</td>
+                  <td class="text-center">10.5</td>
+                  <td class="text-center">10.5</td>
+                </tr>
+                <tr>
+                  <td>Much worse</td>
+                  <td class="text-center">1.4</td>
+                  <td class="text-center">4.2</td>
+                </tr>
+                <tr>
+                  <td>Very much worse</td>
+                  <td class="text-center">0.7</td>
+                  <td class="text-center">0</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="3">
+                    <p class="fn-entry"><sup id="tbl5-fn-a">a</sup> Improvement in CGI-I ratings was calculated relative
+                      to CGI-S ratings at baseline.</p>
+                    <p>CGI-I = Clinical Global Impression–Improvement; CGI-S = Clinical Global Impression–Severity; LGS
+                      = Lennox-Gastaut syndrome; OLE = open-label extension.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- TABLE 6 — complex 2-row header with colspan -->
+          <div class="tblfig">
+            <table role="table">
+              <tr>
+                <td colspan="5">
+                  <h6>Table 6 — CGI-I Global and Subdomain Ratings at the Final Visit of the OLE (Adapted).<sup><a
+                        href="#tbl6-fn-a">a</a></sup>,<sup><a href="#ref-4">4</a></sup></h6>
+                </td>
+              </tr>
+              <tr class="hdr hdr-2">
+                <th scope="col">CGI-I Global Ratings of "Improved" or "No Change"</th>
+                <th scope="col" colspan="2">Investigator Assessment (n=146)</th>
+                <th scope="col" colspan="2">Caregiver's Assessment (n=146)</th>
+              </tr>
+              <tr class="hdr hdr-3">
+                <th></th>
+                <th>Patients Aged 2 to &lt;18 Years (n=91)</th>
+                <th>Patients Aged ≥18 Years (n=52)</th>
+                <th>Patients Aged 2 to &lt;18 Years (n=91)</th>
+                <th>Patients Aged ≥18 Years (n=52)</th>
+              </tr>
+              <tr class="hdr hdr-3">
+                <td colspan="5">n (%)</td>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>Improved or no change</td>
+                  <td class="text-center">82 (90.1)</td>
+                  <td class="text-center">43 (82.7)</td>
+                  <td class="text-center">79 (86.8)</td>
+                  <td class="text-center">43 (82.7)</td>
+                </tr>
+                <tr class="hdr hdr-3">
+                  <td colspan="5">CGI-I Subdomain Ratings of Improved or No Change</td>
+                </tr>
+                <tr class="hdr hdr-3">
+                  <th></th>
+                  <th colspan="2">Investigator Assessment (n=143)</th>
+                  <th colspan="2">Caregiver's Assessment (n=143)</th>
+                </tr>
+                <tr>
+                  <td>Cognition</td>
+                  <td colspan="2" class="text-center">134 (93.7)</td>
+                  <td colspan="2" class="text-center">131 (91.6)</td>
+                </tr>
+                <tr>
+                  <td>Behavior</td>
+                  <td colspan="2" class="text-center">132 (92.3)</td>
+                  <td colspan="2" class="text-center">123 (86.0)</td>
+                </tr>
+                <tr>
+                  <td>Motor abilities</td>
+                  <td colspan="2" class="text-center">132 (92.3)</td>
+                  <td colspan="2" class="text-center">128 (89.5)</td>
+                </tr>
+                <tr class="tblfig-footer">
+                  <td colspan="5">
+                    <p class="fn-entry"><sup id="tbl6-fn-a">a</sup> Improvement in CGI-I ratings was calculated relative
+                      to CGI-S ratings at baseline.</p>
+                    <p>CGI-I = Clinical Global Impression–Improvement; CGI-S = Clinical Global Impression–Severity; LGS
+                      = Lennox-Gastaut syndrome; OLE = open-label extension.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: DISCLAIMERS -->
+    <section id="disclaimers" class="card">
+      <details class="collapse">
+        <summary>
+          <h2>Disclaimers</h2>
+        </summary>
+        <div class="collapse-content">
+          <p>&#9660; This medicine is subject to additional monitoring. Healthcare professionals are asked to report any
+            suspected adverse reactions. See section 4.8 of the SmPC for reporting.</p>
+          <p>Please note that the information contained in this response is for your personal use only and due to
+            copyright may not be forwarded or published.</p>
+          <p>Medical literature databases are selective in their sources, and the information obtained from the search
+            may not represent the totality of the literature or available data on this topic.</p>
+          <p>Information provided in this document is not intended to draw any conclusions regarding the efficacy and
+            safety of <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+              data-snomed="372806008">FFA</span> for any indication or dosage.</p>
+          <p>Links to all third-party websites are provided as a convenience and do not imply an endorsement or
+            recommendation by UCB. UCB accepts no responsibility or liability for the content or services of other
+            websites. UCB encourages you to review the policies and terms of all websites you may choose to visit.</p>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: REFERENCES -->
+    <section id="references" class="card">
+      <details class="collapse">
+        <summary>
+          <h2>References</h2>
+        </summary>
+        <div class="collapse-content">
+          <ol>
+            <li id="ref-1">Fenfluramine EU SmPC. Available from: <a
+                href="https://www.ema.europa.eu/en/documents/product-information/fintepla-epar-product-information_en.pdf"
+                target="_blank"
+                rel="noopener noreferrer">https://www.ema.europa.eu/en/documents/product-information/fintepla-epar-product-information_en.pdf</a>
+            </li>
+            <li id="ref-2">Knupp KG, Scheffer IE, Schoonjans AS, Sullivan J, Lagae L, et al. Final analysis from an
+              open-label extension study of fenfluramine for the treatment of seizures in Lennox-Gastaut syndrome:
+              long-term impact on patients and caregivers. <em>Epilepsy Behav.</em> 2025;173:110753.
+              <br>Available from: <a href="https://doi.org/10.1016/j.yebeh.2025.110753" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1016/j.yebeh.2025.110753</a>
+            </li>
+            <li id="ref-3">Knupp KG, Scheffer IE, Ceulemans B, Sullivan J, Nickels KC, Lagae L, et al. Fenfluramine
+              provides clinically meaningful reduction in frequency of drop seizures in patients with Lennox–Gastaut
+              syndrome: interim analysis of an open-label extension study. <em>Epilepsia.</em> 2023;64(1):139-51.
+              <br>Available from: <a href="https://doi.org/10.1111/epi.17431" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1111/epi.17431</a>
+            </li>
+            <li id="ref-4">Gil-Nagel A, Knupp KG, Gunning B, Battaglia DI, Thiele EA, Polster T, et al. Final results
+              from a long-term open-label extension study (up to 4 years): Tolerability of fenfluramine and global
+              functioning of pediatric and adult patients with Dravet or Lennox-Gastaut syndromes. [Poster] Presented
+              at: The American Epilepsy Society (AES) 79th Annual Meeting, 05–09 Dec 2025; Atlanta, GA, USA; 2.428.</li>
+            <li id="ref-5">Knupp KG, Scheffer IE, Ceulemans B, Sullivan JE, Nickels KC, Lagae L, et al. Efficacy and
+              safety of fenfluramine for the treatment of seizures associated with Lennox-Gastaut syndrome: a randomized
+              clinical trial. <em>JAMA Neurol.</em> 2022;79(6):554-64.
+              <br>Available from: <a href="https://doi.org/10.1001/jamaneurol.2022.0829" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1001/jamaneurol.2022.0829</a>
+            </li>
+          </ol>
+          <div class="back-to-toc-wrapper"><a href="#toc" class="btn back-to-toc">Back to top</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SECTION: FEEDBACK -->
+    <section id="feedback" class="card card--teal" data-document-number="MED-EU-FFA-2600001"
+      data-case-response-number="CASE-EU-2026-000001-RESPONSE-001">
+      <details class="collapse">
+        <summary>
+          <h3>Help us improve this content</h3>
+        </summary>
+        <div class="collapse-content">
+          <p class="text-brand"><strong>How did this response improve your practice?</strong></p>
+
+          <fieldset class="stars" role="radiogroup" aria-labelledby="stars_label">
+            <legend id="stars_label">Rating</legend>
+            <div class="stars-list">
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="1"
+                aria-label="1 star">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="2"
+                aria-label="2 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="3"
+                aria-label="3 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="4"
+                aria-label="4 stars">★</button>
+              <button type="button" role="radio" aria-checked="false" class="star" data-rating="5"
+                aria-label="5 stars">★</button>
+            </div>
+          </fieldset>
+
+          <p id="stars-error" class="stars-error is-hidden" role="alert" aria-hidden="true">Please select a rating
+            before sending.</p>
+
+          <div class="comment-field">
+            <label for="comment">Comment (optional)</label>
+            <textarea id="comment" name="comment" placeholder="Your comment …" rows="4"></textarea>
+          </div>
+
+          <div class="feedback-notice" role="note">
+            <p class="feedback-notice__title">Data protection notice</p>
+            <ul class="feedback-notice__list">
+              <li>Your feedback helps us to improve clarity and usefulness of our medical information.</li>
+              <li>You may submit your feedback anonymously. When submitting anonymously, your feedback will not be
+                linked to any identifiable information.</li>
+              <li>Please do not include personal health information or details about specific medical conditions in the
+                comment field.</li>
+              <li>Feedback data will only be used internally for quality improvement purposes and will not be shared
+                with third parties.</li>
+            </ul>
+          </div>
+
+          <div class="feedback-actions">
+            <div class="anon-option">
+              <input type="checkbox" id="anonymous" name="anonymous">
+              <label for="anonymous">Send anonymously</label>
+            </div>
+
+            <button type="button" id="submit-feedback" class="btn">Send</button>
+          </div>
+
+          <div id="feedback-message" role="status" aria-live="polite"></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         HIDDEN SECTION: LLM / GEO MACHINE SUMMARY -->
+    <section id="llm-summary" class="card card--hidden">
+      <span class="hidden-meta" data-label="LLM-SUMMARY"></span>
+      <p>GEO Machine Summary</p>
+      <p>Fenfluramine (<span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277"
+          data-snomed="372806008">FFA</span>; Fintepla) adjunctive therapy demonstrated sustained long-term efficacy and
+        an acceptable safety profile in patients with Lennox-Gastaut syndrome (LGS). In the Study 1601 OLE (n=247, up to
+        15 months), the median decrease in fall seizure frequency from Month 2 to end of study was 31.1% (p&lt;0.0001).
+        Responder rates from Month 2 to EOS were: ≥25% reduction in 51.3%, ≥50% in 33.3%, ≥75% in 13.8%, near seizure
+        freedom in 3.3%, and seizure freedom in 1.3% of patients. No cases of VHD or PAH were reported. The EU SmPC
+        mandates ECHO monitoring every 6 months for the first 2 years and annually thereafter. In Study 1900 (Gil-Nagel
+        et al. 2025; up to 4 years; n=147 LGS), no VHD or PAH were detected, and 87.4% of patients showed improvement or
+        stability in global functioning per investigator CGI-I assessment.</p>
+    </section>
+  </main>
+
+  <!-- ─── SITE FOOTER ──────────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-flex">
+        <p class="footer-meta">
+          <span class="drug">Fenfluramine</span>
+          <span class="monitor-flag" aria-label="This medicine is subject to additional monitoring">&#9660;</span>
+          <span class="subtitle">Long-term use in patients with Lennox-Gastaut syndrome</span><br>
+          MED&#8209;EU&#8209;FFA&#8209;2600001, Preparation date: March 2026, &copy; UCB Pharma SA, 2026. All rights
+          reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── JAVASCRIPT ─────────────────────────────────────────────────── -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
