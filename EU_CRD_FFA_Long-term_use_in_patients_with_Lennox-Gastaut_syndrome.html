@@ -413,10 +413,13 @@
             Life in Childhood Epilepsy questionnaire (QOLCE). Efficacy was evaluated in the modified intention-to-treat
             population.<sup><a href="#doc-fn-a">a</a>,</sup><sup><a href="#ref-2">2</a></sup></p>
           <div class="mini-foot">
-            <p class="fn-entry"><sup id="doc-fn-a">a</sup> The mITT population included patients who received ≥ 1 dose of
+            <p class="fn-entry"><sup id="doc-fn-a">a</sup> The mITT population included patients who received ≥ 1 dose
+              of
               <span data-type="drug" data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span>,
-              had a valid pre-RCT baseline estimated frequency for fall seizures, and provided ≥ 30 days of valid seizure data
-              during the OLE.</p>
+              had a valid pre-RCT baseline estimated frequency for fall seizures, and provided ≥ 30 days of valid
+              seizure data
+              during the OLE.
+            </p>
           </div>
           <p>A total of 247 patients (mean ± standard deviation age, 14.3 ± 7.6 years) were enrolled in the OLE study;
             of these, 73 patients were adults (18–35 years), and 174 were pediatric patients (2 to &lt;18 years). A
@@ -539,14 +542,14 @@
                   <script>
                     (function () {
                       var MONTHS = ['1', '2', '3', '4-6', '7-9', '10-12', '13-15'];
-                      var X      = [1, 2, 3, 5, 8, 11, 14];
-                      var Y      = [-28.4, -35.5, -43.1, -37.8, -42.7, -52.3, -54.1];
-                      var N      = [241, 239, 227, 217, 187, 169, 142];
+                      var X = [1, 2, 3, 5, 8, 11, 14];
+                      var Y = [-28.4, -35.5, -43.1, -37.8, -42.7, -52.3, -54.1];
+                      var N = [241, 239, 227, 217, 187, 169, 142];
 
                       var traceLine = {
                         x: X, y: Y,
                         type: 'scatter', mode: 'lines+markers+text',
-                        line:   { color: '#001489', width: 2.5 },
+                        line: { color: '#001489', width: 2.5 },
                         marker: { color: '#001489', size: 10, symbol: 'circle' },
                         text: Y.map(function (v) { return v.toString().replace('-', '\u2212') + '\u00a0***'; }),
                         textposition: ['top center', 'top right', 'bottom right', 'top right', 'top right', 'top right', 'bottom center'],
@@ -556,20 +559,22 @@
                         showlegend: false
                       };
 
-                      /* Summary statistics box — top right, above plot area */
+                      /* Summary statistics box — inside chart, top right */
                       var annotations = [{
-                        xref: 'paper', yref: 'paper', x: 0.99, y: 1.0,
-                        xanchor: 'right', yanchor: 'bottom',
+                        xref: 'paper', yref: 'paper', x: 0.99, y: 0.99,
+                        xanchor: 'right', yanchor: 'top',
                         text: 'Month 1 to EOS (n=241):<br>\u221229.5% (<i>P</i><0.0001)<br>' +
-                              'Month 2 to EOS (n=240<sup>b</sup>):<br>\u221231.1% (<i>P</i><0.0001)<br>' +
-                              'Median treatment duration (N=247):<br>364 days (range, 19\u2013537)',
+                          'Month 2 to EOS (n=240<sup>b</sup>):<br>\u221231.1% (<i>P</i><0.0001)<br>' +
+                          'Median treatment duration (N=247):<br>364 days (range, 19\u2013537)',
                         showarrow: false, align: 'right',
+                        bgcolor: 'rgba(255,255,255,0.85)',
+                        borderwidth: 0, borderpad: 6,
                         font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' }
                       }];
 
                       var layout = {
                         font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 13, color: '#000' },
-                        margin: { t: 110, r: 24, b: 56, l: 130 },
+                        margin: { t: 16, r: 24, b: 56, l: 130 },
                         xaxis: {
                           title: { text: 'Time in OLE (Months)', standoff: 40 },
                           tickmode: 'array', tickvals: X, ticktext: MONTHS,
@@ -608,7 +613,8 @@
                   <p class="fn-entry">***p&lt;0.0001 compared with baseline (Wilcoxon signed rank test).</p>
                   <p class="fn-entry"><sup id="fn-a">a</sup> At Months 16–18 (n=10) of the OLE, the median percentage
                     change in seizure frequency from baseline was –27.9% (p=0.1602).</p>
-                  <p class="fn-entry"><sup id="fn-b">b</sup> One patient discontinued the study early and was excluded from the Month 2 to EOS
+                  <p class="fn-entry"><sup id="fn-b">b</sup> One patient discontinued the study early and was excluded
+                    from the Month 2 to EOS
                     assessment.</p>
                   <p>EOS = end of study; mITT = modified intention-to-treat; OLE = open-label
                     extension; RCT = randomized controlled trial.</p>
@@ -640,14 +646,14 @@
                   </noscript>
                   <script>
                     (function () {
-                      var X      = [3, 5, 8, 11, 14];
+                      var X = [3, 5, 8, 11, 14];
                       var MONTHS = ['3', '4\u20136', '7\u20139', '10\u201312', '13\u201315'];
 
                       var SERIES = [
-                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98,  95,  85,  77,  63],  color: '#001489', sig: ['***', '***', '***', '***', '***'], tpos: ['middle left', 'bottom center', 'top center',    'bottom left',    'top right'   ], pct: '\u221247.0%', pval: '<i>P</i><0.0001', nn: '(n=103)' },
-                        { name: 'TS',   y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#F18070', sig: ['***', '***', '***', '***', '***'], tpos: ['middle left',    'top center',    'top center',   'bottom right', 'middel right'  ], pct: '\u221239.2%', pval: '<i>P</i>=0.0002', nn: '(n=181)' },
-                        { name: 'AS',   y: [-46, -39, -64, -67, -79], n: [81,  78,  70,  63,  56],  color: '#FFC658', sig: ['***', '***', '***', '*',   '***'], tpos: ['middle left', 'bottom center',     'bottom center','bottom center','bottom right' ], pct: '\u221240.4%', pval: '<i>P</i>=0.2849', nn: '(n=87)'  },
-                        { name: 'TA',   y: [-51, -52, -54, -55, -79], n: [40,  37,  31,  30,  26],  color: '#9873AC', sig: ['*',   '***', '***', '**',  '***'], tpos: ['middle left',  'top center',  'bottom center', 'top center',   'bottom left' ], pct: '\u221237.8%', pval: '<i>P</i>=0.0501', nn: '(n=44)'  }
+                        { name: 'GTCS', y: [-60, -57, -54, -60, -79], n: [98, 95, 85, 77, 63], color: '#001489', sig: ['***', '***', '***', '***', '***'], tpos: ['middle left', 'bottom center', 'top center', 'bottom left', 'top right'], pct: '\u221247.0%', pval: '<i>P</i><0.0001', nn: '(n=103)' },
+                        { name: 'TS', y: [-42, -39, -46, -60, -65], n: [172, 164, 142, 128, 105], color: '#F18070', sig: ['***', '***', '***', '***', '***'], tpos: ['middle left', 'top center', 'top center', 'bottom right', 'middel right'], pct: '\u221239.2%', pval: '<i>P</i>=0.0002', nn: '(n=181)' },
+                        { name: 'AS', y: [-46, -39, -64, -67, -79], n: [81, 78, 70, 63, 56], color: '#FFC658', sig: ['***', '***', '***', '*', '***'], tpos: ['middle left', 'bottom center', 'bottom center', 'bottom center', 'bottom right'], pct: '\u221240.4%', pval: '<i>P</i>=0.2849', nn: '(n=87)' },
+                        { name: 'TA', y: [-51, -52, -54, -55, -79], n: [40, 37, 31, 30, 26], color: '#9873AC', sig: ['*', '***', '***', '**', '***'], tpos: ['middle left', 'top center', 'bottom center', 'top center', 'bottom left'], pct: '\u221237.8%', pval: '<i>P</i>=0.0501', nn: '(n=44)' }
                       ];
 
                       var traces = SERIES.map(function (s) {
@@ -655,7 +661,7 @@
                           x: X, y: s.y,
                           type: 'scatter', mode: 'lines+markers+text',
                           name: s.name + '\u2003' + s.pct + '<br>' + s.pval + '\u2002' + s.nn,
-                          line:   { color: s.color, width: 2 },
+                          line: { color: s.color, width: 2 },
                           marker: { color: s.color, size: 10, symbol: 'circle' },
                           text: s.sig,
                           textposition: s.tpos,
@@ -713,8 +719,8 @@
                   <p class="fn-entry">***p&lt;0.001, **p&lt;0.01, *p&lt;0.05 (Wilcoxon signed rank test).</p>
                   <p class="fn-entry"><sup>a</sup> At Months 16–18 (n=10) of the OLE, the median percentage
                     change in seizure frequency from baseline was –27.9% (p=0.1602).</p>
-                  <p>AS = atonic seizures; EOS = end of the study; <span data-type="drug"
-                      data-emtree="fenfluramine" data-mesh="D005277" data-snomed="372806008">FFA</span> = fenfluramine;
+                  <p>AS = atonic seizures; EOS = end of the study; <span data-type="drug" data-emtree="fenfluramine"
+                      data-mesh="D005277" data-snomed="372806008">FFA</span> = fenfluramine;
                     GTCS = generalized tonic-clonic seizure; mITT = modified intention-to-treat; OLE = open-label
                     extension; TA = tonic-atonic seizures; TS = tonic seizures.</p>
                 </td>
@@ -807,9 +813,78 @@
               </tr>
               <tr>
                 <td>
-                  <img src="assets/img/MED-EU-FFA-2600001/image3.png"
-                    alt="Figure 3 — Responder Rates for Fall Seizures During the OLE From Month 2 to EOS"
-                    class="img-full" />
+                  <div id="fig3-chart" class="fig-chart fig-chart--lg" role="img"
+                    aria-label="Bar chart showing responder rates for fall seizures during the OLE from Month 2 to EOS.">
+                  </div>
+                  <noscript>
+                    <img src="assets/img/MED-EU-FFA-2600001/image3.png"
+                      alt="Figure 3 — Responder Rates for Fall Seizures During the OLE From Month 2 to EOS"
+                      class="img-full" />
+                  </noscript>
+                  <script>
+                    (function () {
+                      var CATS = [
+                        '\u226525%',
+                        '\u226550%',
+                        '\u226575%',
+                        'Near<br>Seizure-Free<sup>b</sup>',
+                        'Seizure-Free'
+                      ];
+                      var Y = [56.3, 33.3, 13.8, 3.3, 1.3];
+                      var CIlo = [49.7, 27.4, 9.7, 1.4, 0.3];
+                      var CIhi = [62.6, 39.7, 18.8, 6.5, 3.6];
+
+                      var trace = {
+                        x: CATS, y: Y,
+                        type: 'bar',
+                        marker: { color: 'var(--brand)', opacity: 1
+                      },
+                        width: 0.6,
+                        text: Y.map(function (v) { return v.toFixed(1) + '%'; }),
+                          textposition: 'outside',
+                            textfont: { color: '#000', size: 12, family: 'Tahoma, sans-serif' },
+                      error_y: {
+                        type: 'data',
+                          symmetric: false,
+                            array: CIhi.map(function (hi, i) { return hi - Y[i]; }),
+                              arrayminus: Y.map(function (v, i) { return v - CIlo[i]; }),
+                                color: '#444', thickness: 1.5, width: 6
+                      },
+                      hovertemplate: '%{x}<br>%{y:.1f}%<br>95% CI: (%{customdata[0]}, %{customdata[1]})<extra></extra>',
+                        customdata: CIlo.map(function (lo, i) { return [lo, CIhi[i]]; }),
+                          showlegend: false
+                    };
+
+                    var layout = {
+                      font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 12, color: '#000' },
+                      margin: { t: 24, r: 24, b: 72, l: 64 },
+                      xaxis: {
+                        title: { text: 'Responder Rates', standoff: 12 },
+                        showgrid: false, zeroline: false,
+                        linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                      },
+                      yaxis: {
+                        title: { text: '% of Patients', standoff: 8 },
+                        range: [0, 72],
+                        tickvals: [0, 10, 20, 30, 40, 50, 60, 70],
+                        gridcolor: '#e8eaf0', gridwidth: 1,
+                        zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
+                        linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                      },
+                      bargap: 0.2,
+                      plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff'
+                    };
+
+                    var config = {
+                      responsive: true, displaylogo: false,
+                      modeBarButtonsToRemove: ['select2d', 'lasso2d', 'autoScale2d',
+                        'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
+                      toImageButtonOptions: { format: 'svg', filename: 'fig3-responder-rates-ole' }
+                    };
+
+                    Plotly.newPlot('fig3-chart', [trace], layout, config);
+                    }());
+                  </script>
                 </td>
               </tr>
               <tr class="tblfig-footer">
