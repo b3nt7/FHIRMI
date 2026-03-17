@@ -556,20 +556,20 @@
                         showlegend: false
                       };
 
-                      /* Summary statistics box — upper right */
+                      /* Summary statistics box — top right, above plot area */
                       var annotations = [{
-                        xref: 'paper', yref: 'paper', x: 0.99, y: 0.99,
-                        xanchor: 'right', yanchor: 'top',
-                        text: 'Month 1 to EOS (n=241): \u221229.5% (<i>P</i><0.0001)<br>' +
-                              'Month 2 to EOS (n=240<sup>b</sup>): \u221231.1% (<i>P</i><0.0001)<br>' +
-                              'Median treatment duration (N=247): 364 days (range, 19\u2013537)',
-                        showarrow: false, align: 'left',
-                        font: { size: 12, color: '#000', family: 'Tahoma, sans-serif' }
+                        xref: 'paper', yref: 'paper', x: 0.99, y: 1.0,
+                        xanchor: 'right', yanchor: 'bottom',
+                        text: 'Month 1 to EOS (n=241):<br>\u221229.5% (<i>P</i><0.0001)<br>' +
+                              'Month 2 to EOS (n=240<sup>b</sup>):<br>\u221231.1% (<i>P</i><0.0001)<br>' +
+                              'Median treatment duration (N=247):<br>364 days (range, 19\u2013537)',
+                        showarrow: false, align: 'right',
+                        font: { size: 11, color: '#000', family: 'Tahoma, sans-serif' }
                       }];
 
                       var layout = {
                         font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 13, color: '#000' },
-                        margin: { t: 16, r: 24, b: 56, l: 130 },
+                        margin: { t: 110, r: 24, b: 56, l: 130 },
                         xaxis: {
                           title: { text: 'Time in OLE (Months)', standoff: 40 },
                           tickmode: 'array', tickvals: X, ticktext: MONTHS,
