@@ -660,7 +660,7 @@
                           text: s.sig,
                           textposition: s.tpos,
                           textfont: { color: '#000', size: 10, family: 'Tahoma, sans-serif' },
-                          hovertemplate: '<b>' + s.name + '</b><br>Month %{customdata.m}: %{y}%<br>n\u2009=\u2009%{customdata.n}<extra></extra>',
+                          hovertemplate: 'Month %{customdata.m}: %{y}%<br>n\u2009=\u2009%{customdata.n}<extra></extra>',
                           customdata: MONTHS.map(function (m, i) { return { m: m, n: s.n[i] }; })
                         };
                       });
@@ -693,7 +693,7 @@
                         },
                         annotations: [],
                         plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff',
-                        hovermode: 'x unified'
+                        hovermode: 'closest'
                       };
 
                       var config = {
