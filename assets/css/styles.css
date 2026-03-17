@@ -83,8 +83,10 @@ body {
 
   /* ── Chart series palette ── */
   --lightsalmon:  #F18070;
+  --salmon:       #bd625e;
   --lightmarigold:#FFC658;
   --lavender:     #9873AC;
+  --deeplavender: #784e90;
   --skyblue:      #71C5E8;
   --teal: #6bcaba;
   /* Teal — feedback card & TOC pill         */
