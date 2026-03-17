@@ -8,6 +8,7 @@
 <html lang="en">
 
 <!-- ============ HEAD ============ -->
+
 <head>
   <!-- Character encoding and responsive viewport -->
   <meta charset="UTF-8">
@@ -34,6 +35,7 @@
       min-height: 100%;
       background: linear-gradient(145deg, #dde0e8 0%, #eceef2 50%, #e4e6ec 100%);
     }
+
     body {
       height: auto;
       display: flex;
@@ -49,6 +51,7 @@
     body .btn {
       border-radius: 1.5rem;
     }
+
     .btn--primary {
       display: -webkit-box !important;
       display: -webkit-flex !important;
@@ -84,6 +87,7 @@
       padding-right: 1.25rem !important;
       padding-left: 0.85rem !important;
     }
+
     /* Text cell — grows to fill remaining width and wraps freely */
     .btn--primary span {
       -webkit-box-flex: 1 !important;
@@ -96,6 +100,7 @@
       word-break: break-word !important;
       line-height: 1.4 !important;
     }
+
     .btn--primary:hover {
       background: rgba(255, 255, 255, 0.58) !important;
       box-shadow:
@@ -121,6 +126,7 @@
 <!-- ============ END HEAD ============ -->
 
 <!-- ============ BODY ============ -->
+
 <body>
 
   <!-- ============ SITE HEADER ============
@@ -140,7 +146,8 @@
         <!-- QR code — scan to open this site on a mobile device -->
         <div class="footer-qr">
           <p class="footer-qr__label">Scan to open</p>
-          <img src="assets/img/qr_fhirmi.svg" alt="QR code — scan to open UCB Medical Information" width="80" height="80">
+          <img src="assets/img/qr_fhirmi.svg" alt="QR code — scan to open UCB Medical Information" width="80"
+            height="80">
         </div>
       </div>
       <!-- Page title -->
@@ -159,35 +166,53 @@
          BRV = Brivaracetam.
   -->
 
+  <!-- Global — BKZ: Plaque psoriasis, nail involvement, IL-17 inhibitor comparison -->
+  <a class="btn btn--primary"
+    href="GRD_BKZ_PSO_Comparison_to_an_LI-17_inhibitor_in_patients_having_nail_involvement.html"><img
+      class="flag-circle" src="assets/img/flags/globe.svg" alt="Global"><span>BKZ &mdash; Comparison to IL-17 inhibitor
+      in patients with psoriasis having nail involvement</span></a>
+
+  <!-- EU — FFA: Long-term use in patients with Lennox-Gastaut syndrome -->
+  <a class="btn btn--primary" href="EU_CRD_FFA_Long-term_use_in_patients_with_Lennox-Gastaut_syndrome.html"><img
+      class="flag-circle" src="assets/img/flags/eu.svg" alt="EU flag"><span>FFA &mdash; Long-term Use in Patients with
+      Lennox-Gastaut Syndrome</span></a>
+
   <!-- EU — FFA: Use in Combination with Standard of Care / STP -->
-  <a class="btn btn--primary" href="FFA_Use_in_combination_with_STP.html"><img class="flag-circle" src="assets/img/flags/eu.svg" alt="EU flag"><span>FFA &mdash; Use in Combination with STP</span></a>
+  <a class="btn btn--primary" href="FFA_Use_in_combination_with_STP.html"><img class="flag-circle"
+      src="assets/img/flags/eu.svg" alt="EU flag"><span>FFA &mdash; Use in Combination with STP</span></a>
 
   <!-- EU — FFA inline-styles variant (currently commented out / not published) -->
   <!-- <a class="btn btn--primary" href="FFA_Use_in_combination_with_STP_inline_styles.html"><img class="flag-circle" src="assets/img/flags/eu.svg" alt="EU flag"><span>FFA &mdash; Use in Combination with STP &mdash; Inline styles</span></a> -->
 
-  <!-- Global — BKZ: Plaque psoriasis, nail involvement, IL-17 inhibitor comparison -->
-  <a class="btn btn--primary" href="GRD_BKZ_PSO_Comparison_to_an_LI-17_inhibitor_in_patients_having_nail_involvement.html"><img class="flag-circle" src="assets/img/flags/globe.svg" alt="Global"><span>BKZ &mdash; Comparison to IL-17 inhibitor in patients with psoriasis having nail involvement</span></a>
-
   <!-- US — RLZ: Urinary tract infections as an adverse event -->
-  <a class="btn btn--primary" href="US_CRD_RLZ_occurrence_of_urinary_tract_infections_as_an_adverse_event.html"><img class="flag-circle" src="assets/img/flags/us.svg" alt="US flag"><span>RLZ &mdash; Occurrence of urinary tract infections as an adverse event</span></a>
+  <a class="btn btn--primary" href="US_CRD_RLZ_occurrence_of_urinary_tract_infections_as_an_adverse_event.html"><img
+      class="flag-circle" src="assets/img/flags/us.svg" alt="US flag"><span>RLZ &mdash; Occurrence of urinary tract
+      infections as an adverse event</span></a>
 
   <!-- MX (Mexico) — BKZ: Plaque psoriasis (Spanish-language document) -->
-  <a class="btn btn--primary" href="MX_CRD_BKZ_PSO_Use_in_patients_with_plaque_psoriasis.html"><img class="flag-circle" src="assets/img/flags/mx.svg" alt="Mexico flag"><span>BKZ &mdash; Uso en pacientes con psoriasis en placas</span></a>
+  <a class="btn btn--primary" href="MX_CRD_BKZ_PSO_Use_in_patients_with_plaque_psoriasis.html"><img class="flag-circle"
+      src="assets/img/flags/mx.svg" alt="Mexico flag"><span>BKZ &mdash; Uso en pacientes con psoriasis en
+      placas</span></a>
 
   <!-- CA (Canada) — CZP: Use in patients with a history of malignancy -->
-  <a class="btn btn--primary" href="CA_CRD_CZP_Use_in_patients_with_a_history_of_malignancy.html"><img class="flag-circle" src="assets/img/flags/ca.svg" alt="Canada flag"><span>CZP &mdash; Use in patients with a history of malignancy</span></a>
+  <a class="btn btn--primary" href="CA_CRD_CZP_Use_in_patients_with_a_history_of_malignancy.html"><img
+      class="flag-circle" src="assets/img/flags/ca.svg" alt="Canada flag"><span>CZP &mdash; Use in patients with a
+      history of malignancy</span></a>
 
   <!-- JP (Japan) — LEV: Amount of dilution solution (bilingual JP/EN title) -->
-  <a class="btn btn--primary" href="JP_CRD_LEV_The_amount_of_dilution_solution.html"><img class="flag-circle" src="assets/img/flags/jp.svg" alt="Japan flag"><span>LEV &mdash; 希釈液量について / The amount of dilution solution</span></a>
+  <a class="btn btn--primary" href="JP_CRD_LEV_The_amount_of_dilution_solution.html"><img class="flag-circle"
+      src="assets/img/flags/jp.svg" alt="Japan flag"><span>LEV &mdash; 希釈液量について / The amount of dilution
+      solution</span></a>
 
   <!-- GB (UK) — BRV: Carbohydrate content of film-coated tablets -->
-  <a class="btn btn--primary" href="UK_CRD_BRV_Carbohydrate_content_of_film-coated_tablets.html"><img class="flag-circle" src="assets/img/flags/gb.svg" alt="UK flag"><span>BRV &mdash; Carbohydrate content of film-coated tablets</span></a>
+  <a class="btn btn--primary" href="UK_CRD_BRV_Carbohydrate_content_of_film-coated_tablets.html"><img
+      class="flag-circle" src="assets/img/flags/gb.svg" alt="UK flag"><span>BRV &mdash; Carbohydrate content of
+      film-coated tablets</span></a>
 
   <!-- DE (Germany) — BKZ: Gender-specific differences in PsA (German-language document) -->
-  <a class="btn btn--primary" href="DE_CRD_BKZ_PsA_Gender-specific_differences.html"><img class="flag-circle" src="assets/img/flags/de.svg" alt="Germany flag"><span>BKZ &mdash; Geschlechtsspezifische Unterschiede bei Psoriasisarthritis</span></a>
-
-  <!-- EU — FFA: Long-term use in patients with Lennox-Gastaut syndrome -->
-  <a class="btn btn--primary" href="EU_CRD_FFA_Long-term_use_in_patients_with_Lennox-Gastaut_syndrome.html"><img class="flag-circle" src="assets/img/flags/eu.svg" alt="EU flag"><span>FFA &mdash; Long-term Use in Patients with Lennox-Gastaut Syndrome</span></a>
+  <a class="btn btn--primary" href="DE_CRD_BKZ_PsA_Gender-specific_differences.html"><img class="flag-circle"
+      src="assets/img/flags/de.svg" alt="Germany flag"><span>BKZ &mdash; Geschlechtsspezifische Unterschiede bei
+      Psoriasisarthritis</span></a>
 
   <!-- ============ END NAVIGATION LINKS ============ -->
 
