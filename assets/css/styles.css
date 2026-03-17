@@ -873,10 +873,14 @@ button.btn:hover {
 .text-center { text-align: center; }
 .text-right  { text-align: right; }
 
-/* Vertical alignment */
+/* Vertical alignment — default is top (set on .tblfig th/td above).
+   These overrides are scoped to .tblfig so they beat the default rule. */
 .align-top    { vertical-align: top; }
 .align-middle { vertical-align: middle; }
 .align-bottom { vertical-align: bottom; }
+.tblfig th.align-top,    .tblfig td.align-top    { vertical-align: top; }
+.tblfig th.align-middle, .tblfig td.align-middle { vertical-align: middle; }
+.tblfig th.align-bottom, .tblfig td.align-bottom { vertical-align: bottom; }
 
 /* Indentation */
 .row-indent   { padding-inline-start: 1.5rem; }
