@@ -733,13 +733,6 @@
             Table 2). The median absolute change in non-fall seizure frequency from Month 2 to EOS was –11.3 in
             pediatric patients and –84.0 in adult patients; the change in the overall patient group was –32.5.<sup><a
                 href="#doc-fn-b">b</a></sup>,<sup><a href="#ref-2">2</a></sup></p>
-          <div class="mini-foot">
-            <p class="fn-entry"><sup id="doc-fn-b">b</sup> Seizures not associated with a fall included clonic seizures,
-              hemiclonic seizures, focal seizures with or without observable signs, myoclonic seizures, absence/atypical
-              absence, infantile spasms, epileptic spasms, and the following ESC-approved seizures not associated with a
-              fall: generalized tonic-clonic seizures, focal-to-bilateral tonic-clonic seizures, tonic seizures, atonic
-              seizures, and tonic-atonic seizures.</p>
-          </div>
 
           <!-- TABLE 2 -->
           <div class="tblfig">
@@ -837,52 +830,64 @@
                       var trace = {
                         x: CATS, y: Y,
                         type: 'bar',
-                        marker: { color: 'var(--brand)', opacity: 1
-                      },
+                        marker: { color: '#F18070' },
                         width: 0.6,
-                        text: Y.map(function (v) { return v.toFixed(1) + '%'; }),
-                          textposition: 'outside',
-                            textfont: { color: '#000', size: 12, family: 'Tahoma, sans-serif' },
-                      error_y: {
-                        type: 'data',
-                          symmetric: false,
-                            array: CIhi.map(function (hi, i) { return hi - Y[i]; }),
-                              arrayminus: Y.map(function (v, i) { return v - CIlo[i]; }),
-                                color: '#444', thickness: 1.5, width: 6
-                      },
-                      hovertemplate: '%{x}<br>%{y:.1f}%<br>95% CI: (%{customdata[0]}, %{customdata[1]})<extra></extra>',
+                        textposition: 'none',
+                        error_y: {
+                          type: 'data', symmetric: false,
+                          array: CIhi.map(function (hi, i) { return hi - Y[i]; }),
+                          arrayminus: Y.map(function (v, i) { return v - CIlo[i]; }),
+                          color: '#444', thickness: 1.5, width: 6
+                        },
+                        hovertemplate: '%{x}<br>%{y:.1f}%<br>95%\u2009CI: (%{customdata[0]}, %{customdata[1]})<extra></extra>',
+                        hoverlabel: { bgcolor: '#F18070', font: { color: '#001489' } },
                         customdata: CIlo.map(function (lo, i) { return [lo, CIhi[i]]; }),
-                          showlegend: false
-                    };
+                        showlegend: false
+                      };
 
-                    var layout = {
-                      font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 12, color: '#000' },
-                      margin: { t: 24, r: 24, b: 72, l: 64 },
-                      xaxis: {
-                        title: { text: 'Responder Rates', standoff: 12 },
-                        showgrid: false, zeroline: false,
-                        linecolor: '#000', linewidth: 1, tickcolor: '#000'
-                      },
-                      yaxis: {
-                        title: { text: '% of Patients', standoff: 8 },
-                        range: [0, 72],
-                        tickvals: [0, 10, 20, 30, 40, 50, 60, 70],
-                        gridcolor: '#e8eaf0', gridwidth: 1,
-                        zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
-                        linecolor: '#000', linewidth: 1, tickcolor: '#000'
-                      },
-                      bargap: 0.2,
-                      plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff'
-                    };
+                      /* Labels above error bars, shifted right to avoid overlap */
+                      var LF = { size: 12, color: '#000', family: 'Tahoma, sans-serif' };
+                      var annotations = CATS.map(function (cat, i) {
+                        return {
+                          x: cat, y: CIhi[i],
+                          xref: 'x', yref: 'y',
+                          xanchor: 'left', yanchor: 'bottom',
+                          xshift: 6,
+                          text: Y[i].toFixed(1) + '%',
+                          showarrow: false,
+                          font: LF
+                        };
+                      });
 
-                    var config = {
-                      responsive: true, displaylogo: false,
-                      modeBarButtonsToRemove: ['select2d', 'lasso2d', 'autoScale2d',
-                        'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
-                      toImageButtonOptions: { format: 'svg', filename: 'fig3-responder-rates-ole' }
-                    };
+                      var layout = {
+                        font: { family: 'Tahoma, Helvetica Neue, Helvetica, Arial, sans-serif', size: 12, color: '#000' },
+                        margin: { t: 24, r: 24, b: 80, l: 64 },
+                        xaxis: {
+                          title: { text: 'Responder Rates', standoff: 12 },
+                          showgrid: false, zeroline: false,
+                          linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                        },
+                        yaxis: {
+                          title: { text: '% of Patients', standoff: 8 },
+                          range: [0, 76],
+                          tickvals: [0, 10, 20, 30, 40, 50, 60, 70],
+                          gridcolor: '#e8eaf0', gridwidth: 1,
+                          zeroline: true, zerolinecolor: '#000', zerolinewidth: 1,
+                          linecolor: '#000', linewidth: 1, tickcolor: '#000'
+                        },
+                        bargap: 0.2,
+                        annotations: annotations,
+                        plot_bgcolor: '#ffffff', paper_bgcolor: '#ffffff'
+                      };
 
-                    Plotly.newPlot('fig3-chart', [trace], layout, config);
+                      var config = {
+                        responsive: true, displaylogo: false,
+                        modeBarButtonsToRemove: ['select2d', 'lasso2d', 'autoScale2d',
+                          'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'],
+                        toImageButtonOptions: { format: 'svg', filename: 'fig3-responder-rates-ole' }
+                      };
+
+                      Plotly.newPlot('fig3-chart', [trace], layout, config);
                     }());
                   </script>
                 </td>
@@ -892,7 +897,16 @@
                   <p class="fn-entry"><sup>a</sup> Responder rates were the percentage of patients who
                     achieved ≥25%, ≥50%, ≥75%, and 100% reduction in seizure frequency (seizure freedom) or near seizure
                     freedom (i.e., 0 or 1 fall seizure).</p>
-                  <p class="fn-entry">CI = confidence interval; EOS = end of the study; mITT = modified
+                  <p class="fn-entry"><sup id="doc-fn-b">b</sup> Seizures not associated with a fall included clonic
+                    seizures,
+                    hemiclonic seizures, focal seizures with or without observable signs, myoclonic seizures,
+                    absence/atypical
+                    absence, infantile spasms, epileptic spasms, and the following ESC-approved seizures not associated
+                    with a
+                    fall: generalized tonic-clonic seizures, focal-to-bilateral tonic-clonic seizures, tonic seizures,
+                    atonic
+                    seizures, and tonic-atonic seizures.</p>
+                  <p>CI = confidence interval; EOS = end of the study; mITT = modified
                     intention-to-treat; OLE = open-label extension.</p>
                 </td>
               </tr>
