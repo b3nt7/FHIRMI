@@ -666,6 +666,7 @@
                           text: s.sig,
                           textposition: s.tpos,
                           textfont: { color: '#000', size: 10, family: 'Tahoma, sans-serif' },
+                          hoverlabel: { bgcolor: s.color, font: { color: s.color === '#001489' ? '#fff' : '#001489' } },
                           hovertemplate: 'Month %{customdata.m}: %{y}%<br>n\u2009=\u2009%{customdata.n}<extra></extra>',
                           customdata: MONTHS.map(function (m, i) { return { m: m, n: s.n[i] }; })
                         };
