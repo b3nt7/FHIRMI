@@ -1253,11 +1253,11 @@ button.btn:hover {
   background:   color-mix(in srgb, var(--accent) 12%, white);
 }
 
-/* Checked + hover: keep the brand-blue fill, just swap border to marigold */
+/* Checked + hover: deepen marigold border slightly */
 .anon-option:hover input[type="checkbox"]:checked:not(:disabled),
 .anon-option input[type="checkbox"]:checked:hover:not(:disabled) {
-  background:   var(--brand);
-  border-color: var(--accent);
+  background:   var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 75%, #000);
 }
 
 /* Keyboard-focus highlight — same teal glow as comment textarea and rating pill */
@@ -1268,24 +1268,32 @@ button.btn:hover {
   box-shadow: 0 0 0 0.15rem color-mix(in srgb, var(--teal) 30%, transparent);
 }
 
-/* Checked state: solid brand fill (high-contrast against white tick) */
+/* Checked state: flat marigold fill — aligns with selected-star colour */
 .anon-option input[type="checkbox"]:checked {
-  background: var(--brand);
-  border-color: var(--brand);
+  background:   var(--accent);
+  border-color: var(--accent);
 }
 
-/* White checkmark built from two border sides, centred via translate */
+/* × mark: two white diagonal lines built from ::before and ::after.
+   Both are centred, one rotated +45° and one -45° to form the cross. */
+.anon-option input[type="checkbox"]:checked::before,
 .anon-option input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: 50%;
+  width: 0.62rem;
+  height: 0.125rem;
+  background: white;
+  border-radius: 1px;
+}
+
+.anon-option input[type="checkbox"]:checked::before {
   transform: translate(-50%, -50%) rotate(45deg);
-  /* rotate forms the ✓ shape */
-  width: 0.4rem;
-  height: 0.8rem;
-  border-right: 0.15rem solid var(--accent);
-  border-bottom: 0.15rem solid var(--accent);
+}
+
+.anon-option input[type="checkbox"]:checked::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* ── Feedback layout ── */
