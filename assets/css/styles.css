@@ -1062,7 +1062,7 @@ button.btn:hover {
   gap: 0.5rem;
 }
 
-/* Individual star button — circular, star centred inside */
+/* Individual star button — naked glyph, no circle container */
 .stars .star {
   display: inline-flex;
   align-items: center;
@@ -1070,25 +1070,39 @@ button.btn:hover {
   width: 2rem;
   height: 2rem;
   padding: 0;
-  font-size: 1.05rem;
+  font-size: 1.55rem;
   line-height: 1;
   cursor: pointer;
   border-radius: 50%;
-  border: 0.0625rem solid color-mix(in srgb, var(--brand) 45%, transparent);
+  border: none;
   background: transparent;
-  color: var(--brand);
+  color: color-mix(in srgb, var(--teal) 55%, white);
   transition:
-    background-color .2s ease,
     color .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease,
     text-shadow .2s ease,
-    transform .15s ease;
+    transform .18s ease;
 }
 
-/* Hover: light brand-blue fill */
-.stars .star:hover {
-  background: color-mix(in srgb, var(--brand) 12%, transparent);
+/* Hover — cumulative preview: hovering star N lights stars 1..N in marigold.
+   · :has(~ .star:hover) selects any star that has a hovered sibling after it
+     in DOM order, i.e. all stars to the LEFT of (and including) the hovered one.
+   · While the list is hovered, selected (gold) state is fully suppressed so the
+     preview is unambiguous — gold snaps back the moment the mouse leaves. */
+.stars .stars-list:hover .star {
+  background:  transparent;
+  color:       color-mix(in srgb, var(--teal) 55%, white);
+  border:      none;
+  transform:   none;
+  text-shadow: none;
+  box-shadow:  none;
+}
+
+.stars .stars-list:hover .star:hover,
+.stars .stars-list:hover .star:has(~ .star:hover) {
+  background:   color-mix(in srgb, var(--accent) 12%, transparent);
+  color:        var(--accent);
+  border-color: var(--accent);
+  transform:    scale(1.15);
 }
 
 /* Active: subtle scale-down press feedback */
@@ -1096,31 +1110,18 @@ button.btn:hover {
   transform: scale(0.98);
 }
 
-/* Selected stars: gold gradient with a soft 3-D depth effect.
-   · Gradient (light → mid → deep gold) gives a convex lit-from-above feel.
-   · Dark-amber text colour contrasts the bright fill for the ★ glyph.
-   · text-shadow: bright highlight on top edge + warm shadow below = embossed look.
-   · box-shadow: inner top bevel (glass highlight) + warm outer glow + crisp drop. */
+/* Selected stars: flat marigold — contemporary flat style, no gradients or 3-D.
+   · Warm accent colour gives clear contrast against the teal-tint unselected stars.
+   · Faint warm glow reinforces the "lit" state without visual noise.
+   · Gentle scale-up signals selection without being jumpy. */
 .stars .star[aria-checked="true"],
 .stars .star.selected {
-  background: linear-gradient(160deg, #ffe57a 0%, #f5c218 55%, #e6a817 100%);
-  color: #7a4d00;
-  /* dark amber — readable on gold */
-  border-color: #d4920a;
-  transform: scale(1.2);
-  /* slightly larger than unselected peers */
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.60),
-    /* bright highlight on top of star glyph */
-    0 2px 3px rgba(80, 40, 0, 0.25);
-  /* warm depth shadow below */
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.45) inset,
-    /* inner top-edge bevel */
-    0 3px 8px rgba(195, 130, 0, 0.50),
-    /* warm golden glow */
-    0 1px 2px rgba(0, 0, 0, 0.15);
-  /* crisp close shadow */
+  color:      var(--accent);
+  background: transparent;
+  border:     none;
+  transform:  scale(1.15);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow:  none;
 }
 
 /* Short horizontal shake for the rating pill on a failed submit attempt.
@@ -1242,6 +1243,21 @@ button.btn:hover {
   /* positioning context for the ::after tick */
   vertical-align: middle;
   transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+/* Hover — marigold border + light marigold tint, matching button system.
+   Scoped to .anon-option:hover so hovering the label text triggers it too. */
+.anon-option:hover input[type="checkbox"]:not(:disabled),
+.anon-option input[type="checkbox"]:hover:not(:disabled) {
+  border-color: var(--accent);
+  background:   color-mix(in srgb, var(--accent) 12%, white);
+}
+
+/* Checked + hover: keep the brand-blue fill, just swap border to marigold */
+.anon-option:hover input[type="checkbox"]:checked:not(:disabled),
+.anon-option input[type="checkbox"]:checked:hover:not(:disabled) {
+  background:   var(--brand);
+  border-color: var(--accent);
 }
 
 /* Keyboard-focus highlight — same teal glow as comment textarea and rating pill */
